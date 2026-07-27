@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>携程国旅欧洲跟团游 · 双周经营分析看板</title>
+<script src="lib/chart.js"></script>
+<style>
+:root {
+  color-scheme: light;
+  --bg: #f0f2f5;
+  --card-bg: #ffffff;
+  --text-primary: #1a1a2e;
+  --text-secondary: #6b7280;
+  --accent-blue: #1e40af;
+  --accent-light-blue: #3b82f6;
+  --accent-orange: #f97316;
+  --accent-green: #059669;
+  --accent-red: #dc2626;
+  --border: #e5e7eb;
+  --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+  --shadow-hover: 0 4px 6px rgba(0,0,0,0.05), 0 10px 25px rgba(0,0,0,0.08);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg); color: var(--text-primary); line-height: 1.6; min-height: 100vh;
+}
+.header {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #2563eb 100%);
+  color: white; padding: 36px 24px 28px; position: relative; overflow: hidden;
+}
+.header::before {
+  content: ''; position: absolute; top: -60%; right: -5%; width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%); pointer-events: none;
+}
+.header-content { max-width: 1400px; margin: 0 auto; position: relative; z-index: 1; }
+.header h1 { font-size: 26px; font-weight: 700; letter-spacing: -0.3px; margin-bottom: 8px; }
+.header .subtitle { font-size: 14px; opacity: 0.8; font-weight: 400; }
+.header .meta { display: flex; gap: 16px; margin-top: 14px; flex-wrap: wrap; }
+.header .meta-tag {
+  background: rgba(255,255,255,0.12); backdrop-filter: blur(8px);
+  padding: 5px 14px; border-radius: 20px; font-size: 12px; font-weight: 500;
+}
+.container { max-width: 1400px; margin: 0 auto; padding: 0 24px 48px; }
+.section-title {
+  font-size: 18px; font-weight: 700; color: var(--text-primary);
+  margin: 36px 0 16px; padding-left: 12px; border-left: 4px solid var(--accent-blue);
+}
+.section-subtitle { font-size: 13px; color: var(--text-secondary); margin: -10px 0 16px 16px; }
+
+/* KPI Grid */
+.kpi-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin-bottom: 24px;
+}
+.kpi-card {
+  background: var(--card-bg); border-radius: 12px; padding: 22px 20px;
+  box-shadow: var(--shadow); border: 1px solid var(--border); position: relative; overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.kpi-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+.kpi-card::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--accent-blue); border-radius: 12px 12px 0 0;
+}
+.kpi-card.green::after { background: var(--accent-green); }
+.kpi-card.orange::after { background: var(--accent-orange); }
+.kpi-card.purple::after { background: #7c3aed; }
+.kpi-card.red::after { background: var(--accent-red); }
+.kpi-label { font-size: 12px; color: var(--text-secondary); letter-spacing: 0.5px; margin-bottom: 6px; font-weight: 500; }
+.kpi-value { font-size: 26px; font-weight: 700; color: var(--text-primary); line-height: 1.2; margin-bottom: 10px; }
+.kpi-meta { display: flex; align-items: center; gap: 10px; font-size: 13px; }
+.kpi-yoy { font-weight: 600; padding: 3px 10px; border-radius: 4px; font-size: 13px; }
+.yoy-up { background: #dcfce7; color: #166534; }
+.yoy-down { background: #fee2e2; color: #991b1b; }
+.kpi-compare { color: var(--text-secondary); font-size: 12px; }
+.kpi-note { font-size: 11px; color: var(--text-secondary); margin-top: 6px; }
+
+/* Summary bar */
+.summary-bar {
+  background: var(--card-bg); border-radius: 12px; padding: 20px 24px; margin-bottom: 20px;
+  box-shadow: var(--shadow); border: 1px solid var(--border);
+  display: flex; flex-wrap: wrap; gap: 20px; align-items: center;
+}
+.summary-item { text-align: center; flex: 1; min-width: 120px; }
+.summary-item .label { font-size: 11px; color: var(--text-secondary); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+.summary-item .value { font-size: 22px; font-weight: 700; color: var(--text-primary); }
+.summary-item .value.green { color: var(--accent-green); }
+.summary-item .value.blue { color: var(--accent-blue); }
+.summary-item .value.small { font-size: 15px; }
+
+/* Chart Grid */
+.chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px; }
+.chart-card {
+  background: var(--card-bg); border-radius: 12px; padding: 22px;
+  box-shadow: var(--shadow); border: 1px solid var(--border); transition: box-shadow 0.2s;
+}
+.chart-card:hover { box-shadow: var(--shadow-hover); }
+.chart-card.wide { grid-column: 1 / -1; }
+.chart-title { font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+.chart-subtitle { font-size: 12px; color: var(--text-secondary); margin-bottom: 14px; }
+.chart-wrapper { position: relative; height: 280px; }
+.chart-wrapper.tall { height: 340px; }
+.legend-custom { display: flex; gap: 16px; margin-bottom: 10px; flex-wrap: wrap; }
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-secondary); }
+.legend-dot { width: 10px; height: 10px; border-radius: 2px; }
+
+/* Data Table */
+.data-table {
+  width: 100%; border-collapse: collapse; font-size: 13px;
+  background: var(--card-bg); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow);
+}
+.data-table th {
+  background: #f8fafc; padding: 12px 16px; text-align: left; font-weight: 600;
+  color: var(--text-secondary); border-bottom: 1px solid var(--border);
+  font-size: 12px; text-transform: uppercase; letter-spacing: 0.3px;
+}
+.data-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text-primary); }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover td { background: #f8fafc; }
+.data-table .num { text-align: right; font-weight: 600; }
+.data-table .highlight { background: #eff6ff; font-weight: 600; }
+.data-table .total-row { background: #f8fafc; font-weight: 700; }
+.data-table .up { color: var(--accent-green); }
+.data-table .down { color: var(--accent-red); }
+.status-pass { color: #059669; background: #dcfce7; padding: 3px 10px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+.status-fail { color: #dc2626; background: #fee2e2; padding: 3px 10px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+
+/* Cumulative cards */
+.cum-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-bottom: 24px; }
+.cum-card { background: var(--card-bg); border-radius: 12px; box-shadow: var(--shadow); border: 1px solid var(--border); overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; position: relative; }
+.cum-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+.cum-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--accent-blue); }
+.cum-card.green::before { background: var(--accent-green); }
+.cum-card.orange::before { background: var(--accent-orange); }
+.cum-card.gray::before { background: #94a3b8; }
+.cum-card-inner { padding: 20px; }
+.cum-header { font-size: 12px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 14px; }
+.cum-row { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 16px; }
+.cum-gmv { display: flex; flex-direction: column; }
+.cum-gmv .year-label { font-size: 11px; color: var(--text-secondary); margin-bottom: 2px; }
+.cum-gmv .big { font-size: 28px; font-weight: 700; color: var(--text-primary); line-height: 1.1; }
+.cum-gmv .big span { font-size: 14px; font-weight: 500; margin-left: 2px; }
+.cum-gmv .small { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
+.cum-yoy-box { text-align: right; }
+.cum-yoy-box .pct { font-size: 22px; font-weight: 700; color: var(--accent-green); line-height: 1; }
+.cum-yoy-box .pct.down { color: var(--accent-red); }
+.cum-yoy-box .pct-label { font-size: 11px; color: var(--text-secondary); margin-top: 4px; }
+.cum-share-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.cum-share-bar-bg { flex: 1; height: 8px; background: #f1f5f9; border-radius: 4px; overflow: hidden; }
+.cum-share-bar-fill { height: 100%; border-radius: 4px; transition: width 0.6s ease; }
+.cum-share-pct { font-size: 14px; font-weight: 700; color: var(--text-primary); min-width: 46px; text-align: right; }
+.cum-share-change { font-size: 11px; font-weight: 500; padding: 2px 6px; border-radius: 3px; }
+.cum-share-change.up { background: #dcfce7; color: #166534; }
+.cum-share-change.down { background: #fee2e2; color: #991b1b; }
+.cum-footer { font-size: 12px; color: var(--text-secondary); padding-top: 10px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; }
+
+/* Channel cards */
+.channel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 16px; margin-bottom: 24px; }
+.channel-card { background: var(--card-bg); border-radius: 12px; box-shadow: var(--shadow); border: 1px solid var(--border); overflow: hidden; transition: box-shadow 0.2s; }
+.channel-card:hover { box-shadow: var(--shadow-hover); }
+.channel-card.primary { border: 1px solid #dbeafe; }
+.channel-header { padding: 14px 20px 10px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+.channel-tag { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 4px; background: #eff6ff; color: #1e40af; }
+.channel-tag.primary { background: #dcfce7; color: #166534; }
+.channel-name { font-size: 15px; font-weight: 600; color: var(--text-primary); }
+.channel-body { padding: 16px 20px 14px; }
+.channel-main { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+.channel-label { font-size: 11px; color: var(--text-secondary); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.3px; }
+.channel-value { font-size: 24px; font-weight: 700; color: var(--text-primary); line-height: 1.2; }
+.channel-yoy { font-size: 13px; font-weight: 600; margin-top: 4px; }
+.channel-small { font-size: 18px; font-weight: 700; line-height: 1.2; }
+.channel-note { font-size: 11px; color: var(--text-secondary); margin-top: 4px; }
+.channel-bar-wrap { margin-bottom: 12px; }
+.channel-bar-label { font-size: 11px; color: var(--text-secondary); margin-bottom: 6px; font-weight: 500; }
+.stacked-bar { display: flex; height: 22px; border-radius: 4px; overflow: hidden; }
+.bar-xl { background: #1e40af; }
+.bar-gl { background: #3b82f6; }
+.bar-ot { background: #cbd5e1; }
+.channel-bar-legend { display: flex; gap: 14px; margin-top: 8px; flex-wrap: wrap; }
+.channel-bar-legend span { font-size: 11px; color: var(--text-secondary); display: flex; align-items: center; gap: 5px; }
+.dot { width: 8px; height: 8px; border-radius: 2px; display: inline-block; }
+.dot.xl { background: #1e40af; }
+.dot.gl { background: #3b82f6; }
+.dot.ot { background: #cbd5e1; }
+.channel-footer { font-size: 12px; color: var(--text-secondary); padding-top: 10px; border-top: 1px solid var(--border); }
+
+/* Strategy cards */
+.strategy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.strategy-card {
+  background: var(--card-bg); border-radius: 12px; padding: 20px;
+  box-shadow: var(--shadow); border: 1px solid var(--border); border-left: 4px solid var(--accent-blue);
+}
+.strategy-card.green { border-left-color: var(--accent-green); }
+.strategy-card.orange { border-left-color: var(--accent-orange); }
+.strategy-card h4 { font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--text-primary); }
+.strategy-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+
+@media (max-width: 768px) {
+  .chart-grid { grid-template-columns: 1fr; }
+  .kpi-grid { grid-template-columns: 1fr; }
+  .header h1 { font-size: 20px; }
+  .chart-card.wide { grid-column: 1; }
+  .summary-bar { flex-direction: column; }
+  .tab-nav { gap: 4px; }
+  .tab-btn { padding: 8px 16px; font-size: 13px; }
+}
+
+/* Tabs */
+.tab-nav { display: flex; gap: 8px; margin-top: 18px; }
+.tab-btn {
+  background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.15); border-radius: 8px;
+  padding: 10px 24px; font-size: 14px; font-weight: 600; cursor: pointer;
+  transition: all 0.2s; backdrop-filter: blur(8px);
+}
+.tab-btn:hover { background: rgba(255,255,255,0.18); color: #fff; }
+.tab-btn.active { background: rgba(255,255,255,0.95); color: var(--accent-blue); border-color: #fff; }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-content">
+    <h1>携程国旅 · 欧洲跟团游双周经营分析</h1>
+    <div class="subtitle">华北14省出发 · 例会数据报告 · 7.11-7.24双周</div>
+    <div class="meta">
+      <span class="meta-tag">📅 双周：7月11日 — 7月24日</span>
+      <span class="meta-tag">📊 同比：2025 vs 2026</span>
+      <span class="meta-tag">🎯 跟团游 · 华北14省 · 剔除单团/罚金/领队/俄罗斯</span>
+    </div>
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab('biweekly')">📊 双周预定</button>
+      <button class="tab-btn" onclick="switchTab('cumulative')">📈 累计预定</button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div id="tab-biweekly" class="tab-panel active">
+  <div class="section-title">一、双周经营核心数据</div>
+  <div class="section-subtitle">7.11-7.24 携程平台大盘及品牌拆解</div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">携程平台总GMV</div>
+      <div class="kpi-value">¥6,369万</div>
+      <div class="kpi-meta">
+        <span class="kpi-yoy yoy-up">↑ 79.0%</span>
+        <span class="kpi-compare">vs ¥3,559万</span>
+      </div>
+      <div class="kpi-note">成交人数 2,635人（+98.9%）</div>
+    </div>
+    <div class="kpi-card green">
+      <div class="kpi-label">双品牌GMV</div>
+      <div class="kpi-value">¥3,015万</div>
+      <div class="kpi-meta">
+        <span class="kpi-yoy yoy-up">↑ 85.6%</span>
+        <span class="kpi-compare">vs ¥1,625万</span>
+      </div>
+      <div class="kpi-note"><span style="color:#dc2626;font-weight:600;">平台占比 47.3%（+1.7pp）</span></div>
+    </div>
+    <div class="kpi-card orange">
+      <div class="kpi-label">国旅自营GMV</div>
+      <div class="kpi-value">¥865万</div>
+      <div class="kpi-meta">
+        <span class="kpi-yoy yoy-up">↑ 38.1%</span>
+        <span class="kpi-compare">vs ¥626万</span>
+      </div>
+      <div class="kpi-note">占比 13.6%，增速低于大盘</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">其他供应商GMV</div>
+      <div class="kpi-value">¥3,354万</div>
+      <div class="kpi-meta">
+        <span class="kpi-yoy yoy-up">↑ 73.4%</span>
+        <span class="kpi-compare">vs ¥1,934万</span>
+      </div>
+      <div class="kpi-note">平台占比 52.7%</div>
+    </div>
+  </div>
+
+  <!-- 关键指标汇总表 -->
+  <div style="margin-top:12px;"></div>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>指标</th>
+        <th class="num">2026年双周</th>
+        <th class="num">2025年同期</th>
+        <th class="num">同比增长</th>
+        <th class="num">2026年占比</th>
+        <th class="num">2025年占比</th>
+        <th class="num">占比变化</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="total-row">
+        <td>携程平台总GMV</td>
+        <td class="num">6,369万</td>
+        <td class="num">3,559万</td>
+        <td class="num up">+79.0%</td>
+        <td class="num">100%</td>
+        <td class="num">100%</td>
+        <td class="num">—</td>
+      </tr>
+      <tr>
+        <td style="padding-left:32px;">├ 双品牌GMV</td>
+        <td class="num highlight">3,015万</td>
+        <td class="num">1,625万</td>
+        <td class="num up">+85.6%</td>
+        <td class="num highlight">47.3%</td>
+        <td class="num">45.6%</td>
+        <td class="num up">+1.7pp</td>
+      </tr>
+      <tr>
+        <td style="padding-left:48px;">├ 翔龙品牌</td>
+        <td class="num">2,150万</td>
+        <td class="num">998万</td>
+        <td class="num up">+115.3%</td>
+        <td class="num">33.8%</td>
+        <td class="num">28.0%</td>
+        <td class="num up">+5.8pp</td>
+      </tr>
+      <tr>
+        <td style="padding-left:64px;">└ 北京华程</td>
+        <td class="num">1,702万</td>
+        <td class="num">891万</td>
+        <td class="num up">+91.0%</td>
+        <td class="num">26.7%</td>
+        <td class="num">25.0%</td>
+        <td class="num up">+1.7pp</td>
+      </tr>
+      <tr>
+        <td style="padding-left:64px;">└ 其他华程</td>
+        <td class="num">448万</td>
+        <td class="num">107万</td>
+        <td class="num up">+318.7%</td>
+        <td class="num">7.0%</td>
+        <td class="num">3.0%</td>
+        <td class="num up">+4.0pp</td>
+      </tr>
+      <tr>
+        <td style="padding-left:48px;">├ 国旅自营</td>
+        <td class="num">865万</td>
+        <td class="num">626万</td>
+        <td class="num up">+38.1%</td>
+        <td class="num">13.6%</td>
+        <td class="num">17.6%</td>
+        <td class="num down">-4.0pp</td>
+      </tr>
+      <tr>
+        <td style="padding-left:32px;">└ 其他供应商</td>
+        <td class="num">3,354万</td>
+        <td class="num">1,934万</td>
+        <td class="num up">+73.4%</td>
+        <td class="num">52.7%</td>
+        <td class="num">54.4%</td>
+        <td class="num down">-1.7pp</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- 渠道分析 -->
+  <div style="margin-top:20px;"></div>
+  <div class="section-subtitle" style="margin-left:0; font-weight:600;">各业务渠道成交收入及平台占比</div>
+
+  <div class="channel-grid">
+    <div class="channel-card primary">
+      <div class="channel-header">
+        <span class="channel-tag primary">主力渠道 · 贡献81%</span>
+        <span class="channel-name">线下门店</span>
+      </div>
+      <div class="channel-body">
+        <div class="channel-main">
+          <div class="channel-metric">
+            <div class="channel-label">2026年成交收入</div>
+            <div class="channel-value">¥5,154万</div>
+            <div class="channel-yoy yoy-up">↑ 88.4% <span style="color:var(--text-secondary);font-weight:400;">vs ¥2,736万</span></div>
+          </div>
+          <div class="channel-metric" style="text-align:right;">
+            <div class="channel-label">双品牌占比</div>
+            <div class="channel-small" style="color:var(--accent-green);">47.1%</div>
+            <div class="channel-note">同比 +5.7pp</div>
+          </div>
+        </div>
+        <div class="channel-bar-wrap">
+          <div class="channel-bar-label">品牌GMV占比（2026）</div>
+          <div class="stacked-bar">
+            <div class="bar-xl" style="width:34.8%"></div>
+            <div class="bar-gl" style="width:12.3%"></div>
+            <div class="bar-ot" style="width:52.9%"></div>
+          </div>
+          <div class="channel-bar-legend">
+            <span><i class="dot xl"></i>翔龙 ¥1,793万 (34.8%)</span>
+            <span><i class="dot gl"></i>国旅 ¥632万 (12.3%)</span>
+            <span><i class="dot ot"></i>其他 ¥2,728万 (52.9%)</span>
+          </div>
+        </div>
+        <div class="channel-footer">
+          国旅占比 12.3% · 翔龙占比 34.8% · 其他供应商占比 52.9%
+        </div>
+      </div>
+    </div>
+
+    <div class="channel-card">
+      <div class="channel-header">
+        <span class="channel-tag">辅助渠道 · 贡献19%</span>
+        <span class="channel-name">线上渠道</span>
+      </div>
+      <div class="channel-body">
+        <div class="channel-main">
+          <div class="channel-metric">
+            <div class="channel-label">2026年成交收入</div>
+            <div class="channel-value">¥1,215万</div>
+            <div class="channel-yoy yoy-up">↑ 47.7% <span style="color:var(--text-secondary);font-weight:400;">vs ¥823万</span></div>
+          </div>
+          <div class="channel-metric" style="text-align:right;">
+            <div class="channel-label">双品牌占比</div>
+            <div class="channel-small" style="color:var(--accent-green);">48.5%</div>
+            <div class="channel-note">同比 -11.4pp</div>
+          </div>
+        </div>
+        <div class="channel-bar-wrap">
+          <div class="channel-bar-label">品牌GMV占比（2026）</div>
+          <div class="stacked-bar">
+            <div class="bar-xl" style="width:29.3%"></div>
+            <div class="bar-gl" style="width:19.2%"></div>
+            <div class="bar-ot" style="width:51.5%"></div>
+          </div>
+          <div class="channel-bar-legend">
+            <span><i class="dot xl"></i>翔龙 ¥356万 (29.3%)</span>
+            <span><i class="dot gl"></i>国旅 ¥233万 (19.2%)</span>
+            <span><i class="dot ot"></i>其他 ¥626万 (51.5%)</span>
+          </div>
+        </div>
+        <div class="channel-footer">
+          国旅占比 19.2% · 翔龙占比 29.3% · 其他供应商占比 51.5%
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 二、各出发月份预订分布 ========== -->
+  <div class="section-title">二、各出发月份预订分布</div>
+  <div class="section-subtitle">按未来出行月份统计成交人数及成交收入同比</div>
+
+  <div class="chart-grid">
+    <div class="chart-card half">
+      <div class="chart-title">各月份成交人数对比</div>
+      <div class="chart-subtitle">2025 vs 2026 各出发月份人数</div>
+      <div class="legend-custom">
+        <div class="legend-item"><div class="legend-dot" style="background:#93c5fd"></div>2025年</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#2563eb"></div>2026年</div>
+      </div>
+      <div class="chart-wrapper"><canvas id="chart-month"></canvas></div>
+    </div>
+    <div class="chart-card half">
+      <div class="chart-title">各月份成交收入对比</div>
+      <div class="chart-subtitle">2025 vs 2026 各出发月份GMV（万元）</div>
+      <div class="legend-custom">
+        <div class="legend-item"><div class="legend-dot" style="background:#93c5fd"></div>2025年</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#2563eb"></div>2026年</div>
+      </div>
+      <div class="chart-wrapper"><canvas id="chart-month-gmv"></canvas></div>
+    </div>
+  </div>
+
+  <!-- 月份详细数据表 -->
+  <div style="margin-top:20px;"></div>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>出发月份</th>
+        <th class="num">2026人数</th>
+        <th class="num">2025人数</th>
+        <th class="num">人数同比</th>
+        <th class="num">2026GMV(万)</th>
+        <th class="num">2025GMV(万)</th>
+        <th class="num">GMV同比</th>
+        <th class="num">2026占比</th>
+        <th class="num">2025占比</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>7月</td><td class="num">97</td><td class="num">90</td><td class="num up">+7.8%</td><td class="num">235</td><td class="num">242</td><td class="num down">-2.9%</td><td class="num">3.7%</td><td class="num">6.8%</td></tr>
+      <tr><td>8月</td><td class="num highlight">889</td><td class="num">594</td><td class="num up">+49.7%</td><td class="num highlight">2,149</td><td class="num">1,595</td><td class="num up">+34.7%</td><td class="num highlight">33.7%</td><td class="num">44.8%</td></tr>
+      <tr><td>9月</td><td class="num highlight">1,176</td><td class="num">464</td><td class="num up">+153.4%</td><td class="num highlight">2,844</td><td class="num">1,246</td><td class="num up">+128.3%</td><td class="num highlight">44.6%</td><td class="num">35.0%</td></tr>
+      <tr><td>10月</td><td class="num">430</td><td class="num">177</td><td class="num up">+142.9%</td><td class="num">1,040</td><td class="num">475</td><td class="num up">+118.9%</td><td class="num">16.3%</td><td class="num">13.4%</td></tr>
+      <tr><td>11月</td><td class="num">39</td><td class="num">0</td><td class="num up">—</td><td class="num">94</td><td class="num">0</td><td class="num up">—</td><td class="num">1.5%</td><td class="num">0%</td></tr>
+      <tr><td>12月</td><td class="num">2</td><td class="num">0</td><td class="num up">—</td><td class="num">5</td><td class="num">0</td><td class="num up">—</td><td class="num">0.1%</td><td class="num">0%</td></tr>
+      <tr class="total-row">
+        <td>合计</td>
+        <td class="num">2,635</td>
+        <td class="num">1,325</td>
+        <td class="num up">+98.9%</td>
+        <td class="num">6,367</td>
+        <td class="num">3,558</td>
+        <td class="num up">+79.0%</td>
+        <td class="num">100%</td>
+        <td class="num">100%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ========== 三、各业务区域经营分析 ========== -->
+  <div class="section-title">三、各业务区域经营分析</div>
+  <div class="section-subtitle">各区域携程平台及品牌市占率分析 · 品牌区域数据基于整体占比推算</div>
+
+  <div class="chart-grid">
+    <div class="chart-card half">
+      <div class="chart-title">目的地区域 — 成交收入对比</div>
+      <div class="chart-subtitle">2025 vs 2026 各区域GMV（万元）</div>
+      <div class="legend-custom">
+        <div class="legend-item"><div class="legend-dot" style="background:#93c5fd"></div>2025年</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#2563eb"></div>2026年</div>
+      </div>
+      <div class="chart-wrapper"><canvas id="chart-dest-gmv"></canvas></div>
+    </div>
+    <div class="chart-card half">
+      <div class="chart-title">目的地区域 — 2026年占比（GMV）</div>
+      <div class="chart-subtitle">各区域成交收入占比分布</div>
+      <div class="chart-wrapper"><canvas id="chart-dest-gmv-pie"></canvas></div>
+    </div>
+  </div>
+
+  <!-- 区域详细数据表 — 品牌市占率维度 -->
+  <div style="margin-top:20px; overflow-x: auto;">
+  <div class="section-subtitle" style="font-size:12px; color:var(--text-secondary); margin-bottom:8px;">
+    注：品牌区域数据基于品牌整体GMV占比推算，供结构参考，实际市占率可能因区域而异
+  </div>
+  <table class="data-table" style="min-width: 1500px; font-size: 11px;">
+    <thead>
+      <tr>
+        <th rowspan="2" style="min-width:50px; font-size:12px; vertical-align:middle;">区域</th>
+        <th colspan="3" style="background:#1e3a5f; color:#fff; text-align:center; font-size:11px;">携程平台</th>
+        <th colspan="4" style="background:#059669; color:#fff; text-align:center; font-size:11px;">双品牌</th>
+        <th colspan="4" style="background:#2563eb; color:#fff; text-align:center; font-size:11px;">翔龙品牌</th>
+        <th colspan="4" style="background:#ea580c; color:#fff; text-align:center; font-size:11px;">国旅品牌</th>
+      </tr>
+      <tr>
+        <th class="num" style="font-size:10px;">GMV(万)</th>
+        <th class="num" style="font-size:10px;">人数</th>
+        <th class="num" style="font-size:10px;">同比</th>
+        <th class="num" style="font-size:10px;">GMV(万)</th>
+        <th class="num" style="font-size:10px;">人数</th>
+        <th class="num" style="font-size:10px;">同比</th>
+        <th class="num" style="font-size:10px;">市占率</th>
+        <th class="num" style="font-size:10px;">GMV(万)</th>
+        <th class="num" style="font-size:10px;">人数</th>
+        <th class="num" style="font-size:10px;">同比</th>
+        <th class="num" style="font-size:10px;">市占率</th>
+        <th class="num" style="font-size:10px;">GMV(万)</th>
+        <th class="num" style="font-size:10px;">人数</th>
+        <th class="num" style="font-size:10px;">同比</th>
+        <th class="num" style="font-size:10px;">市占率</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="font-size:11px;">西欧</td>
+        <td class="num" style="font-size:11px;">3,222</td>
+        <td class="num" style="font-size:11px;">1,332</td>
+        <td class="num up" style="font-size:11px;">+81.4%</td>
+        <td class="num" style="font-size:11px;">1,525</td>
+        <td class="num" style="font-size:11px;">630</td>
+        <td class="num up" style="font-size:11px;">+88.0%</td>
+        <td class="num" style="font-size:11px;">47.3%</td>
+        <td class="num" style="font-size:11px;">1,088</td>
+        <td class="num" style="font-size:11px;">450</td>
+        <td class="num up" style="font-size:11px;">+118.5%</td>
+        <td class="num" style="font-size:11px;">33.8%</td>
+        <td class="num" style="font-size:11px;">438</td>
+        <td class="num" style="font-size:11px;">181</td>
+        <td class="num up" style="font-size:11px;">+40.4%</td>
+        <td class="num" style="font-size:11px;">13.6%</td>
+      </tr>
+      <tr>
+        <td style="font-size:11px;">北欧</td>
+        <td class="num" style="font-size:11px;">1,267</td>
+        <td class="num" style="font-size:11px;">524</td>
+        <td class="num up" style="font-size:11px;">+82.8%</td>
+        <td class="num" style="font-size:11px;">599</td>
+        <td class="num" style="font-size:11px;">248</td>
+        <td class="num up" style="font-size:11px;">+89.9%</td>
+        <td class="num" style="font-size:11px;">47.3%</td>
+        <td class="num" style="font-size:11px;">428</td>
+        <td class="num" style="font-size:11px;">177</td>
+        <td class="num up" style="font-size:11px;">+120.6%</td>
+        <td class="num" style="font-size:11px;">33.8%</td>
+        <td class="num" style="font-size:11px;">172</td>
+        <td class="num" style="font-size:11px;">71</td>
+        <td class="num up" style="font-size:11px;">+41.0%</td>
+        <td class="num" style="font-size:11px;">13.6%</td>
+      </tr>
+      <tr>
+        <td style="font-size:11px;">东欧+巴尔干</td>
+        <td class="num" style="font-size:11px;">721</td>
+        <td class="num" style="font-size:11px;">298</td>
+        <td class="num up" style="font-size:11px;">+111.4%</td>
+        <td class="num" style="font-size:11px;">341</td>
+        <td class="num" style="font-size:11px;">141</td>
+        <td class="num up" style="font-size:11px;">+118.6%</td>
+        <td class="num" style="font-size:11px;">47.3%</td>
+        <td class="num" style="font-size:11px;">243</td>
+        <td class="num" style="font-size:11px;">101</td>
+        <td class="num up" style="font-size:11px;">+153.1%</td>
+        <td class="num" style="font-size:11px;">33.7%</td>
+        <td class="num" style="font-size:11px;">98</td>
+        <td class="num" style="font-size:11px;">40</td>
+        <td class="num up" style="font-size:11px;">+63.3%</td>
+        <td class="num" style="font-size:11px;">13.6%</td>
+      </tr>
+      <tr>
+        <td style="font-size:11px;">南欧</td>
+        <td class="num" style="font-size:11px;">629</td>
+        <td class="num" style="font-size:11px;">260</td>
+        <td class="num up" style="font-size:11px;">+56.1%</td>
+        <td class="num" style="font-size:11px;">298</td>
+        <td class="num" style="font-size:11px;">123</td>
+        <td class="num up" style="font-size:11px;">+62.0%</td>
+        <td class="num" style="font-size:11px;">47.4%</td>
+        <td class="num" style="font-size:11px;">212</td>
+        <td class="num" style="font-size:11px;">88</td>
+        <td class="num up" style="font-size:11px;">+87.6%</td>
+        <td class="num" style="font-size:11px;">33.7%</td>
+        <td class="num" style="font-size:11px;">85</td>
+        <td class="num" style="font-size:11px;">35</td>
+        <td class="num up" style="font-size:11px;">+19.7%</td>
+        <td class="num" style="font-size:11px;">13.5%</td>
+      </tr>
+      <tr>
+        <td style="font-size:11px;">英爱</td>
+        <td class="num" style="font-size:11px;">535</td>
+        <td class="num" style="font-size:11px;">221</td>
+        <td class="num up" style="font-size:11px;">+54.6%</td>
+        <td class="num" style="font-size:11px;">252</td>
+        <td class="num" style="font-size:11px;">105</td>
+        <td class="num up" style="font-size:11px;">+59.5%</td>
+        <td class="num" style="font-size:11px;">47.1%</td>
+        <td class="num" style="font-size:11px;">179</td>
+        <td class="num" style="font-size:11px;">75</td>
+        <td class="num up" style="font-size:11px;">+85.6%</td>
+        <td class="num" style="font-size:11px;">33.5%</td>
+        <td class="num" style="font-size:11px;">73</td>
+        <td class="num" style="font-size:11px;">30</td>
+        <td class="num up" style="font-size:11px;">+18.0%</td>
+        <td class="num" style="font-size:11px;">13.5%</td>
+      </tr>
+      <tr class="total-row">
+        <td style="font-size:11px;">合计</td>
+        <td class="num" style="font-size:11px;">6,374</td>
+        <td class="num" style="font-size:11px;">2,635</td>
+        <td class="num up" style="font-size:11px;">+79.1%</td>
+        <td class="num" style="font-size:11px;">3,015</td>
+        <td class="num" style="font-size:11px;">1,247</td>
+        <td class="num up" style="font-size:11px;">+85.6%</td>
+        <td class="num" style="font-size:11px;">47.3%</td>
+        <td class="num" style="font-size:11px;">2,150</td>
+        <td class="num" style="font-size:11px;">890</td>
+        <td class="num up" style="font-size:11px;">+115.6%</td>
+        <td class="num" style="font-size:11px;">33.7%</td>
+        <td class="num" style="font-size:11px;">865</td>
+        <td class="num" style="font-size:11px;">357</td>
+        <td class="num up" style="font-size:11px;">+38.3%</td>
+        <td class="num" style="font-size:11px;">13.6%</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- ========== 四、各省份双品牌达标分析（线下门店口径） ========== -->
+  <div class="section-title">四、各省份双品牌达标分析</div>
+  <div class="section-subtitle">线下门店口径 · 国旅订单占比 vs 目标值 · 达绿色 / 不达标红色</div>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>省份</th>
+        <th class="num">成交收入(万)</th>
+        <th class="num">翔龙(万)</th>
+        <th class="num">翔龙占比</th>
+        <th class="num">国旅(万)</th>
+        <th class="num">国旅占比</th>
+        <th class="num">其他供应商(万)</th>
+        <th class="num">其他供应商占比</th>
+        <th class="num">双品牌占比</th>
+        <th class="num">国旅目标</th>
+        <th class="num">是否达标</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>北京</td>
+        <td class="num">1,247.68</td>
+        <td class="num">439.48</td>
+        <td class="num">35.22%</td>
+        <td class="num">231.95</td>
+        <td class="num">18.59%</td>
+        <td class="num">576.25</td>
+        <td class="num">46.19%</td>
+        <td class="num">53.81%</td>
+        <td class="num">20%</td>
+        <td class="num"><span class="status-fail">不达标</span></td>
+      </tr>
+      <tr>
+        <td>天津</td>
+        <td class="num">437.06</td>
+        <td class="num">246.20</td>
+        <td class="num">56.33%</td>
+        <td class="num">29.54</td>
+        <td class="num">6.76%</td>
+        <td class="num">161.32</td>
+        <td class="num">36.91%</td>
+        <td class="num">63.09%</td>
+        <td class="num">15%</td>
+        <td class="num"><span class="status-fail">不达标</span></td>
+      </tr>
+      <tr>
+        <td>辽宁</td>
+        <td class="num">425.09</td>
+        <td class="num">140.80</td>
+        <td class="num">33.12%</td>
+        <td class="num">38.13</td>
+        <td class="num">8.97%</td>
+        <td class="num">246.16</td>
+        <td class="num">57.91%</td>
+        <td class="num">42.09%</td>
+        <td class="num">15%</td>
+        <td class="num"><span class="status-fail">不达标</span></td>
+      </tr>
+      <tr>
+        <td>山东</td>
+        <td class="num">391.17</td>
+        <td class="num">141.96</td>
+        <td class="num">36.29%</td>
+        <td class="num">46.30</td>
+        <td class="num">11.84%</td>
+        <td class="num">202.91</td>
+        <td class="num">51.87%</td>
+        <td class="num">48.13%</td>
+        <td class="num">12%</td>
+        <td class="num"><span class="status-fail">不达标</span></td>
+      </tr>
+      <tr>
+        <td>河南</td>
+        <td class="num">327.95</td>
+        <td class="num">122.39</td>
+        <td class="num">37.32%</td>
+        <td class="num">4.72</td>
+        <td class="num">1.44%</td>
+        <td class="num">200.84</td>
+        <td class="num">61.24%</td>
+        <td class="num">38.76%</td>
+        <td class="num">20%</td>
+        <td class="num"><span class="status-fail">不达标</span></td>
+      </tr>
+      <tr>
+        <td>陕西</td>
+        <td class="num">293.39</td>
+        <td class="num">108.83</td>
+        <td class="num">37.09%</td>
+        <td class="num">58.49</td>
+        <td class="num">19.94%</td>
+        <td class="num">126.07</td>
+        <td class="num">42.97%</td>
+        <td class="num">57.03%</td>
+        <td class="num">11%</td>
+        <td class="num"><span class="status-pass">达标</span></td>
+      </tr>
+      <tr>
+        <td>山西</td>
+        <td class="num">188.83</td>
+        <td class="num">106.47</td>
+        <td class="num">56.38%</td>
+        <td class="num">34.31</td>
+        <td class="num">18.17%</td>
+        <td class="num">48.05</td>
+        <td class="num">25.45%</td>
+        <td class="num">74.55%</td>
+        <td class="num">15%</td>
+        <td class="num"><span class="status-pass">达标</span></td>
+      </tr>
+      <tr>
+        <td>河北</td>
+        <td class="num">152.05</td>
+        <td class="num">35.66</td>
+        <td class="num">23.45%</td>
+        <td class="num">45.91</td>
+        <td class="num">30.19%</td>
+        <td class="num">70.48</td>
+        <td class="num">46.35%</td>
+        <td class="num">53.65%</td>
+        <td class="num">15%</td>
+        <td class="num"><span class="status-pass">达标</span></td>
+      </tr>
+      <tr>
+        <td>黑龙江</td>
+        <td class="num">65.69</td>
+        <td class="num">12.47</td>
+        <td class="num">18.99%</td>
+        <td class="num">27.89</td>
+        <td class="num">42.46%</td>
+        <td class="num">25.33</td>
+        <td class="num">38.55%</td>
+        <td class="num">61.45%</td>
+        <td class="num">30%</td>
+        <td class="num"><span class="status-pass">达标</span></td>
+      </tr>
+      <tr>
+        <td>吉林</td>
+        <td class="num">32.39</td>
+        <td class="num">14.63</td>
+        <td class="num">45.19%</td>
+        <td class="num">8.87</td>
+        <td class="num">27.40%</td>
+        <td class="num">8.89</td>
+        <td class="num">27.42%</td>
+        <td class="num">72.58%</td>
+        <td class="num">30%</td>
+        <td class="num"><span class="status-fail">不达标</span></td>
+      </tr>
+      <tr>
+        <td>宁夏</td>
+        <td class="num">6.54</td>
+        <td class="num">0</td>
+        <td class="num">0%</td>
+        <td class="num">0</td>
+        <td class="num">0%</td>
+        <td class="num">6.54</td>
+        <td class="num">100%</td>
+        <td class="num">0%</td>
+        <td class="num">—</td>
+        <td class="num">—</td>
+      </tr>
+      <tr>
+        <td>青海</td>
+        <td class="num">2.34</td>
+        <td class="num">0</td>
+        <td class="num">0%</td>
+        <td class="num">0</td>
+        <td class="num">0%</td>
+        <td class="num">2.34</td>
+        <td class="num">100%</td>
+        <td class="num">0%</td>
+        <td class="num">—</td>
+        <td class="num">—</td>
+      </tr>
+      <tr>
+        <td>甘肃</td>
+        <td class="num">2.33</td>
+        <td class="num">0</td>
+        <td class="num">0%</td>
+        <td class="num">0</td>
+        <td class="num">0%</td>
+        <td class="num">2.33</td>
+        <td class="num">100%</td>
+        <td class="num">0%</td>
+        <td class="num">—</td>
+        <td class="num">—</td>
+      </tr>
+      <tr class="total-row">
+        <td>合计</td>
+        <td class="num">3,572.51</td>
+        <td class="num">1,368.89</td>
+        <td class="num">38.32%</td>
+        <td class="num">526.10</td>
+        <td class="num">14.73%</td>
+        <td class="num">1,677.52</td>
+        <td class="num">46.96%</td>
+        <td class="num">53.04%</td>
+        <td class="num">—</td>
+        <td class="num">—</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ========== 五、成交价格带分布 ========== -->
+  <div class="section-title">五、成交价格带分布</div>
+  <div class="section-subtitle">按成交人均售价区间统计成交收入 · 品牌GMV结构及平台占比</div>
+
+  <div class="chart-grid">
+    <div class="chart-card half">
+      <div class="chart-title">价格带平台总GMV对比</div>
+      <div class="chart-subtitle">2025 vs 2026 各价格带成交收入（万元）</div>
+      <div class="legend-custom">
+        <div class="legend-item"><div class="legend-dot" style="background:#93c5fd"></div>2025年</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#2563eb"></div>2026年</div>
+      </div>
+      <div class="chart-wrapper"><canvas id="chart-price-gmv"></canvas></div>
+    </div>
+    <div class="chart-card half">
+      <div class="chart-title">价格带品牌GMV对比（2026年）</div>
+      <div class="chart-subtitle">翔龙 · 国旅 · 其他供应商 各价格带成交收入（万元）+ 双品牌市占率</div>
+      <div class="legend-custom">
+        <div class="legend-item"><div class="legend-dot" style="background:#2563eb"></div>翔龙</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#f97316"></div>国旅</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#94a3b8"></div>其他供应商</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#dc2626;border-radius:50%"></div>双品牌市占率</div>
+      </div>
+      <div class="chart-wrapper"><canvas id="chart-price-brand"></canvas></div>
+    </div>
+  </div>
+
+  <!-- 价格带品牌GMV详细数据表 -->
+  <div style="margin-top:20px;"></div>
+  <div class="section-subtitle" style="margin-left:0; font-weight:600;">各价格带品牌成交收入及平台占比</div>
+  <table class="data-table" style="font-size:11px;">
+    <thead>
+      <tr>
+        <th style="font-size:11px;">价格带</th>
+        <th class="num" style="font-size:11px;">平台GMV(万)</th>
+        <th class="num" style="font-size:11px;">国旅GMV(万)</th>
+        <th class="num" style="font-size:11px;">国旅占比</th>
+        <th class="num" style="font-size:11px;">翔龙GMV(万)</th>
+        <th class="num" style="font-size:11px;">翔龙占比</th>
+        <th class="num" style="font-size:11px;">双品牌GMV(万)</th>
+        <th class="num" style="font-size:11px;">双品牌占比</th>
+        <th class="num" style="font-size:11px;">其他GMV(万)</th>
+        <th class="num" style="font-size:11px;">其他占比</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="font-size:11px;">2.0w-2.5w</td>
+        <td class="num" style="font-size:11px;">1,250</td>
+        <td class="num" style="font-size:11px;">493</td>
+        <td class="num" style="font-size:11px;">39.4%</td>
+        <td class="num" style="font-size:11px;">217</td>
+        <td class="num" style="font-size:11px;">17.3%</td>
+        <td class="num" style="font-size:11px;">709</td>
+        <td class="num up" style="font-size:11px;">56.8%</td>
+        <td class="num" style="font-size:11px;">541</td>
+        <td class="num" style="font-size:11px;">43.2%</td>
+      </tr>
+      <tr>
+        <td style="font-size:11px;">2.5w-3.0w</td>
+        <td class="num" style="font-size:11px;">1,105</td>
+        <td class="num" style="font-size:11px;">500</td>
+        <td class="num" style="font-size:11px;">45.2%</td>
+        <td class="num" style="font-size:11px;">165</td>
+        <td class="num" style="font-size:11px;">14.9%</td>
+        <td class="num" style="font-size:11px;">665</td>
+        <td class="num up" style="font-size:11px;">60.2%</td>
+        <td class="num" style="font-size:11px;">440</td>
+        <td class="num" style="font-size:11px;">39.8%</td>
+      </tr>
+      <tr>
+        <td style="font-size:11px;">3.0w-3.5w</td>
+        <td class="num" style="font-size:11px;">990</td>
+        <td class="num" style="font-size:11px;">322</td>
+        <td class="num" style="font-size:11px;">32.6%</td>
+        <td class="num" style="font-size:11px;">274</td>
+        <td class="num" style="font-size:11px;">27.7%</td>
+        <td class="num" style="font-size:11px;">597</td>
+        <td class="num up" style="font-size:11px;">60.3%</td>
+        <td class="num" style="font-size:11px;">394</td>
+        <td class="num" style="font-size:11px;">39.8%</td>
+      </tr>
+      <tr>
+        <td style="font-size:11px;">1.5w-2.0w</td>
+        <td class="num" style="font-size:11px;">953</td>
+        <td class="num" style="font-size:11px;">236</td>
+        <td class="num" style="font-size:11px;">24.8%</td>
+        <td class="num" style="font-size:11px;">14</td>
+        <td class="num" style="font-size:11px;">1.5%</td>
+        <td class="num" style="font-size:11px;">251</td>
+        <td class="num down" style="font-size:11px;">26.3%</td>
+        <td class="num" style="font-size:11px;">702</td>
+        <td class="num" style="font-size:11px;">73.7%</td>
+      </tr>
+      <tr>
+        <td style="font-size:11px;">3.5w-4.0w</td>
+        <td class="num" style="font-size:11px;">625</td>
+        <td class="num" style="font-size:11px;">144</td>
+        <td class="num" style="font-size:11px;">23.0%</td>
+        <td class="num" style="font-size:11px;">59</td>
+        <td class="num" style="font-size:11px;">9.4%</td>
+        <td class="num" style="font-size:11px;">203</td>
+        <td class="num down" style="font-size:11px;">32.4%</td>
+        <td class="num" style="font-size:11px;">423</td>
+        <td class="num" style="font-size:11px;">67.6%</td>
+      </tr>
+      <tr>
+        <td style="font-size:11px;">4.0w-4.5w</td>
+        <td class="num" style="font-size:11px;">459</td>
+        <td class="num" style="font-size:11px;">86</td>
+        <td class="num" style="font-size:11px;">18.7%</td>
+        <td class="num" style="font-size:11px;">84</td>
+        <td class="num" style="font-size:11px;">18.4%</td>
+        <td class="num" style="font-size:11px;">170</td>
+        <td class="num down" style="font-size:11px;">37.1%</td>
+        <td class="num" style="font-size:11px;">289</td>
+        <td class="num" style="font-size:11px;">62.9%</td>
+      </tr>
+      <tr>
+        <td style="font-size:11px;">1.0w-1.5w</td>
+        <td class="num" style="font-size:11px;">330</td>
+        <td class="num" style="font-size:11px;">146</td>
+        <td class="num" style="font-size:11px;">44.2%</td>
+        <td class="num" style="font-size:11px;">9</td>
+        <td class="num" style="font-size:11px;">2.9%</td>
+        <td class="num" style="font-size:11px;">155</td>
+        <td class="num down" style="font-size:11px;">47.1%</td>
+        <td class="num" style="font-size:11px;">175</td>
+        <td class="num" style="font-size:11px;">52.9%</td>
+      </tr>
+      <tr>
+        <td style="font-size:11px;">4.5w-5.0w</td>
+        <td class="num" style="font-size:11px;">254</td>
+        <td class="num" style="font-size:11px;">115</td>
+        <td class="num" style="font-size:11px;">45.4%</td>
+        <td class="num" style="font-size:11px;">19</td>
+        <td class="num" style="font-size:11px;">7.5%</td>
+        <td class="num" style="font-size:11px;">134</td>
+        <td class="num up" style="font-size:11px;">52.8%</td>
+        <td class="num" style="font-size:11px;">120</td>
+        <td class="num" style="font-size:11px;">47.2%</td>
+      </tr>
+      <tr>
+        <td style="font-size:11px;">5w以上</td>
+        <td class="num" style="font-size:11px;">243</td>
+        <td class="num" style="font-size:11px;">63</td>
+        <td class="num" style="font-size:11px;">25.8%</td>
+        <td class="num" style="font-size:11px;">20</td>
+        <td class="num" style="font-size:11px;">8.3%</td>
+        <td class="num" style="font-size:11px;">83</td>
+        <td class="num down" style="font-size:11px;">34.1%</td>
+        <td class="num" style="font-size:11px;">160</td>
+        <td class="num" style="font-size:11px;">65.9%</td>
+      </tr>
+      <tr>
+        <td style="font-size:11px;">5k-1.0w</td>
+        <td class="num" style="font-size:11px;">160</td>
+        <td class="num" style="font-size:11px;">45</td>
+        <td class="num" style="font-size:11px;">28.3%</td>
+        <td class="num" style="font-size:11px;">3</td>
+        <td class="num" style="font-size:11px;">1.7%</td>
+        <td class="num" style="font-size:11px;">48</td>
+        <td class="num down" style="font-size:11px;">29.9%</td>
+        <td class="num" style="font-size:11px;">112</td>
+        <td class="num" style="font-size:11px;">70.1%</td>
+      </tr>
+      <tr>
+        <td style="font-size:11px;">5k以下</td>
+        <td class="num" style="font-size:11px;">0</td>
+        <td class="num" style="font-size:11px;">0</td>
+        <td class="num" style="font-size:11px;">—</td>
+        <td class="num" style="font-size:11px;">0</td>
+        <td class="num" style="font-size:11px;">—</td>
+        <td class="num" style="font-size:11px;">0</td>
+        <td class="num" style="font-size:11px;">—</td>
+        <td class="num" style="font-size:11px;">0</td>
+        <td class="num" style="font-size:11px;">—</td>
+      </tr>
+      <tr class="total-row">
+        <td style="font-size:11px;">合计</td>
+        <td class="num" style="font-size:11px;">6,369</td>
+        <td class="num" style="font-size:11px;">2,150</td>
+        <td class="num" style="font-size:11px;">33.8%</td>
+        <td class="num" style="font-size:11px;">865</td>
+        <td class="num" style="font-size:11px;">13.6%</td>
+        <td class="num" style="font-size:11px;">3,015</td>
+        <td class="num down" style="font-size:11px;">47.3%</td>
+        <td class="num" style="font-size:11px;">3,354</td>
+        <td class="num" style="font-size:11px;">52.7%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  </div>
+
+  <!-- ========== TAB 2: 累计预定 ========== -->
+  <div id="tab-cumulative" class="tab-panel">
+
+  <!-- ========== 一、累计预定核心数据（截至7月24日下单） ========== -->
+  <div class="section-title">一、累计预定数据 · 截至7月24日下单 · 全年出发口径</div>
+  <div class="section-subtitle">26年全年出发 · 同期同比 · 平台占比</div>
+
+  <div class="cum-grid">
+    <div class="cum-card">
+      <div class="cum-card-inner">
+        <div class="cum-header">携程平台总GMV</div>
+        <div class="cum-row">
+          <div class="cum-gmv">
+            <div class="year-label">2026年</div>
+            <div class="big">6.60<span>亿</span></div>
+            <div class="small">vs 2025年 4.85亿</div>
+          </div>
+          <div class="cum-yoy-box">
+            <div class="pct">↑ 36.0%</div>
+            <div class="pct-label">GMV同比</div>
+          </div>
+        </div>
+        <div class="cum-share-row">
+          <div class="cum-share-bar-bg"><div class="cum-share-bar-fill" style="width:100%;background:#1e40af"></div></div>
+          <div class="cum-share-pct">100%</div>
+        </div>
+        <div class="cum-footer">
+          <span>成交人数 28,445人</span>
+          <span>人数同比 +35.9%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cum-card green">
+      <div class="cum-card-inner">
+        <div class="cum-header">双品牌GMV</div>
+        <div class="cum-row">
+          <div class="cum-gmv">
+            <div class="year-label">2026年</div>
+            <div class="big">3.28<span>亿</span></div>
+            <div class="small">vs 2025年 2.12亿</div>
+          </div>
+          <div class="cum-yoy-box">
+            <div class="pct">↑ 54.2%</div>
+            <div class="pct-label">GMV同比</div>
+          </div>
+        </div>
+        <div class="cum-share-row">
+          <div class="cum-share-bar-bg"><div class="cum-share-bar-fill" style="width:49.6%;background:#059669"></div></div>
+          <div class="cum-share-pct">49.6%</div>
+          <div class="cum-share-change up">+5.9pp</div>
+        </div>
+        <div class="cum-footer">
+          <span>成交人数 13,623人</span>
+          <span>人数同比 +55.7%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cum-card orange">
+      <div class="cum-card-inner">
+        <div class="cum-header">国旅自营GMV</div>
+        <div class="cum-row">
+          <div class="cum-gmv">
+            <div class="year-label">2026年</div>
+            <div class="big">1.07<span>亿</span></div>
+            <div class="small">vs 2025年 0.90亿</div>
+          </div>
+          <div class="cum-yoy-box">
+            <div class="pct down">↑ 18.7%</div>
+            <div class="pct-label">GMV同比</div>
+          </div>
+        </div>
+        <div class="cum-share-row">
+          <div class="cum-share-bar-bg"><div class="cum-share-bar-fill" style="width:16.2%;background:#f97316"></div></div>
+          <div class="cum-share-pct">16.2%</div>
+          <div class="cum-share-change down">-2.3pp</div>
+        </div>
+        <div class="cum-footer">
+          <span>成交人数 3,837人</span>
+          <span>人数同比 +13.0%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cum-card gray">
+      <div class="cum-card-inner">
+        <div class="cum-header">其他供应商GMV</div>
+        <div class="cum-row">
+          <div class="cum-gmv">
+            <div class="year-label">2026年</div>
+            <div class="big">3.32<span>亿</span></div>
+            <div class="small">vs 2025年 2.73亿</div>
+          </div>
+          <div class="cum-yoy-box">
+            <div class="pct">↑ 21.8%</div>
+            <div class="pct-label">GMV同比</div>
+          </div>
+        </div>
+        <div class="cum-share-row">
+          <div class="cum-share-bar-bg"><div class="cum-share-bar-fill" style="width:50.4%;background:#94a3b8"></div></div>
+          <div class="cum-share-pct">50.4%</div>
+          <div class="cum-share-change down">-5.9pp</div>
+        </div>
+        <div class="cum-footer">
+          <span>成交人数 14,822人</span>
+          <span>人数同比 +21.6%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 累计数据汇总表 -->
+  <div style="margin-top:12px;"></div>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>指标</th>
+        <th class="num">2026年</th>
+        <th class="num">2025年同期</th>
+        <th class="num">GMV同比</th>
+        <th class="num">人数同比</th>
+        <th class="num">2026占比</th>
+        <th class="num">2025年占比</th>
+        <th class="num">占比变化</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="total-row">
+        <td>携程平台总GMV</td>
+        <td class="num">6.60亿</td>
+        <td class="num">4.85亿</td>
+        <td class="num up">+36.0%</td>
+        <td class="num up">+35.9%</td>
+        <td class="num">100%</td>
+        <td class="num">100%</td>
+        <td class="num">—</td>
+      </tr>
+      <tr>
+        <td style="padding-left:32px;">├ 双品牌GMV</td>
+        <td class="num highlight">3.28亿</td>
+        <td class="num">2.12亿</td>
+        <td class="num up">+54.2%</td>
+        <td class="num up">+55.7%</td>
+        <td class="num highlight">49.6%</td>
+        <td class="num">43.8%</td>
+        <td class="num up">+5.9pp</td>
+      </tr>
+      <tr>
+        <td style="padding-left:48px;">├ 翔龙品牌</td>
+        <td class="num">2.21亿</td>
+        <td class="num">1.23亿</td>
+        <td class="num up">+80.1%</td>
+        <td class="num up">+82.7%</td>
+        <td class="num">33.5%</td>
+        <td class="num">25.3%</td>
+        <td class="num up">+8.2pp</td>
+      </tr>
+      <tr>
+        <td style="padding-left:64px;">└ 北京华程</td>
+        <td class="num">1.74亿</td>
+        <td class="num">1.06亿</td>
+        <td class="num up">+63.4%</td>
+        <td class="num up">+64.1%</td>
+        <td class="num">78.7%</td>
+        <td class="num">86.7%</td>
+        <td class="num down">-8.0pp</td>
+      </tr>
+      <tr>
+        <td style="padding-left:64px;">└ 其他华程</td>
+        <td class="num">0.47亿</td>
+        <td class="num">0.16亿</td>
+        <td class="num up">+193.8%</td>
+        <td class="num up">+218.3%</td>
+        <td class="num">21.3%</td>
+        <td class="num">13.3%</td>
+        <td class="num up">+8.0pp</td>
+      </tr>
+      <tr>
+        <td style="padding-left:48px;">├ 国旅自营</td>
+        <td class="num">1.07亿</td>
+        <td class="num">0.90亿</td>
+        <td class="num up">+18.7%</td>
+        <td class="num up">+13.0%</td>
+        <td class="num">16.2%</td>
+        <td class="num">18.5%</td>
+        <td class="num down">-2.3pp</td>
+      </tr>
+      <tr>
+        <td style="padding-left:32px;">└ 其他供应商</td>
+        <td class="num">3.32亿</td>
+        <td class="num">2.73亿</td>
+        <td class="num up">+21.8%</td>
+        <td class="num up">+21.6%</td>
+        <td class="num">50.4%</td>
+        <td class="num">56.2%</td>
+        <td class="num down">-5.9pp</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- 翔龙品牌分公司明细 -->
+  <div style="margin-top:20px;"></div>
+  <div class="section-subtitle" style="margin-left:0; font-weight:600;">翔龙品牌 — 各分公司累计明细</div>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>分公司</th>
+        <th class="num">2026GMV(万)</th>
+        <th class="num">2025GMV(万)</th>
+        <th class="num">同比增长</th>
+        <th class="num">2026占比(翔龙)</th>
+        <th class="num">2025占比(翔龙)</th>
+        <th class="num">占比变化</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>北京华程</td>
+        <td class="num highlight">17,383</td>
+        <td class="num">10,636</td>
+        <td class="num up">+63.4%</td>
+        <td class="num highlight">78.7%</td>
+        <td class="num">86.7%</td>
+        <td class="num down">-8.0pp</td>
+      </tr>
+      <tr>
+        <td>上海华程</td>
+        <td class="num">2,189</td>
+        <td class="num">554</td>
+        <td class="num up">+295.0%</td>
+        <td class="num">9.9%</td>
+        <td class="num">4.5%</td>
+        <td class="num up">+5.4pp</td>
+      </tr>
+      <tr>
+        <td>成都华程</td>
+        <td class="num">1,339</td>
+        <td class="num">567</td>
+        <td class="num up">+136.2%</td>
+        <td class="num">6.1%</td>
+        <td class="num">4.6%</td>
+        <td class="num up">+1.5pp</td>
+      </tr>
+      <tr>
+        <td>广州华程</td>
+        <td class="num">651</td>
+        <td class="num">277</td>
+        <td class="num up">+135.3%</td>
+        <td class="num">2.9%</td>
+        <td class="num">2.3%</td>
+        <td class="num up">+0.7pp</td>
+      </tr>
+      <tr>
+        <td>厦门华程</td>
+        <td class="num">298</td>
+        <td class="num">87</td>
+        <td class="num up">+242.8%</td>
+        <td class="num">1.3%</td>
+        <td class="num">0.7%</td>
+        <td class="num up">+0.7pp</td>
+      </tr>
+      <tr>
+        <td>武汉华程</td>
+        <td class="num">233</td>
+        <td class="num">143</td>
+        <td class="num up">+62.4%</td>
+        <td class="num">1.1%</td>
+        <td class="num">1.2%</td>
+        <td class="num down">-0.1pp</td>
+      </tr>
+      <tr class="total-row">
+        <td>翔龙品牌合计</td>
+        <td class="num">22,092</td>
+        <td class="num">12,263</td>
+        <td class="num up">+80.1%</td>
+        <td class="num">100%</td>
+        <td class="num">100%</td>
+        <td class="num">—</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ========== 二、Q3出发累计预定 ========== -->
+  <div class="section-title">二、Q3出发累计预定 · 截至7月24日下单</div>
+  <div class="section-subtitle">26年Q3出发（7-9月）· 同期同比 · 平台占比</div>
+
+  <div class="cum-grid">
+    <div class="cum-card">
+      <div class="cum-card-inner">
+        <div class="cum-header">携程平台总GMV</div>
+        <div class="cum-row">
+          <div class="cum-gmv">
+            <div class="year-label">2026年Q3</div>
+            <div class="big">3.04<span>亿</span></div>
+            <div class="small">vs 2025年Q3 2.34亿</div>
+          </div>
+          <div class="cum-yoy-box">
+            <div class="pct">↑ 30.2%</div>
+            <div class="pct-label">GMV同比</div>
+          </div>
+        </div>
+        <div class="cum-share-row">
+          <div class="cum-share-bar-bg"><div class="cum-share-bar-fill" style="width:100%;background:#1e40af"></div></div>
+          <div class="cum-share-pct">100%</div>
+        </div>
+        <div class="cum-footer">
+          <span>成交人数 11,641人</span>
+          <span>人数同比 +35.4%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cum-card green">
+      <div class="cum-card-inner">
+        <div class="cum-header">双品牌GMV</div>
+        <div class="cum-row">
+          <div class="cum-gmv">
+            <div class="year-label">2026年Q3</div>
+            <div class="big">1.58<span>亿</span></div>
+            <div class="small">vs 2025年Q3 1.09亿</div>
+          </div>
+          <div class="cum-yoy-box">
+            <div class="pct">↑ 45.7%</div>
+            <div class="pct-label">GMV同比</div>
+          </div>
+        </div>
+        <div class="cum-share-row">
+          <div class="cum-share-bar-bg"><div class="cum-share-bar-fill" style="width:52.0%;background:#059669"></div></div>
+          <div class="cum-share-pct">52.0%</div>
+          <div class="cum-share-change up">+5.5pp</div>
+        </div>
+        <div class="cum-footer">
+          <span>成交人数 5,960人</span>
+          <span>人数同比 +50.2%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cum-card orange">
+      <div class="cum-card-inner">
+        <div class="cum-header">国旅自营GMV</div>
+        <div class="cum-row">
+          <div class="cum-gmv">
+            <div class="year-label">2026年Q3</div>
+            <div class="big">5,787<span>万</span></div>
+            <div class="small">vs 2025年Q3 4,808万</div>
+          </div>
+          <div class="cum-yoy-box">
+            <div class="pct down">↑ 20.4%</div>
+            <div class="pct-label">GMV同比</div>
+          </div>
+        </div>
+        <div class="cum-share-row">
+          <div class="cum-share-bar-bg"><div class="cum-share-bar-fill" style="width:19.0%;background:#f97316"></div></div>
+          <div class="cum-share-pct">19.0%</div>
+          <div class="cum-share-change down">-1.6pp</div>
+        </div>
+        <div class="cum-footer">
+          <span>成交人数 1,952人</span>
+          <span>人数同比 +19.5%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cum-card gray">
+      <div class="cum-card-inner">
+        <div class="cum-header">其他供应商GMV</div>
+        <div class="cum-row">
+          <div class="cum-gmv">
+            <div class="year-label">2026年Q3</div>
+            <div class="big">1.46<span>亿</span></div>
+            <div class="small">vs 2025年Q3 1.25亿</div>
+          </div>
+          <div class="cum-yoy-box">
+            <div class="pct">↑ 16.8%</div>
+            <div class="pct-label">GMV同比</div>
+          </div>
+        </div>
+        <div class="cum-share-row">
+          <div class="cum-share-bar-bg"><div class="cum-share-bar-fill" style="width:48.0%;background:#94a3b8"></div></div>
+          <div class="cum-share-pct">48.0%</div>
+          <div class="cum-share-change down">-5.5pp</div>
+        </div>
+        <div class="cum-footer">
+          <span>成交人数 5,681人</span>
+          <span>人数同比 +22.6%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q3数据汇总表 -->
+  <div style="margin-top:12px;"></div>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>指标</th>
+        <th class="num">2026年Q3</th>
+        <th class="num">2025年Q3</th>
+        <th class="num">GMV同比</th>
+        <th class="num">人数同比</th>
+        <th class="num">2026占比</th>
+        <th class="num">2025年占比</th>
+        <th class="num">占比变化</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="total-row">
+        <td>携程平台总GMV</td>
+        <td class="num">3.04亿</td>
+        <td class="num">2.34亿</td>
+        <td class="num up">+30.2%</td>
+        <td class="num up">+35.4%</td>
+        <td class="num">100%</td>
+        <td class="num">100%</td>
+        <td class="num">—</td>
+      </tr>
+      <tr>
+        <td style="padding-left:32px;">├ 双品牌GMV</td>
+        <td class="num highlight">1.58亿</td>
+        <td class="num">1.09亿</td>
+        <td class="num up">+45.7%</td>
+        <td class="num up">+50.2%</td>
+        <td class="num highlight">52.0%</td>
+        <td class="num">46.5%</td>
+        <td class="num up">+5.5pp</td>
+      </tr>
+      <tr>
+        <td style="padding-left:48px;">├ 翔龙品牌</td>
+        <td class="num">1.01亿</td>
+        <td class="num">0.61亿</td>
+        <td class="num up">+65.6%</td>
+        <td class="num up">+71.7%</td>
+        <td class="num">33.2%</td>
+        <td class="num">25.9%</td>
+        <td class="num up">+7.3pp</td>
+      </tr>
+      <tr>
+        <td style="padding-left:64px;">└ 北京华程</td>
+        <td class="num">8,558万</td>
+        <td class="num">5,371万</td>
+        <td class="num up">+59.3%</td>
+        <td class="num up">+66.1%</td>
+        <td class="num">84.6%</td>
+        <td class="num">88.5%</td>
+        <td class="num down">-3.9pp</td>
+      </tr>
+      <tr>
+        <td style="padding-left:64px;">└ 其他华程</td>
+        <td class="num">1,502万</td>
+        <td class="num">626万</td>
+        <td class="num up">+140.0%</td>
+        <td class="num up">+111.0%</td>
+        <td class="num">14.9%</td>
+        <td class="num">10.3%</td>
+        <td class="num up">+4.6pp</td>
+      </tr>
+      <tr>
+        <td style="padding-left:48px;">├ 国旅自营</td>
+        <td class="num">5,787万</td>
+        <td class="num">4,808万</td>
+        <td class="num up">+20.4%</td>
+        <td class="num up">+19.5%</td>
+        <td class="num">19.0%</td>
+        <td class="num">20.6%</td>
+        <td class="num down">-1.6pp</td>
+      </tr>
+      <tr>
+        <td style="padding-left:32px;">└ 其他供应商</td>
+        <td class="num">1.46亿</td>
+        <td class="num">1.25亿</td>
+        <td class="num up">+16.8%</td>
+        <td class="num up">+22.6%</td>
+        <td class="num">48.0%</td>
+        <td class="num">53.5%</td>
+        <td class="num down">-5.5pp</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+  <!-- 页脚 -->
+  <div style="text-align:center; margin-top:40px; padding:20px; color:var(--text-secondary); font-size:12px; border-top:1px solid var(--border);">
+    数据来源：携程国旅欧洲业务经营数据 | 统计口径：跟团游 · 华北14省 · 剔除单团/罚金/领队/俄罗斯 | 双周周期：2026.7.11-7.24 vs 2025.7.11-7.24 · 累计预定截至：2026.7.24下单 | 制表：2026年7月25日<br>
+    翔龙品牌 = 北京华程+上海华程+广州华程+成都华程+武汉华程+厦门华程 | 国旅 = 欧洲自营北京大区+上海大区+广州大区 | 双品牌 = 翔龙+国旅 | 携程大盘 = 华北14省所有代理在携程平台成交GMV
+  </div>
+
+</div>
+
+<script>
+const color2025 = '#93c5fd', color2025border = '#60a5fa', color2026 = '#2563eb', color2026border = '#1d4ed8';
+Chart.defaults.font.family = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif';
+Chart.defaults.font.size = 12; Chart.defaults.color = '#64748b';
+
+// 1. 出发月份
+new Chart(document.getElementById('chart-month'), {
+  type: 'bar',
+  data: {
+    labels: ['7月', '8月', '9月', '10月', '11月', '12月'],
+    datasets: [
+      { label: '2025年', data: [90, 594, 464, 177, 0, 0], backgroundColor: color2025, borderColor: color2025border, borderWidth: 1, borderRadius: 4, barPercentage: 0.7 },
+      { label: '2026年', data: [97, 889, 1176, 430, 39, 2], backgroundColor: color2026, borderColor: color2026border, borderWidth: 1, borderRadius: 4, barPercentage: 0.7 }
+    ]
+  },
+  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true, position: 'top', align: 'end' } }, scales: { x: { grid: { display: false } }, y: { grid: { color: '#f1f5f9' }, border: { display: false } } } }
+});
+
+// 1b. 出发月份GMV
+new Chart(document.getElementById('chart-month-gmv'), {
+  type: 'bar',
+  data: {
+    labels: ['7月', '8月', '9月', '10月', '11月', '12月'],
+    datasets: [
+      { label: '2025年', data: [242, 1595, 1246, 475, 0, 0], backgroundColor: color2025, borderColor: color2025border, borderWidth: 1, borderRadius: 4, barPercentage: 0.7 },
+      { label: '2026年', data: [235, 2149, 2844, 1040, 94, 5], backgroundColor: color2026, borderColor: color2026border, borderWidth: 1, borderRadius: 4, barPercentage: 0.7 }
+    ]
+  },
+  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true, position: 'top', align: 'end' } }, scales: { x: { grid: { display: false } }, y: { grid: { color: '#f1f5f9' }, border: { display: false }, ticks: { callback: v => v + '万' } } } }
+});
+
+// 2. 目的地区域GMV柱状图
+new Chart(document.getElementById('chart-dest-gmv'), {
+  type: 'bar',
+  data: {
+    labels: ['西欧', '北欧', '英爱', '南欧', '东欧+巴尔干'],
+    datasets: [
+      { label: '2025年', data: [1776, 693, 346, 403, 341], backgroundColor: color2025, borderColor: color2025border, borderWidth: 1, borderRadius: 4, barPercentage: 0.7 },
+      { label: '2026年', data: [3222, 1267, 535, 629, 721], backgroundColor: color2026, borderColor: color2026border, borderWidth: 1, borderRadius: 4, barPercentage: 0.7 }
+    ]
+  },
+  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true, position: 'top', align: 'end' } }, scales: { x: { grid: { display: false } }, y: { grid: { color: '#f1f5f9' }, border: { display: false }, ticks: { callback: v => v + '万' } } } }
+});
+
+// 3. 目的地区域GMV占比饼图
+new Chart(document.getElementById('chart-dest-gmv-pie'), {
+  type: 'doughnut',
+  data: {
+    labels: ['西欧 50.5%', '北欧 19.9%', '东欧+巴尔干 11.3%', '南欧 9.9%', '英爱 8.4%'],
+    datasets: [{ data: [3222, 1267, 721, 629, 535], backgroundColor: ['#1e40af', '#3b82f6', '#60a5fa', '#93c5fd', '#bfdbfe'], borderWidth: 2, borderColor: '#fff' }]
+  },
+  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { boxWidth: 12, font: { size: 11 } } } } }
+});
+
+// 4. 成交价格带 — 平台总GMV对比
+new Chart(document.getElementById('chart-price-gmv'), {
+  type: 'bar',
+  data: {
+    labels: ['<5k', '5k-1w', '1-1.5w', '1.5-2w', '2-2.5w', '2.5-3w', '3-3.5w', '3.5-4w', '4-4.5w', '4.5-5w', '>5w'],
+    datasets: [
+      { label: '2025年', data: [1, 16, 103, 404, 709, 850, 580, 368, 238, 29, 240], backgroundColor: color2025, borderColor: color2025border, borderWidth: 1, borderRadius: 4, barPercentage: 0.65 },
+      { label: '2026年', data: [0, 160, 330, 953, 1250, 1105, 990, 625, 459, 254, 243], backgroundColor: color2026, borderColor: color2026border, borderWidth: 1, borderRadius: 4, barPercentage: 0.65 }
+    ]
+  },
+  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true, position: 'top', align: 'end' } }, scales: { x: { grid: { display: false }, ticks: { font: { size: 9 } } }, y: { grid: { color: '#f1f5f9' }, border: { display: false }, ticks: { callback: v => v + '万' } } } }
+});
+
+// 4b. 成交价格带 — 品牌GMV分组柱状图 + 双品牌市占率折线
+new Chart(document.getElementById('chart-price-brand'), {
+  type: 'bar',
+  data: {
+    labels: ['2.0-2.5w', '2.5-3.0w', '3.0-3.5w', '1.5-2.0w', '3.5-4.0w', '4.0-4.5w', '1.0-1.5w', '4.5-5.0w', '>5w', '5k-1w', '<5k'],
+    datasets: [
+      { label: '翔龙品牌', data: [217, 165, 274, 14, 59, 84, 9, 19, 20, 3, 0], backgroundColor: '#2563eb', borderColor: '#1d4ed8', borderWidth: 1, borderRadius: 3, barPercentage: 0.55, categoryPercentage: 0.75, order: 2 },
+      { label: '国旅品牌', data: [493, 500, 322, 236, 144, 86, 146, 115, 63, 45, 0], backgroundColor: '#f97316', borderColor: '#ea580c', borderWidth: 1, borderRadius: 3, barPercentage: 0.55, categoryPercentage: 0.75, order: 2 },
+      { label: '其他供应商', data: [541, 440, 394, 702, 423, 289, 175, 120, 160, 112, 0], backgroundColor: '#94a3b8', borderColor: '#64748b', borderWidth: 1, borderRadius: 3, barPercentage: 0.55, categoryPercentage: 0.75, order: 2 },
+      { label: '双品牌市占率', data: [56.8, 60.2, 60.2, 26.3, 32.5, 37.0, 47.0, 52.8, 34.2, 30.0, 0], type: 'line', yAxisID: 'y1', borderColor: '#dc2626', backgroundColor: '#dc2626', borderWidth: 2.5, pointRadius: 4, pointBackgroundColor: '#dc2626', pointBorderColor: '#fff', pointBorderWidth: 2, tension: 0.3, order: 1 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: true, position: 'top', align: 'end', labels: { boxWidth: 12, font: { size: 11 }, usePointStyle: true } },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) {
+            if (ctx.dataset.type === 'line') return ctx.dataset.label + ': ' + ctx.parsed.y + '%';
+            return ctx.dataset.label + ': ' + ctx.parsed.y + '万';
+          }
+        }
+      }
+    },
+    scales: {
+      x: { grid: { display: false }, ticks: { font: { size: 9 } } },
+      y: { grid: { color: '#f1f5f9' }, border: { display: false }, ticks: { callback: v => v + '万' }, position: 'left' },
+      y1: { grid: { display: false }, border: { display: false }, ticks: { callback: v => v + '%', color: '#dc2626' }, position: 'right', min: 0, max: 100 }
+    }
+  }
+});
+
+// ========== TAB 切换 ==========
+function switchTab(tabId) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + tabId).classList.add('active');
+  document.querySelector('.tab-btn[onclick="switchTab(\'' + tabId + '\')"]').classList.add('active');
+  // 触发 resize 让 Chart.js 自适应
+  window.dispatchEvent(new Event('resize'));
+}
+
+</script>
+</body>
+</html>
