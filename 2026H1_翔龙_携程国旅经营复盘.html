@@ -1,0 +1,2338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>翔龙品牌 × 国旅品牌 2026年H1业务经营复盘</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Inter:wght@400;500;600;700&display=swap');
+
+/* ==================== 基础重置与字体 ==================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --primary: #0a1f3d;
+  --primary-light: #143055;
+  --primary-lighter: #1e4a7a;
+  --accent: #2563b0;
+  --accent-light: #5a9fd4;
+  --success: #2d8a5e;
+  --danger: #b83a3a;
+  --warning: #c49420;
+  --bg: #ffffff;
+  --bg-gray: #f5f7fa;
+  --bg-light: #e8ecf1;
+  --text: #1f2937;
+  --text-secondary: #4b5563;
+  --text-muted: #8b95a5;
+  --border: #dde2e8;
+  --border-dark: #c4cbd4;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.07);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.10);
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: "DM Sans", "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--bg-gray);
+  line-height: 1.8;
+  font-size: 15.5px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "kern" 1, "liga" 1;
+  letter-spacing: 0.01em;
+}
+
+/* ==================== 页面容器 ==================== */
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: var(--bg);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06);
+  min-height: 100vh;
+}
+.section {
+  padding: 36px 48px;
+  border-bottom: 1px solid var(--border);
+}
+@media (max-width: 768px) {
+  .section { padding: 24px 20px; }
+  body { font-size: 14px; }
+}
+@media print {
+  body { background: #fff; }
+  .page { box-shadow: none; max-width: 100%; }
+  .section { padding: 24px 32px; break-inside: avoid; }
+  .no-print { display: none !important; }
+}
+
+/* ==================== 排版 ==================== */
+h1 { font-size: 2.2rem; font-weight: 700; color: var(--primary); line-height: 1.25; margin-bottom: 10px; letter-spacing: -0.02em; font-family: "DM Sans", "Inter", "PingFang SC", sans-serif; }
+h2 { font-size: 1.45rem; font-weight: 700; color: var(--primary); margin: 36px 0 18px; padding-bottom: 10px; border-bottom: 2.5px solid var(--primary); letter-spacing: -0.01em; font-family: "DM Sans", "Inter", "PingFang SC", sans-serif; }
+h3 { font-size: 1.15rem; font-weight: 600; color: var(--primary-light); margin: 28px 0 14px; letter-spacing: 0; font-family: "DM Sans", "Inter", "PingFang SC", sans-serif; }
+h4 { font-size: 1.05rem; font-weight: 600; color: var(--text); margin: 18px 0 10px; font-family: "DM Sans", "Inter", "PingFang SC", sans-serif; }
+p { margin-bottom: 14px; color: var(--text-secondary); line-height: 1.85; }
+p strong { color: var(--text); font-weight: 600; }
+
+/* 引用块 */
+blockquote {
+  background: linear-gradient(90deg, var(--bg-gray) 0%, #f8fafc 100%);
+  border-left: 4px solid var(--accent);
+  padding: 18px 24px;
+  margin: 18px 0;
+  border-radius: 0 10px 10px 0;
+  color: var(--text-secondary);
+  font-size: 0.96rem;
+}
+blockquote p { margin-bottom: 10px; line-height: 1.8; }
+blockquote p:last-child { margin-bottom: 0; }
+
+/* 提示框 */
+.tip-box {
+  background: linear-gradient(135deg, #eef4fb 0%, #f5f9fd 100%);
+  border: 1px solid #c8ddf0;
+  border-radius: 10px;
+  padding: 18px 24px;
+  margin: 18px 0;
+  font-size: 0.92rem;
+  color: var(--primary-lighter);
+  line-height: 1.75;
+}
+.tip-box strong { color: var(--primary); font-weight: 600; }
+
+/* 结论框 */
+.conclusion-box {
+  background: linear-gradient(160deg, var(--primary) 0%, #0f2a4d 50%, var(--primary-light) 100%);
+  color: #fff;
+  padding: 28px 32px;
+  border-radius: 14px;
+  margin: 24px 0;
+  box-shadow: 0 6px 24px rgba(10,31,61,0.22), 0 2px 6px rgba(10,31,61,0.12);
+  position: relative;
+  overflow: hidden;
+}
+.conclusion-box::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+.conclusion-box h4 { color: #fff; margin-top: 0; font-weight: 700; }
+.conclusion-box h3 { color: #fff; margin-top: 0; font-weight: 700; font-size: 1.15rem; }
+.conclusion-box p { color: rgba(255,255,255,0.9); line-height: 1.85; font-size: 0.96rem; }
+.conclusion-box strong { color: #fff; font-weight: 700; }
+
+/* 问答框 */
+.qa-item {
+  background: linear-gradient(135deg, var(--bg-gray) 0%, #f8fafc 100%);
+  border-radius: 12px;
+  padding: 22px 26px;
+  margin: 18px 0;
+  border: 1px solid var(--border);
+  transition: box-shadow 0.25s ease;
+}
+.qa-item:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+.qa-item .q {
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+}
+.qa-item .a {
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+.qa-item .a strong { color: var(--success); font-weight: 700; }
+
+/* ==================== 表格 ==================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 18px 0;
+  font-size: 0.9rem;
+  overflow-x: auto;
+  display: block;
+}
+@media (min-width: 769px) {
+  table { display: table; }
+}
+thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+th {
+  background: linear-gradient(180deg, var(--primary) 0%, var(--primary-light) 100%);
+  color: #fff;
+  font-weight: 600;
+  text-align: left;
+  padding: 13px 16px;
+  white-space: nowrap;
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
+  font-family: "DM Sans", "Inter", "PingFang SC", sans-serif;
+}
+td {
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+tr:nth-child(even) td { background: var(--bg-gray); }
+tr:hover td { background: #e2ecf5; }
+td:first-child { font-weight: 600; color: var(--text); }
+
+/* 数值高亮 */
+.num-pos { color: var(--success); font-weight: 700; }
+.num-neg { color: var(--danger); font-weight: 700; }
+.num-neutral { color: var(--text-secondary); font-weight: 500; }
+
+/* 表格滚动容器 */
+.table-wrap {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  margin: 16px 0;
+}
+.table-wrap table { margin: 0; }
+
+/* ==================== 图表容器 ==================== */
+.chart-box {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px;
+  margin: 24px 0;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.03);
+  transition: box-shadow 0.3s ease;
+}
+.chart-box:hover {
+  box-shadow: 0 6px 24px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.04);
+}
+.chart-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 18px;
+  text-align: center;
+  letter-spacing: 0.01em;
+  font-family: "DM Sans", "Inter", "PingFang SC", sans-serif;
+}
+.chart-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--border);
+  line-height: 1.75;
+}
+
+/* ==================== 两栏布局 ==================== */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin: 18px 0;
+}
+@media (max-width: 768px) {
+  .two-col { grid-template-columns: 1fr; }
+}
+
+/* ==================== 指标卡片 ==================== */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 18px;
+  margin: 24px 0;
+}
+.kpi-card {
+  background: var(--bg-gray);
+  border-radius: 12px;
+  padding: 22px;
+  text-align: center;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.kpi-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+.kpi-card .label {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.kpi-card .value {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: -0.03em;
+  font-family: "DM Sans", "Inter", "PingFang SC", sans-serif;
+}
+.kpi-card .change {
+  font-size: 0.88rem;
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+/* ==================== 封面 ==================== */
+.cover {
+  background: linear-gradient(160deg, var(--primary) 0%, #0f2a4d 40%, var(--primary-lighter) 100%);
+  color: #fff;
+  padding: 48px 48px 36px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cover h1 {
+  color: #fff;
+  font-size: 2.1rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  font-family: "DM Sans", "Inter", "PingFang SC", sans-serif;
+}
+.cover .subtitle {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.88);
+  margin-bottom: 8px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  font-family: "DM Sans", "Inter", "PingFang SC", sans-serif;
+}
+.cover .meta {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.6);
+  margin-top: 16px;
+  letter-spacing: 0.03em;
+  font-family: "DM Sans", "Inter", sans-serif;
+}
+.cover .badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.10);
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  margin: 3px;
+  letter-spacing: 0.03em;
+  border: 1px solid rgba(255,255,255,0.18);
+  backdrop-filter: blur(4px);
+  font-family: "DM Sans", "Inter", sans-serif;
+}
+@media (max-width: 768px) {
+  .cover { padding: 28px 20px 20px; }
+  .cover h1 { font-size: 1.5rem; }
+}
+
+/* ==================== 导航 ==================== */
+.toc {
+  background: var(--bg-gray);
+  padding: 28px 36px;
+  border-radius: 12px;
+  margin: 24px 0;
+  border: 1px solid var(--border);
+}
+.toc h3 { margin-top: 0; color: var(--primary); font-weight: 700; }
+.toc ol { padding-left: 22px; }
+.toc li { margin: 8px 0; color: var(--text-secondary); font-size: 0.95rem; }
+.toc a { color: var(--accent); text-decoration: none; font-weight: 500; }
+.toc a:hover { text-decoration: underline; color: var(--primary-lighter); }
+
+/* ==================== 分页控制 ==================== */
+.page-break { page-break-before: always; }
+
+/* ==================== 打印优化 ==================== */
+@media print {
+  h2 { page-break-after: avoid; }
+  .chart-box { break-inside: avoid; }
+  .table-wrap { break-inside: avoid; }
+  .qa-item { break-inside: avoid; }
+  .conclusion-box { break-inside: avoid; }
+}
+
+/* ==================== TAB 导航 ==================== */
+.tab-nav {
+  display: flex;
+  background: linear-gradient(160deg, var(--primary) 0%, #0f2a4d 50%, var(--primary-light) 100%);
+  padding: 14px 32px 18px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  gap: 10px;
+  align-items: flex-end;
+}
+.tab-nav::-webkit-scrollbar { display: none; }
+.tab-btn {
+  background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.04) 100%);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-bottom: 3px solid rgba(0,0,0,0.2);
+  color: rgba(255,255,255,0.75);
+  font-size: 0.98rem;
+  font-weight: 600;
+  padding: 12px 22px;
+  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
+  transition: all 0.25s ease;
+  font-family: "DM Sans", "Inter", "PingFang SC", sans-serif;
+  border-radius: 10px 10px 6px 6px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.15),
+    0 4px 0 rgba(0,0,0,0.2),
+    0 6px 12px rgba(0,0,0,0.25);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  letter-spacing: 0.3px;
+}
+.tab-btn:hover {
+  color: #fff;
+  background: linear-gradient(180deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.08) 100%);
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.2),
+    0 6px 0 rgba(0,0,0,0.2),
+    0 8px 16px rgba(0,0,0,0.3);
+}
+.tab-btn:active {
+  transform: translateY(3px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.1),
+    0 1px 0 rgba(0,0,0,0.2),
+    0 2px 4px rgba(0,0,0,0.2);
+}
+.tab-btn.active {
+  color: #fff;
+  font-weight: 700;
+  background: linear-gradient(180deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.12) 100%);
+  border-color: rgba(255,255,255,0.4);
+  border-bottom: 3px solid rgba(255,255,255,0.3);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.3),
+    0 3px 0 rgba(0,0,0,0.15),
+    0 4px 10px rgba(0,0,0,0.2),
+    inset 0 -2px 8px rgba(255,255,255,0.08);
+  transform: translateY(1px);
+}
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 8px solid rgba(255,255,255,0.35);
+}
+.tab-content { min-height: 60vh; }
+.tab-panel {
+  display: none;
+  animation: fadeIn 0.35s ease;
+}
+.tab-panel.active { display: block; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 768px) {
+  .tab-nav { padding: 12px 16px 16px; gap: 8px; }
+  .tab-btn { padding: 12px 18px; font-size: 0.95rem; }
+}
+
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ==================== 封面 ==================== -->
+<div class="cover">
+  <h1>翔龙品牌 × 国旅品牌</h1>
+  <div class="subtitle">2026年H1业务经营复盘报告</div>
+  <div style="margin-top: 10px;">
+    <span class="badge">携程平台华北14省</span>
+    <span class="badge">双品牌经营分析</span>
+    <span class="badge">同比2025年H1</span>
+  </div>
+  <div class="meta">数据截止：2026年7月22日</div>
+</div>
+
+<!-- ==================== TAB 导航 ==================== -->
+<div class="tab-nav">
+  <button class="tab-btn active" data-tab="tab-overview">经营总览</button>
+  <button class="tab-btn" data-tab="tab-xianglong">翔龙品牌</button>
+  <button class="tab-btn" data-tab="tab-guolv">国旅品牌</button>
+  <button class="tab-btn" data-tab="tab-nps">服务交付体验</button>
+  <button class="tab-btn" data-tab="tab-trend">趋势与计划</button>
+  <button class="tab-btn" data-tab="tab-summary">总结</button>
+</div>
+
+<div class="tab-content">
+
+  <!-- TAB 1: 经营总览 -->
+  <div class="tab-panel active" id="tab-overview">
+<!-- ==================== 目录 ==================== -->
+<div class="section">
+  <div class="toc">
+    <h3>目录</h3>
+    <ol>
+      <li><a href="#sec1">经营总览——先给结论</a></li>
+      <li><a href="#sec2">翔龙品牌复盘——结果→找来源→查质量→定动作</a></li>
+      <li><a href="#sec3">国旅品牌复盘——流量→转化→服务→客单</a></li>
+      <li><a href="#sec4">月度趋势与同比归因分析</a></li>
+      <li><a href="#sec5">H2行动计划与重点事项</a></li>
+      <li><a href="#sec7">服务交付体验分析</a></li>
+      <li><a href="#sec6">一页结论</a></li>
+    </ol>
+  </div>
+</div>
+
+<!-- ==================== 第一部分：经营总览 ==================== -->
+<div class="section" id="sec1">
+<h2>一、经营总览——先给结论</h2>
+
+<h3>1.1 核心经营指标：从市场盘面到品牌经营的全链路数据视图</h3>
+
+<div style="background:linear-gradient(135deg, #0a1f3d 0%, #1a365d 100%);color:#fff;padding:18px 24px;border-radius:12px;box-shadow:0 8px 24px rgba(10,31,61,0.28),0 2px 6px rgba(10,31,61,0.15);margin:28px 0 20px;position:relative;overflow:hidden;">
+  <div style="position:absolute;top:0;right:0;width:120px;height:100%;background:rgba(255,255,255,0.04);transform:skewX(-15deg) translateX(30px);"></div>
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;position:relative;z-index:1;">
+    <span style="background:rgba(255,255,255,0.15);padding:4px 12px;border-radius:16px;font-size:0.8rem;font-weight:600;color:#e2e8f0;">① 市场竞争视角</span>
+    <span style="font-size:1.2rem;font-weight:700;letter-spacing:0.02em;">双品牌整体经营盘</span>
+  </div>
+  <div style="display:flex;gap:24px;flex-wrap:wrap;font-size:0.85rem;color:#cbd5e0;position:relative;z-index:1;">
+    <span>覆盖范围：携程平台华北14省市场全量数据</span>
+    <span>数据来源：携程平台华北14省经营数据</span>
+  </div>
+</div>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>指标</th><th>2026年H1</th><th>2025年H1</th><th>同比</th><th>趋势判断</th></tr>
+</thead>
+<tbody>
+<tr><td>携程大盘GMV</td><td>34,024万</td><td>24,568万</td><td class="num-pos">+38%</td><td>大盘增长强劲</td></tr>
+<tr><td>双品牌GMV</td><td>15,746万</td><td>9,811万</td><td class="num-pos">+60%</td><td>增速超大盘</td></tr>
+<tr><td>双品牌占有率</td><td>46%</td><td>39%</td><td class="num-pos">+6pp</td><td>份额提升显著</td></tr>
+<tr><td>翔龙品牌携程GMV</td><td>11,293万</td><td>5,773万</td><td class="num-pos">+95%</td><td>近乎翻倍</td></tr>
+<tr><td>翔龙品牌携程占有率</td><td>33%</td><td>23%</td><td class="num-pos">+9pp</td><td>份额大幅提升</td></tr>
+<tr><td>国旅品牌携程GMV</td><td>4,453万</td><td>4,038万</td><td class="num-pos">+10%</td><td>稳健增长</td></tr>
+<tr><td>国旅品牌携程占有率</td><td>13%</td><td>16%</td><td class="num-neg">-3pp</td><td>相对市场份额下降</td></tr>
+<tr><td>其他供应商GMV</td><td>18,278万</td><td>14,756万</td><td class="num-pos">+23%</td><td>大盘增长主力</td></tr>
+<tr><td>其他供应商占有率</td><td>53%</td><td>60%</td><td class="num-neg">-6pp</td><td>份额被双品牌挤压</td></tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p><strong>其他供应商说明</strong>："其他供应商"指携程平台华北14省欧洲跟团游中，除翔龙品牌和国旅品牌以外的所有供应商成交GMV合计。2026年H1其他供应商GMV同比增长23%，增速低于大盘（38%），说明大盘增长主要由双品牌拉动。</p>
+</blockquote>
+
+
+
+<!-- 双品牌GMV占比图 -->
+<div class="chart-box">
+<div class="chart-title">2026年H1 携程平台华北14省 GMV竞争格局</div>
+<svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg">
+<!-- 2025 H1 饼图 -->
+<g transform="translate(140,140)">
+<text x="0" y="-100" text-anchor="middle" font-size="14" font-weight="600" fill="#0d2b4e">2025年H1</text>
+<circle cx="0" cy="0" r="80" fill="#1a365d" stroke="#fff" stroke-width="2"/>
+<path d="M 0,0 L 80,0 A 80,80 0 0,1 7.5,79.6 Z" fill="#3182ce" stroke="#fff" stroke-width="2"/>
+<path d="M 0,0 L 7.5,79.6 A 80,80 0 0,1 -64.4,47.4 Z" fill="#63b3ed" stroke="#fff" stroke-width="2"/>
+<text x="37" y="34" text-anchor="middle" font-size="10" fill="#fff" font-weight="600">23%</text>
+<text x="37" y="47" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.8)">翔龙品牌</text>
+<text x="-20" y="46" text-anchor="middle" font-size="10" fill="#fff" font-weight="600">16%</text>
+<text x="-20" y="59" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.8)">国旅品牌</text>
+<text x="-12" y="-30" text-anchor="middle" font-size="12" fill="#fff" font-weight="600">60%</text>
+<text x="-12" y="-17" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.8)">其他</text>
+</g>
+<!-- 2026 H1 饼图 -->
+<g transform="translate(460,140)">
+<text x="0" y="-100" text-anchor="middle" font-size="14" font-weight="600" fill="#0d2b4e">2026年H1</text>
+<circle cx="0" cy="0" r="80" fill="#1a365d" stroke="#fff" stroke-width="2"/>
+<path d="M 0,0 L 80,0 A 80,80 0 0,1 -39.4,69.6 Z" fill="#3182ce" stroke="#fff" stroke-width="2"/>
+<path d="M 0,0 L -39.4,69.6 A 80,80 0 0,1 -77.8,18.4 Z" fill="#63b3ed" stroke="#fff" stroke-width="2"/>
+<text x="25" y="43" text-anchor="middle" font-size="10" fill="#fff" font-weight="600">33%</text>
+<text x="25" y="56" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.8)">翔龙品牌</text>
+<text x="-44" y="33" text-anchor="middle" font-size="10" fill="#fff" font-weight="600">13%</text>
+<text x="-44" y="46" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.8)">国旅品牌</text>
+<text x="-5" y="-32" text-anchor="middle" font-size="12" fill="#fff" font-weight="600">53%</text>
+<text x="-5" y="-19" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.8)">其他</text>
+</g>
+<!-- 图例 -->
+<g transform="translate(260,240)">
+<rect x="0" y="0" width="14" height="14" fill="#3182ce" rx="2"/><text x="20" y="12" font-size="12" fill="#4a5568">翔龙品牌</text>
+<rect x="80" y="0" width="14" height="14" fill="#63b3ed" rx="2"/><text x="100" y="12" font-size="12" fill="#4a5568">国旅品牌</text>
+<rect x="160" y="0" width="14" height="14" fill="#1a365d" rx="2"/><text x="180" y="12" font-size="12" fill="#4a5568">其他供应商</text>
+</g>
+</svg>
+<div class="chart-desc">
+<strong>经营解读：</strong>2026年H1双品牌合计占有率从39%提升至46%，提升6个百分点。其中翔龙品牌携程占有率从23%大幅提升至33%（+9pp），是份额提升的绝对主力；国旅品牌携程占有率从16%降至13%（-3pp），相对市场份额有所下降。大盘增长主要由双品牌拉动，其他供应商增速低于大盘。
+</div>
+</div>
+
+<div style="background:linear-gradient(135deg, #0a1f3d 0%, #1a365d 100%);color:#fff;padding:18px 24px;border-radius:12px;box-shadow:0 8px 24px rgba(10,31,61,0.28),0 2px 6px rgba(10,31,61,0.15);margin:28px 0 20px;position:relative;overflow:hidden;">
+  <div style="position:absolute;top:0;right:0;width:120px;height:100%;background:rgba(255,255,255,0.04);transform:skewX(-15deg) translateX(30px);"></div>
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;position:relative;z-index:1;">
+    <span style="background:rgba(255,255,255,0.15);padding:4px 12px;border-radius:16px;font-size:0.8rem;font-weight:600;color:#e2e8f0;">② 品牌经营视角</span>
+    <span style="font-size:1.2rem;font-weight:700;letter-spacing:0.02em;">翔龙品牌全量经营盘</span>
+  </div>
+  <div style="display:flex;gap:24px;flex-wrap:wrap;font-size:0.85rem;color:#cbd5e0;position:relative;z-index:1;">
+    <span>覆盖范围：翔龙品牌全部业务订单及经营表现</span>
+    <span>数据来源：ERP系统全量订单数据</span>
+  </div>
+</div>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>指标</th><th>2026年H1</th><th>2025年H1</th><th>同比</th><th>目标达成率</th></tr>
+</thead>
+<tbody>
+<tr><td>出团人数</td><td>11,752</td><td>9,992</td><td class="num-pos">+17%</td><td>71%</td></tr>
+<tr><td>营业收入</td><td>24,583万</td><td>19,914万</td><td class="num-pos">+23%</td><td>73%</td></tr>
+<tr><td>毛利额</td><td>1,663万</td><td>436万</td><td class="num-pos">+281%</td><td class="num-pos">118%</td></tr>
+<tr><td>毛利率</td><td>6%</td><td>2%</td><td class="num-pos">+4pp</td><td>—</td></tr>
+<tr><td>单客收入</td><td>20,919元</td><td>19,930元</td><td class="num-pos">+4%</td><td>—</td></tr>
+<tr><td>单客毛利</td><td>1,415元</td><td>437元</td><td class="num-pos">+224%</td><td>—</td></tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="chart-box">
+<div class="chart-title">翔龙品牌核心指标同比变化</div>
+<svg viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
+<line x1="80" y1="40" x2="80" y2="260" stroke="#e2e8f0" stroke-width="1"/>
+<line x1="80" y1="260" x2="560" y2="260" stroke="#e2e8f0" stroke-width="1"/>
+<text x="70" y="45" text-anchor="end" font-size="11" fill="#718096">+300%</text>
+<text x="70" y="100" text-anchor="end" font-size="11" fill="#718096">+200%</text>
+<text x="70" y="155" text-anchor="end" font-size="11" fill="#718096">+100%</text>
+<text x="70" y="210" text-anchor="end" font-size="11" fill="#718096">0%</text>
+<text x="70" y="265" text-anchor="end" font-size="11" fill="#718096">-100%</text>
+<line x1="80" y1="210" x2="560" y2="210" stroke="#cbd5e0" stroke-width="1" stroke-dasharray="4,2"/>
+<rect x="105" y="147" width="50" height="113" fill="#3182ce" rx="4"/>
+<rect x="185" y="138" width="50" height="122" fill="#2c5282" rx="4"/>
+<rect x="265" y="58" width="50" height="202" fill="#38a169" rx="4"/>
+<rect x="345" y="125" width="50" height="135" fill="#63b3ed" rx="4"/>
+<rect x="425" y="187" width="50" height="73" fill="#4299e1" rx="4"/>
+<rect x="505" y="62" width="50" height="198" fill="#48bb78" rx="4"/>
+<text x="130" y="140" text-anchor="middle" font-size="11" font-weight="600" fill="#3182ce">+17%</text>
+<text x="210" y="131" text-anchor="middle" font-size="11" font-weight="600" fill="#2c5282">+23%</text>
+<text x="290" y="51" text-anchor="middle" font-size="11" font-weight="600" fill="#38a169">+281%</text>
+<text x="370" y="118" text-anchor="middle" font-size="11" font-weight="600" fill="#63b3ed">+4pp</text>
+<text x="450" y="180" text-anchor="middle" font-size="11" font-weight="600" fill="#4299e1">+5%</text>
+<text x="530" y="55" text-anchor="middle" font-size="11" font-weight="600" fill="#48bb78">+224%</text>
+<text x="130" y="280" text-anchor="middle" font-size="11" fill="#4a5568">出团人数</text>
+<text x="210" y="280" text-anchor="middle" font-size="11" fill="#4a5568">营业收入</text>
+<text x="290" y="280" text-anchor="middle" font-size="11" fill="#4a5568">毛利额</text>
+<text x="370" y="280" text-anchor="middle" font-size="11" fill="#4a5568">毛利率</text>
+<text x="450" y="280" text-anchor="middle" font-size="11" fill="#4a5568">单客收入</text>
+<text x="530" y="280" text-anchor="middle" font-size="11" fill="#4a5568">单客毛利</text>
+</svg>
+<div class="chart-desc">
+<strong>经营解读：</strong>翔龙品牌实现人数、收入、毛利三重增长，且利润增速（+281%）远高于规模增速（+17%）。毛利率从2%跃升至6%，单客毛利从437元增至1,415元，呈现显著的盈利能力改善迹象。收入增速高于人数增速，说明产品结构优化或定价能力提升。
+</div>
+</div>
+
+<div style="background:linear-gradient(135deg, #0a1f3d 0%, #1a365d 100%);color:#fff;padding:18px 24px;border-radius:12px;box-shadow:0 8px 24px rgba(10,31,61,0.28),0 2px 6px rgba(10,31,61,0.15);margin:28px 0 20px;position:relative;overflow:hidden;">
+  <div style="position:absolute;top:0;right:0;width:120px;height:100%;background:rgba(255,255,255,0.04);transform:skewX(-15deg) translateX(30px);"></div>
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;position:relative;z-index:1;">
+    <span style="background:rgba(255,255,255,0.15);padding:4px 12px;border-radius:16px;font-size:0.8rem;font-weight:600;color:#e2e8f0;">③ 国旅战略视角</span>
+    <span style="font-size:1.2rem;font-weight:700;letter-spacing:0.02em;">国旅品牌经营盘</span>
+  </div>
+  <div style="display:flex;gap:24px;flex-wrap:wrap;font-size:0.85rem;color:#cbd5e0;position:relative;z-index:1;">
+    <span>覆盖范围：携程平台国旅自营业务数据</span>
+    <span>数据来源：携程平台国旅自营经营数据</span>
+  </div>
+</div>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>指标</th><th>2026年H1</th><th>2025年H1</th><th>同比</th><th>目标达成率</th></tr>
+</thead>
+<tbody>
+<tr><td>成交人数</td><td>1,808</td><td>1,926</td><td class="num-neg">-6%</td><td>46%</td></tr>
+<tr><td>成交GMV</td><td>4,490万</td><td>4,240万</td><td class="num-pos">+5%</td><td>57%</td></tr>
+<tr><td>单客收入</td><td>24,834元</td><td>22,019元</td><td class="num-pos">+12%</td><td>—</td></tr>
+<tr><td><strong>毛利额</strong></td><td><strong>259万</strong></td><td><strong>-200万</strong></td><td class="num-pos"><strong>大幅改善</strong></td><td><strong>—</strong></td></tr>
+<tr><td><strong>毛利率</strong></td><td><strong>5.7%</strong></td><td><strong>-6.0%</strong></td><td class="num-pos"><strong>+11.7pp</strong></td><td><strong>—</strong></td></tr>
+<tr><td>线上成交人数</td><td>795</td><td>927</td><td class="num-neg">-14%</td><td>—</td></tr>
+<tr><td>线上成交GMV</td><td>2,004万</td><td>2,108万</td><td class="num-neg">-4%</td><td>—</td></tr>
+<tr><td>线下门店成交人数</td><td>1,013</td><td>999</td><td class="num-pos">+1%</td><td>—</td></tr>
+<tr><td>线下门店成交GMV</td><td>2,485万</td><td>2,132万</td><td class="num-pos">+16%</td><td>—</td></tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p><strong>线上/线下说明</strong>：本报告中国旅品牌的"线上"与"线下门店"，均指携程平台数据中"业务渠道聚合"字段的取值（线上=携程平台线上成交渠道，线下门店=携程平台线下门店成交渠道）。国旅品牌整体数据为携程平台成交数据，不含其他渠道。国旅品牌线上成交人数同比-14%，线下门店成交人数同比+1%，线下门店成交GMV同比+16%。</p>
+</blockquote>
+
+
+
+<h4>双品牌机位资源效率</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>指标</th><th>2026年H1</th><th>2025年H1</th><th>同比</th><th>判断</th></tr>
+</thead>
+<tbody>
+<tr><td>控位</td><td>33,873</td><td>30,961</td><td class="num-pos">+9%</td><td>资源投入增加</td></tr>
+<tr><td>售卖</td><td>14,346</td><td>13,250</td><td class="num-pos">+8%</td><td>销售增长</td></tr>
+<tr><td>机损</td><td>425万</td><td>332万</td><td class="num-neg">+28%</td><td>机损增速高于售卖</td></tr>
+<tr><td>机位使用率</td><td>42%</td><td>43%</td><td class="num-neg">-1pp</td><td>使用率略降</td></tr>
+<tr><td>采购团数</td><td>1,127</td><td>1,063</td><td class="num-pos">+6%</td><td>团数增加</td></tr>
+<tr><td>出票团数</td><td>598</td><td>549</td><td class="num-pos">+9%</td><td>交付团数增长</td></tr>
+<tr><td>成团率</td><td>53%</td><td>52%</td><td class="num-pos">+1pp</td><td>交付效率改善</td></tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="chart-box">
+<div class="chart-title">双品牌 机位核心指标同比</div>
+<svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
+<line x1="80" y1="40" x2="80" y2="200" stroke="#e2e8f0" stroke-width="1"/>
+<line x1="80" y1="200" x2="520" y2="200" stroke="#e2e8f0" stroke-width="1"/>
+<text x="70" y="45" text-anchor="end" font-size="10" fill="#718096">+35%</text>
+<text x="70" y="85" text-anchor="end" font-size="10" fill="#718096">+20%</text>
+<text x="70" y="125" text-anchor="end" font-size="10" fill="#718096">+5%</text>
+<text x="70" y="165" text-anchor="end" font-size="10" fill="#718096">0%</text>
+<text x="70" y="205" text-anchor="end" font-size="10" fill="#718096">-5%</text>
+<line x1="80" y1="155" x2="520" y2="155" stroke="#cbd5e0" stroke-width="1" stroke-dasharray="4,2"/>
+<rect x="100" y="93" width="40" height="62" fill="#3182ce" rx="3"/>
+<rect x="160" y="97" width="40" height="58" fill="#2c5282" rx="3"/>
+<rect x="220" y="50" width="40" height="105" fill="#c53030" rx="3"/>
+<rect x="280" y="150" width="40" height="10" fill="#d69e2e" rx="3"/>
+<rect x="340" y="162" width="40" height="12" fill="#c53030" rx="3"/>
+<rect x="400" y="146" width="40" height="9" fill="#38a169" rx="3"/>
+<rect x="460" y="142" width="40" height="13" fill="#4299e1" rx="3"/>
+<text x="120" y="87" text-anchor="middle" font-size="10" font-weight="600" fill="#3182ce">+9%</text>
+<text x="180" y="91" text-anchor="middle" font-size="10" font-weight="600" fill="#2c5282">+8%</text>
+<text x="240" y="43" text-anchor="middle" font-size="10" font-weight="600" fill="#c53030">+28%</text>
+<text x="300" y="176" text-anchor="middle" font-size="9" font-weight="600" fill="#d69e2e">+0pp</text>
+<text x="360" y="185" text-anchor="middle" font-size="9" font-weight="600" fill="#c53030">-1pp</text>
+<text x="420" y="140" text-anchor="middle" font-size="10" font-weight="600" fill="#38a169">+1pp</text>
+<text x="480" y="136" text-anchor="middle" font-size="10" font-weight="600" fill="#4299e1">+9%</text>
+<text x="120" y="220" text-anchor="middle" font-size="10" fill="#4a5568">控位</text>
+<text x="180" y="220" text-anchor="middle" font-size="10" fill="#4a5568">售卖</text>
+<text x="240" y="220" text-anchor="middle" font-size="10" fill="#4a5568">机损</text>
+<text x="300" y="220" text-anchor="middle" font-size="10" fill="#4a5568">损失率</text>
+<text x="360" y="220" text-anchor="middle" font-size="10" fill="#4a5568">使用率</text>
+<text x="420" y="220" text-anchor="middle" font-size="10" fill="#4a5568">成团率</text>
+<text x="480" y="220" text-anchor="middle" font-size="10" fill="#4a5568">出票团数</text>
+</svg>
+<div class="chart-desc">
+双品牌控位同比+9%，售卖同比+8%，资源投入与销售基本同步。但机损+28%明显快于售卖增速，损失率从4.4%微升至4.8%。机位使用率从42.8%微降至42.4%，基本稳定。成团率从51.6%提升至53.1%，交付效率在改善。整体看，资源投入产出效率有待提升，机损控制是H2重点。
+</div>
+</div>
+
+<div class="chart-box">
+<div class="chart-title">国旅品牌 线上 vs 线下门店 成交GMV同比</div>
+<svg viewBox="0 0 500 240" xmlns="http://www.w3.org/2000/svg">
+<text x="130" y="35" text-anchor="middle" font-size="13" font-weight="600" fill="#0d2b4e">线上成交GMV</text>
+<text x="370" y="35" text-anchor="middle" font-size="13" font-weight="600" fill="#0d2b4e">线下门店成交GMV</text>
+<rect x="60" y="80" width="70" height="100" fill="#e2e8f0" rx="4"/>
+<text x="95" y="130" text-anchor="middle" font-size="12" font-weight="600" fill="#4a5568">2,108万</text>
+<text x="95" y="195" text-anchor="middle" font-size="11" fill="#718096">2025 H1</text>
+<rect x="140" y="95" width="70" height="85" fill="#c53030" rx="4" opacity="0.8"/>
+<text x="175" y="145" text-anchor="middle" font-size="12" font-weight="600" fill="#fff">2,005万</text>
+<text x="175" y="195" text-anchor="middle" font-size="11" fill="#718096">2026 H1</text>
+<rect x="300" y="90" width="70" height="90" fill="#e2e8f0" rx="4"/>
+<text x="335" y="140" text-anchor="middle" font-size="12" font-weight="600" fill="#4a5568">2,133万</text>
+<text x="335" y="195" text-anchor="middle" font-size="11" fill="#718096">2025 H1</text>
+<rect x="380" y="55" width="70" height="125" fill="#38a169" rx="4"/>
+<text x="415" y="125" text-anchor="middle" font-size="12" font-weight="600" fill="#fff">2,485万</text>
+<text x="415" y="195" text-anchor="middle" font-size="11" fill="#718096">2026 H1</text>
+<text x="175" y="65" text-anchor="middle" font-size="13" font-weight="700" fill="#c53030">-4%</text>
+<text x="415" y="45" text-anchor="middle" font-size="13" font-weight="700" fill="#38a169">+16%</text>
+</svg>
+<div class="chart-desc">
+<strong>经营解读：</strong>国旅品牌呈现"线上收缩、线下扩张"的结构性变化。线上成交GMV下降4%，是整体成交人数下滑的主要拖累；线下门店成交GMV增长16%，是稳住基本盘的关键支撑。线下门店客单价显著提升，但线上成交端竞争力流失需引起关注。
+</div>
+</div>
+
+<h3>1.2 开篇结论：五个核心问题</h3>
+
+<h4>1. H1整体经营是否好于2025年H1？</h4>
+<p style="color: var(--text-secondary); line-height: 1.8;">整体好于去年同期，双品牌跑赢大盘。大盘增长38%，双品牌增长60%。翔龙品牌实现人数、收入、毛利同步增长，利润改善明显；国旅品牌成交人数小幅下滑，但GMV和单客收入保持增长。</p>
+
+<h4>2. 收入、人数与毛利是否同步增长？</h4>
+<p style="color: var(--text-secondary); line-height: 1.8;"><strong>翔龙品牌：收入、人数、毛利同步提升。</strong>人数增长17%，收入增长23%，毛利增长281%。收入增速高于人数，毛利增速高于收入，单客收入和单客毛利均有提升；毛利率由2%提升至6%，经营效益明显改善。</p>
+<p style="color: var(--text-secondary); line-height: 1.8;"><strong>国旅品牌：收入增长，但人数承压。</strong>成交人数下降6%，GMV增长5%，单客收入增长12%。收入增长主要来自客单提升。线上成交人数下降14%，线下GMV增长16%，线下是当前唯一正增长渠道。</p>
+
+<h4>3. 翔龙品牌与国旅品牌分别贡献了多少增长和毛利？</h4>
+<p style="color: var(--text-secondary); line-height: 1.8;"><strong>翔龙品牌是增长和利润改善的主要贡献品牌。</strong>ERP收入同比增加4,669万（其中携程平台收入同比增5,519万）；毛利额同比增加1,227万，毛利率由2%提升至6%。收入增长与利润改善同步，贡献突出。</p>
+<p style="color: var(--text-secondary); line-height: 1.8;"><strong>国旅品牌收入保持增长，但成交规模未同步提升。</strong>携程平台收入同比增加415万，成交人数下降，增长主要来自客单提升。线下是当前稳定成交的核心支撑，线上GMV下降4%是主要压力点。</p>
+
+<h4>4. 增长质量如何？</h4>
+<p style="color: var(--text-secondary); line-height: 1.8;"><strong>翔龙品牌：增长质量改善明显。</strong>毛利率由2%提升至6%，单客毛利由437元提升至1,415元。</p>
+<p style="color: var(--text-secondary); line-height: 1.8;"><strong>国旅品牌：收入结构改善，但规模下滑风险需关注。</strong>人数下降、客单提升，反映收入增长更多来自产品结构和价格带变化。线上成交人数下降14%，说明产品供给、价格竞争力和流量转化均存在问题，需要尽快修复。</p>
+
+<h4>5. H2目标缺口与核心抓手是什么？</h4>
+<p style="color: var(--text-secondary); line-height: 1.8;"><strong>翔龙品牌：提升资源收益，保持分销增长质量。</strong>人数缺口约4,679人，达成率71%；GMV缺口约8,845万。H2重点是基于已采购机位优化产品组合、销售节奏和渠道结构，提升机位使用效率、控制机损费用。暑期阶段重点做好团队交付和服务保障。</p>
+<p style="color: var(--text-secondary); line-height: 1.8;"><strong>国旅品牌：稳住暑期交付，补强淡季产品和成交规模。</strong>人数缺口约2,122人，达成率46%；GMV缺口约3,340万。暑期已进入出团阶段，首要任务是保障团队交付和服务体验。后续重点补强淡季产品线、修复线上成交、提升线下门店转化，并推动重点省份和重点区域市占恢复。虽然携程平台整体UV下降57%，但北京国旅品牌UV逆势增长32%、CR表现稳定，仍具备流量转化基础；下一步关键是提升流量转化，带动成交规模恢复。</p>
+
+</div>
+
+<!-- ==================== 第二部分：翔龙品牌复盘——结果→找来源→查质量→定动作 ==================== -->
+
+  </div>
+
+  <!-- TAB 2: 翔龙品牌 -->
+  <div class="tab-panel" id="tab-xianglong">
+<div class="section page-break" id="sec2">
+<h2>二、翔龙品牌复盘——结果→找来源→查质量→定动作</h2>
+
+<h3>第一步：看结果——H1做得怎么样</h3>
+
+<p>翔龙品牌2026年H1经营表现优异，规模与利润同步增长。</p>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>指标</th><th>2026 H1</th><th>2025 H1</th><th>同比变化</th><th>判断</th></tr>
+</thead>
+<tbody>
+<tr><td>出团人数</td><td>11,752</td><td>9,992</td><td class="num-pos">+17%</td><td>规模显著扩大</td></tr>
+<tr><td>营业收入</td><td>24,583万</td><td>19,914万</td><td class="num-pos">+23%</td><td>收入增速高于人数</td></tr>
+<tr><td>毛利额</td><td>1,663万</td><td>436万</td><td class="num-pos">+281%</td><td>利润大幅改善</td></tr>
+<tr><td>毛利率</td><td>6%</td><td>2%</td><td class="num-pos">+4pp</td><td>盈利能力出现显著改善迹象</td></tr>
+<tr><td>单客收入</td><td>20,919元</td><td>19,930元</td><td class="num-pos">+4%</td><td>产品结构可能优化</td></tr>
+<tr><td>单客毛利</td><td>1,415元</td><td>437元</td><td class="num-pos">+224%</td><td>单位利润倍增</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="conclusion-box">
+<p><strong>核心判断：</strong>翔龙品牌的规模增长与利润增长同步发生，且利润增速远高于规模增速。毛利率从2%提升至6%，呈现显著改善迹象。具体改善动因（成本控制、定价策略、产品结构变化或区域组合调整）需进一步补充成本明细数据后方可确认因果归因。</p>
+</div>
+
+<p><strong>月度趋势：</strong>1月受春节错位影响（2025年春节在1月底，2026年春节在2月初），1月同比大幅下降（-32%），但2月爆发式增长（+482%）。合并1-2月后同比仍增长72%，但仍受节假日错位及出发节奏影响。3-6月趋于平稳，4-6月保持小幅增长。整体来看，H1月度趋势稳定，无异常波动。</p>
+
+<h3>第二步：找来源——增长来自哪里</h3>
+
+<h4>按目的地/区域拆解</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>区域</th><th>2026 H1人数</th><th>2025 H1人数</th><th>同比</th><th>2026 H1收入</th><th>2025 H1收入</th><th>收入同比</th><th>2026毛利率</th></tr>
+</thead>
+<tbody>
+<tr><td>西欧</td><td>6,300</td><td>825</td><td class="num-pos">+663%</td><td>12,212万</td><td>1,109万</td><td class="num-pos">+1001%</td><td>5%</td></tr>
+<tr><td>南欧</td><td>1,814</td><td>286</td><td class="num-pos">+534%</td><td>3,747万</td><td>402万</td><td class="num-pos">+830%</td><td>9%</td></tr>
+<tr><td>北欧</td><td>1,369</td><td>99</td><td class="num-pos">+1282%</td><td>3,489万</td><td>210万</td><td class="num-pos">+1559%</td><td>6%</td></tr>
+<tr><td>英爱</td><td>1,461</td><td>211</td><td class="num-pos">+592%</td><td>3,348万</td><td>294万</td><td class="num-pos">+1035%</td><td>6%</td></tr>
+<tr><td>东欧+巴尔干</td><td>728</td><td>49</td><td class="num-pos">+1385%</td><td>1,601万</td><td>71万</td><td class="num-pos">+2125%</td><td>6%</td></tr>
+<tr><td>多国联线</td><td>80</td><td>0</td><td>—</td><td>183万</td><td>0万</td><td>—</td><td>0%</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="chart-box">
+<div class="chart-title">翔龙品牌 各区域利润增量贡献占比</div>
+<svg viewBox="0 0 560 420" xmlns="http://www.w3.org/2000/svg">
+<!-- 标题1: 利润增量分布 -->
+<text x="280" y="22" text-anchor="middle" font-size="14" font-weight="600" fill="#0d2b4e">利润增量分布（总增量约1,641万）</text>
+<!-- 横向堆叠条形图 -->
+<rect x="60" y="38" width="196" height="34" fill="#3182ce" rx="4"/>
+<rect x="256" y="38" width="96" height="34" fill="#2c5282" rx="4"/>
+<rect x="352" y="38" width="66" height="34" fill="#63b3ed" rx="4"/>
+<rect x="418" y="38" width="59" height="34" fill="#90cdf4" rx="4"/>
+<rect x="477" y="38" width="30" height="34" fill="#bee3f8" rx="4"/>
+<!-- 标签 -->
+<text x="158" y="58" text-anchor="middle" font-size="11" fill="#fff" font-weight="600">西欧 43%</text>
+<text x="304" y="58" text-anchor="middle" font-size="11" fill="#fff" font-weight="600">南欧 21%</text>
+<text x="385" y="58" text-anchor="middle" font-size="11" fill="#fff" font-weight="600">北欧 14%</text>
+<text x="447" y="58" text-anchor="middle" font-size="10" fill="#1a365d" font-weight="600">英爱 13%</text>
+<text x="492" y="58" text-anchor="middle" font-size="9" fill="#1a365d">东欧 6%</text>
+<!-- 图例 -->
+<g transform="translate(40,82)">
+<rect x="0" y="0" width="12" height="12" fill="#3182ce" rx="2"/><text x="16" y="10" font-size="10" fill="#4a5568">西欧（+719万）</text>
+<rect x="120" y="0" width="12" height="12" fill="#2c5282" rx="2"/><text x="136" y="10" font-size="10" fill="#4a5568">南欧（+353万）</text>
+<rect x="230" y="0" width="12" height="12" fill="#63b3ed" rx="2"/><text x="246" y="10" font-size="10" fill="#4a5568">北欧（+243万）</text>
+<rect x="340" y="0" width="12" height="12" fill="#90cdf4" rx="2"/><text x="356" y="10" font-size="10" fill="#4a5568">英爱（+217万）</text>
+<rect x="440" y="0" width="12" height="12" fill="#bee3f8" rx="2"/><text x="456" y="10" font-size="10" fill="#4a5568">东欧+巴尔干（+109万）</text>
+</g>
+<!-- 标题2: 各区域收入对比 -->
+<text x="280" y="118" text-anchor="middle" font-size="13" font-weight="600" fill="#0d2b4e">各区域收入对比（万）</text>
+<!-- Y轴 -->
+<line x1="55" y1="130" x2="55" y2="350" stroke="#e2e8f0" stroke-width="1"/>
+<text x="48" y="135" text-anchor="end" font-size="9" fill="#718096">4,000</text>
+<text x="48" y="190" text-anchor="end" font-size="9" fill="#718096">2,000</text>
+<text x="48" y="245" text-anchor="end" font-size="9" fill="#718096">1,000</text>
+<text x="48" y="300" text-anchor="end" font-size="9" fill="#718096">500</text>
+<text x="48" y="355" text-anchor="end" font-size="9" fill="#718096">0</text>
+<line x1="55" y1="350" x2="520" y2="350" stroke="#e2e8f0" stroke-width="1"/>
+<!-- 2025 浅色柱 (按比例: 3500->130, 0->350, 比例约 1px=11.4万) -->
+<rect x="75" y="346" width="18" height="4" fill="#cbd5e0" rx="2"/>
+<rect x="155" y="344" width="18" height="6" fill="#cbd5e0" rx="2"/>
+<rect x="235" y="345" width="18" height="5" fill="#cbd5e0" rx="2"/>
+<rect x="315" y="344" width="18" height="6" fill="#cbd5e0" rx="2"/>
+<rect x="395" y="348" width="18" height="2" fill="#cbd5e0" rx="2"/>
+<rect x="475" y="348" width="18" height="2" fill="#cbd5e0" rx="2"/>
+<!-- 2026 彩色柱 -->
+<rect x="95" y="146" width="18" height="204" fill="#3182ce" rx="2"/>
+<rect x="175" y="258" width="18" height="92" fill="#2c5282" rx="2"/>
+<rect x="255" y="269" width="18" height="81" fill="#63b3ed" rx="2"/>
+<rect x="335" y="251" width="18" height="99" fill="#90cdf4" rx="2"/>
+<rect x="415" y="255" width="18" height="95" fill="#bee3f8" rx="2"/>
+<rect x="495" y="332" width="18" height="18" fill="#a0aec0" rx="2"/>
+<!-- 数值标签 -->
+<text x="104" y="142" text-anchor="middle" font-size="8" fill="#3182ce" font-weight="600">3,478</text>
+<text x="184" y="254" text-anchor="middle" font-size="8" fill="#2c5282" font-weight="600">4,481</text>
+<text x="264" y="265" text-anchor="middle" font-size="8" fill="#63b3ed" font-weight="600">3,780</text>
+<text x="344" y="247" text-anchor="middle" font-size="8" fill="#90cdf4" font-weight="600">4,561</text>
+<text x="424" y="251" text-anchor="middle" font-size="8" fill="#718096" font-weight="600">1,089</text>
+<text x="504" y="328" text-anchor="middle" font-size="8" fill="#718096" font-weight="600">183</text>
+<!-- X标签 -->
+<text x="92" y="368" text-anchor="middle" font-size="10" fill="#4a5568">西欧</text>
+<text x="172" y="368" text-anchor="middle" font-size="10" fill="#4a5568">南欧</text>
+<text x="252" y="368" text-anchor="middle" font-size="10" fill="#4a5568">北欧</text>
+<text x="332" y="368" text-anchor="middle" font-size="10" fill="#4a5568">英爱</text>
+<text x="412" y="368" text-anchor="middle" font-size="10" fill="#4a5568">东欧</text>
+<text x="492" y="368" text-anchor="middle" font-size="10" fill="#4a5568">多国</text>
+<!-- 年份图例 -->
+<g transform="translate(200,395)">
+<rect x="0" y="0" width="12" height="12" fill="#cbd5e0" rx="2"/><text x="16" y="10" font-size="10" fill="#4a5568">2025 H1</text>
+<rect x="80" y="0" width="12" height="12" fill="#3182ce" rx="2"/><text x="96" y="10" font-size="10" fill="#4a5568">2026 H1</text>
+</g>
+</svg>
+<div class="chart-desc">
+<strong>经营解读：</strong>西欧是翔龙品牌增长和利润改善的绝对引擎，利润增量占全部增量的43%。西欧从2025年H1亏损（-0万）大幅改善至2026年H1盈利718万，是利润改善的最大贡献区域。南欧、北欧、英爱均实现人数与收入双增长，毛利同步改善。东欧+巴尔干虽然收入大幅增长，但需注意基数效应（2025年仅49人）。多国联线为新增区域，占比尚小。
+</div>
+</div>
+
+<p><strong>核心发现：</strong></p>
+<ul style="margin-left: 20px; color: var(--text-secondary);">
+<li><strong>西欧是增长绝对引擎</strong>，人数+663%，收入+1001%，且毛利从2025年H1亏损大幅改善至2026年H1盈利，利润增量占翔龙品牌全部利润增量的<strong>43%</strong>，是利润改善的最大贡献区域。</li>
+<li><strong>南欧、北欧、英爱均实现人数与收入双增长</strong>，毛利同步改善。南欧利润增量占21%，英爱占13%，北欧占14%。</li>
+<li><strong>东欧+巴尔干</strong>人数+1385%，收入+2125%，但基数较小（2025年仅49人），需关注增长的可持续性。</li>
+</ul>
+
+<div class="tip-box">
+<strong>毛利率说明</strong>：各区域毛利率基于ERP数据中的"结算营业收入"与"结算净毛利"计算。毛利率改善的具体原因（采购成本下降、定价提升、产品组合变化或团态结构变化）需进一步补充成本明细与产品维度数据后方可确认。
+</div>
+
+<h4>按客户类型拆解</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>客户类型</th><th>2026 H1人数占比</th><th>2025 H1人数占比</th><th>变化</th><th>2026 H1收入占比</th><th>2025 H1收入占比</th></tr>
+</thead>
+<tbody>
+<tr><td>电商类</td><td>51%</td><td>44%</td><td class="num-pos">+7pp</td><td>51%</td><td>44%</td></tr>
+<tr><td>出境社</td><td>41%</td><td>45%</td><td class="num-neg">-4pp</td><td>41%</td><td>45%</td></tr>
+<tr><td>个人类</td><td>5%</td><td>7%</td><td class="num-neg">-1pp</td><td>5%</td><td>7%</td></tr>
+<tr><td>异业类</td><td>1%</td><td>2%</td><td class="num-neg">-0pp</td><td>1%</td><td>2%</td></tr>
+<tr><td>国内社</td><td>0%</td><td>0%</td><td class="num-neg">-0pp</td><td>0%</td><td>0%</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="chart-box">
+<div class="chart-title">翔龙品牌 客户类型占比变化</div>
+<svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
+<text x="140" y="22" text-anchor="middle" font-size="14" font-weight="600" fill="#0d2b4e">2025 H1</text>
+<text x="420" y="22" text-anchor="middle" font-size="14" font-weight="600" fill="#0d2b4e">2026 H1</text>
+<!-- 2025 饼图 -->
+<g transform="translate(140,115)">
+<!-- 电商 44% -->
+<path d="M 0,0 L 0.0,-70.0 A 70,70 0 0,1 25.8,65.1 Z" fill="#3182ce" stroke="#fff" stroke-width="1.5"/>
+<!-- 出境社 45% -->
+<path d="M 0,0 L 25.8,65.1 A 70,70 0 0,1 -44.6,-53.9 Z" fill="#2c5282" stroke="#fff" stroke-width="1.5"/>
+<!-- 个人类 7% -->
+<path d="M 0,0 L -44.6,-53.9 A 70,70 0 0,1 -17.4,-67.8 Z" fill="#63b3ed" stroke="#fff" stroke-width="1.5"/>
+<!-- 异业类 2% -->
+<path d="M 0,0 L -17.4,-67.8 A 70,70 0 0,1 -8.8,-69.4 Z" fill="#90cdf4" stroke="#fff" stroke-width="1.5"/>
+<!-- 其他 2% -->
+<path d="M 0,0 L -8.8,-69.4 A 70,70 0 0,1 -0.0,-70.0 Z" fill="#bee3f8" stroke="#fff" stroke-width="1.5"/>
+<!-- 标签 -->
+<text x="44" y="-4" text-anchor="middle" font-size="11" fill="#fff" font-weight="600">44%</text>
+<text x="44" y="9" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.85)">电商</text>
+<text x="-39" y="27" text-anchor="middle" font-size="11" fill="#fff" font-weight="600">45%</text>
+<text x="-39" y="40" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.85)">出境社</text>
+<!-- 小扇区引线标签 -->
+<line x1="-22" y1="-55" x2="-50" y2="-65" stroke="#63b3ed" stroke-width="1"/>
+<text x="-54" y="-62" text-anchor="end" font-size="9" fill="#2c5282" font-weight="600">个人7%</text>
+</g>
+<!-- 2026 饼图 -->
+<g transform="translate(420,115)">
+<!-- 电商 51% -->
+<path d="M 0,0 L 0.0,-70.0 A 70,70 0 1,1 -4.4,69.9 Z" fill="#3182ce" stroke="#fff" stroke-width="1.5"/>
+<!-- 出境社 41% -->
+<path d="M 0,0 L -4.4,69.9 A 70,70 0 0,1 -33.7,-61.3 Z" fill="#2c5282" stroke="#fff" stroke-width="1.5"/>
+<!-- 个人类 5% -->
+<path d="M 0,0 L -33.7,-61.3 A 70,70 0 0,1 -13.1,-68.8 Z" fill="#63b3ed" stroke="#fff" stroke-width="1.5"/>
+<!-- 异业类 1% -->
+<path d="M 0,0 L -13.1,-68.8 A 70,70 0 0,1 -8.8,-69.4 Z" fill="#90cdf4" stroke="#fff" stroke-width="1.5"/>
+<!-- 其他 2% -->
+<path d="M 0,0 L -8.8,-69.4 A 70,70 0 0,1 -0.0,-70.0 Z" fill="#bee3f8" stroke="#fff" stroke-width="1.5"/>
+<!-- 标签 -->
+<text x="45" y="3" text-anchor="middle" font-size="11" fill="#fff" font-weight="600">51%</text>
+<text x="45" y="16" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.85)">电商</text>
+<text x="-44" y="14" text-anchor="middle" font-size="11" fill="#fff" font-weight="600">41%</text>
+<text x="-44" y="27" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.85)">出境社</text>
+<!-- 小扇区引线标签 -->
+<line x1="-16" y1="-56" x2="-50" y2="-65" stroke="#63b3ed" stroke-width="1"/>
+<text x="-54" y="-62" text-anchor="end" font-size="9" fill="#2c5282" font-weight="600">个人5%</text>
+</g>
+<!-- 图例 -->
+<g transform="translate(90,205)">
+<rect x="0" y="0" width="12" height="12" fill="#3182ce" rx="2"/><text x="16" y="11" font-size="10" fill="#4a5568">电商类</text>
+<rect x="70" y="0" width="12" height="12" fill="#2c5282" rx="2"/><text x="86" y="11" font-size="10" fill="#4a5568">出境社</text>
+<rect x="140" y="0" width="12" height="12" fill="#63b3ed" rx="2"/><text x="156" y="11" font-size="10" fill="#4a5568">个人类</text>
+<rect x="210" y="0" width="12" height="12" fill="#90cdf4" rx="2"/><text x="226" y="11" font-size="10" fill="#4a5568">异业类</text>
+<rect x="280" y="0" width="12" height="12" fill="#bee3f8" rx="2"/><text x="296" y="11" font-size="10" fill="#4a5568">其他</text>
+</g>
+</svg>
+<div class="chart-desc">
+<strong>经营解读：</strong>电商类客户占比从44%提升至51%，成为翔龙品牌最大收入来源。其中携程电商占比86%，途牛8%，同程4%。携程占翔龙品牌整体GMV从37%提升至44%，增长动能主要来自OTA电商渠道成交端的增长。但电商渠道集中度较高，存在单一渠道依赖风险，需关注渠道多元化。
+</div>
+</div>
+
+<h3>第三步：看经营质量——增长是否真正创造经营价值</h3>
+
+<h4>四种异常情形检查</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>情形</th><th>检查指标</th><th>翔龙品牌2026 H1表现</th><th>经营判断</th></tr>
+</thead>
+<tbody>
+<tr><td>人数增长、毛利率下降</td><td>人数同比 +17%，毛利率变化</td><td>未出现</td><td>规模增长未牺牲盈利能力</td></tr>
+<tr><td>收入增长、毛利额未同步提升</td><td>收入同比 +23%，毛利同比 +281%</td><td>未出现</td><td>收入增长有效转化为利润增长</td></tr>
+<tr><td>毛利率提升、规模下滑</td><td>毛利率 6%（合理），人数变化</td><td>未出现</td><td>实现规模与盈利双增长</td></tr>
+<tr><td>少数渠道贡献过高</td><td>携程渠道GMV占比44%</td><td class="num-neg">需关注</td><td>渠道贡献结构仍需持续优化</td></tr>
+</tbody>
+</table>
+</div>
+
+<h4>核心判断</h4>
+<p><strong>翔龙品牌2026 H1增长质量较高，实现规模增长与盈利能力同步提升。</strong></p>
+<p>人数同比增长17%，收入同比增长23%，同时毛利率由2%提升至6%，毛利同比提升281%，主要区域均实现盈利，经营结构持续优化。</p>
+
+<h4>交付质量表现（机位资源经营效率）</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>指标</th><th>2026 H1</th><th>2025 H1</th><th>同比</th><th>经营判断</th></tr>
+</thead>
+<tbody>
+<tr><td>控位</td><td>28,435</td><td>25,206</td><td class="num-pos">+13%</td><td>航司资源投入增加，产品供给能力提升</td></tr>
+<tr><td>售卖</td><td>12,269</td><td>11,129</td><td class="num-pos">+10%</td><td>市场收客规模保持增长</td></tr>
+<tr><td>机损</td><td>359万</td><td>277万</td><td class="num-neg">+30%</td><td>机损增幅高于销售增幅，资源利用效率仍有优化空间</td></tr>
+<tr><td>损失率</td><td>4.8%</td><td>4.4%</td><td class="num-neg">+0.4pp</td><td>整体可控，但需持续优化控位精准度</td></tr>
+<tr><td>机位使用率</td><td>43%</td><td>44%</td><td class="num-neg">-2pp</td><td>机位消化效率小幅下降</td></tr>
+<tr><td>采购团数</td><td>918</td><td>843</td><td class="num-pos">+9%</td><td>产品供给规模扩大</td></tr>
+<tr><td>出票团数</td><td>495</td><td>431</td><td class="num-pos">+15%</td><td>实际出团规模提升</td></tr>
+<tr><td>成团率</td><td>54%</td><td>51%</td><td class="num-pos">+3pp</td><td>收客及组团效率改善</td></tr>
+</tbody>
+</table>
+</div>
+
+<h4>各区域机位使用率对比</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>区域</th><th>2026 H1控位</th><th>2025 H1控位</th><th>2026 H1售卖</th><th>2025 H1售卖</th><th>2026使用率</th><th>2025使用率</th><th>变化</th></tr>
+</thead>
+<tbody>
+<tr><td>西欧</td><td>15,840</td><td>12,619</td><td>6,594</td><td>5,515</td><td>42%</td><td>44%</td><td class="num-neg">-2pp</td></tr>
+<tr><td>南欧</td><td>3,901</td><td>3,723</td><td>2,012</td><td>1,795</td><td>52%</td><td>48%</td><td class="num-pos">+3pp</td></tr>
+<tr><td>英爱</td><td>3,610</td><td>3,556</td><td>1,479</td><td>1,398</td><td>41%</td><td>39%</td><td class="num-pos">+2pp</td></tr>
+<tr><td>东欧</td><td>2,011</td><td>3,252</td><td>779</td><td>1,134</td><td>39%</td><td>35%</td><td class="num-pos">+4pp</td></tr>
+<tr><td>北欧</td><td>2,941</td><td>1,833</td><td>1,405</td><td>1,230</td><td>48%</td><td>67%</td><td class="num-neg">-19pp</td></tr>
+<tr><td>俄罗斯</td><td>132</td><td>223</td><td>0</td><td>57</td><td>0%</td><td>26%</td><td class="num-neg">-26pp</td></tr>
+<tr style="background:var(--bg-light);font-weight:700;"><td>合计</td><td>28,435</td><td>25,206</td><td>12,269</td><td>11,129</td><td>43%</td><td>44%</td><td class="num-neg">-2pp</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="chart-box">
+<div class="chart-title">翔龙品牌 机位核心指标同比</div>
+<svg viewBox="0 0 600 260" xmlns="http://www.w3.org/2000/svg">
+<line x1="80" y1="40" x2="80" y2="200" stroke="#e2e8f0" stroke-width="1"/>
+<line x1="80" y1="200" x2="560" y2="200" stroke="#e2e8f0" stroke-width="1"/>
+<text x="70" y="45" text-anchor="end" font-size="10" fill="#718096">+35%</text>
+<text x="70" y="85" text-anchor="end" font-size="10" fill="#718096">+20%</text>
+<text x="70" y="125" text-anchor="end" font-size="10" fill="#718096">+5%</text>
+<text x="70" y="165" text-anchor="end" font-size="10" fill="#718096">0%</text>
+<text x="70" y="205" text-anchor="end" font-size="10" fill="#718096">-5%</text>
+<line x1="80" y1="155" x2="560" y2="155" stroke="#cbd5e0" stroke-width="1" stroke-dasharray="4,2"/>
+<rect x="95" y="88" width="40" height="67" fill="#3182ce" rx="3"/>
+<rect x="155" y="95" width="40" height="60" fill="#2c5282" rx="3"/>
+<rect x="215" y="45" width="40" height="110" fill="#c53030" rx="3"/>
+<rect x="275" y="149" width="40" height="6" fill="#d69e2e" rx="2"/>
+<rect x="335" y="161" width="40" height="12" fill="#c53030" rx="3"/>
+<rect x="395" y="140" width="40" height="15" fill="#38a169" rx="3"/>
+<rect x="455" y="142" width="40" height="13" fill="#4299e1" rx="3"/>
+<text x="115" y="82" text-anchor="middle" font-size="10" font-weight="600" fill="#3182ce">+13%</text>
+<text x="175" y="89" text-anchor="middle" font-size="10" font-weight="600" fill="#2c5282">+10%</text>
+<text x="235" y="38" text-anchor="middle" font-size="10" font-weight="600" fill="#c53030">+30%</text>
+<text x="295" y="170" text-anchor="middle" font-size="9" font-weight="600" fill="#d69e2e">+0pp</text>
+<text x="355" y="183" text-anchor="middle" font-size="9" font-weight="600" fill="#c53030">-2pp</text>
+<text x="415" y="135" text-anchor="middle" font-size="10" font-weight="600" fill="#38a169">+3pp</text>
+<text x="475" y="136" text-anchor="middle" font-size="10" font-weight="600" fill="#4299e1">+9%</text>
+<text x="115" y="220" text-anchor="middle" font-size="10" fill="#4a5568">控位</text>
+<text x="175" y="220" text-anchor="middle" font-size="10" fill="#4a5568">售卖</text>
+<text x="235" y="220" text-anchor="middle" font-size="10" fill="#4a5568">机损</text>
+<text x="295" y="220" text-anchor="middle" font-size="10" fill="#4a5568">损失率</text>
+<text x="355" y="220" text-anchor="middle" font-size="10" fill="#4a5568">使用率</text>
+<text x="415" y="220" text-anchor="middle" font-size="10" fill="#4a5568">成团率</text>
+<text x="475" y="220" text-anchor="middle" font-size="10" fill="#4a5568">团数</text>
+</svg>
+<div class="chart-desc">
+控位+13%、售卖+10%，资源投入与销售基本同步。但机损+30%明显快于售卖增速，损失率从4.4%微升至4.8%。机位使用率从44.2%降至43.1%，主要受北欧使用率大幅下滑（67%→48%，-19pp）拖累，西欧、南欧、英爱使用率基本稳定或微升。成团率从51.1%提升至53.9%（+3pp），交付效率在改善。整体看，资源投入产出效率有待提升，北欧控位大幅增加但售卖未同步跟进是主要问题点。
+</div>
+</div>
+
+<h3>第四步：定动作——H2做什么</h3>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th style="width:22%">问题</th><th style="width:50%">H2重点动作</th><th style="width:28%">预期改善指标</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>机位资源效率待提升</strong><br/><span style="font-size:0.85rem;color:var(--text-muted)">旺季效益低+机损增长</span></td><td>按周跟踪销售进度与客源结构，动态调整机位投放与产品组合；锁定暑期、国庆核心资源，控制低成团率团期</td><td>机位使用率提升，机损增速受控；旺季效益持续改善</td></tr>
+<tr><td><strong>西欧利润持续改善</strong></td><td>聚焦西欧高毛利产品，优化产品组合与定价策略；重点提升中高价格带占比，巩固毛利改善趋势</td><td>西欧毛利率稳步提升，利润额持续增长</td></tr>
+<tr><td><strong>电商渠道结构待优化</strong></td><td>巩固携程电商核心地位，梳理途牛、同程渠道结构，聚焦高转化高毛利产品，适度拓展非携程渠道占比</td><td>渠道转化效率持续提升，渠道结构趋于均衡</td></tr>
+<tr><td><strong>东欧+巴尔干成交待恢复</strong></td><td>围绕产品供给和价格竞争力优化策略，明确重点线路与定价策略，加强渠道覆盖</td><td>成交规模逐步恢复，同比下降趋势收窄</td></tr>
+</tbody>
+</table>
+</div>
+
+</div>
+
+<!-- ==================== 第三部分：国旅品牌复盘——流量→转化→服务→客单 ==================== -->
+
+  </div>
+
+  <!-- TAB 3: 国旅品牌 -->
+  <div class="tab-panel" id="tab-guolv">
+<div class="section page-break" id="sec3">
+<h2>三、国旅品牌复盘——流量→转化→服务→客单</h2>
+
+<div class="tip-box">
+<strong>数据说明</strong>：本部分国旅品牌数据均来源于携程平台Artnova系统，已按记忆口径过滤（华北14省、非领队、非单团、非罚金、剔除俄罗斯）。"线上"与"线下门店"指携程平台数据中"业务渠道聚合"字段的取值。国旅品牌不含携程平台以外的渠道数据。UV/CR数据来源于携程平台详情页数据，仅覆盖北京国旅品牌，作为国旅品牌在携程平台流量效率的参考。
+</div>
+
+<h3>1. 看成交端渠道表现</h3>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>指标</th><th>2026 H1</th><th>2025 H1</th><th>同比</th><th>判断</th></tr>
+</thead>
+<tbody>
+<tr><td>成交人数</td><td>1,808</td><td>1,926</td><td class="num-neg">-6%</td><td>成交端人数收缩</td></tr>
+<tr><td>成交GMV</td><td>4,490万</td><td>4,240万</td><td class="num-pos">+5%</td><td>成交端收入增长</td></tr>
+<tr><td>单客收入</td><td>24,834元</td><td>22,019元</td><td class="num-pos">+12%</td><td>客单价提升</td></tr>
+<tr><td><strong>毛利额</strong></td><td><strong>259万</strong></td><td><strong>-200万</strong></td><td class="num-pos"><strong>大幅改善</strong></td><td><strong>从亏损转为盈利</strong></td></tr>
+<tr><td><strong>毛利率</strong></td><td><strong>5.7%</strong></td><td><strong>-6.0%</strong></td><td class="num-pos"><strong>+11.7pp</strong></td><td><strong>盈利能力根本性改善</strong></td></tr>
+<tr><td>线上成交人数</td><td>795</td><td>927</td><td class="num-neg">-14%</td><td>线上成交端收缩</td></tr>
+<tr><td>线上成交GMV</td><td>2,004万</td><td>2,108万</td><td class="num-neg">-4%</td><td>线上成交端收入下降</td></tr>
+<tr><td>线下门店成交人数</td><td>1,013</td><td>999</td><td class="num-pos">+1%</td><td>线下门店成交端小幅增长</td></tr>
+<tr><td>线下门店成交GMV</td><td>2,485万</td><td>2,132万</td><td class="num-pos">+16%</td><td>线下门店成交端收入增长显著</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="conclusion-box">
+<p><strong>核心判断：</strong>国旅品牌成交端面临结构性变化。线上成交渠道人数下降14%，GMV下降4%，是整体成交人数下滑的主要拖累。线下门店成交渠道人数微增1%，但GMV增长16%，表明线下门店成交端的客单价有显著提升。品牌对线下门店成交渠道的依赖度增加。</p>
+</div>
+
+<p><strong>线上vs线下结构变化：</strong></p>
+<ul style="margin-left: 20px; color: var(--text-secondary);">
+<li>2025 H1：线上成交占48%（927人），线下门店成交占51%（999人）</li>
+<li>2026 H1：线上成交占44%（795人），线下门店成交占56%（1,013人）</li>
+<li>线上成交份额下降4pp，品牌对线下门店成交渠道的依赖度增加</li>
+</ul>
+
+<h3>2. 看携程平台大盘与竞争格局</h3>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>指标</th><th>2026 H1</th><th>2025 H1</th><th>同比</th><th>判断</th></tr>
+</thead>
+<tbody>
+<tr><td>携程大盘总GMV</td><td>34,024万</td><td>24,568万</td><td class="num-pos">+38%</td><td>大盘增长强劲</td></tr>
+<tr><td>双品牌GMV</td><td>15,746万</td><td>9,811万</td><td class="num-pos">+60%</td><td>跑赢大盘</td></tr>
+<tr><td>其他供应商GMV</td><td>18,278万</td><td>14,756万</td><td class="num-pos">+23%</td><td>增速低于大盘</td></tr>
+<tr><td>双品牌占有率</td><td>46%</td><td>39%</td><td class="num-pos">+6pp</td><td>份额提升</td></tr>
+<tr><td>其他供应商占有率</td><td>53%</td><td>60%</td><td class="num-neg">-6pp</td><td>份额被挤压</td></tr>
+</tbody>
+</table>
+</div>
+
+<h4>按渠道拆分</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>渠道</th><th>指标</th><th>2026 H1</th><th>2025 H1</th><th>同比</th></tr>
+</thead>
+<tbody>
+<tr><td rowspan="4">线下门店</td><td>大盘GMV</td><td>27,449万</td><td>18,027万</td><td class="num-pos">+52%</td></tr>
+<tr><td>双品牌GMV</td><td>12,417万</td><td>6,914万</td><td class="num-pos">+79%</td></tr>
+<tr><td>其他供应商GMV</td><td>15,031万</td><td>11,112万</td><td class="num-pos">+35%</td></tr>
+<tr><td>双品牌占有率</td><td>45%</td><td>38%</td><td class="num-pos">+6pp</td></tr>
+<tr><td rowspan="4">线上</td><td>大盘GMV</td><td>6,575万</td><td>6,557万</td><td class="num-pos">+0%</td></tr>
+<tr><td>双品牌GMV</td><td>3,328万</td><td>2,897万</td><td class="num-pos">+14%</td></tr>
+<tr><td>其他供应商GMV</td><td>3,247万</td><td>3,659万</td><td class="num-neg">-11%</td></tr>
+<tr><td>双品牌占有率</td><td>50%</td><td>44%</td><td class="num-pos">+6pp</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="chart-box">
+<div class="chart-title">携程平台 线上 vs 线下门店 大盘与双品牌增速对比</div>
+<svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg">
+<!-- 背景面板 -->
+<rect x="10" y="35" width="255" height="190" fill="#f7fafc" rx="8" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="295" y="35" width="255" height="190" fill="#f7fafc" rx="8" stroke="#e2e8f0" stroke-width="1"/>
+<!-- 标题 -->
+<text x="137" y="22" text-anchor="middle" font-size="13" font-weight="600" fill="#0d2b4e">线下门店渠道</text>
+<text x="422" y="22" text-anchor="middle" font-size="13" font-weight="600" fill="#0d2b4e">线上渠道</text>
+<!-- 分隔线 -->
+<line x1="280" y1="35" x2="280" y2="225" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4,2"/>
+<!-- 线下: 大盘+52% -->
+<rect x="30" y="120" width="55" height="50" fill="#e2e8f0" rx="4"/>
+<text x="57" y="148" text-anchor="middle" font-size="12" font-weight="600" fill="#4a5568">+52%</text>
+<text x="57" y="185" text-anchor="middle" font-size="10" fill="#718096">大盘GMV</text>
+<!-- 线下: 双品牌+79% -->
+<rect x="105" y="95" width="55" height="75" fill="#3182ce" rx="4"/>
+<text x="132" y="132" text-anchor="middle" font-size="12" font-weight="600" fill="#fff">+79%</text>
+<text x="132" y="185" text-anchor="middle" font-size="10" fill="#718096">双品牌</text>
+<!-- 线下: 其他+35% -->
+<rect x="180" y="130" width="55" height="40" fill="#63b3ed" rx="4"/>
+<text x="207" y="153" text-anchor="middle" font-size="11" font-weight="600" fill="#fff">+35%</text>
+<text x="207" y="185" text-anchor="middle" font-size="10" fill="#718096">其他</text>
+<!-- 线上: 大盘+0% -->
+<rect x="315" y="178" width="55" height="22" fill="#e2e8f0" rx="4"/>
+<text x="342" y="173" text-anchor="middle" font-size="11" font-weight="600" fill="#4a5568">+0%</text>
+<text x="342" y="215" text-anchor="middle" font-size="10" fill="#718096">大盘GMV</text>
+<!-- 线上: 双品牌+14% -->
+<rect x="390" y="130" width="55" height="70" fill="#3182ce" rx="4"/>
+<text x="417" y="164" text-anchor="middle" font-size="12" font-weight="600" fill="#fff">+14%</text>
+<text x="417" y="215" text-anchor="middle" font-size="10" fill="#718096">双品牌</text>
+<!-- 线上: 其他-11% -->
+<rect x="465" y="176" width="55" height="24" fill="#c53030" rx="4" opacity="0.7"/>
+<text x="492" y="171" text-anchor="middle" font-size="10" font-weight="600" fill="#c53030">-11%</text>
+<text x="492" y="215" text-anchor="middle" font-size="10" fill="#718096">其他</text>
+</svg>
+<div class="chart-desc">
+线下门店是大盘增长的主要引擎（+52%），双品牌线下门店增速（+79%）远超其他供应商（+35%），双品牌线下门店份额从38%提升至45%。线上大盘几乎持平（+0%），但其他供应商线上GMV下降11%，双品牌线上GMV增长14%，双品牌线上份额从44%提升至50%。国旅品牌整体增速（+10%）低于大盘增速（+38%），相对市场份额下降。
+</div>
+</div>
+
+<h3>3. 看UV与CR效率——北京国旅品牌在携程平台的表现</h3>
+
+<div class="tip-box">
+<strong>UV/CR数据说明</strong>：以下UV（页面浏览量）和CR（转化率）数据来源于携程平台详情页，仅覆盖北京国旅品牌（国旅品牌三个大区之一），作为国旅品牌在携程平台流量效率的参考。完整国旅品牌的UV/CR数据需补充上海和广州大区数据。
+</div>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>区域</th><th>指标</th><th>2026 H1</th><th>2025 H1</th><th>同比变化</th><th>判断</th></tr>
+</thead>
+<tbody>
+<tr><td rowspan="6"><strong>总计</strong></td><td>携程平台UV</td><td>157,776</td><td>373,375</td><td class="num-neg">-57%</td><td>大盘流量大幅萎缩</td></tr>
+<tr><td>携程平台CR</td><td>0%</td><td>0%</td><td class="num-neg">-0pp</td><td>大盘转化率下降</td></tr>
+<tr><td>北京国旅品牌UV</td><td>75,512</td><td>57,188</td><td class="num-pos">+32%</td><td>国旅品牌UV逆势增长</td></tr>
+<tr><td>北京国旅品牌CR</td><td>0%</td><td>0%</td><td class="num-pos">+0pp</td><td>国旅品牌转化率提升</td></tr>
+<tr><td>其他供应商UV</td><td>50,993</td><td>260,296</td><td class="num-neg">-80%</td><td>其他供应商UV大幅下滑</td></tr>
+<tr><td>其他供应商CR</td><td>0%</td><td>0%</td><td class="num-neg">-0pp</td><td>其他供应商转化率下降</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="chart-box">
+<div class="chart-title">北京国旅品牌 UV/CR 效率 vs 大盘（分区域）</div>
+<svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg">
+<line x1="70" y1="40" x2="70" y2="300" stroke="#e2e8f0" stroke-width="1"/>
+<text x="60" y="45" text-anchor="end" font-size="10" fill="#718096">+100%</text>
+<text x="60" y="100" text-anchor="end" font-size="10" fill="#718096">+50%</text>
+<text x="60" y="155" text-anchor="end" font-size="10" fill="#718096">0%</text>
+<text x="60" y="210" text-anchor="end" font-size="10" fill="#718096">-50%</text>
+<text x="60" y="265" text-anchor="end" font-size="10" fill="#718096">-100%</text>
+<line x1="70" y1="155" x2="580" y2="155" stroke="#cbd5e0" stroke-width="1" stroke-dasharray="4,2"/>
+<!-- 西欧: 大盘-56% 国旅品牌+23% 其他-77% -->
+<rect x="95" y="155" width="22" height="64" fill="#c53030" rx="3"/>
+<rect x="120" y="129" width="22" height="26" fill="#38a169" rx="3"/>
+<rect x="145" y="155" width="22" height="89" fill="#c53030" rx="3" opacity="0.5"/>
+<!-- 北欧: 大盘-59% 国旅品牌+1% 其他-68% -->
+<rect x="210" y="155" width="22" height="68" fill="#c53030" rx="3"/>
+<rect x="235" y="154" width="22" height="1" fill="#38a169" rx="3"/>
+<rect x="260" y="155" width="22" height="78" fill="#c53030" rx="3" opacity="0.5"/>
+<!-- 南欧: 大盘-69% 国旅品牌+58% 其他-5% -->
+<rect x="325" y="155" width="22" height="79" fill="#c53030" rx="3"/>
+<rect x="350" y="88" width="22" height="67" fill="#38a169" rx="3"/>
+<rect x="375" y="155" width="22" height="6" fill="#c53030" rx="3" opacity="0.5"/>
+<!-- 英爱: 大盘-63% 国旅品牌+97% 其他-17% -->
+<rect x="440" y="155" width="22" height="72" fill="#c53030" rx="3"/>
+<rect x="465" y="43" width="22" height="112" fill="#38a169" rx="3"/>
+<rect x="490" y="155" width="22" height="20" fill="#c53030" rx="3" opacity="0.5"/>
+<!-- X轴标签 -->
+<text x="130" y="320" text-anchor="middle" font-size="11" fill="#4a5568" font-weight="600">西欧</text>
+<text x="245" y="320" text-anchor="middle" font-size="11" fill="#4a5568" font-weight="600">北欧</text>
+<text x="360" y="320" text-anchor="middle" font-size="11" fill="#4a5568" font-weight="600">南欧</text>
+<text x="475" y="320" text-anchor="middle" font-size="11" fill="#4a5568" font-weight="600">英爱</text>
+<!-- 数据标签: 正值在上方，负值在下方 -->
+<text x="106" y="225" text-anchor="middle" font-size="9" fill="#c53030" font-weight="600">-56%</text>
+<text x="131" y="122" text-anchor="middle" font-size="9" fill="#38a169" font-weight="600">+23%</text>
+<text x="156" y="250" text-anchor="middle" font-size="9" fill="#c53030" font-weight="600">-77%</text>
+<text x="221" y="230" text-anchor="middle" font-size="9" fill="#c53030" font-weight="600">-59%</text>
+<text x="246" y="148" text-anchor="middle" font-size="8" fill="#38a169" font-weight="600">+1%</text>
+<text x="271" y="240" text-anchor="middle" font-size="9" fill="#c53030" font-weight="600">-68%</text>
+<text x="336" y="240" text-anchor="middle" font-size="9" fill="#c53030" font-weight="600">-69%</text>
+<text x="361" y="80" text-anchor="middle" font-size="9" fill="#38a169" font-weight="600">+58%</text>
+<text x="451" y="235" text-anchor="middle" font-size="9" fill="#c53030" font-weight="600">-63%</text>
+<text x="476" y="35" text-anchor="middle" font-size="9" fill="#38a169" font-weight="600">+97%</text>
+<text x="501" y="182" text-anchor="middle" font-size="8" fill="#c53030" font-weight="600">-17%</text>
+<!-- 图例 -->
+<g transform="translate(140,340)">
+<rect x="0" y="0" width="14" height="14" fill="#c53030" rx="2"/><text x="20" y="12" font-size="11" fill="#4a5568">大盘UV同比</text>
+<rect x="110" y="0" width="14" height="14" fill="#38a169" rx="2"/><text x="130" y="12" font-size="11" fill="#4a5568">国旅品牌UV同比</text>
+<rect x="210" y="0" width="14" height="14" fill="#c53030" rx="2" opacity="0.5"/><text x="230" y="12" font-size="11" fill="#4a5568">其他供应商UV同比</text>
+</g>
+</svg>
+<div class="chart-desc">
+携程平台整体UV下降57%，大盘流量明显萎缩。但北京国旅品牌UV逆势增长32%，CR持平（0%→0%），说明国旅品牌在携程平台的流量获取效率和转化效率均优于大盘。但"转化率提升"与"成交人数下降14%"并存，说明大盘流量萎缩的影响超过了国旅品牌效率提升的收益。分区域看，国旅品牌在英爱区域UV增长最为显著（+97%），南欧也增长58%，但南欧CR实际下降，需注意转化效率波动。
+</div>
+</div>
+
+<h3>4. 看产品区域结构与价格带</h3>
+
+<h4>按区域看成交端表现（携程平台，不含俄罗斯）</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>区域</th><th>2026 H1人数</th><th>2025 H1人数</th><th>人数同比</th><th>2026 H1收入</th><th>2025 H1收入</th><th>收入同比</th><th>2026客单价</th><th>客单同比</th></tr>
+</thead>
+<tbody>
+<tr><td>西欧</td><td>857</td><td>1,033</td><td class="num-neg">-17%</td><td>2,170万</td><td>2,351万</td><td class="num-neg">-7%</td><td>25,331元</td><td class="num-pos">+11%</td></tr>
+<tr><td>南欧</td><td>330</td><td>209</td><td class="num-pos">+57%</td><td>780万</td><td>477万</td><td class="num-pos">+63%</td><td>23,666元</td><td class="num-pos">+4%</td></tr>
+<tr><td>北欧</td><td>144</td><td>94</td><td class="num-pos">+53%</td><td>503万</td><td>298万</td><td class="num-pos">+68%</td><td>34,992元</td><td class="num-pos">+10%</td></tr>
+<tr><td>英爱</td><td>159</td><td>162</td><td class="num-neg">-1%</td><td>447万</td><td>426万</td><td class="num-pos">+5%</td><td>28,164元</td><td class="num-pos">+7%</td></tr>
+<tr><td>东欧+巴尔干</td><td>142</td><td>215</td><td class="num-neg">-33%</td><td>296万</td><td>408万</td><td class="num-neg">-27%</td><td>20,859元</td><td class="num-pos">+10%</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="chart-box">
+<div class="chart-title">国旅品牌 各区域成交人数同比变化</div>
+<svg viewBox="0 0 500 240" xmlns="http://www.w3.org/2000/svg">
+<line x1="70" y1="30" x2="70" y2="180" stroke="#e2e8f0" stroke-width="1"/>
+<line x1="70" y1="180" x2="460" y2="180" stroke="#e2e8f0" stroke-width="1"/>
+<text x="60" y="35" text-anchor="end" font-size="10" fill="#718096">+60%</text>
+<text x="60" y="80" text-anchor="end" font-size="10" fill="#718096">+30%</text>
+<text x="60" y="125" text-anchor="end" font-size="10" fill="#718096">0%</text>
+<text x="60" y="170" text-anchor="end" font-size="10" fill="#718096">-30%</text>
+<line x1="70" y1="125" x2="460" y2="125" stroke="#cbd5e0" stroke-width="1" stroke-dasharray="4,2"/>
+<rect x="95" y="145" width="45" height="35" fill="#c53030" rx="3"/>
+<rect x="165" y="75" width="45" height="50" fill="#38a169" rx="3"/>
+<rect x="235" y="78" width="45" height="47" fill="#38a169" rx="3"/>
+<rect x="305" y="127" width="45" height="22" fill="#c53030" rx="3" opacity="0.7"/>
+<rect x="375" y="155" width="45" height="25" fill="#c53030" rx="3"/>
+<text x="117" y="140" text-anchor="middle" font-size="11" font-weight="600" fill="#c53030">-17%</text>
+<text x="187" y="68" text-anchor="middle" font-size="11" font-weight="600" fill="#38a169">+57%</text>
+<text x="257" y="71" text-anchor="middle" font-size="11" font-weight="600" fill="#38a169">+53%</text>
+<text x="327" y="121" text-anchor="middle" font-size="10" font-weight="600" fill="#c53030">-1%</text>
+<text x="397" y="150" text-anchor="middle" font-size="11" font-weight="600" fill="#c53030">-34%</text>
+<text x="117" y="200" text-anchor="middle" font-size="11" fill="#4a5568">西欧</text>
+<text x="187" y="200" text-anchor="middle" font-size="11" fill="#4a5568">南欧</text>
+<text x="257" y="200" text-anchor="middle" font-size="11" fill="#4a5568">北欧</text>
+<text x="327" y="200" text-anchor="middle" font-size="11" fill="#4a5568">英爱</text>
+<text x="397" y="200" text-anchor="middle" font-size="11" fill="#4a5568">东欧+巴尔干</text>
+</svg>
+<div class="chart-desc">
+区域成交结构明显分化：南欧、北欧是唯二正增长区域，人数分别+57%、+53%，收入分别+63%、+68%。西欧仍占半壁江山（857人）但同比下滑17%，东欧+巴尔干下滑33%。整体从"西欧独大"向"西欧+南欧双极"演变，南欧崛起对均衡区域结构是利好，但西欧收缩需要重点关注是否持续。
+</div>
+</div>
+
+<h4>价格带结构（2026 H1 vs 2025 H1）</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>价格带</th><th>2026 H1收入</th><th>2026占比</th><th>2025 H1收入</th><th>2025占比</th><th>变化</th></tr>
+</thead>
+<tbody>
+<tr><td>2.5-3.0w</td><td>1,586万</td><td>35%</td><td>939万</td><td>22%</td><td class="num-pos">+13pp</td></tr>
+<tr><td>2.0-2.5w</td><td>1,287万</td><td>29%</td><td>1,551万</td><td>37%</td><td class="num-neg">-8pp</td></tr>
+<tr><td>3.0-3.5w</td><td>777万</td><td>17%</td><td>389万</td><td>9%</td><td class="num-pos">+8pp</td></tr>
+<tr><td>1.5-2.0w</td><td>265万</td><td>6%</td><td>912万</td><td>22%</td><td class="num-neg">-16pp</td></tr>
+<tr><td>>3.5w</td><td>396万</td><td>9%</td><td>183万</td><td>4%</td><td class="num-pos">+5pp</td></tr>
+<tr><td><1.5w</td><td>180万</td><td>4%</td><td>268万</td><td>6%</td><td class="num-neg">-2pp</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="chart-box">
+<div class="chart-title">国旅品牌 价格带结构变化</div>
+<svg viewBox="0 0 680 360" xmlns="http://www.w3.org/2000/svg">
+<!-- 背景区 -->
+<rect x="30" y="28" width="280" height="220" fill="#f7fafc" rx="6" stroke="#e2e8f0" stroke-width="1"/>
+<rect x="370" y="28" width="280" height="220" fill="#f7fafc" rx="6" stroke="#e2e8f0" stroke-width="1"/>
+
+<!-- 标题 -->
+<text x="170" y="22" text-anchor="middle" font-size="14" font-weight="700" fill="#0d2b4e">2025 H1</text>
+<text x="510" y="22" text-anchor="middle" font-size="14" font-weight="700" fill="#0d2b4e">2026 H1</text>
+
+<!-- === 价格带行 === -->
+<!-- >3.5w -->
+<rect x="310" y="36" width="140" height="4" fill="#1a365d" rx="2"/>
+<text x="180" y="42" text-anchor="middle" font-size="10" fill="#1a365d" font-weight="600">4%</text>
+<rect x="370" y="36" width="280" height="24" fill="#1a365d" rx="3"/>
+<text x="510" y="52" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">9%</text>
+<text x="340" y="50" text-anchor="middle" font-size="10" fill="#38a169" font-weight="700">+5pp ↑</text>
+
+<!-- 3.0-3.5w -->
+<rect x="140" y="66" width="170" height="24" fill="#2c5282" rx="3"/>
+<text x="180" y="82" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">9%</text>
+<rect x="370" y="66" width="238" height="24" fill="#2c5282" rx="3"/>
+<text x="489" y="82" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">17%</text>
+<text x="340" y="82" text-anchor="middle" font-size="10" fill="#38a169" font-weight="700">+8pp ↑</text>
+
+<!-- 2.5-3.0w -->
+<rect x="140" y="96" width="170" height="24" fill="#3182ce" rx="3"/>
+<text x="180" y="112" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">22%</text>
+<rect x="370" y="96" width="238" height="24" fill="#3182ce" rx="3"/>
+<text x="489" y="112" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">35%</text>
+<text x="340" y="112" text-anchor="middle" font-size="10" fill="#38a169" font-weight="700">+13pp ↑</text>
+
+<!-- 2.0-2.5w -->
+<rect x="140" y="126" width="238" height="24" fill="#63b3ed" rx="3"/>
+<text x="219" y="142" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">37%</text>
+<rect x="370" y="126" width="204" height="24" fill="#63b3ed" rx="3"/>
+<text x="472" y="142" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">29%</text>
+<text x="340" y="142" text-anchor="middle" font-size="10" fill="#c53030" font-weight="700">-7pp ↓</text>
+
+<!-- 1.5-2.0w -->
+<rect x="140" y="156" width="170" height="24" fill="#90cdf4" rx="3"/>
+<text x="180" y="172" text-anchor="middle" font-size="11" fill="#1a365d" font-weight="700">22%</text>
+<rect x="370" y="156" width="68" height="24" fill="#90cdf4" rx="3"/>
+<text x="404" y="172" text-anchor="middle" font-size="11" fill="#1a365d" font-weight="700">6%</text>
+<text x="340" y="172" text-anchor="middle" font-size="10" fill="#c53030" font-weight="700">-15pp ↓</text>
+
+<!-- <1.5w -->
+<rect x="140" y="186" width="68" height="24" fill="#e2e8f0" rx="3"/>
+<text x="174" y="202" text-anchor="middle" font-size="11" fill="#4a5568" font-weight="700">6%</text>
+<rect x="370" y="186" width="34" height="24" fill="#e2e8f0" rx="3"/>
+<text x="387" y="202" text-anchor="middle" font-size="11" fill="#4a5568" font-weight="700">4%</text>
+<text x="340" y="202" text-anchor="middle" font-size="10" fill="#c53030" font-weight="700">-2pp ↓</text>
+
+<!-- 分隔虚线 -->
+<line x1="340" y1="28" x2="340" y2="248" stroke="#cbd5e0" stroke-width="1" stroke-dasharray="4,3"/>
+
+<!-- 左轴标签 -->
+<text x="132" y="52" text-anchor="end" font-size="10" fill="#4a5568" font-weight="600">>3.5w</text>
+<text x="132" y="82" text-anchor="end" font-size="10" fill="#4a5568" font-weight="600">3.0-3.5w</text>
+<text x="132" y="112" text-anchor="end" font-size="10" fill="#4a5568" font-weight="600">2.5-3.0w</text>
+<text x="132" y="142" text-anchor="end" font-size="10" fill="#4a5568" font-weight="600">2.0-2.5w</text>
+<text x="132" y="172" text-anchor="end" font-size="10" fill="#4a5568" font-weight="600">1.5-2.0w</text>
+<text x="132" y="202" text-anchor="end" font-size="10" fill="#4a5568" font-weight="600"><1.5w</text>
+
+<!-- 汇总区：三个卡片 -->
+<rect x="30" y="260" width="195" height="80" fill="#fef2f2" rx="6" stroke="#fecaca" stroke-width="1"/>
+<rect x="242" y="260" width="195" height="80" fill="#eff6ff" rx="6" stroke="#bfdbfe" stroke-width="1"/>
+<rect x="455" y="260" width="195" height="80" fill="#f0fdf4" rx="6" stroke="#bbf7d0" stroke-width="1"/>
+
+<!-- 低端收缩 -->
+<text x="127" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="#c53030">低端收缩</text>
+<text x="127" y="302" text-anchor="middle" font-size="10" fill="#718096"><2.0w 占比</text>
+<text x="127" y="322" text-anchor="middle" font-size="14" font-weight="700" fill="#c53030">28% → 10%</text>
+
+<!-- 中端扩张 -->
+<text x="339" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="#3182ce">中端扩张</text>
+<text x="339" y="302" text-anchor="middle" font-size="10" fill="#718096">2.0-3.0w 占比</text>
+<text x="339" y="322" text-anchor="middle" font-size="14" font-weight="700" fill="#3182ce">59% → 64%</text>
+
+<!-- 高端增长 -->
+<text x="552" y="282" text-anchor="middle" font-size="12" font-weight="700" fill="#38a169">高端增长</text>
+<text x="552" y="302" text-anchor="middle" font-size="10" fill="#718096">>3.0w 占比</text>
+<text x="552" y="322" text-anchor="middle" font-size="14" font-weight="700" fill="#38a169">13% → 26%</text>
+</svg>
+<div class="chart-desc">
+价格带三档分化明显：<strong>高端（>3.0w）</strong>从13%翻倍至26%，<strong>中端（2.0-3.0w）</strong>从59%微扩至64%，<strong>低端（<2.0w）</strong>从28%压缩至10%。核心变化是2.5-3.0w档从22%跃升至35%（+13pp），成为第一大价格带；1.5-2.0w档从22%骤降至6%（-15pp）。价格带中枢明显上移。
+</div>
+</div>
+
+
+<h4>机位资源效率（ERP数据）</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>指标</th><th>2026 H1</th><th>2025 H1</th><th>同比</th><th>判断</th></tr>
+</thead>
+<tbody>
+<tr><td>控位</td><td>5,438</td><td>5,755</td><td class="num-neg">-6%</td><td>资源投入收缩</td></tr>
+<tr><td>售卖</td><td>2,077</td><td>2,121</td><td class="num-neg">-2%</td><td>售卖微降</td></tr>
+<tr><td>机损</td><td>65万</td><td>56万</td><td class="num-neg">+18%</td><td>机损增长较快</td></tr>
+<tr><td>损失率</td><td>5.2%</td><td>4.2%</td><td class="num-neg">+1.0pp</td><td>损失率上升</td></tr>
+<tr><td>机位使用率</td><td>38%</td><td>37%</td><td class="num-pos">+1pp</td><td>使用率微升</td></tr>
+<tr><td>采购团数</td><td>209</td><td>220</td><td class="num-neg">-5%</td><td>团数减少</td></tr>
+<tr><td>出票团数</td><td>103</td><td>118</td><td class="num-neg">-13%</td><td>交付团数下降</td></tr>
+<tr><td>成团率</td><td>49%</td><td>54%</td><td class="num-neg">-5pp</td><td>成团率下滑</td></tr>
+</tbody>
+</table>
+</div>
+
+<h4>各区域机位使用率对比</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>区域</th><th>2026 H1控位</th><th>2025 H1控位</th><th>2026 H1售卖</th><th>2025 H1售卖</th><th>2026使用率</th><th>2025使用率</th><th>变化</th></tr>
+</thead>
+<tbody>
+<tr><td>西欧</td><td>2,319</td><td>2,109</td><td>951</td><td>933</td><td>41%</td><td>44%</td><td class="num-neg">-3pp</td></tr>
+<tr><td>南欧</td><td>866</td><td>1,094</td><td>376</td><td>363</td><td>43%</td><td>33%</td><td class="num-pos">+10pp</td></tr>
+<tr><td>北欧</td><td>521</td><td>490</td><td>227</td><td>222</td><td>44%</td><td>45%</td><td class="num-neg">-1pp</td></tr>
+<tr><td>英爱</td><td>499</td><td>650</td><td>167</td><td>184</td><td>33%</td><td>28%</td><td class="num-pos">+5pp</td></tr>
+<tr><td>东欧</td><td>555</td><td>1,007</td><td>151</td><td>224</td><td>27%</td><td>22%</td><td class="num-pos">+5pp</td></tr>
+<tr><td>俄罗斯</td><td>678</td><td>405</td><td>205</td><td>195</td><td>30%</td><td>48%</td><td class="num-neg">-18pp</td></tr>
+<tr style="background:var(--bg-light);font-weight:700;"><td>合计</td><td>5,438</td><td>5,755</td><td>2,077</td><td>2,121</td><td>38%</td><td>37%</td><td class="num-pos">+1pp</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="chart-box">
+<div class="chart-title">国旅品牌 机位核心指标同比</div>
+<svg viewBox="0 0 600 260" xmlns="http://www.w3.org/2000/svg">
+<line x1="80" y1="40" x2="80" y2="200" stroke="#e2e8f0" stroke-width="1"/>
+<line x1="80" y1="200" x2="560" y2="200" stroke="#e2e8f0" stroke-width="1"/>
+<text x="70" y="45" text-anchor="end" font-size="10" fill="#718096">+20%</text>
+<text x="70" y="85" text-anchor="end" font-size="10" fill="#718096">+10%</text>
+<text x="70" y="125" text-anchor="end" font-size="10" fill="#718096">0%</text>
+<text x="70" y="165" text-anchor="end" font-size="10" fill="#718096">-10%</text>
+<text x="70" y="205" text-anchor="end" font-size="10" fill="#718096">-20%</text>
+<line x1="80" y1="125" x2="560" y2="125" stroke="#cbd5e0" stroke-width="1" stroke-dasharray="4,2"/>
+<rect x="95" y="140" width="40" height="40" fill="#c53030" rx="3"/>
+<rect x="155" y="148" width="40" height="32" fill="#c53030" rx="3"/>
+<rect x="215" y="102" width="40" height="78" fill="#c53030" rx="3"/>
+<rect x="275" y="113" width="40" height="12" fill="#c53030" rx="3"/>
+<rect x="335" y="146" width="40" height="12" fill="#38a169" rx="3"/>
+<rect x="395" y="154" width="40" height="27" fill="#c53030" rx="3"/>
+<rect x="455" y="179" width="40" height="35" fill="#c53030" rx="3"/>
+<rect x="515" y="172" width="40" height="28" fill="#c53030" rx="3"/>
+<text x="115" y="135" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">-6%</text>
+<text x="175" y="143" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">-2%</text>
+<text x="235" y="97" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">+18%</text>
+<text x="295" y="108" text-anchor="middle" font-size="9" font-weight="600" fill="#fff">+1pp</text>
+<text x="355" y="143" text-anchor="middle" font-size="9" font-weight="600" fill="#fff">+1pp</text>
+<text x="415" y="149" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">-5%</text>
+<text x="475" y="174" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">-13%</text>
+<text x="535" y="167" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">-11pp</text>
+<text x="115" y="220" text-anchor="middle" font-size="10" fill="#4a5568">控位</text>
+<text x="175" y="220" text-anchor="middle" font-size="10" fill="#4a5568">售卖</text>
+<text x="235" y="220" text-anchor="middle" font-size="10" fill="#4a5568">机损</text>
+<text x="295" y="220" text-anchor="middle" font-size="10" fill="#4a5568">损失率</text>
+<text x="355" y="220" text-anchor="middle" font-size="10" fill="#4a5568">使用率</text>
+<text x="415" y="220" text-anchor="middle" font-size="10" fill="#4a5568">团数</text>
+<text x="475" y="220" text-anchor="middle" font-size="10" fill="#4a5568">出票团数</text>
+<text x="535" y="220" text-anchor="middle" font-size="10" fill="#4a5568">成团率</text>
+</svg>
+<div class="chart-desc">
+国旅品牌控位-6%、售卖-2%，资源投入和销售同步收缩。机损+18%但损失率从4.2%升至5.2%（+1.0pp），机损控制压力加大。机位使用率从36.9%微升至38.2%（+1pp），略有改善。但成团率从54%降至49%（-5pp），采购209个团交付103个团，约半数团未成行。需要重点分析成团率大幅下滑的原因：是控位策略问题、客源不足、还是产品排期问题。
+</div>
+</div>
+
+<h3>5. 看客单——收入结构是否健康</h3>
+
+<h4>5.1 单客收入趋势（月度、区域）</h4>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>月份</th><th>2026客单价</th><th>2025客单价</th><th>同比</th><th>2026人数</th><th>2025人数</th></tr>
+</thead>
+<tbody>
+<tr><td>1月</td><td>26,870元</td><td>21,199元</td><td class="num-pos">+27%</td><td>160</td><td>448</td></tr>
+<tr><td>2月</td><td>24,217元</td><td>18,315元</td><td class="num-pos">+32%</td><td>651</td><td>117</td></tr>
+<tr><td>3月</td><td>18,196元</td><td>18,697元</td><td class="num-neg">-3%</td><td>83</td><td>167</td></tr>
+<tr><td>4月</td><td>26,114元</td><td>22,614元</td><td class="num-pos">+16%</td><td>196</td><td>266</td></tr>
+<tr><td>5月</td><td>25,696元</td><td>23,100元</td><td class="num-pos">+11%</td><td>236</td><td>356</td></tr>
+<tr><td>6月</td><td>25,193元</td><td>23,439元</td><td class="num-pos">+8%</td><td>482</td><td>572</td></tr>
+<tr style="background:var(--bg-light);font-weight:700;"><td>H1合计</td><td>24,834元</td><td>22,019元</td><td class="num-pos">+13%</td><td>1,808</td><td>1,926</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="chart-box">
+<div class="chart-title">国旅品牌 月度客单价趋势（2025 H1 vs 2026 H1）</div>
+<svg viewBox="0 0 600 260" xmlns="http://www.w3.org/2000/svg">
+<line x1="70" y1="40" x2="70" y2="200" stroke="#e2e8f0" stroke-width="1"/>
+<line x1="70" y1="200" x2="560" y2="200" stroke="#e2e8f0" stroke-width="1"/>
+<text x="60" y="45" text-anchor="end" font-size="10" fill="#718096">30,000</text>
+<text x="60" y="85" text-anchor="end" font-size="10" fill="#718096">25,000</text>
+<text x="60" y="125" text-anchor="end" font-size="10" fill="#718096">20,000</text>
+<text x="60" y="165" text-anchor="end" font-size="10" fill="#718096">15,000</text>
+<text x="60" y="205" text-anchor="end" font-size="10" fill="#718096">0</text>
+<polyline points="108,142 194,166 280,164 366,148 452,152 538,146" fill="none" stroke="#a0aec0" stroke-width="2" stroke-dasharray="6,3"/>
+<circle cx="108" cy="142" r="4" fill="#a0aec0"/>
+<circle cx="194" cy="166" r="4" fill="#a0aec0"/>
+<circle cx="280" cy="164" r="4" fill="#a0aec0"/>
+<circle cx="366" cy="148" r="4" fill="#a0aec0"/>
+<circle cx="452" cy="152" r="4" fill="#a0aec0"/>
+<circle cx="538" cy="146" r="4" fill="#a0aec0"/>
+<polyline points="108,104 194,114 280,162 366,108 452,110 538,118" fill="none" stroke="#3182ce" stroke-width="3"/>
+<circle cx="108" cy="104" r="5" fill="#3182ce"/>
+<circle cx="194" cy="114" r="5" fill="#3182ce"/>
+<circle cx="280" cy="162" r="5" fill="#3182ce"/>
+<circle cx="366" cy="108" r="5" fill="#3182ce"/>
+<circle cx="452" cy="110" r="5" fill="#3182ce"/>
+<circle cx="538" cy="118" r="5" fill="#3182ce"/>
+<text x="108" y="92" text-anchor="middle" font-size="9" fill="#3182ce" font-weight="600">26,870</text>
+<text x="194" y="102" text-anchor="middle" font-size="9" fill="#3182ce" font-weight="600">24,217</text>
+<text x="280" y="180" text-anchor="middle" font-size="9" fill="#3182ce" font-weight="600">18,196</text>
+<text x="366" y="96" text-anchor="middle" font-size="9" fill="#3182ce" font-weight="600">26,114</text>
+<text x="452" y="98" text-anchor="middle" font-size="9" fill="#3182ce" font-weight="600">25,696</text>
+<text x="538" y="106" text-anchor="middle" font-size="9" fill="#3182ce" font-weight="600">25,193</text>
+<text x="108" y="220" text-anchor="middle" font-size="11" fill="#4a5568">1月</text>
+<text x="194" y="220" text-anchor="middle" font-size="11" fill="#4a5568">2月</text>
+<text x="280" y="220" text-anchor="middle" font-size="11" fill="#4a5568">3月</text>
+<text x="366" y="220" text-anchor="middle" font-size="11" fill="#4a5568">4月</text>
+<text x="452" y="220" text-anchor="middle" font-size="11" fill="#4a5568">5月</text>
+<text x="538" y="220" text-anchor="middle" font-size="11" fill="#4a5568">6月</text>
+<g transform="translate(380,30)">
+<line x1="0" y1="0" x2="24" y2="0" stroke="#3182ce" stroke-width="3"/><circle cx="12" cy="0" r="4" fill="#3182ce"/><text x="30" y="4" font-size="11" fill="#4a5568">2026 H1</text>
+<line x1="110" y1="0" x2="134" y2="0" stroke="#a0aec0" stroke-width="2" stroke-dasharray="6,3"/><circle cx="122" cy="0" r="4" fill="#a0aec0"/><text x="140" y="4" font-size="11" fill="#4a5568">2025 H1</text>
+</g>
+</svg>
+<div class="chart-desc">
+1-2月客单跳涨明显（分别+27%、+32%），春节错峰+高端产品放量是主因。3月客单回落到18,196元（同比-3%），跟去年同期基本持平。4-6月稳定在25,000-26,000元区间，同比+8%~+16%，客单中枢整体上移了一个台阶。
+</div>
+</div>
+
+<h4>5.2 客单提升靠的是什么——产品结构升级还是单纯涨价？</h4>
+
+<p>客单价从22,019元提升到24,834元（+13%），核心驱动力是<strong>产品结构升级</strong>，不是同一产品简单提价：</p>
+
+<p><strong>价格带迁移验证：</strong>低端（&lt;2.0w）收入从1,181万压缩到451万（-62%），高端（&gt;3.0w）收入从570万放大到1,166万（+105%）。成交结构明显上移，不是同一产品涨价。</p>
+
+<p><strong>区域结构验证：</strong>高客单区域北欧人数+53%、南欧人数+57%，低客单区域东欧+巴尔干人数-33%。成交端自然向高客单区域倾斜，供需两端都在推。</p>
+
+<p><strong>同档位放量验证：</strong>2.5-3.0w核心档收入从939万→1,586万（+69%），占比从22%→35%。同一价格带成交量放大，说明该档位产品供给和市场需求同步在涨。</p>
+
+<h4>5.3 不同客单区间的成交效率</h4>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>客单区间</th><th>代表区域</th><th>2026客单价</th><th>人数同比</th><th>收入同比</th><th>成交效率</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>高客单（3.0w+）</strong></td><td>北欧、英爱</td><td>31,000-35,000元</td><td class="num-pos">+24%</td><td class="num-pos">+55%</td><td>人数收入双增，高客单市场还在起量</td></tr>
+<tr><td><strong>中高客单（2.5-3.0w）</strong></td><td>西欧</td><td>25,000元</td><td class="num-neg">-17%</td><td class="num-neg">-7%</td><td>人数下滑但客单提升，收入降幅收窄，转化效率在改善</td></tr>
+<tr><td><strong>中等客单（2.0-2.5w）</strong></td><td>南欧</td><td>24,000元</td><td class="num-pos">+57%</td><td class="num-pos">+63%</td><td>人数收入双双高增，H1最亮眼的增量区域</td></tr>
+<tr><td><strong>低客单（2.0w以下）</strong></td><td>东欧+巴尔干</td><td>21,000元</td><td class="num-neg">-33%</td><td class="num-neg">-27%</td><td>人数收入双降，需区分主动淘汰还是竞争力不足</td></tr>
+</tbody>
+</table>
+</div>
+
+
+
+</div>
+
+<!-- ==================== 第四部分：月度趋势与同比归因分析 ==================== -->
+
+  </div>
+
+  <!-- TAB 4: 趋势与计划 -->
+  <div class="tab-panel" id="tab-nps">
+<div class="section page-break" id="sec7">
+<h2>七、服务交付体验分析</h2>
+
+<div class="tip-box">
+<strong>分析范围：</strong>Q2 53单 + 7月27单 = <strong>80单</strong>诋毁订单逐单复核，覆盖欧洲(北京公司)全部返程订单。
+</div>
+
+<h3>1. Q2+7月拟合服务交付体验概览</h3>
+
+<h4>1.1 各月核心指标</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>指标</th><th>4月</th><th>5月</th><th>6月</th><th>7月</th><th>趋势判断</th></tr>
+</thead>
+<tbody>
+<tr><td>提交单</td><td>31</td><td>119</td><td>152</td><td>245</td><td>规模持续扩大</td></tr>
+<tr><td>出行单</td><td>11</td><td>58</td><td>84</td><td>101</td><td>—</td></tr>
+<tr><td>出行单推荐率</td><td>100%</td><td>85%</td><td>71%</td><td>72%</td><td class="num-neg">5月→6月暴跌14pp</td></tr>
+<tr><td>5分好评率</td><td>82%</td><td>50%</td><td>48%</td><td>29%</td><td class="num-neg">4个月跌53pp</td></tr>
+<tr><td>拟合诋毁率</td><td>12%</td><td>6%</td><td>22%</td><td>17%</td><td class="num-neg">6月暴增后略降</td></tr>
+<tr><td>拟合服务交付体验</td><td>47%</td><td>52%</td><td>35%</td><td>—</td><td>6月恶化显著</td></tr>
+<tr><td>反馈覆盖率</td><td>42%</td><td>45%</td><td>53%</td><td>—</td><td>逐步提升</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="chart-box">
+<div class="chart-title">5分好评率与拟合诋毁率趋势（4月-7月）</div>
+<svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg">
+<!-- 网格线 -->
+<line x1="70" y1="40" x2="70" y2="210" stroke="#e2e8f0" stroke-width="1"/>
+<line x1="70" y1="210" x2="560" y2="210" stroke="#e2e8f0" stroke-width="1"/>
+<!-- Y轴标签 -->
+<text x="60" y="45" text-anchor="end" font-size="10" fill="#718096">100%</text>
+<text x="60" y="88" text-anchor="end" font-size="10" fill="#718096">75%</text>
+<text x="60" y="130" text-anchor="end" font-size="10" fill="#718096">50%</text>
+<text x="60" y="173" text-anchor="end" font-size="10" fill="#718096">25%</text>
+<text x="60" y="215" text-anchor="end" font-size="10" fill="#718096">0%</text>
+<!-- 5分好评率折线 (蓝色) -->
+<polyline points="108,55 248,105 388,110 528,172" fill="none" stroke="#3182ce" stroke-width="3"/>
+<circle cx="108" cy="55" r="5" fill="#3182ce"/>
+<circle cx="248" cy="105" r="5" fill="#3182ce"/>
+<circle cx="388" cy="110" r="5" fill="#3182ce"/>
+<circle cx="528" cy="172" r="5" fill="#3182ce"/>
+<!-- 拟合诋毁率折线 (红色) -->
+<polyline points="108,182 248,195 388,155 528,168" fill="none" stroke="#c53030" stroke-width="3"/>
+<circle cx="108" cy="182" r="5" fill="#c53030"/>
+<circle cx="248" cy="195" r="5" fill="#c53030"/>
+<circle cx="388" cy="155" r="5" fill="#c53030"/>
+<circle cx="528" cy="168" r="5" fill="#c53030"/>
+<!-- 数据标签 -->
+<text x="108" y="42" text-anchor="middle" font-size="10" fill="#3182ce" font-weight="600">82%</text>
+<text x="248" y="92" text-anchor="middle" font-size="10" fill="#3182ce" font-weight="600">50%</text>
+<text x="388" y="97" text-anchor="middle" font-size="10" fill="#3182ce" font-weight="600">48%</text>
+<text x="528" y="188" text-anchor="middle" font-size="10" fill="#3182ce" font-weight="600">29%</text>
+<text x="108" y="200" text-anchor="middle" font-size="10" fill="#c53030" font-weight="600">12%</text>
+<text x="248" y="212" text-anchor="middle" font-size="10" fill="#c53030" font-weight="600">6%</text>
+<text x="388" y="143" text-anchor="middle" font-size="10" fill="#c53030" font-weight="600">22%</text>
+<text x="528" y="156" text-anchor="middle" font-size="10" fill="#c53030" font-weight="600">17%</text>
+<!-- X轴标签 -->
+<text x="108" y="232" text-anchor="middle" font-size="12" fill="#4a5568" font-weight="600">4月</text>
+<text x="248" y="232" text-anchor="middle" font-size="12" fill="#4a5568" font-weight="600">5月</text>
+<text x="388" y="232" text-anchor="middle" font-size="12" fill="#4a5568" font-weight="600">6月</text>
+<text x="528" y="232" text-anchor="middle" font-size="12" fill="#4a5568" font-weight="600">7月</text>
+<!-- 图例 -->
+<g transform="translate(380,30)">
+<line x1="0" y1="0" x2="24" y2="0" stroke="#3182ce" stroke-width="3"/><circle cx="12" cy="0" r="4" fill="#3182ce"/><text x="30" y="4" font-size="11" fill="#4a5568">5分好评率</text>
+<line x1="110" y1="0" x2="134" y2="0" stroke="#c53030" stroke-width="3"/><circle cx="122" cy="0" r="4" fill="#c53030"/><text x="140" y="4" font-size="11" fill="#4a5568">拟合诋毁率</text>
+</g>
+</svg>
+<div class="chart-desc">
+<strong>关键洞察：</strong>5分好评率从4月的82%断崖式下跌至7月的29%，跌幅超过53个百分点。这意味着<strong>不只是"不满意的人在增加"，更是"满意的人不再主动好评"</strong>。与此同时，拟合诋毁率在6月暴增至22%后7月略降至17%，但整体客户体验压力仍在持续。
+</div>
+</div>
+
+<h4>1.2 各月业务规模与客户体验对比</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>维度</th><th>4月</th><th>5月</th><th>6月</th><th>7月</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>业务规模</strong></td><td>小（31单）</td><td>增长（119单）</td><td>持续增长（152单）</td><td>大幅扩大（245单）</td></tr>
+<tr><td><strong>客户体验（拟合服务交付体验）</strong></td><td>稳定（47%）</td><td>改善（52%）</td><td>恶化（35%）</td><td>—</td></tr>
+<tr><td><strong>推荐用户（出行单推荐率）</strong></td><td>稳定（100%）</td><td>稳定（85%）</td><td>下滑（71%）</td><td>持平（72%）</td></tr>
+<tr><td><strong>诋毁用户（拟合诋毁）</strong></td><td>正常（2单）</td><td>下降（4单）</td><td>暴增（20单）</td><td>高位（15单+12单缺陷）</td></tr>
+<tr><td><strong>主要问题</strong></td><td>样本量小，已有2单诋毁</td><td>5分好评率断崖下跌32pp</td><td>投诉暴增至15单，负面反馈结构恶化</td><td>不成团问题暴增至14单，占诋毁一半以上</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>2. 用户不满意的四大根因</h3>
+
+<p>从80单诋毁订单的逐单内容分析，用户不满意的真实原因<strong>不是单点服务失误</strong>，而是<strong>产品供应链、渠道管理、应急机制</strong>三个底层能力的系统性缺陷：</p>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>根因类别</th><th>Q2占比</th><th>7月占比</th><th>典型场景</th><th>本质问题</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>成团/履约问题</strong></td><td>27%</td><td class="num-neg"><strong>56%</strong></td><td>成团后不成团、一般不成团、收客不足取消</td><td>供应链前端收客与控位能力薄弱</td></tr>
+<tr><td><strong>行程体验问题</strong></td><td>23%</td><td>33%</td><td>酒店设施差/卫生差、车程长、行程节奏失控</td><td>产品标准在执行层打折扣</td></tr>
+<tr><td><strong>价格公平问题</strong></td><td class="num-neg"><strong>23%</strong></td><td>4%</td><td>同团不同价/门店让利返佣</td><td>渠道价格管控机制失效</td></tr>
+<tr><td><strong>应急能力问题</strong></td><td>4%</td><td>11%</td><td>火山喷发航班取消、滞留机场无人管</td><td>不可抗力下的应急响应缺失</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>3. 逐类深挖真实原因</h3>
+
+<h4>3.1 成团问题——不是"运气不好"，是收客管理失控</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th style="width:22%">数据信号</th><th style="width:38%">真实原因</th></tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<ul style="margin-left:15px; color:var(--text-secondary);">
+<li>Q2成团问题7单（成团后不成团6单+常规不成团1单），全部发生在行前</li>
+<li>7月成团问题暴增至15单，其中"一般不成团"13单</li>
+<li>6月"已成交(全部退订)"的诋毁率高达24%</li>
+</ul>
+</td>
+<td>
+<ul style="margin-left:15px; color:var(--text-secondary);">
+<li><strong>收客监控滞后</strong>：临期才通知不成团</li>
+<li><strong>成团承诺随意</strong>：有订单承诺已经成团，结果反悔</li>
+<li><strong>转团补偿不到位</strong>：转团优惠仅按5%违约金核算，客人认为"不是补偿是套路"</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h4>3.2 行程体验问题——酒店是最大短板</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th style="width:22%">数据信号</th><th style="width:38%">真实原因</th></tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<ul style="margin-left:15px; color:var(--text-secondary);">
+<li>Q2酒店相关不满6单，7月3单</li>
+<li>涉及线路：法意瑞、俄罗斯、英爱、巴尔干、东欧——<strong>跨线路共性</strong></li>
+</ul>
+</td>
+<td>
+<ul style="margin-left:15px; color:var(--text-secondary);">
+<li><strong>酒店标准模糊</strong>："4钻酒店"实际"如家水平"</li>
+<li><strong>披露与实物不符</strong>：行程单承诺与实际入住不一致</li>
+<li><strong>没有酒店黑名单</strong>：重复出现问题的酒店仍在继续使用</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h4>3.3 价格公平问题——同团不同价，线下门店渠道让利反噬国旅品牌</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th style="width:22%">数据信号</th><th style="width:38%">真实原因与核心诉求</th></tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<ul style="margin-left:15px; color:var(--text-secondary);">
+<li>Q2同团不同价5单+单房差定价1单，合计6单（23%）</li>
+<li>所有同团不同价备注均指向<strong>"线下门店订单让价，判定为国旅品牌责任"</strong></li>
+</ul>
+</td>
+<td>
+<ul style="margin-left:15px; color:var(--text-secondary);">
+<li><strong>门店返佣不透明</strong>：门店私下让利返佣</li>
+<li><strong>价格监控缺失</strong>：无法实时核查门店与客人的实际签约价</li>
+</ul>
+<div style="margin-top:10px; padding:10px; background:#fef2f2; border-radius:6px; font-size:0.9rem; color:#b83a3a;">
+<strong>核心诉求：</strong>将诋毁从供应商责任调整为门店责任，不计入国旅品牌服务交付体验考核
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h4>3.4 退订损失不满——合同收损合法合规，问题在于"客人预期管理不足"</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th style="width:22%">数据信号</th><th style="width:38%">真实原因与核心诉求</th></tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<ul style="margin-left:15px; color:var(--text-secondary);">
+<li>Q2共5单临时退订客人不满</li>
+<li>投诉组已判定客人责任</li>
+</ul>
+</td>
+<td>
+<ul style="margin-left:15px; color:var(--text-secondary);">
+<li>法律层面：按合同收损完全合规</li>
+<li>投诉判定：客人责任，已明确</li>
+<li>服务交付体验考核：诋毁计入国旅品牌，被"误伤"</li>
+<li>客人感受："我不去还要扣我钱"，体验极差</li>
+</ul>
+<div style="margin-top:10px; padding:10px; background:#fef2f2; border-radius:6px; font-size:0.9rem; color:#b83a3a;">
+<strong>核心诉求：</strong>"投诉组已判定客人责任"的订单，不应计入供应商服务交付体验考核
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h4>3.5 应急能力问题——不可抗力暴露机制短板</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th style="width:22%">数据信号</th><th style="width:38%">真实原因</th></tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<ul style="margin-left:15px; color:var(--text-secondary);">
+<li>7月埃特纳火山喷发导致3单航班取消/行程中断</li>
+<li>关键词："携程没有及时调整""滞留机场无人管"</li>
+</ul>
+</td>
+<td>
+<ul style="margin-left:15px; color:var(--text-secondary);">
+<li><strong>信息监控滞后</strong>：火山6月26日活跃，7月5日升红色预警，7月6日仍安排客人前往机场</li>
+<li><strong>预案缺失</strong>：航班取消后响应慢，客人被迫滞留</li>
+<li><strong>主动沟通不足</strong>：客人期望"提前通知"，实际"到了机场才告知"</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h3>4. 可改善性问题筛选矩阵</h3>
+
+<p>按照"影响程度 × 改善难度"两个维度，对问题进行分类：</p>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>问题</th><th>影响程度</th><th>改善难度</th><th>优先级</th><th>经营抓手</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>成团管理</strong></td><td>高（7月占56%）</td><td>中</td><td><span style="background:#c53030; color:#fff; padding:2px 10px; border-radius:4px; font-size:0.8rem; font-weight:700;">P0</span></td><td>收客预警机制、班期合并策略</td></tr>
+<tr><td><strong>酒店标准执行</strong></td><td>高（跨线路共性）</td><td>中</td><td><span style="background:#c53030; color:#fff; padding:2px 10px; border-radius:4px; font-size:0.8rem; font-weight:700;">P0</span></td><td>酒店白名单、实地考察、黑名单</td></tr>
+<tr><td><strong>渠道价格管控</strong></td><td>高（100%渠道责任）</td><td>中</td><td><span style="background:#d69e2e; color:#fff; padding:2px 10px; border-radius:4px; font-size:0.8rem; font-weight:700;">P1</span></td><td>门店价格监控、联运政策统一</td></tr>
+<tr><td><strong>行程设计优化</strong></td><td>中</td><td>中低</td><td><span style="background:#d69e2e; color:#fff; padding:2px 10px; border-radius:4px; font-size:0.8rem; font-weight:700;">P1</span></td><td>产品经理复盘、线路节奏调优</td></tr>
+<tr><td><strong>应急响应机制</strong></td><td>中</td><td>中</td><td><span style="background:#38a169; color:#fff; padding:2px 10px; border-radius:4px; font-size:0.8rem; font-weight:700;">P2</span></td><td>预警监控、应急预案、主动沟通SOP</td></tr>
+<tr><td><strong>退改政策沟通</strong></td><td>低（7月已消失）</td><td>低</td><td>已改善</td><td>—</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>5. 三大核心经营抓手</h3>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th style="width:20%">抓手</th><th style="width:38%">现状痛点</th><th style="width:38%">改善逻辑</th></tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>抓手一：成团管理——从"事后通知"到"事前预警"</strong></td>
+<td>
+<ul style="margin-left:15px; color:var(--text-secondary);">
+<li>7月"一般不成团"13单，占诋毁订单近一半</li>
+<li>不成团通知时间过晚，客人签证/机票/假期已安排</li>
+</ul>
+</td>
+<td>
+<ul style="margin-left:15px; color:var(--text-secondary);">
+<li>建立班期健康度看板：出发前75天/45天/30天分别触发预警</li>
+<li>收客不足班期提前合并或劝转，而非临期取消</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td><strong>抓手二：酒店管控——从"纸面4钻"到"体验4钻"</strong></td>
+<td>
+<ul style="margin-left:15px; color:var(--text-secondary);">
+<li>酒店不满是跨线路、跨月份的共性问题</li>
+<li>"4钻"标签与实际体验差距大</li>
+</ul>
+</td>
+<td>
+<ul style="margin-left:15px; color:var(--text-secondary);">
+<li>建立酒店体验档案：每次返程后汇总酒店评分，低于阈值的列入观察名单</li>
+<li>关键线路酒店实地考察</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td><strong>抓手三：渠道价格管控——门店责任申诉</strong></td>
+<td>
+<ul style="margin-left:15px; color:var(--text-secondary);">
+<li>同团不同价100%判定为国旅品牌责任</li>
+<li>门店返佣导致线上客人"被割韭菜"感强烈</li>
+</ul>
+</td>
+<td>
+<ul style="margin-left:15px; color:var(--text-secondary);">
+<li>目前无法监控到门店跟客人的成交价格，因此只能向投诉组提交责任申诉</li>
+</ul>
+<div style="margin-top:10px; padding:10px; background:#fef2f2; border-radius:6px; font-size:0.9rem; color:#b83a3a;">
+<strong>诉求：</strong>将诋毁从供应商责任调整为门店责任，不计入国旅品牌服务交付体验考核
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h3>6. 改进闭环——下一步具体改什么</h3>
+
+<h4>6.1 短期行动（1-2周内，立即可执行）</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>序号</th><th>行动项</th><th>责任方</th><th>验收标准</th><th>关联问题</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td><strong>梳理7月不成团班期清单</strong></td><td>产品组</td><td>输出《7月不成团班期复盘报告》</td><td>成团问题</td></tr>
+<tr><td>2</td><td><strong>建立不成团预警机制</strong></td><td>运营组</td><td>出发前45天收客不足50%自动预警</td><td>成团问题</td></tr>
+<tr><td>3</td><td><strong>酒店投诉TOP5清单</strong></td><td>产品组</td><td>汇总Q2+7月酒店相关不满，暂停问题酒店</td><td>酒店体验</td></tr>
+<tr><td>4</td><td><strong>同团不同价排查</strong></td><td>渠道组</td><td>输出《门店价格偏差报告》</td><td>价格公平</td></tr>
+</tbody>
+</table>
+</div>
+
+<h4>6.2 中期行动（1个月内，需资源投入）</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>序号</th><th>行动项</th><th>责任方</th><th>验收标准</th><th>关联问题</th></tr>
+</thead>
+<tbody>
+<tr><td>5</td><td><strong>班期健康度看板上架</strong></td><td>数据/运营</td><td>可视化收客进度、风险等级</td><td>成团问题</td></tr>
+<tr><td>6</td><td><strong>酒店白名单机制</strong></td><td>产品/采购</td><td>白名单覆盖欧洲Top10目的地</td><td>酒店体验</td></tr>
+<tr><td>7</td><td><strong>门店价格监控规则</strong></td><td>渠道/技术</td><td>系统自动比对，差异>3%触发预警</td><td>价格公平</td></tr>
+<tr><td>8</td><td><strong>不可抗力应急预案</strong></td><td>客服/运营</td><td>输出《应急响应SOP手册》</td><td>应急能力</td></tr>
+</tbody>
+</table>
+</div>
+
+<h4>6.3 长期行动（1个季度内，机制建设）</h4>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>序号</th><th>行动项</th><th>责任方</th><th>验收标准</th><th>关联问题</th></tr>
+</thead>
+<tbody>
+<tr><td>9</td><td><strong>服务交付体验与产品绩效挂钩</strong></td><td>管理组</td><td>Q3起KPI中服务交付体验权重≥20%</td><td>全局</td></tr>
+<tr><td>10</td><td><strong>月度诋毁订单复盘会</strong></td><td>运营/产品/客服</td><td>连续3个月召开</td><td>全局</td></tr>
+<tr><td>11</td><td><strong>沉默用户激活机制</strong></td><td>客服/运营</td><td>无反馈用户触达率≥50%</td><td>5分好评率</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>7. 效果验证指标</h3>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>指标</th><th>当前值（7月）</th><th>目标值（Q3末）</th><th>监控频率</th></tr>
+</thead>
+<tbody>
+<tr><td>出行单推荐率</td><td>72%</td><td class="num-pos">≥75%</td><td>每月</td></tr>
+<tr><td>5分好评率</td><td>29%</td><td class="num-pos">≥40%</td><td>每月</td></tr>
+<tr><td>拟合诋毁率</td><td>17%</td><td class="num-pos">≤12%</td><td>每月</td></tr>
+<tr><td>成团问题占比</td><td>52%</td><td class="num-pos">≤30%</td><td>每月</td></tr>
+<tr><td>同团不同价订单数</td><td>1单/月</td><td class="num-pos">0单</td><td>每月</td></tr>
+<tr><td>酒店相关不满订单数</td><td>3单/月</td><td class="num-pos">≤1单</td><td>每月</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="conclusion-box">
+<h3 style="color:#fff; margin-top:0;">核心结论</h3>
+<p style="color: rgba(255,255,255,0.9); line-height: 1.85;">国旅品牌服务交付体验的恶化不是单点服务问题，而是<strong>成团管理、酒店管控、渠道价格、应急响应</strong>四个底层能力的系统性缺陷。其中<strong>成团问题在7月已占诋毁订单的56%</strong>，是最紧迫的改善点。5分好评率从82%跌至29%，说明满意客户的沉默和流失同样需要关注。短期聚焦成团预警和酒店清单，中期建设班期看板和价格监控，长期将服务交付体验纳入产品绩效考核，才能形成完整的改进闭环。</p>
+</div>
+
+</div>
+  </div>
+  <div class="tab-panel" id="tab-trend">
+<div class="section page-break" id="sec4">
+<h2>四、月度趋势与同比归因分析</h2>
+
+<h3>1. 翔龙品牌月度趋势</h3>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>月份</th><th>2026人数</th><th>2025人数</th><th>人数同比</th><th>2026收入</th><th>2025收入</th><th>收入同比</th></tr>
+</thead>
+<tbody>
+<tr><td>1月</td><td>1,083</td><td>1,602</td><td class="num-neg">-32%</td><td>1,997万</td><td>3,459万</td><td class="num-neg">-42%</td></tr>
+<tr><td>2月</td><td>2,378</td><td>408</td><td class="num-pos">+482%</td><td>5,399万</td><td>792万</td><td class="num-pos">+581%</td></tr>
+<tr><td>3月</td><td>1,725</td><td>1,470</td><td class="num-pos">+17%</td><td>2,657万</td><td>2,089万</td><td class="num-pos">+27%</td></tr>
+<tr><td>4月</td><td>1,463</td><td>1,426</td><td class="num-pos">+2%</td><td>3,205万</td><td>2,820万</td><td class="num-pos">+13%</td></tr>
+<tr><td>5月</td><td>2,155</td><td>2,165</td><td class="num-neg">-0%</td><td>4,945万</td><td>4,438万</td><td class="num-pos">+11%</td></tr>
+<tr><td>6月</td><td>2,948</td><td>2,921</td><td class="num-pos">+0%</td><td>6,378万</td><td>6,314万</td><td class="num-pos">+1%</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="chart-box">
+<div class="chart-title">翔龙品牌 月度出团人数趋势（2025 H1 vs 2026 H1）</div>
+<svg viewBox="0 0 600 260" xmlns="http://www.w3.org/2000/svg">
+<line x1="70" y1="40" x2="70" y2="200" stroke="#e2e8f0" stroke-width="1"/>
+<line x1="70" y1="200" x2="560" y2="200" stroke="#e2e8f0" stroke-width="1"/>
+<text x="60" y="45" text-anchor="end" font-size="10" fill="#718096">3,000</text>
+<text x="60" y="85" text-anchor="end" font-size="10" fill="#718096">2,000</text>
+<text x="60" y="125" text-anchor="end" font-size="10" fill="#718096">1,000</text>
+<text x="60" y="165" text-anchor="end" font-size="10" fill="#718096">500</text>
+<text x="60" y="205" text-anchor="end" font-size="10" fill="#718096">0</text>
+<!-- 2025折线 -->
+<polyline points="108,128 194,185 280,133 366,136 452,136 538,137" fill="none" stroke="#a0aec0" stroke-width="2" stroke-dasharray="6,3"/>
+<circle cx="108" cy="128" r="4" fill="#a0aec0"/>
+<circle cx="194" cy="185" r="4" fill="#a0aec0"/>
+<circle cx="280" cy="133" r="4" fill="#a0aec0"/>
+<circle cx="366" cy="136" r="4" fill="#a0aec0"/>
+<circle cx="452" cy="136" r="4" fill="#a0aec0"/>
+<circle cx="538" cy="137" r="4" fill="#a0aec0"/>
+<!-- 2026折线 -->
+<polyline points="108,140 194,56 280,124 366,130 452,130 538,95" fill="none" stroke="#3182ce" stroke-width="3"/>
+<circle cx="108" cy="140" r="5" fill="#3182ce"/>
+<circle cx="194" cy="56" r="5" fill="#3182ce"/>
+<circle cx="280" cy="124" r="5" fill="#3182ce"/>
+<circle cx="366" cy="130" r="5" fill="#3182ce"/>
+<circle cx="452" cy="130" r="5" fill="#3182ce"/>
+<circle cx="538" cy="95" r="5" fill="#3182ce"/>
+<!-- X轴标签 -->
+<text x="108" y="220" text-anchor="middle" font-size="11" fill="#4a5568">1月</text>
+<text x="194" y="220" text-anchor="middle" font-size="11" fill="#4a5568">2月</text>
+<text x="280" y="220" text-anchor="middle" font-size="11" fill="#4a5568">3月</text>
+<text x="366" y="220" text-anchor="middle" font-size="11" fill="#4a5568">4月</text>
+<text x="452" y="220" text-anchor="middle" font-size="11" fill="#4a5568">5月</text>
+<text x="538" y="220" text-anchor="middle" font-size="11" fill="#4a5568">6月</text>
+<!-- 图例 -->
+<g transform="translate(380,30)">
+<line x1="0" y1="0" x2="24" y2="0" stroke="#3182ce" stroke-width="3"/><circle cx="12" cy="0" r="4" fill="#3182ce"/><text x="30" y="4" font-size="11" fill="#4a5568">2026 H1</text>
+<line x1="110" y1="0" x2="134" y2="0" stroke="#a0aec0" stroke-width="2" stroke-dasharray="6,3"/><circle cx="122" cy="0" r="4" fill="#a0aec0"/><text x="140" y="4" font-size="11" fill="#4a5568">2025 H1</text>
+</g>
+</svg>
+<div class="chart-desc">
+<strong>经营解读：</strong>1-2月受春节错位影响波动剧烈（1月-32%，2月+482%），合并1-2月后同比增长72%。3-4月春季恢复平稳（3月+17%，4月+2%）。5-6月旺季预热阶段增速放缓（5月人数持平、收入+11%，6月人数持平、收入+1%）。整体月度趋势稳定，无异常波动。
+</div>
+</div>
+
+<p><strong>三段分析：</strong></p>
+<ul style="margin-left: 20px; color: var(--text-secondary);">
+<li><strong>1-2月（春节期）</strong>：1月受春节错位影响大幅下降，2月因2026年春节在2月出现爆发式增长。合并1-2月后同比仍增长72%，但仍受节假日错位及出发节奏影响。不能直接称为"剔除春节因素后的实际增长"。</li>
+<li><strong>3-4月（春季恢复）</strong>：3月增长17%，4月增长2%，春季恢复平稳。4月毛利从2025年的亏损（-82万）转为盈利（203万），改善显著。</li>
+<li><strong>5-6月（旺季预热）</strong>：5月人数持平、收入+11%，6月人数持平、收入+1%，增速放缓。</li>
+</ul>
+
+<h3>2. 国旅品牌月度趋势</h3>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>月份</th><th>2026人数</th><th>2025人数</th><th>人数同比</th><th>2026收入</th><th>2025收入</th><th>收入同比</th></tr>
+</thead>
+<tbody>
+<tr><td>1月</td><td>160</td><td>448</td><td class="num-neg">-64%</td><td>429万</td><td>949万</td><td class="num-neg">-54%</td></tr>
+<tr><td>2月</td><td>651</td><td>117</td><td class="num-pos">+456%</td><td>1,576万</td><td>214万</td><td class="num-pos">+635%</td></tr>
+<tr><td>3月</td><td>83</td><td>167</td><td class="num-neg">-50%</td><td>151万</td><td>312万</td><td class="num-neg">-51%</td></tr>
+<tr><td>4月</td><td>196</td><td>266</td><td class="num-neg">-26%</td><td>511万</td><td>601万</td><td class="num-neg">-14%</td></tr>
+<tr><td>5月</td><td>236</td><td>356</td><td class="num-neg">-33%</td><td>606万</td><td>822万</td><td class="num-neg">-26%</td></tr>
+<tr><td>6月</td><td>482</td><td>572</td><td class="num-neg">-15%</td><td>1,214万</td><td>1,340万</td><td class="num-neg">-9%</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="chart-box">
+<div class="chart-title">国旅品牌 月度成交人数趋势（2025 H1 vs 2026 H1）</div>
+<svg viewBox="0 0 600 260" xmlns="http://www.w3.org/2000/svg">
+<line x1="70" y1="40" x2="70" y2="200" stroke="#e2e8f0" stroke-width="1"/>
+<line x1="70" y1="200" x2="560" y2="200" stroke="#e2e8f0" stroke-width="1"/>
+<text x="60" y="45" text-anchor="end" font-size="10" fill="#718096">700</text>
+<text x="60" y="85" text-anchor="end" font-size="10" fill="#718096">500</text>
+<text x="60" y="125" text-anchor="end" font-size="10" fill="#718096">300</text>
+<text x="60" y="165" text-anchor="end" font-size="10" fill="#718096">100</text>
+<text x="60" y="205" text-anchor="end" font-size="10" fill="#718096">0</text>
+<!-- 2025折线 -->
+<polyline points="108,143 194,182 280,152 366,141 452,131 538,118" fill="none" stroke="#a0aec0" stroke-width="2" stroke-dasharray="6,3"/>
+<circle cx="108" cy="143" r="4" fill="#a0aec0"/>
+<circle cx="194" cy="182" r="4" fill="#a0aec0"/>
+<circle cx="280" cy="152" r="4" fill="#a0aec0"/>
+<circle cx="366" cy="141" r="4" fill="#a0aec0"/>
+<circle cx="452" cy="131" r="4" fill="#a0aec0"/>
+<circle cx="538" cy="118" r="4" fill="#a0aec0"/>
+<!-- 2026折线 -->
+<polyline points="108,171 194,68 280,177 366,152 452,144 538,123" fill="none" stroke="#c53030" stroke-width="3"/>
+<circle cx="108" cy="171" r="5" fill="#c53030"/>
+<circle cx="194" cy="68" r="5" fill="#c53030"/>
+<circle cx="280" cy="177" r="5" fill="#c53030"/>
+<circle cx="366" cy="152" r="5" fill="#c53030"/>
+<circle cx="452" cy="144" r="5" fill="#c53030"/>
+<circle cx="538" cy="123" r="5" fill="#c53030"/>
+<!-- X轴标签 -->
+<text x="108" y="220" text-anchor="middle" font-size="11" fill="#4a5568">1月</text>
+<text x="194" y="220" text-anchor="middle" font-size="11" fill="#4a5568">2月</text>
+<text x="280" y="220" text-anchor="middle" font-size="11" fill="#4a5568">3月</text>
+<text x="366" y="220" text-anchor="middle" font-size="11" fill="#4a5568">4月</text>
+<text x="452" y="220" text-anchor="middle" font-size="11" fill="#4a5568">5月</text>
+<text x="538" y="220" text-anchor="middle" font-size="11" fill="#4a5568">6月</text>
+<!-- 图例 -->
+<g transform="translate(380,30)">
+<line x1="0" y1="0" x2="24" y2="0" stroke="#c53030" stroke-width="3"/><circle cx="12" cy="0" r="4" fill="#c53030"/><text x="30" y="4" font-size="11" fill="#4a5568">2026 H1</text>
+<line x1="110" y1="0" x2="134" y2="0" stroke="#a0aec0" stroke-width="2" stroke-dasharray="6,3"/><circle cx="122" cy="0" r="4" fill="#a0aec0"/><text x="140" y="4" font-size="11" fill="#4a5568">2025 H1</text>
+</g>
+</svg>
+<div class="chart-desc">
+<strong>经营解读：</strong>国旅品牌月度趋势呈现与翔龙品牌不同的特征。1-2月同样受春节错位影响（1月-64%，2月+456%），合并1-2月后人数+43%，收入+72%。但3-6月春季恢复远弱于翔龙品牌：3月仅成交83人/151万，是全年最低月份；4-6月持续负增长（-26%、-33%、-15%），5月端午假期表现不佳，6月下滑幅度收窄但仍为负增长，暑期收客启动慢于去年同期。
+</div>
+</div>
+
+<p><strong>三段分析：</strong></p>
+<ul style="margin-left: 20px; color: var(--text-secondary);">
+<li><strong>1-2月（春节期）</strong>：1月因春节错位大幅下滑，2月爆发增长。合并1-2月后：2026年811人/2,006万 vs 2025年565人/1,164万，人数+43%，收入+72%。</li>
+<li><strong>3-4月（春季恢复）</strong>：3月大幅下滑50%，4月下滑14%，春季恢复远弱于翔龙品牌。3月仅成交83人/151万，是全年最低月份，可能反映春季产品供给或成交端运营动能不足。</li>
+<li><strong>5-6月（旺季预热）</strong>：5月下滑33%，6月下滑9%。5月端午假期表现不佳，6月下滑幅度收窄但仍为负增长，暑期收客启动慢于去年同期。</li>
+</ul>
+
+<h3>3. 携程大盘月度趋势与竞争格局</h3>
+
+<p>从携程平台数据看，2026年H1大盘呈现"线下门店爆发增长、线上基本持平"的格局：</p>
+<ul style="margin-left: 20px; color: var(--text-secondary);">
+<li>线下门店大盘GMV同比增长52%，是大盘增长的主要引擎</li>
+<li>线上大盘GMV仅增长0%，基本持平</li>
+<li>双品牌线下门店增速（+79%）远超其他供应商（+35%），份额从38%提升至45%</li>
+<li>双品牌线上增速（+14%）优于大盘（+0%），其他供应商线上下降11%</li>
+<li>国旅品牌整体增速（+10%）低于双品牌增速（+60%），国旅品牌在双品牌内部的相对贡献有所下降</li>
+</ul>
+
+</div>
+
+<!-- ==================== 第五部分：H2行动计划 ==================== -->
+<div class="section page-break" id="sec5">
+<h2>五、H2行动计划与重点事项</h2>
+
+<h3>翔龙品牌H2重点动作</h3>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th style="width:22%">重点方向</th><th style="width:50%">H2重点动作</th><th style="width:28%">预期改善指标</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>机位资源效率待提升</strong><br/><span style="font-size:0.85rem;color:var(--text-muted)">旺季效益低+机损增长</span></td><td>按周跟踪销售进度与客源结构，动态调整机位投放与产品组合；锁定暑期、国庆核心资源，控制低成团率团期</td><td>机位使用率提升，机损增速受控；旺季效益持续改善</td></tr>
+<tr><td><strong>西欧利润持续改善</strong></td><td>聚焦西欧高毛利产品，优化产品组合与定价策略；重点提升中高价格带占比，巩固毛利改善趋势</td><td>西欧毛利率稳步提升，利润额持续增长</td></tr>
+<tr><td><strong>电商渠道结构待优化</strong></td><td>巩固携程电商核心地位，梳理途牛、同程渠道结构，聚焦高转化高毛利产品，适度拓展非携程渠道占比</td><td>渠道转化效率持续提升，渠道结构趋于均衡</td></tr>
+<tr><td><strong>东欧+巴尔干成交待恢复</strong></td><td>围绕产品供给和价格竞争力优化策略，明确重点线路与定价策略，加强渠道覆盖</td><td>成交规模逐步恢复，同比下降趋势收窄</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>国旅品牌H2行动计划</h3>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th style="width:22%">重点方向</th><th style="width:50%">H2重点动作</th><th style="width:28%">预期改善指标</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>线上成交恢复</strong></td><td>拆解曝光、点击、咨询及下单转化链路，优化产品展示、价格策略和重点产品供给，提升线上成交效率</td><td>线上成交端H2人数同比降幅收窄至-5%以内</td></tr>
+<tr><td><strong>暑期团队交付与服务保障</strong></td><td>聚焦已收客团队，前置落实资源确认、出团衔接及异常预案；加强行前、行中、行后服务跟进，保障团队顺利出行</td><td>暑期团队平稳出团，服务满意度及履约质量持续提升</td></tr>
+<tr><td><strong>淡季产品与市占提升</strong></td><td>围绕淡季出行需求，完善主销目的地产品线和价格带，打造具备竞争力的引流及利润产品；结合重点渠道提升曝光与成交份额</td><td>淡季成交规模稳步提升，重点产品及重点区域市占率提升</td></tr>
+</tbody>
+</table>
+</div>
+
+</div>
+
+<!-- ==================== 第六部分：一页结论 ==================== -->
+
+  </div>
+
+  <!-- TAB 5: 总结 -->
+  <div class="tab-panel" id="tab-summary">
+<div class="section page-break" id="sec6">
+<h2>六、一页结论</h2>
+
+<h3>1. H1经营结果</h3>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>品牌</th><th>人数</th><th>同比</th><th>收入</th><th>同比</th><th>毛利率</th><th>同比变化</th><th>总体判断</th></tr>
+</thead>
+<tbody>
+<tr><td>翔龙品牌（ERP）</td><td>11,752</td><td class="num-pos">+17%</td><td>24,583万</td><td class="num-pos">+23%</td><td>6%</td><td class="num-pos">+4pp</td><td>规模利润双升，呈现显著改善迹象</td></tr>
+<tr><td>国旅品牌（携程）</td><td>1,808</td><td class="num-neg">-6%</td><td>4,490万</td><td class="num-pos">+5%</td><td>5.7%</td><td class="num-pos">+11.7pp</td><td>成交端收入增长且毛利率大幅改善，从亏损转为盈利</td></tr>
+<tr><td>双品牌（携程）</td><td>—</td><td>—</td><td>15,746万</td><td class="num-pos">+60%</td><td>—</td><td>—</td><td>跑赢大盘，份额提升显著</td></tr>
+<tr><td>携程大盘</td><td>—</td><td>—</td><td>34,024万</td><td class="num-pos">+38%</td><td>—</td><td>—</td><td>大盘线下门店成交端增长强劲，线上基本持平</td></tr>
+<tr><td>其他供应商</td><td>—</td><td>—</td><td>18,278万</td><td class="num-pos">+23%</td><td>—</td><td>—</td><td>增速低于大盘，份额被双品牌挤压</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>2. 增长来源</h3>
+<p style="color: var(--text-secondary); line-height: 1.8;"><strong>翔龙品牌</strong><br>
+增长主要由西欧带动：成交人数增长663%、收入增长1001%，利润增量占整体增量的43%，是H1最大的增长贡献区域。渠道侧，电商已成为核心成交来源，其中携程占比44%；分销结构向电商倾斜，电商整体占比已过半。</p>
+<p style="color: var(--text-secondary); line-height: 1.8;"><strong>国旅品牌</strong><br>
+成交端收入增长主要来自单客收入提升12%，并非成交规模扩张。区域上，南欧和北欧分别增长57%、53%，是主要增长来源；线下门店成交端收入增长16%，对基本盘形成支撑。与此同时，西欧收入下滑17%，需尽快明确产品、价格或渠道端的具体原因。</p>
+<p style="color: var(--text-secondary); line-height: 1.8;"><strong>大盘格局</strong><br>
+双品牌整体份额由39%提升至46%，整体跑赢大盘。其中，翔龙品牌份额提升9个百分点，是份额增长的主要贡献；国旅品牌份额下降3个百分点。其他供应商份额由60%降至53%，市场份额进一步向双品牌集中。</p>
+
+<h3>3. 增长质量</h3>
+<p style="color: var(--text-secondary); line-height: 1.8;"><strong>翔龙品牌</strong><br>
+增长质量较前期明显改善。毛利率由2%提升至6%，主要区域均实现盈利，单客毛利由437元提升至1,415元；规模增长与利润改善同步发生。<br>
+下一步需结合成本明细、退改投诉、复购及团队交付数据，判断当前改善能否沉淀为稳定的经营能力。</p>
+<p style="color: var(--text-secondary); line-height: 1.8;"><strong>国旅品牌</strong><br>
+经营表现呈现明显的结构性分化：成交端收入增长5%，但人数下降6%，收入增长主要依赖客单价提升。区域端，南欧、北欧增长，西欧及东欧+巴尔干下滑，产品区域结构仍需优化。<br>
+线上成交端人数下降14%，是当前规模恢复的主要压力点。北京国旅品牌在携程平台UV逆势增长32%，CR保持稳定，流量获取效率优于大盘；但大盘UV下滑57%，线上整体流量收缩仍对成交规模形成制约。</p>
+
+<h3>4. 品牌经营判断</h3>
+<p style="color: var(--text-secondary); line-height: 1.8;"><strong>翔龙品牌：H2转向提升经营效率</strong><br>
+西欧产品实现突破，电商与出境社协同承接成交，分销增长基础已形成。H2重点从"做增量"转向"提质量"：一是提高机位使用效率和资源收益；二是优化渠道结构，降低对单一平台的依赖；三是通过复购、退改投诉和团队交付表现，验证产品与渠道增长的稳定性。</p>
+<p style="color: var(--text-secondary); line-height: 1.8;"><strong>国旅品牌：线下稳基本盘，线上及区域供给需加快修复</strong><br>
+线下门店成交端收入增长16%，仍是当前稳定规模的核心支撑；北京国旅品牌在携程平台UV逆势增长，说明线上仍具备流量获取基础。当前短板集中在线上成交下滑、区域产品供给不均及成交人数承压。H2应围绕淡季产品线、重点区域供给、线上转化及线下重点省份市占率开展修复；暑期阶段则以团队交付和服务保障为首要任务。</p>
+
+<div class="conclusion-box">
+<h3>H2经营策略与工作重点</h3>
+<p style="color: rgba(255,255,255,0.9); line-height: 1.8;"><strong>翔龙品牌：保持增长势能，经营重心转向利润和交付质量。</strong><br>
+翔龙品牌已实现规模、收入与利润同步改善，西欧由亏损转为盈利，并成为主要利润来源。H2不宜单纯追求规模扩张，应聚焦机位收益、渠道效率和团队交付，确保增长能够沉淀为可持续的经营能力。</p>
+<p style="color: rgba(255,255,255,0.9); line-height: 1.8;"><strong>国旅品牌：优先稳规模、补供给、提市占。</strong><br>
+国旅品牌当前收入增长主要由客单提升带动，成交人数和线上成交仍有压力。H2应以暑期团队交付为基础，重点补强淡季产品供给和重点区域产品线，提升线上转化效率，并推动线下重点省份及线上重点区域的市占恢复。</p>
+<p style="color: rgba(255,255,255,0.9); line-height: 1.8;"><strong>共同经营要求：增长必须以利润、交付和客户体验为基础。</strong><br>
+翔龙品牌后续重点是验证增长质量；国旅品牌后续重点是恢复成交规模和区域竞争力。两品牌均需持续跟踪利润、退改投诉、交付稳定性和客户反馈，避免单纯以收入或人数判断经营成效。</p>
+</div>
+
+</div>
+
+  <!-- TAB 6: 服务交付体验 -->
+</div><!-- tab-content -->
+
+</div><!-- page -->
+
+<script>
+(function(){
+  const tabs = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.tab-panel');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      var target = this.getAttribute('data-tab');
+      tabs.forEach(function(t){ t.classList.remove('active'); });
+      panels.forEach(function(p){ p.classList.remove('active'); });
+      this.classList.add('active');
+      document.getElementById(target).classList.add('active');
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  });
+})();
+</script>
+
+</div>
+
+</body>
+</html>
