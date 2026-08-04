@@ -748,30 +748,100 @@ td:first-child { font-weight: 600; color: var(--text); }
 <p><strong>线上/线下说明</strong>：本报告中国旅品牌的"线上"与"线下门店"，均指携程平台数据中"业务渠道聚合"字段的取值（线上=携程平台线上成交渠道，线下门店=携程平台线下门店成交渠道）。国旅品牌整体数据为携程平台成交数据，不含其他渠道。国旅品牌线上成交人数同比-14%，线下门店成交人数同比+1%，线下门店成交GMV同比+16%。</p>
 </blockquote>
 
-
-
 <div class="chart-box">
-<div class="chart-title">国旅品牌 线上 vs 线下门店 成交GMV同比</div>
-<svg viewBox="0 0 500 240" xmlns="http://www.w3.org/2000/svg">
-<text x="130" y="35" text-anchor="middle" font-size="13" font-weight="600" fill="#0d2b4e">线上成交GMV</text>
-<text x="370" y="35" text-anchor="middle" font-size="13" font-weight="600" fill="#0d2b4e">线下门店成交GMV</text>
-<rect x="60" y="80" width="70" height="100" fill="#e2e8f0" rx="4"/>
-<text x="95" y="130" text-anchor="middle" font-size="12" font-weight="600" fill="#4a5568">2,108万</text>
-<text x="95" y="195" text-anchor="middle" font-size="11" fill="#718096">2025 H1</text>
-<rect x="140" y="95" width="70" height="85" fill="#c53030" rx="4" opacity="0.8"/>
-<text x="175" y="145" text-anchor="middle" font-size="12" font-weight="600" fill="#fff">2,005万</text>
-<text x="175" y="195" text-anchor="middle" font-size="11" fill="#718096">2026 H1</text>
-<rect x="300" y="90" width="70" height="90" fill="#e2e8f0" rx="4"/>
-<text x="335" y="140" text-anchor="middle" font-size="12" font-weight="600" fill="#4a5568">2,133万</text>
-<text x="335" y="195" text-anchor="middle" font-size="11" fill="#718096">2025 H1</text>
-<rect x="380" y="55" width="70" height="125" fill="#38a169" rx="4"/>
-<text x="415" y="125" text-anchor="middle" font-size="12" font-weight="600" fill="#fff">2,485万</text>
-<text x="415" y="195" text-anchor="middle" font-size="11" fill="#718096">2026 H1</text>
-<text x="175" y="65" text-anchor="middle" font-size="13" font-weight="700" fill="#c53030">-4%</text>
-<text x="415" y="45" text-anchor="middle" font-size="13" font-weight="700" fill="#38a169">+16%</text>
+<div class="chart-title">国旅品牌 核心经营指标同比变化</div>
+<svg viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景面板 - 核心指标 -->
+  <rect x="10" y="10" width="280" height="140" fill="#f7fafc" rx="8" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="150" y="32" text-anchor="middle" font-size="12" font-weight="600" fill="#0d2b4e">核心指标</text>
+
+  <!-- 成交人数 -6% -->
+  <text x="20" y="58" font-size="10" fill="#4a5568">成交人数</text>
+  <rect x="80" y="50" width="60" height="14" fill="#c53030" rx="3" opacity="0.8"/>
+  <text x="110" y="60" text-anchor="middle" font-size="9" font-weight="600" fill="#fff">-6%</text>
+
+  <!-- 成交GMV +5% -->
+  <text x="20" y="82" font-size="10" fill="#4a5568">成交GMV</text>
+  <rect x="80" y="74" width="50" height="14" fill="#38a169" rx="3"/>
+  <text x="105" y="84" text-anchor="middle" font-size="9" font-weight="600" fill="#fff">+5%</text>
+
+  <!-- 单客收入 +12% -->
+  <text x="20" y="106" font-size="10" fill="#4a5568">单客收入</text>
+  <rect x="80" y="98" width="90" height="14" fill="#38a169" rx="3"/>
+  <text x="125" y="108" text-anchor="middle" font-size="9" font-weight="600" fill="#fff">+12%</text>
+
+  <!-- 毛利率 +11.7pp -->
+  <text x="20" y="130" font-size="10" fill="#4a5568">毛利率</text>
+  <rect x="80" y="122" width="88" height="14" fill="#38a169" rx="3"/>
+  <text x="124" y="132" text-anchor="middle" font-size="9" font-weight="600" fill="#fff">+11.7pp</text>
+
+  <!-- 背景面板 - 线上渠道 -->
+  <rect x="10" y="160" width="280" height="140" fill="#f7fafc" rx="8" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="150" y="182" text-anchor="middle" font-size="12" font-weight="600" fill="#0d2b4e">线上渠道</text>
+
+  <!-- 线上成交人数 -14% -->
+  <text x="20" y="208" font-size="10" fill="#4a5568">成交人数</text>
+  <rect x="80" y="200" width="100" height="14" fill="#c53030" rx="3" opacity="0.8"/>
+  <text x="130" y="210" text-anchor="middle" font-size="9" font-weight="600" fill="#fff">-14%</text>
+
+  <!-- 线上成交GMV -4% -->
+  <text x="20" y="232" font-size="10" fill="#4a5568">成交GMV</text>
+  <rect x="80" y="224" width="50" height="14" fill="#c53030" rx="3" opacity="0.8"/>
+  <text x="105" y="234" text-anchor="middle" font-size="9" font-weight="600" fill="#fff">-4%</text>
+
+  <!-- 线上GMV绝对值 -->
+  <text x="20" y="256" font-size="9" fill="#718096">2,004万</text>
+  <text x="80" y="256" font-size="9" fill="#718096">← 2026 H1 | 2025 H1 →</text>
+  <text x="220" y="256" font-size="9" fill="#718096">2,108万</text>
+
+  <!-- 线上人数绝对值 -->
+  <text x="20" y="278" font-size="9" fill="#718096">795人</text>
+  <text x="220" y="278" font-size="9" fill="#718096">927人</text>
+
+  <!-- 背景面板 - 线下门店渠道 -->
+  <rect x="310" y="160" width="280" height="140" fill="#f7fafc" rx="8" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="450" y="182" text-anchor="middle" font-size="12" font-weight="600" fill="#0d2b4e">线下门店渠道</text>
+
+  <!-- 线下成交人数 +1% -->
+  <text x="320" y="208" font-size="10" fill="#4a5568">成交人数</text>
+  <rect x="380" y="200" width="25" height="14" fill="#38a169" rx="3"/>
+  <text x="392" y="210" text-anchor="middle" font-size="9" font-weight="600" fill="#fff">+1%</text>
+
+  <!-- 线下成交GMV +16% -->
+  <text x="320" y="232" font-size="10" fill="#4a5568">成交GMV</text>
+  <rect x="380" y="224" width="100" height="14" fill="#38a169" rx="3"/>
+  <text x="430" y="234" text-anchor="middle" font-size="9" font-weight="600" fill="#fff">+16%</text>
+
+  <!-- 线下GMV绝对值 -->
+  <text x="320" y="256" font-size="9" fill="#718096">2,485万</text>
+  <text x="380" y="256" font-size="9" fill="#718096">← 2026 H1 | 2025 H1 →</text>
+  <text x="520" y="256" font-size="9" fill="#718096">2,132万</text>
+
+  <!-- 线下人数绝对值 -->
+  <text x="320" y="278" font-size="9" fill="#718096">1,013人</text>
+  <text x="520" y="278" font-size="9" fill="#718096">999人</text>
+
+  <!-- 核心指标绝对值 -->
+  <text x="170" y="58" font-size="9" fill="#718096">1,808人</text>
+  <text x="235" y="58" font-size="9" fill="#718096">1,926人</text>
+
+  <text x="170" y="82" font-size="9" fill="#718096">4,490万</text>
+  <text x="235" y="82" font-size="9" fill="#718096">4,240万</text>
+
+  <text x="190" y="106" font-size="9" fill="#718096">24,834元</text>
+  <text x="255" y="106" font-size="9" fill="#718096">22,019元</text>
+
+  <text x="190" y="130" font-size="9" fill="#718096">5.7%</text>
+  <text x="240" y="130" font-size="9" fill="#718096">-6.0%</text>
 </svg>
 <div class="chart-desc">
-<strong>经营解读：</strong>国旅品牌呈现"线上收缩、线下扩张"的结构性变化。线上成交GMV下降4%，是整体成交人数下滑的主要拖累；线下门店成交GMV增长16%，是稳住基本盘的关键支撑。线下门店客单价显著提升，但线上成交端竞争力流失需引起关注。
+<strong>经营解读：</strong>国旅品牌核心指标呈现分化。成交GMV增长5%、单客收入增长12%、毛利率大幅改善11.7个百分点，但成交人数下降6%。渠道端分化更明显：线上成交人数下降14%、GMV下降4%；线下门店成交人数微增1%、GMV增长16%。线下门店是稳住基本盘的关键支撑，线上成交端承压需关注。
+</div>
+</div>
+
+
+
+
 <div style="background:linear-gradient(135deg, #0a1f3d 0%, #1a365d 100%);color:#fff;padding:18px 24px;border-radius:12px;box-shadow:0 8px 24px rgba(10,31,61,0.28),0 2px 6px rgba(10,31,61,0.15);margin:28px 0 20px;position:relative;overflow:hidden;">
   <div style="position:absolute;top:0;right:0;width:120px;height:100%;background:rgba(255,255,255,0.04);transform:skewX(-15deg) translateX(30px);"></div>
   <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;position:relative;z-index:1;">
@@ -836,9 +906,6 @@ td:first-child { font-weight: 600; color: var(--text); }
 </svg>
 <div class="chart-desc">
 双品牌控位同比+9%，售卖同比+8%，资源投入与销售基本同步。但机损+28%明显快于售卖增速，损失率从4.4%微升至4.8%。机位使用率从42.8%微降至42.4%，基本稳定。成团率从51.6%提升至53.1%，交付效率在改善。整体看，资源投入产出效率有待提升，机损控制是H2重点。
-</div>
-</div>
-
 </div>
 </div>
 
@@ -1246,6 +1313,32 @@ td:first-child { font-weight: 600; color: var(--text); }
 <li>2026 H1：线上成交占44%（795人），线下门店成交占56%（1,013人）</li>
 <li>线上成交份额下降4pp，品牌对线下门店成交渠道的依赖度增加</li>
 </ul>
+
+<div class="chart-box">
+<div class="chart-title">国旅品牌 线上 vs 线下门店 成交GMV同比</div>
+<svg viewBox="0 0 500 240" xmlns="http://www.w3.org/2000/svg">
+<text x="130" y="35" text-anchor="middle" font-size="13" font-weight="600" fill="#0d2b4e">线上成交GMV</text>
+<text x="370" y="35" text-anchor="middle" font-size="13" font-weight="600" fill="#0d2b4e">线下门店成交GMV</text>
+<rect x="60" y="80" width="70" height="100" fill="#e2e8f0" rx="4"/>
+<text x="95" y="130" text-anchor="middle" font-size="12" font-weight="600" fill="#4a5568">2,108万</text>
+<text x="95" y="195" text-anchor="middle" font-size="11" fill="#718096">2025 H1</text>
+<rect x="140" y="95" width="70" height="85" fill="#c53030" rx="4" opacity="0.8"/>
+<text x="175" y="145" text-anchor="middle" font-size="12" font-weight="600" fill="#fff">2,005万</text>
+<text x="175" y="195" text-anchor="middle" font-size="11" fill="#718096">2026 H1</text>
+<rect x="300" y="90" width="70" height="90" fill="#e2e8f0" rx="4"/>
+<text x="335" y="140" text-anchor="middle" font-size="12" font-weight="600" fill="#4a5568">2,133万</text>
+<text x="335" y="195" text-anchor="middle" font-size="11" fill="#718096">2025 H1</text>
+<rect x="380" y="55" width="70" height="125" fill="#38a169" rx="4"/>
+<text x="415" y="125" text-anchor="middle" font-size="12" font-weight="600" fill="#fff">2,485万</text>
+<text x="415" y="195" text-anchor="middle" font-size="11" fill="#718096">2026 H1</text>
+<text x="175" y="65" text-anchor="middle" font-size="13" font-weight="700" fill="#c53030">-4%</text>
+<text x="415" y="45" text-anchor="middle" font-size="13" font-weight="700" fill="#38a169">+16%</text>
+</svg>
+<div class="chart-desc">
+<strong>经营解读：</strong>国旅品牌呈现"线上收缩、线下扩张"的结构性变化。线上成交GMV下降4%，是整体成交人数下滑的主要拖累；线下门店成交GMV增长16%，是稳住基本盘的关键支撑。线下门店客单价显著提升，但线上成交端竞争力流失需引起关注。
+</div>
+</div>
+
 
 <h3>3. 看UV与CR效率——北京国旅品牌在携程平台的表现</h3>
 
