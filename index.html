@@ -3,161 +3,206 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>欧洲跟大团 · 经营分析看板 · 历史版本</title>
+<title>携程国旅欧洲业务 · 双周经营例会看板</title>
 <style>
-:root { --bg: #f1f3f6; --card: #fff; --text: #111827; --muted: #64748b; --blue: #1e40af; --green: #059669; --border: rgba(0,0,0,0.06); }
+:root {
+  --primary: #1e40af;
+  --primary-light: #3b82f6;
+  --accent: #059669;
+  --bg: #f8fafc;
+  --card-bg: #fff;
+  --text: #1e293b;
+  --text-secondary: #64748b;
+  --border: #e2e8f0;
+}
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
-.header { background: linear-gradient(145deg, #0c1220 0%, #162a4a 40%, #1e3a5f 70%, #1e40af 100%); color: white; padding: 48px 24px 36px; text-align: center; position: relative; overflow: hidden; }
-.header::before { content: ''; position: absolute; top: -40%; right: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 60%); pointer-events: none; }
-.header h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 10px; background: linear-gradient(135deg, #fff 0%, #bfdbfe 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; position: relative; z-index: 1; }
-.header p { font-size: 15px; opacity: 0.7; position: relative; z-index: 1; }
-.container { max-width: 900px; margin: 0 auto; padding: 40px 24px 60px; }
-.version-group { margin-bottom: 32px; }
-.version-month { font-size: 13px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--border); }
-.version-list { display: flex; flex-direction: column; gap: 12px; }
-.version-card { display: flex; align-items: center; justify-content: space-between; background: var(--card); border-radius: 16px; padding: 18px 24px; box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04); border: 1px solid var(--border); transition: all 0.25s cubic-bezier(0.4,0,0.2,1); text-decoration: none; color: inherit; }
-.version-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08), 0 16px 48px rgba(0,0,0,0.06); }
-.version-card.latest { border: 1px solid rgba(30,64,175,0.15); background: linear-gradient(135deg, #fff 0%, #f8fbff 100%); }
-.version-card.latest .version-badge { background: linear-gradient(135deg, var(--blue), #3b82f6); color: #fff; }
-.version-left { display: flex; align-items: center; gap: 16px; }
-.version-badge { display: inline-flex; align-items: center; justify-content: center; padding: 5px 14px; border-radius: 8px; font-size: 12px; font-weight: 700; background: #f1f5f9; color: var(--muted); letter-spacing: 0.5px; flex-shrink: 0; }
-.version-info h3 { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
-.version-info p { font-size: 13px; color: var(--muted); }
-.version-arrow { font-size: 20px; color: var(--muted); opacity: 0.5; transition: opacity 0.2s; }
-.version-card:hover .version-arrow { opacity: 1; color: var(--blue); }
-.footer { text-align: center; padding: 30px; color: var(--muted); font-size: 12px; border-top: 1px solid var(--border); }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+.header {
+  background: linear-gradient(135deg, #1e3a5f 0%, #1e40af 50%, #3b82f6 100%);
+  color: #fff;
+  padding: 48px 24px;
+  text-align: center;
+}
+.header h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+.header p { font-size: 15px; opacity: 0.85; }
+.header .badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 20px;
+  padding: 4px 16px;
+  font-size: 13px;
+  margin-top: 12px;
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+.section-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--primary);
+  display: inline-block;
+}
+.current-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  border: 1px solid var(--border);
+  margin-bottom: 32px;
+  position: relative;
+  overflow: hidden;
+}
+.current-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+}
+.current-card .label {
+  display: inline-block;
+  background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+.current-card h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.current-card .meta {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(30,64,175,0.25);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(30,64,175,0.35);
+}
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.history-item {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 16px 20px;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.2s;
+  text-decoration: none;
+  color: var(--text);
+}
+.history-item:hover {
+  border-color: var(--primary-light);
+  box-shadow: 0 2px 12px rgba(30,64,175,0.08);
+  transform: translateX(4px);
+}
+.history-item .left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.history-item .date-badge {
+  background: #f1f5f9;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+.history-item .title {
+  font-size: 15px;
+  font-weight: 600;
+}
+.history-item .arrow {
+  color: var(--text-secondary);
+  font-size: 18px;
+}
+.footer {
+  text-align: center;
+  padding: 32px;
+  color: var(--text-secondary);
+  font-size: 13px;
+}
 </style>
 </head>
 <body>
+
 <div class="header">
-  <h1>欧洲跟大团 · 经营分析看板</h1>
-  <p>携程国旅自营 · 跟团游 · 华北14省 · 历史版本归档</p>
+  <h1>📊 携程国旅欧洲业务 · 双周经营例会看板</h1>
+  <p>携程国旅自营-跟团游-欧洲业务经营数据汇报</p>
+  <div class="badge">v1.3.0 · 2026</div>
 </div>
+
 <div class="container">
 
-  <div class="version-group">
-    <div class="version-month">2026年8月 · 当前版本</div>
-    <div class="version-list">
-      <a class="version-card latest" href="例会经营数据看板.html">
-        <div class="version-left">
-          <span class="version-badge">v1.2.9</span>
-          <div class="version-info">
-            <h3>8月9日 · 7.25-8.07双周经营分析</h3>
-            <p>左侧导航升级 · 图表重新设计 · 华北11省线下门店市占率 · 口径说明更新</p>
-          </div>
-        </div>
-        <span class="version-arrow">→</span>
-      </a>
-    </div>
+  <div class="section-title">🎯 当前版本</div>
+  <div class="current-card">
+    <div class="label">最新报告</div>
+    <h2>欧洲跟大团双周经营分析</h2>
+    <div class="meta">例会数据 · 8.08-8.21双周 · 华北出发+华中出发 · 双品牌分析</div>
+    <a href="./双周例会分析报告_08.08-08.21.html" class="btn-primary">📈 查看报告</a>
   </div>
 
-  <div class="version-group">
-    <div class="version-month">2026年8月 · 累计数据更新</div>
-    <div class="version-list">
-      <a class="version-card" href="例会经营数据看板_v1.2.9_20260809.html">
-        <div class="version-left">
-          <span class="version-badge">v1.2.9</span>
-          <div class="version-info">
-            <h3>8月9日 · 累计预定数据更新（截至8月7日下单）</h3>
-            <p>区域市占率分析 · 翔龙分公司明细 · 全年+Q3累计数据</p>
-          </div>
-        </div>
-        <span class="version-arrow">→</span>
-      </a>
-      <a class="version-card" href="例会经营数据看板_v1.2.7_20260808.html">
-        <div class="version-left">
-          <span class="version-badge">v1.2.7</span>
-          <div class="version-info">
-            <h3>8月8日 · 累计预定数据更新</h3>
-            <p>板块顺序调整 · 翔龙分公司明细</p>
-          </div>
-        </div>
-        <span class="version-arrow">→</span>
-      </a>
-      <a class="version-card" href="例会经营数据看板_v1.2.6_20260808.html">
-        <div class="version-left">
-          <span class="version-badge">v1.2.6</span>
-          <div class="version-info">
-            <h3>8月8日 · 数据更新</h3>
-            <p>累计预定数据更新</p>
-          </div>
-        </div>
-        <span class="version-arrow">→</span>
-      </a>
-      <a class="version-card" href="例会经营数据看板_v1.2.5_20260808.html">
-        <div class="version-left">
-          <span class="version-badge">v1.2.5</span>
-          <div class="version-info">
-            <h3>8月8日 · 数据更新</h3>
-            <p>累计预定数据更新</p>
-          </div>
-        </div>
-        <span class="version-arrow">→</span>
-      </a>
-      <a class="version-card" href="例会经营数据看板_v1.2.4_20260808.html">
-        <div class="version-left">
-          <span class="version-badge">v1.2.4</span>
-          <div class="version-info">
-            <h3>8月8日 · 累计数据首次更新</h3>
-            <p>截至8月7日下单 · 全年+Q3累计</p>
-          </div>
-        </div>
-        <span class="version-arrow">→</span>
-      </a>
-    </div>
-  </div>
-
-  <div class="version-group">
-    <div class="version-month">2026年7月 · 早期版本</div>
-    <div class="version-list">
-      <a class="version-card" href="例会经营数据看板_v1.2.3_20260727.html">
-        <div class="version-left">
-          <span class="version-badge">v1.2.3</span>
-          <div class="version-info">
-            <h3>7月27日 · 价格带品牌维度</h3>
-            <p>价格带品牌GMV图表 · 分组柱状图+市占率折线</p>
-          </div>
-        </div>
-        <span class="version-arrow">→</span>
-      </a>
-      <a class="version-card" href="例会经营数据看板_v1.2.2_20260727.html">
-        <div class="version-left">
-          <span class="version-badge">v1.2.2</span>
-          <div class="version-info">
-            <h3>7月27日 · 区域市占率重构</h3>
-            <p>区域分析表格改为品牌市占率维度</p>
-          </div>
-        </div>
-        <span class="version-arrow">→</span>
-      </a>
-      <a class="version-card" href="例会经营数据看板_v1.2.1_20260726.html">
-        <div class="version-left">
-          <span class="version-badge">v1.2.1</span>
-          <div class="version-info">
-            <h3>7月26日 · 品牌分析维度</h3>
-            <p>新增品牌下钻 · 翔龙/国旅/双品牌</p>
-          </div>
-        </div>
-        <span class="version-arrow">→</span>
-      </a>
-      <a class="version-card" href="例会经营数据看板_v1.2.0_20260725.html">
-        <div class="version-left">
-          <span class="version-badge">v1.2.0</span>
-          <div class="version-info">
-            <h3>7月25日 · 初始版本</h3>
-            <p>双周经营分析看板 · 核心数据+渠道+月份+区域+省份+价格带</p>
-          </div>
-        </div>
-        <span class="version-arrow">→</span>
-      </a>
-    </div>
+  <div class="section-title">📁 历史版本</div>
+  <div class="history-list">
+    <a href="./双周例会分析报告_08.08-08.21.html" class="history-item">
+      <div class="left">
+        <span class="date-badge">08.08-08.21</span>
+        <span class="title">欧洲跟大团双周经营分析（华北+华中）</span>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <a href="./双周例会分析报告_07.25-08.07.html" class="history-item">
+      <div class="left">
+        <span class="date-badge">07.25-08.07</span>
+        <span class="title">欧洲跟大团双周经营分析</span>
+      </div>
+      <span class="arrow">→</span>
+    </a>
   </div>
 
 </div>
+
 <div class="footer">
-  数据来源：携程平台Artnova海外欧洲订单明细 | 统计口径：跟团游 · 华北14省 · 剔除定制单团/罚金单/领队订单/目的地国家区域不含俄罗斯<br>
-  翔龙=北京华程+上海华程+广州华程+成都华程+武汉华程+厦门华程 | 国旅=欧洲自营北京大区+上海大区+广州大区
+  数据来源：携程平台Artnova海外欧洲订单明细（自营&代理）| 口径：华北/华中出发·跟大团·剔除领队/单团/罚金单/俄罗斯
 </div>
+
 </body>
 </html>
