@@ -258,6 +258,24 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helv
 .region-table-wrap .data-table tbody tr:hover td:first-child { background: #f8fafc; }
 .region-table-wrap .data-table tbody tr.total-row td:first-child { background: linear-gradient(180deg,#e0e7ff,#dbeafe); z-index: 20; }
 .region-table-wrap .data-table tbody tr.total-row:hover td:first-child { background: linear-gradient(180deg,#d8dff6,#d2e0f9); }
+
+/* 区域分析迷你进度条与视觉元素 */
+.mini-bar-wrap { width: 48px; height: 6px; background: #e2e8f0; border-radius: 3px; overflow: hidden; display: inline-block; vertical-align: middle; margin-right: 4px; }
+.mini-bar-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, #1e40af, #3b82f6); }
+.mini-bar-fill.green { background: linear-gradient(90deg, #059669, #34d399); }
+.mini-bar-fill.red { background: linear-gradient(90deg, #dc2626, #f87171); }
+.change-pill { display: inline-flex; align-items: center; gap: 3px; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 6px; }
+.change-pill.up { background: #dcfce7; color: #166534; }
+.change-pill.down { background: #fee2e2; color: #991b1b; }
+.region-kpi-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 16px; }
+.region-kpi-card { background: #fff; border-radius: 12px; padding: 16px; box-shadow: var(--shadow); border: 1px solid var(--border); text-align: center; transition: all 0.2s; }
+.region-kpi-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+.region-kpi-card .r-label { font-size: 11px; color: var(--text-secondary); margin-bottom: 6px; font-weight: 500; }
+.region-kpi-card .r-value { font-size: 22px; font-weight: 800; color: var(--text-primary); line-height: 1.2; letter-spacing: -0.5px; }
+.region-kpi-card .r-sub { font-size: 11px; margin-top: 4px; color: var(--text-secondary); }
+.region-kpi-card .r-bar { margin-top: 8px; height: 5px; border-radius: 3px; overflow: hidden; background: #e2e8f0; }
+.region-kpi-card .r-bar-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, #1e40af, #3b82f6); }
+.region-kpi-card .r-change { font-size: 12px; font-weight: 700; margin-top: 4px; }
 </style>
 </head>
 <body>
@@ -683,6 +701,136 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helv
 <div class="cum-card gray"><div class="cum-card-inner"><div class="cum-header">其他供应商</div><div class="cum-row"><div class="cum-gmv"><div class="year-label">2026年</div><div class="big">3.13<span>亿</span></div><div class="small">25年 2.88亿</div></div><div class="cum-yoy-box"><div class="pct up">+8.8%</div><div class="pct-label">GMV同比</div></div></div><div class="cum-share-row"><div class="cum-share-bar-bg"><div class="cum-share-bar-fill" style="width:47.6%;background:linear-gradient(90deg,#1e40af,#3b82f6);"></div></div><div class="cum-share-pct"><span class="cum-share-year">26年市占率</span>47.6%</div></div><div class="cum-footer"><span>25年市占率 54.1%</span><span class="cum-share-change down">市占率变化 -6.6pp</span></div></div></div>
 <div class="cum-card orange"><div class="cum-card-inner"><div class="cum-header">翔龙品牌成交GMV</div><div class="cum-row"><div class="cum-gmv"><div class="year-label">2026年</div><div class="big">2.21<span>亿</span></div><div class="small">25年 1.37亿</div></div><div class="cum-yoy-box"><div class="pct up">+61.7%</div><div class="pct-label">GMV同比</div></div></div><div class="cum-share-row"><div class="cum-share-bar-bg"><div class="cum-share-bar-fill" style="width:33.6%;background:linear-gradient(90deg,#1e40af,#3b82f6);"></div></div><div class="cum-share-pct"><span class="cum-share-year">26年市占率</span>33.6%</div></div><div class="cum-footer"><span>25年市占率 25.7%</span><span class="cum-share-change up">市占率变化 +7.9pp</span></div></div></div>
 <div class="cum-card purple"><div class="cum-card-inner"><div class="cum-header">国旅品牌成交GMV</div><div class="cum-row"><div class="cum-gmv"><div class="year-label">2026年</div><div class="big">1.24<span>亿</span></div><div class="small">25年 1.07亿</div></div><div class="cum-yoy-box"><div class="pct up">+15.7%</div><div class="pct-label">GMV同比</div></div></div><div class="cum-share-row"><div class="cum-share-bar-bg"><div class="cum-share-bar-fill" style="width:18.8%;background:linear-gradient(90deg,#1e40af,#3b82f6);"></div></div><div class="cum-share-pct"><span class="cum-share-year">26年市占率</span>18.8%</div></div><div class="cum-footer"><span>25年市占率 20.1%</span><span class="cum-share-change down">市占率变化 -1.3pp</span></div></div></div>
+</div>
+
+<!-- 华北出发 · 各业务区域品牌GMV结构及市占率同比变化 -->
+<div class="section-subtitle" style="margin-top:28px;">华北出发 · 各业务区域品牌GMV结构及市占率同比变化</div>
+
+<!-- 区域KPI卡片 -->
+<div class="region-kpi-grid">
+  <div class="region-kpi-card">
+    <div class="r-label">西欧 · 双品牌市占率</div>
+    <div class="r-value">55.2%</div>
+    <div class="r-bar"><div class="r-bar-fill" style="width:55.2%"></div></div>
+    <div class="r-change" style="color:#059669">▲ +5.0pp</div>
+  </div>
+  <div class="region-kpi-card">
+    <div class="r-label">北欧 · 双品牌市占率</div>
+    <div class="r-value">40.2%</div>
+    <div class="r-bar"><div class="r-bar-fill" style="width:40.2%"></div></div>
+    <div class="r-change" style="color:#059669">▲ +5.6pp</div>
+  </div>
+  <div class="region-kpi-card">
+    <div class="r-label">英爱 · 双品牌市占率</div>
+    <div class="r-value">58.2%</div>
+    <div class="r-bar"><div class="r-bar-fill" style="width:58.2%"></div></div>
+    <div class="r-change" style="color:#059669">▲ +14.3pp</div>
+  </div>
+  <div class="region-kpi-card">
+    <div class="r-label">南欧 · 双品牌市占率</div>
+    <div class="r-value">55.4%</div>
+    <div class="r-bar"><div class="r-bar-fill" style="width:55.4%"></div></div>
+    <div class="r-change" style="color:#059669">▲ +9.1pp</div>
+  </div>
+  <div class="region-kpi-card">
+    <div class="r-label">东欧+巴尔干 · 双品牌市占率</div>
+    <div class="r-value">52.4%</div>
+    <div class="r-bar"><div class="r-bar-fill" style="width:52.4%"></div></div>
+    <div class="r-change" style="color:#059669">▲ +5.8pp</div>
+  </div>
+</div>
+
+<div class="chart-grid">
+  <div class="chart-card half">
+    <div class="chart-title">26年各区域品牌GMV结构</div>
+    <div class="chart-subtitle">双品牌 vs 其他供应商 · 单位：万</div>
+    <div class="chart-wrapper"><canvas id="chart-cum-region-gmv"></canvas></div>
+  </div>
+  <div class="chart-card half">
+    <div class="chart-title">双品牌市占率同比变化</div>
+    <div class="chart-subtitle">26年 vs 25年 · 百分点(pp)</div>
+    <div class="chart-wrapper"><canvas id="chart-cum-region-share-change"></canvas></div>
+  </div>
+</div>
+
+<div class="table-wrap">
+  <div class="chart-title" style="margin-bottom:12px;">华北出发 · 各业务区域品牌成交数据明细</div>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>业务区域</th>
+        <th class="num">26年平台<br>GMV(万)</th>
+        <th class="num">26年双品牌<br>GMV(万)</th>
+        <th>双品牌<br>市占率</th>
+        <th>市占率<br>变化</th>
+        <th>25年双品牌<br>市占率</th>
+        <th class="num">平台<br>GMV同比</th>
+        <th class="num">双品牌<br>GMV同比</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>西欧</strong></td>
+        <td class="num">31,635</td>
+        <td class="num">17,466</td>
+        <td><div class="mini-bar-wrap"><div class="mini-bar-fill" style="width:55.21%"></div></div>55.2%</td>
+        <td><span class="change-pill up">▲ +5.0pp</span></td>
+        <td>50.2%</td>
+        <td class="num up">+21.4%</td>
+        <td class="num up">+33.4%</td>
+      </tr>
+      <tr>
+        <td><strong>北欧</strong></td>
+        <td class="num">12,961</td>
+        <td class="num">5,204</td>
+        <td><div class="mini-bar-wrap"><div class="mini-bar-fill" style="width:40.15%"></div></div>40.2%</td>
+        <td><span class="change-pill up">▲ +5.6pp</span></td>
+        <td>34.5%</td>
+        <td class="num up">+39.2%</td>
+        <td class="num up">+61.8%</td>
+      </tr>
+      <tr>
+        <td><strong>英爱</strong></td>
+        <td class="num">8,331</td>
+        <td class="num">4,848</td>
+        <td><div class="mini-bar-wrap"><div class="mini-bar-fill" style="width:58.20%"></div></div>58.2%</td>
+        <td><span class="change-pill up">▲ +14.3pp</span></td>
+        <td>43.9%</td>
+        <td class="num up">+18.0%</td>
+        <td class="num up">+56.4%</td>
+      </tr>
+      <tr>
+        <td><strong>南欧</strong></td>
+        <td class="num">7,925</td>
+        <td class="num">4,391</td>
+        <td><div class="mini-bar-wrap"><div class="mini-bar-fill" style="width:55.41%"></div></div>55.4%</td>
+        <td><span class="change-pill up">▲ +9.1pp</span></td>
+        <td>46.3%</td>
+        <td class="num up">+27.7%</td>
+        <td class="num up">+52.8%</td>
+      </tr>
+      <tr>
+        <td><strong>东欧+巴尔干</strong></td>
+        <td class="num">5,018</td>
+        <td class="num">2,631</td>
+        <td><div class="mini-bar-wrap"><div class="mini-bar-fill" style="width:52.44%"></div></div>52.4%</td>
+        <td><span class="change-pill up">▲ +5.8pp</span></td>
+        <td>46.6%</td>
+        <td class="num up">+9.5%</td>
+        <td class="num up">+23.2%</td>
+      </tr>
+      <tr style="background:linear-gradient(180deg,#f8fafc,#f1f5f9);font-weight:700;">
+        <td>合计</td>
+        <td class="num">65,870</td>
+        <td class="num">34,541</td>
+        <td><div class="mini-bar-wrap"><div class="mini-bar-fill" style="width:52.44%"></div></div>52.4%</td>
+        <td><span class="change-pill up">▲ +6.6pp</span></td>
+        <td>45.9%</td>
+        <td class="num up">+23.8%</td>
+        <td class="num up">+41.5%</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 </div>
 
@@ -1192,6 +1340,84 @@ new Chart(document.getElementById("chart-h2-month"), {
       x: { grid: { display: false } },
       y: { grid: { color: "#f1f5f9" }, border: { display: false }, ticks: { callback: v => v + "万" }, position: "left" },
       y1: { grid: { display: false }, border: { display: false }, ticks: { callback: v => v + "%", color: "#dc2626" }, position: "right", min: 0, max: 100 }
+    }
+  }
+});
+
+
+// Chart: Cumulative Region GMV Structure
+new Chart(document.getElementById("chart-cum-region-gmv"), {
+  type: "bar",
+  data: {
+    labels: ['西欧','北欧','英爱','南欧','东欧+巴尔干'],
+    datasets: [
+      { label: "双品牌", data: [17466,5204,4848,4391,2631], type: "bar", stack: "stack1", backgroundColor: "#1e40af", borderRadius: 4, barPercentage: 0.65, categoryPercentage: 0.75, order: 2 },
+      { label: "其他供应商", data: [14169,7757,3483,3534,2387], type: "bar", stack: "stack1", backgroundColor: "#94a3b8", borderRadius: 4, barPercentage: 0.65, categoryPercentage: 0.75, order: 2 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: "index", intersect: false },
+    plugins: {
+      legend: { display: true, position: "top", align: "end", labels: { boxWidth: 12, font: { size: 12 } } },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) {
+            return ctx.dataset.label + ": " + Math.round(ctx.parsed.y).toLocaleString() + "万";
+          }
+        }
+      }
+    },
+    scales: {
+      x: { grid: { display: false } },
+      y: { stacked: true, grid: { color: "#f1f5f9" }, border: { display: false }, ticks: { callback: v => v >= 10000 ? (v/10000).toFixed(1) + '亿' : v + '万' }, position: "left" }
+    }
+  }
+});
+
+// Chart: Cumulative Region Share Change
+new Chart(document.getElementById("chart-cum-region-share-change"), {
+  type: "bar",
+  data: {
+    labels: ['西欧','北欧','英爱','南欧','东欧+巴尔干'],
+    datasets: [
+      {
+        label: "双品牌市占率变化",
+        data: [5.0, 5.6, 14.3, 9.1, 5.8],
+        backgroundColor: ["#059669", "#059669", "#059669", "#059669", "#059669"],
+        borderRadius: 4,
+        barPercentage: 0.55,
+        categoryPercentage: 0.7
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) {
+            return "市占率变化: +" + ctx.parsed.y + "pp";
+          }
+        }
+      },
+      annotation: {
+        annotations: {
+          line1: {
+            type: 'line',
+            yMin: 0,
+            yMax: 0,
+            borderColor: '#94a3b8',
+            borderWidth: 1,
+            borderDash: [4, 4]
+          }
+        }
+      }
+    },
+    scales: {
+      x: { grid: { display: false } },
+      y: { grid: { color: "#f1f5f9" }, border: { display: false }, ticks: { callback: v => v + 'pp' }, min: 0 }
     }
   }
 });
