@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>携程国旅欧洲业务 · 双周例会分析报告（8.22-9.04）</title>
+<style>
+:root {
+  --bg: #F5F5F5;
+  --surface: #FFFFFF;
+  --text: #333333;
+  --text-dim: #666666;
+  --accent: #0066CC;
+  --accent-light: #0086F6;
+  --accent-pale: #E6F0FA;
+  --orange: #FF6600;
+  --green: #2FB344;
+  --shadow: 0 4px 16px rgba(0,0,0,0.08);
+  --radius: 16px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  max-width: 680px;
+  width: 100%;
+  padding: 48px;
+  text-align: center;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent-pale);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 24px;
+}
+.badge::before {
+  content: '';
+  width: 8px; height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+h1 { font-size: 28px; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.02em; }
+.period {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.desc {
+  font-size: 15px;
+  color: var(--text-dim);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 16px 32px;
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,102,204,0.25);
+  transition: transform .2s, box-shadow .2s;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,102,204,0.35); }
+.meta {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+.meta span { display: flex; align-items: center; gap: 6px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; }
+.dot.blue { background: var(--accent); }
+.dot.orange { background: var(--orange); }
+.dot.green { background: var(--green); }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="badge">双周例会看板</div>
+  <h1>携程国旅欧洲业务经营分析</h1>
+  <div class="period">2026.08.22 — 09.04 双周</div>
+  <p class="desc">
+    包含双周预定、累计预定两大 Tab，覆盖华北/华中出发核心经营数据、目的地国家区域分析、
+    出发月份、线下门店省份达标、价格带结构，以及累计 H2 月份区域品牌明细。
+  </p>
+  <a class="btn" href="双周例会分析报告_08.22-09.04_visual.html">打开完整报告 →</a>
+  <div class="meta">
+    <span><span class="dot blue"></span>平台GMV · 同比</span>
+    <span><span class="dot orange"></span>翔龙 · 国旅 双品牌</span>
+    <span><span class="dot green"></span>市占率变化</span>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,2112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>欧洲跟大团双周经营分析(例会数据 · 8.22-9.04双周）</title>
+<script crossorigin="anonymous" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js"></script>
+<script>
+  Chart.defaults.font.family = '"Inter", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif';
+  Chart.defaults.color = '#666666';
+  Chart.defaults.borderColor = '#E5E5E5';
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Noto+Sans+SC:wght@400;500;700&amp;display=swap" rel="stylesheet"></link><style>:root {
+  color-scheme: light;
+  --bg: #F5F5F5;
+  --surface: #FFFFFF;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-tertiary: #999999;
+  --accent: #0066CC;
+  --accent-light: #0086F6;
+  --accent-pale: #E6F0FA;
+  --orange: #FF6600;
+  --orange-light: #FFF2E6;
+  --green: #2FB344;
+  --green-light: #E6F7EA;
+  --red: #E02020;
+  --red-light: #FCE6E6;
+  --purple: #7B61FF;
+  --gray: #999999;
+  --border: #E5E5E5;
+  --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-hover: 0 4px 16px rgba(0,0,0,0.08);
+  --font-heading: "Inter", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Inter", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  --font-number: "Inter", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+/* Header --------------------------------------------------------------- */
+.header {
+  background: var(--surface);
+  color: var(--text-primary);
+  padding: 44px 32px 30px;
+  position: relative;
+  border-bottom: 1px solid var(--border);
+}
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 32px;
+  width: 80px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+.header-content { max-width: 1480px; margin: 0 auto; position: relative; z-index: 1; }
+.header h1 {
+  font-family: var(--font-heading);
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+  text-align: left;
+  line-height: 1.25;
+}
+.header .subtitle {
+  font-size: 15px;
+  color: var(--text-secondary);
+  font-weight: 400;
+  text-align: left;
+}
+.header .meta { display: none; }
+.history-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.history-label { display: none; }
+.history-tag {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 7px 16px;
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.history-tag:hover {
+  background: #F5F5F5;
+  border-color: #D9D9D9;
+  color: var(--text-primary);
+}
+.history-tag.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  font-weight: 700;
+  padding: 10px 22px;
+  font-size: 14px;
+  border-radius: 18px;
+}
+.history-tag.active:hover { background: var(--accent); }
+/* Layout --------------------------------------------------------------- */
+.main-layout { display: flex; max-width: 1480px; margin: 0 auto; position: relative; }
+.sidebar-nav {
+  width: 190px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 18px;
+  height: calc(100vh - 36px);
+  overflow-y: auto;
+  padding: 0;
+  z-index: 10;
+}
+.sidebar-nav::-webkit-scrollbar { width: 4px; }
+.sidebar-nav::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+.sidebar-panel {
+  background: var(--surface);
+  border-radius: 8px;
+  padding: 18px 14px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  position: relative;
+}
+.sidebar-tabs { display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; }
+.sidebar-tab {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+.sidebar-tab:hover { background: #F5F5F5; color: var(--text-primary); }
+.sidebar-tab.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+.sidebar-divider {
+  height: 1px;
+  background: var(--border);
+  margin-bottom: 14px;
+}
+.sidebar-group { margin-bottom: 16px; }
+.sidebar-group:last-child { margin-bottom: 0; }
+.sidebar-group-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-tertiary);
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+  padding-left: 8px;
+  text-transform: uppercase;
+}
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  margin-bottom: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  line-height: 1.45;
+  background: transparent;
+  position: relative;
+}
+.sidebar-link:hover {
+  background: var(--bg);
+  color: var(--text-primary);
+  border-color: var(--border);
+}
+.sidebar-link.active {
+  background: #E6F0FA;
+  color: var(--accent);
+  border-color: rgba(0,102,204,0.10);
+  font-weight: 700;
+}
+.sidebar-link.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 18px;
+  background: var(--accent);
+  border-radius: 0 3px 3px 0;
+}
+.sidebar-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  background: #F5F5F5;
+  color: var(--text-secondary);
+  font-size: 10px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.sidebar-link:hover .sidebar-num { background: #E5E5E5; color: var(--text-primary); }
+.sidebar-link.active .sidebar-num { background: var(--accent); color: #fff; }
+.main-content { flex: 1; min-width: 0; padding: 0 16px 56px 20px; }
+.container { max-width: 1400px; margin: 0 auto; padding: 0 24px 48px; }
+/* Section titles ------------------------------------------------------- */
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 44px 0 18px;
+  padding-left: 14px;
+  border-left: 4px solid var(--accent);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 44px 0 18px;
+}
+.section-header .section-title { margin: 0; }
+.section-subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: -10px 0 18px 18px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 16px;
+  display: inline-block;
+  font-weight: 500;
+}
+.section-title + .section-subtitle { margin-top: 10px; }
+/* Tabs ----------------------------------------------------------------- */
+.tab-nav { display: flex; gap: 8px; margin-top: 18px; }
+.tab-btn {
+  background: var(--bg);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.tab-btn:hover { background: #F5F5F5; color: var(--text-primary); }
+.tab-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+.region-tabs { display: flex; gap: 10px; margin: 16px 0 12px; }
+.region-tab {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 9px 24px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.region-tab:hover { background: var(--bg); border-color: #D9D9D9; }
+.region-tab.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+.sub-tabs {
+  display: flex;
+  gap: 8px;
+  margin: 0 0 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.sub-tab {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.sub-tab:hover { background: #F5F5F5; }
+.sub-tab.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+.month-tabs { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+.month-tab {
+  padding: 8px 22px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.month-tab:hover { background: var(--bg); border-color: #D9D9D9; }
+.month-tab.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+.month-panel { display: none; }
+.month-panel.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+.month-summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 16px; }
+.month-summary-card {
+  background: var(--surface) !important;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 18px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+.month-summary-card .label { font-size: 13px; color: var(--text-secondary); margin-bottom: 8px; font-weight: 600; }
+.month-summary-card .value { font-family: var(--font-number); font-size: 22px; font-weight: 700; color: var(--text-primary); }
+.month-summary-card .value.up { color: var(--green); }
+.month-summary-card .value.down { color: var(--red); }
+.month-summary-card .sub { font-size: 12px; color: var(--text-tertiary); margin-top: 4px; }
+/* KPI cards ------------------------------------------------------------ */
+.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin-bottom: 24px; }
+.kpi-grid.five { grid-template-columns: repeat(5, 1fr); }
+.kpi-grid.four { grid-template-columns: repeat(4, 1fr); }
+.kpi-card {
+  background: var(--surface);
+  border-radius: 8px;
+  padding: 24px 22px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+}
+.kpi-card:hover { box-shadow: var(--shadow-hover); }
+.kpi-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent);
+}
+.kpi-card.green::after { background: var(--green); }
+.kpi-card.orange::after { background: var(--orange); }
+.kpi-card.purple::after { background: var(--purple); }
+.kpi-card.red::after { background: var(--red); }
+.kpi-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.kpi-value {
+  font-family: var(--font-number);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin-bottom: 14px;
+  letter-spacing: -0.02em;
+}
+.kpi-meta { display: flex; align-items: center; gap: 10px; font-size: 13px; flex-wrap: wrap; }
+.kpi-yoy {
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+.kpi-yoy small { font-size: 10px; font-weight: 600; opacity: 0.7; margin-right: 2px; }
+.yoy-up { background: var(--green-light); color: var(--green); }
+.yoy-down { background: var(--red-light); color: var(--red); }
+.kpi-compare { color: var(--text-secondary); font-size: 12px; }
+.kpi-note { font-size: 12px; color: var(--text-secondary); margin-top: 10px; }
+.kpi-share {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #E6F0FA;
+  color: var(--accent);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.kpi-share-bar {
+  height: 6px;
+  background: #E5E5E5;
+  border-radius: 3px;
+  overflow: hidden;
+  margin: 10px 0 6px;
+}
+.kpi-share-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 3px;
+}
+/* Tables --------------------------------------------------------------- */
+.table-wrap { overflow-x: auto; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+.table-wrap .data-table { margin-bottom: 0; border-radius: 0; box-shadow: none; border: none; }
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  background: var(--surface);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+.data-table th {
+  background: #FAFAFA;
+  padding: 14px 12px;
+  text-align: left;
+  font-weight: 700;
+  color: #666666;
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+  white-space: nowrap;
+}
+/* Soften the original dark grouped column headers */
+.data-table th[style*="#1e3a5f"] { background: #E6F0FA !important; color: #0066CC !important; }
+.data-table th[style*="#059669"] { background: #E6F7EA !important; color: #1A8C2A !important; }
+.data-table th[style*="#94a3b8"] { background: #F5F5F5 !important; color: #666666 !important; }
+.data-table th[style*="#2563eb"] { background: #E6F0FA !important; color: #0066CC !important; }
+.data-table th[style*="#f97316"] { background: #FFF2E6 !important; color: #FF6600 !important; }
+.data-table td {
+  padding: 13px 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-primary);
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tbody tr:hover td { background: #FAFAFA; }
+.data-table .num { font-family: var(--font-number); text-align: right; font-weight: 600; }
+.data-table .highlight { background: #E6F0FA; font-weight: 700; }
+.data-table .total-row { background: #F8F8F8; font-weight: 700; }
+.data-table .up { color: var(--green); }
+.data-table .down { color: var(--red); }
+.status-pass { color: var(--green); background: var(--green-light); padding: 4px 12px; border-radius: 6px; font-size: 12px; font-weight: 700; }
+.status-fail { color: var(--red); background: var(--red-light); padding: 4px 12px; border-radius: 6px; font-size: 12px; font-weight: 700; }
+.status-na { color: var(--text-secondary); background: #F5F5F5; padding: 4px 12px; border-radius: 6px; font-size: 12px; font-weight: 700; }
+/* Region table sticky */
+.region-table-wrap { overflow-x: auto; border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+.region-table-wrap .data-table { margin-bottom: 0; border-radius: 0; overflow: visible; box-shadow: none; border: none; }
+.region-table-wrap .data-table thead th { position: sticky; top: 0; z-index: 10; }
+.region-table-wrap .data-table th:first-child,
+.region-table-wrap .data-table td:first-child { position: sticky; left: 0; background: var(--surface); z-index: 20; box-shadow: 2px 0 4px rgba(0,0,0,0.03); }
+.region-table-wrap .data-table thead th:first-child { z-index: 30; background: #FAFAFA; }
+.region-table-wrap .data-table tbody tr:hover td:first-child { background: #FAFAFA; }
+.region-table-wrap .data-table tbody tr.total-row td:first-child { background: #F8F8F8; z-index: 20; }
+.region-table-wrap .data-table tbody tr.total-row:hover td:first-child { background: #E5E5E5; }
+/* Charts --------------------------------------------------------------- */
+.chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px; }
+.chart-card {
+  background: var(--surface);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  transition: box-shadow 0.2s ease;
+}
+.chart-card:hover { box-shadow: var(--shadow-hover); }
+.chart-card.wide { grid-column: 1 / -1; }
+.chart-title { font-family: var(--font-heading); font-size: 17px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; letter-spacing: -0.01em; }
+.chart-subtitle { font-size: 12px; color: var(--text-secondary); margin-bottom: 14px; }
+.chart-wrapper { position: relative; height: 280px; }
+.chart-wrapper.tall { height: 340px; }
+.legend-custom { display: flex; gap: 16px; margin-bottom: 10px; flex-wrap: wrap; }
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-secondary); }
+.legend-dot { width: 10px; height: 10px; border-radius: 3px; }
+/* Channel cards -------------------------------------------------------- */
+.channel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 14px; margin-bottom: 14px; }
+.channel-card {
+  background: var(--surface);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+}
+.channel-card:hover { box-shadow: var(--shadow-hover); }
+.channel-card.primary { border-color: #B3D7F7; }
+.channel-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.channel-tag {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: #E6F0FA;
+  color: var(--accent);
+}
+.channel-tag.primary { background: var(--green-light); color: var(--green); }
+.channel-name { font-family: var(--font-heading); font-size: 15px; font-weight: 700; color: var(--text-primary); }
+.channel-body { padding: 14px 16px; }
+.channel-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+.channel-metric { display: flex; flex-direction: column; }
+.channel-label { font-size: 11px; color: var(--text-secondary); margin-bottom: 4px; font-weight: 600; }
+.channel-value { font-family: var(--font-number); font-size: 26px; font-weight: 700; color: var(--text-primary); line-height: 1.2; }
+.channel-yoy { font-size: 13px; font-weight: 700; margin-top: 4px; }
+.channel-small { font-size: 18px; font-weight: 700; line-height: 1.2; }
+.channel-note { font-size: 11px; color: var(--text-secondary); margin-top: 4px; }
+.channel-bar-wrap { margin-bottom: 12px; }
+.channel-bar-label { font-size: 11px; color: var(--text-secondary); margin-bottom: 6px; font-weight: 600; }
+.stacked-bar { display: flex; height: 22px; border-radius: 4px; overflow: hidden; }
+.bar-xl { background: var(--accent); }
+.bar-gl { background: var(--accent-light); }
+.bar-ot { background: #D9D9D9; }
+.channel-bar-legend { display: flex; gap: 14px; margin-top: 8px; flex-wrap: wrap; }
+.channel-bar-legend span { font-size: 11px; color: var(--text-secondary); display: flex; align-items: center; gap: 5px; }
+.dot { width: 8px; height: 8px; border-radius: 2px; display: inline-block; }
+.dot.xl { background: var(--accent); }
+.dot.gl { background: var(--accent-light); }
+.dot.ot { background: #D9D9D9; }
+.channel-footer {
+  font-size: 12px;
+  color: var(--text-secondary);
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+.channel-section {
+  background: var(--surface);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  padding: 14px 18px 16px;
+  margin-bottom: 16px;
+}
+.channel-section > .section-subtitle { margin-left: 0 !important; margin-bottom: 10px; font-weight: 600; font-size: 13px; }
+.channel-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.channel-table thead th { background: #FAFAFA; padding: 8px; text-align: center; font-weight: 700; color: var(--text-secondary); font-size: 11px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+.channel-table tbody td { padding: 8px; text-align: center; border-bottom: 1px solid #F5F5F5; }
+.channel-table tbody tr:last-child td { border-bottom: none; }
+.channel-table td:first-child { text-align: left; font-weight: 700; color: var(--text-primary); }
+.channel-table .num { font-family: var(--font-number); }
+.channel-table .up { color: var(--green); font-weight: 700; }
+.channel-table .down { color: var(--red); font-weight: 700; }
+.channel-table .tag { font-size: 11px; padding: 2px 6px; border-radius: 4px; font-weight: 700; }
+.channel-table .tag.up { background: var(--green-light); color: var(--green); }
+.channel-table .tag.down { background: var(--red-light); color: var(--red); }
+/* Brand mini cards */
+.brand-mini-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
+.brand-mini {
+  background: var(--bg);
+  border-radius: 8px;
+  padding: 10px 6px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+.brand-mini.xl { border-top: 3px solid var(--accent); }
+.brand-mini.gl { border-top: 3px solid var(--accent-light); }
+.brand-mini.ot { border-top: 3px solid #D9D9D9; }
+.brand-mini-name { font-size: 11px; font-weight: 700; color: var(--text-secondary); margin-bottom: 3px; }
+.brand-mini-gmv { font-family: var(--font-number); font-size: 17px; font-weight: 700; color: var(--text-primary); line-height: 1.2; }
+.brand-mini-gmv span { font-size: 11px; font-weight: 500; }
+.brand-mini-yoy { font-size: 11px; font-weight: 700; margin-top: 2px; }
+.brand-mini-yoy.up { color: var(--green); }
+.brand-mini-yoy.down { color: var(--red); }
+.brand-mini-share { font-family: var(--font-number); font-size: 18px; font-weight: 700; margin-top: 3px; }
+.brand-mini-share.xl { color: var(--accent); }
+.brand-mini-share.gl { color: var(--accent-light); }
+.brand-mini-share.ot { color: var(--text-secondary); }
+/* Channel KPI row */
+.channel-kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 14px; text-align: center; }
+.channel-kpi { display: flex; flex-direction: column; align-items: center; }
+.channel-kpi-label { font-size: 11px; color: var(--text-secondary); margin-bottom: 6px; font-weight: 600; }
+.channel-kpi-value { font-family: var(--font-number); font-size: 24px; font-weight: 700; color: var(--text-primary); line-height: 1.1; }
+.channel-kpi-yoy { font-size: 11px; font-weight: 700; margin-top: 3px; padding: 2px 6px; border-radius: 4px; }
+.channel-kpi-yoy.up { color: var(--green); background: var(--green-light); }
+.channel-kpi-yoy.down { color: var(--red); background: var(--red-light); }
+.channel-brand-row { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.channel-brand-item { display: flex; align-items: center; gap: 10px; }
+.channel-brand-dot { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+.channel-brand-name { font-size: 12px; color: var(--text-secondary); min-width: 70px; }
+.channel-brand-bar-bg { flex: 1; height: 10px; background: #F5F5F5; border-radius: 5px; overflow: hidden; }
+.channel-brand-bar-fill { height: 100%; border-radius: 5px; }
+.channel-brand-pct { font-family: var(--font-number); font-size: 13px; font-weight: 700; color: var(--text-primary); min-width: 42px; text-align: right; }
+/* Cumulative cards ----------------------------------------------------- */
+.cum-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-bottom: 24px; }
+.cum-grid.five { grid-template-columns: repeat(5, 1fr); }
+.cum-card {
+  background: var(--surface);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+  position: relative;
+}
+.cum-card:hover { box-shadow: var(--shadow-hover); }
+.cum-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent);
+}
+.cum-card.green::before { background: var(--green); }
+.cum-card.orange::before { background: var(--orange); }
+.cum-card.purple::before { background: var(--purple); }
+.cum-card.gray::before { background: var(--gray); }
+.cum-card-inner { padding: 20px; }
+.cum-header { font-size: 12px; font-weight: 700; color: var(--text-secondary); letter-spacing: 0.02em; margin-bottom: 14px; }
+.cum-row { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 16px; }
+.cum-gmv { display: flex; flex-direction: column; }
+.cum-gmv .year-label { font-size: 11px; color: var(--text-secondary); margin-bottom: 2px; }
+.cum-gmv .big { font-family: var(--font-number); font-size: 30px; font-weight: 700; color: var(--text-primary); line-height: 1.1; }
+.cum-gmv .big span { font-size: 14px; font-weight: 500; margin-left: 2px; }
+.cum-gmv .small { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
+.cum-yoy-box { text-align: right; }
+.cum-yoy-box .pct { font-family: var(--font-number); font-size: 24px; font-weight: 700; color: var(--green); line-height: 1; }
+.cum-yoy-box .pct.down { color: var(--red); }
+.cum-yoy-box .pct-label { font-size: 11px; color: var(--text-secondary); margin-top: 4px; }
+.cum-share-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  background: var(--bg);
+  border-radius: 8px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+}
+.cum-share-bar-bg { flex: 1; height: 10px; background: #E5E5E5; border-radius: 5px; overflow: hidden; }
+.cum-share-bar-fill { height: 100%; border-radius: 5px; background: var(--accent); }
+.cum-share-pct { font-family: var(--font-number); font-size: 18px; font-weight: 700; color: var(--accent); min-width: 56px; text-align: right; }
+.cum-share-year { font-size: 11px; font-weight: 700; color: var(--text-secondary); display: block; margin-bottom: 2px; }
+.cum-share-change { font-size: 12px; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
+.cum-share-change.up { background: var(--green-light); color: var(--green); }
+.cum-share-change.down { background: var(--red-light); color: var(--red); }
+.cum-footer { font-size: 13px; color: var(--text-secondary); padding-top: 12px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; }
+/* Q3/Q4 inline cards --------------------------------------------------- */
+.q3q4-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; margin-bottom: 28px; }
+.q3q4-grid > div {
+  background: var(--surface) !important;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+.q3q4-grid > div::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent);
+}
+.q3q4-grid > div:nth-child(2)::before { background: var(--green); }
+.q3q4-grid > div:nth-child(3)::before { background: var(--gray); }
+.q3q4-grid > div:nth-child(4)::before { background: var(--orange); }
+.q3q4-grid > div:nth-child(5)::before { background: var(--purple); }
+.q3q4-grid > div > div:first-child { font-family: var(--font-heading); font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 14px; }
+.q3q4-grid > div > div:nth-of-type(2) { display: flex; gap: 10px; margin-bottom: 14px; }
+.q3q4-grid > div > div:nth-of-type(2) > div {
+  flex: 1;
+  border-radius: 6px;
+  padding: 14px 8px;
+  text-align: center;
+}
+.q3q4-grid > div > div:nth-of-type(2) > div:first-child { background: #E6F0FA !important; }
+.q3q4-grid > div > div:nth-of-type(2) > div:last-child { background: #F0EDFF !important; }
+.q3q4-grid > div > div:nth-of-type(2) > div > div:first-child {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+.q3q4-grid > div > div:nth-of-type(2) > div > div:nth-of-type(2) {
+  font-family: var(--font-number);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1;
+}
+.q3q4-grid > div > div:nth-of-type(2) > div > div:nth-of-type(3) {
+  font-size: 11px;
+  color: var(--text-tertiary);
+  margin-top: 4px;
+}
+.q3q4-grid > div > div:nth-of-type(3) { display: flex; gap: 10px; justify-content: center; }
+.q3q4-grid > div > div:nth-of-type(3) > div {
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.q3q4-grid > div:nth-child(1) > div:nth-of-type(3) > div,
+.q3q4-grid > div:nth-child(2) > div:nth-of-type(3) > div,
+.q3q4-grid > div:nth-child(4) > div:nth-of-type(3) > div,
+.q3q4-grid > div:nth-child(5) > div:nth-of-type(3) > div.up { background: var(--green-light); color: var(--green); }
+.q3q4-grid > div:nth-child(3) > div:nth-of-type(3) > div:first-child,
+.q3q4-grid > div:nth-child(5) > div:nth-of-type(3) > div:first-child { background: var(--red-light); color: var(--red); }
+/* Region mini bars */
+.mini-bar-wrap { width: 48px; height: 6px; background: #E5E5E5; border-radius: 3px; overflow: hidden; display: inline-block; vertical-align: middle; margin-right: 4px; }
+.mini-bar-fill { height: 100%; border-radius: 3px; background: var(--accent); }
+.mini-bar-fill.green { background: var(--green); }
+.mini-bar-fill.red { background: var(--red); }
+.change-pill { display: inline-flex; align-items: center; gap: 3px; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 6px; }
+.change-pill.up { background: var(--green-light); color: var(--green); }
+.change-pill.down { background: var(--red-light); color: var(--red); }
+.region-kpi-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 16px; }
+.region-kpi-card {
+  background: var(--surface);
+  border-radius: 8px;
+  padding: 18px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  text-align: center;
+  transition: box-shadow 0.2s ease;
+}
+.region-kpi-card:hover { box-shadow: var(--shadow-hover); }
+.region-kpi-card .r-label { font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; font-weight: 600; }
+.region-kpi-card .r-value { font-family: var(--font-number); font-size: 24px; font-weight: 700; color: var(--text-primary); line-height: 1.2; }
+.region-kpi-card .r-sub { font-size: 11px; margin-top: 4px; color: var(--text-secondary); }
+.region-kpi-card .r-bar { margin-top: 8px; height: 5px; border-radius: 3px; overflow: hidden; background: #E5E5E5; }
+.region-kpi-card .r-bar-fill { height: 100%; border-radius: 3px; background: var(--accent); }
+.region-kpi-card .r-change { font-size: 12px; font-weight: 700; margin-top: 4px; }
+/* Strategy cards */
+.strategy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.strategy-card {
+  background: var(--surface);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+}
+.strategy-card.green { border-left-color: var(--green); }
+.strategy-card.orange { border-left-color: var(--orange); }
+.strategy-card h4 { font-family: var(--font-heading); font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--text-primary); }
+.strategy-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+/* Footer & notes ------------------------------------------------------- */
+.footer-note { text-align: center; color: var(--text-secondary); font-size: 12px; margin-top: 32px; padding-bottom: 24px; }
+.datum-note {
+  background: var(--surface);
+  border-radius: 8px;
+  padding: 22px 26px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  margin-top: 32px;
+}
+.datum-note-title { font-family: var(--font-heading); font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 10px; }
+.datum-note-body { font-size: 12px; color: var(--text-secondary); line-height: 1.8; }
+/* Panel utilities ------------------------------------------------------ */
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+.cum-region-panel { display: none; }
+.cum-region-panel.active { display: block; }
+.bw-region-panel { display: none; }
+.bw-region-panel.active { display: block; }
+.sub-panel { display: none; }
+.sub-panel.active { display: block; }
+/* Responsive ----------------------------------------------------------- */
+@media (max-width: 1200px) {
+  .kpi-grid.five { grid-template-columns: repeat(3, 1fr); }
+  .cum-grid.five { grid-template-columns: repeat(3, 1fr); }
+  .q3q4-grid { grid-template-columns: repeat(3, 1fr); }
+  .region-kpi-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 1100px) {
+  .sidebar-nav { display: none; }
+  .main-layout { display: block; }
+  .main-content { padding: 0 24px 48px; }
+}
+@media (max-width: 900px) {
+  .kpi-grid.five, .kpi-grid.four, .cum-grid.five, .q3q4-grid, .region-kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .month-summary { grid-template-columns: repeat(2, 1fr); }
+  .chart-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .header h1 { font-size: 26px; }
+  .section-title { font-size: 20px; }
+  .kpi-grid, .kpi-grid.five, .kpi-grid.four, .cum-grid, .cum-grid.five, .q3q4-grid, .region-kpi-grid, .month-summary { grid-template-columns: 1fr; }
+  .chart-card.wide { grid-column: 1; }
+  .channel-grid { grid-template-columns: 1fr; }
+  .history-tag { font-size: 11px; padding: 6px 12px; }
+  .history-tag.active { font-size: 13px; padding: 8px 16px; }
+}
+/* Number alignment */
+.kpi-value, .data-table .num, .channel-value, .channel-small, .cum-gmv .big,
+.cum-yoy-box .pct, .cum-share-pct, .month-summary-card .value, .region-kpi-card .r-value,
+.brand-mini-gmv, .brand-mini-share, .channel-kpi-value, .channel-brand-pct,
+.q3q4-grid > div > div:nth-of-type(2) > div > div:nth-of-type(2) {
+  font-variant-numeric: tabular-nums;
+}
+</style>
+</head>
+<body>
+<div class="header">
+<div class="header-content">
+<h1>欧洲跟大团双周经营分析(例会数据 · 8.22-9.04双周）</h1>
+<div class="history-nav">
+<span class="history-tag active">8.22-9.04 本期</span>
+<a class="history-tag" href="双周例会分析报告_08.08-08.21.html">8.08-8.21 上双周</a>
+</div>
+</div>
+</div>
+<div class="main-layout">
+<div class="sidebar-nav">
+<div class="sidebar-panel">
+<div class="sidebar-tabs">
+<button class="sidebar-tab active" onclick="switchTab('biweekly')">双周预定</button>
+<button class="sidebar-tab" onclick="switchTab('cumulative')">累计预定</button>
+</div>
+<div class="sidebar-divider"></div>
+<div class="sidebar-group" data-tab="biweekly">
+<a class="sidebar-link" onclick="scrollToSection('bw-core')"><span class="sidebar-num">01</span>双周经营核心数据</a>
+<a class="sidebar-link" onclick="scrollToSection('bw-region')"><span class="sidebar-num">02</span>业务区域分析</a>
+<a class="sidebar-link" onclick="scrollToSection('bw-month')"><span class="sidebar-num">03</span>出发月份分布</a>
+<a class="sidebar-link" onclick="scrollToSection('bw-province')"><span class="sidebar-num">04</span>省份达标分析</a>
+<a class="sidebar-link" onclick="scrollToSection('bw-price')"><span class="sidebar-num">05</span>价格带分布</a>
+</div>
+<div class="sidebar-group" data-tab="cumulative" style="display:none">
+<a class="sidebar-link" onclick="scrollToSection('cum-core')"><span class="sidebar-num">01</span>26年全年出发累计成交</a>
+<a class="sidebar-link" onclick="scrollToSection('cum-q3q4')"><span class="sidebar-num">02</span>Q3及Q4出发累计成交</a>
+<a class="sidebar-link" onclick="scrollToSection('cum-month-region')"><span class="sidebar-num">03</span>H2各月各目的地区域成交</a>
+</div>
+</div>
+</div>
+<div class="main-content">
+<div class="tab-panel active" id="tab-biweekly">
+<div class="section-header">
+<div class="section-title" id="bw-core">一、双周经营核心数据</div>
+<div class="region-tabs">
+<button class="region-tab active" onclick="switchBwRegionTab('hb',this)">华北出发</button>
+<button class="region-tab" onclick="switchBwRegionTab('hz',this)">华中出发</button>
+</div>
+</div>
+<div class="bw-region-panel active" id="bw-region-hb">
+<div class="sub-tabs">
+<button class="sub-tab active" onclick="switchSubTab('hb-core',this)">核心经营数据</button>
+<button class="sub-tab" onclick="switchSubTab('hb-channel',this)">渠道表现</button>
+</div>
+<div class="sub-panel active" id="hb-core">
+<div class="kpi-grid five">
+<div class="kpi-card"><div class="kpi-label">携程平台总GMV</div><div class="kpi-value">¥3761万</div><div class="kpi-meta"><span class="kpi-yoy yoy-up"><small>YoY'25</small> ↑ +70%</span><span class="kpi-compare">vs 25年 ¥2215万</span></div><div class="kpi-note">成交人数 1,936人（+99%）</div></div>
+<div class="kpi-card green"><div class="kpi-label">双品牌GMV</div><div class="kpi-value">¥1844万</div><div class="kpi-meta"><span class="kpi-yoy yoy-up"><small>YoY'25</small> ↑ +63%</span><span class="kpi-compare">vs 25年 ¥1129万</span></div><div class="kpi-note"><span class="kpi-share">平台占比 49%（-2pp）</span></div></div>
+<div class="kpi-card red"><div class="kpi-label">其他供应商GMV</div><div class="kpi-value">¥1917万</div><div class="kpi-meta"><span class="kpi-yoy yoy-up"><small>YoY'25</small> ↑ +76%</span><span class="kpi-compare">vs 25年 ¥1087万</span></div><div class="kpi-note"><span class="kpi-share">平台占比 51%</span></div></div>
+<div class="kpi-card orange"><div class="kpi-label">国旅品牌GMV</div><div class="kpi-value">¥577万</div><div class="kpi-meta"><span class="kpi-yoy yoy-down"><small>YoY'25</small> ↓ -5%</span><span class="kpi-compare">vs 25年 ¥605万</span></div><div class="kpi-note"><span class="kpi-share">平台占比 15%</span>，增速低于大盘</div></div>
+<div class="kpi-card purple"><div class="kpi-label">翔龙品牌GMV</div><div class="kpi-value">¥1267万</div><div class="kpi-meta"><span class="kpi-yoy yoy-up"><small>YoY'25</small> ↑ +142%</span><span class="kpi-compare">vs 25年 ¥524万</span></div><div class="kpi-note"><span class="kpi-share">平台占比 34%</span>，增速跑赢大盘</div></div>
+</div>
+<table class="data-table">
+<thead>
+<tr><th>指标</th><th class="num">2026年双周</th><th class="num">2025年同期</th><th class="num">GMV同比增长</th><th class="num">2026年市占率</th><th class="num">2025年市占率</th><th class="num">市占率变化</th></tr>
+</thead>
+<tbody>
+<tr class="total-row"><td>携程平台总GMV</td><td class="num">3761万</td><td class="num">2215万</td><td class="num up">+70%</td><td class="num">100%</td><td class="num">100%</td><td class="num">—</td></tr>
+<tr><td style="padding-left:32px">├ 双品牌GMV</td><td class="num highlight">1844万</td><td class="num">1129万</td><td class="num up">+63%</td><td class="num highlight">49%</td><td class="num">51%</td><td class="num down">-2pp</td></tr>
+<tr><td style="padding-left:48px">├ 翔龙品牌</td><td class="num">1267万</td><td class="num">524万</td><td class="num up">+142%</td><td class="num">34%</td><td class="num">24%</td><td class="num up">+10pp</td></tr>
+<tr><td style="padding-left:48px">├ 国旅品牌</td><td class="num">577万</td><td class="num">605万</td><td class="num down">-5%</td><td class="num">15%</td><td class="num">27%</td><td class="num down">-12pp</td></tr>
+<tr><td style="padding-left:32px">└ 其他供应商</td><td class="num">1917万</td><td class="num">1087万</td><td class="num up">+76%</td><td class="num">51%</td><td class="num">49%</td><td class="num up">+2pp</td></tr>
+</tbody></table>
+</div>
+<div class="sub-panel" id="hb-channel">
+<div class="channel-section">
+<div class="channel-grid">
+<div class="channel-card primary">
+<div class="channel-header"><span class="channel-name">线下门店</span></div>
+<div class="channel-body">
+<div class="channel-kpi-row">
+<div class="channel-kpi">
+<div class="channel-kpi-label">携程平台成交收入</div>
+<div class="channel-kpi-value">¥3019万</div>
+<div class="channel-kpi-yoy up"><span style="font-size:10px; color:#94a3b8">YoY'25</span> +88%</div>
+</div>
+<div class="channel-kpi">
+<div class="channel-kpi-label">双品牌市占率</div>
+<div class="channel-kpi-value" style="color:#059669">47%</div>
+<div class="channel-kpi-yoy up">同比 +1pp</div>
+</div>
+<div class="channel-kpi">
+<div class="channel-kpi-label">其他供应商市占率</div>
+<div class="channel-kpi-value" style="color:#64748b">53%</div>
+<div class="channel-kpi-yoy down">同比 -1pp</div>
+</div>
+</div>
+<div class="brand-mini-grid">
+<div class="brand-mini xl">
+<div class="brand-mini-name">翔龙品牌</div>
+<div style="font-size:10px; color:#94a3b8">成交GMV</div>
+<div class="brand-mini-gmv">¥1058<span>万</span></div>
+<div style="font-size:10px; color:#94a3b8">YoY'25</div>
+<div class="brand-mini-yoy up">↑ +133%</div>
+<div style="font-size:10px; color:#94a3b8">市占率</div>
+<div class="brand-mini-share xl">35%</div>
+</div>
+<div class="brand-mini gl">
+<div class="brand-mini-name">国旅品牌</div>
+<div style="font-size:10px; color:#94a3b8">成交GMV</div>
+<div class="brand-mini-gmv">¥365<span>万</span></div>
+<div style="font-size:10px; color:#94a3b8">YoY'25</div>
+<div class="brand-mini-yoy up">↑ +27%</div>
+<div style="font-size:10px; color:#94a3b8">市占率</div>
+<div class="brand-mini-share gl">12%</div>
+</div>
+<div class="brand-mini ot">
+<div class="brand-mini-name">其他供应商</div>
+<div style="font-size:10px; color:#94a3b8">成交GMV</div>
+<div class="brand-mini-gmv">¥1596<span>万</span></div>
+<div style="font-size:10px; color:#94a3b8">YoY'25</div>
+<div class="brand-mini-yoy up">↑ +84%</div>
+<div style="font-size:10px; color:#94a3b8">市占率</div>
+<div class="brand-mini-share ot">53%</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 线上渠道 -->
+<div class="channel-card">
+<div class="channel-header"><span class="channel-name">线上渠道</span></div>
+<div class="channel-body">
+<div class="channel-kpi-row">
+<div class="channel-kpi">
+<div class="channel-kpi-label">携程平台成交收入</div>
+<div class="channel-kpi-value">¥742万</div>
+<div class="channel-kpi-yoy up"><span style="font-size:10px; color:#94a3b8">YoY'25</span> +22%</div>
+</div>
+<div class="channel-kpi">
+<div class="channel-kpi-label">双品牌市占率</div>
+<div class="channel-kpi-value" style="color:#059669">57%</div>
+<div class="channel-kpi-yoy down">同比 -7pp</div>
+</div>
+<div class="channel-kpi">
+<div class="channel-kpi-label">其他供应商市占率</div>
+<div class="channel-kpi-value" style="color:#64748b">43%</div>
+<div class="channel-kpi-yoy up">同比 +7pp</div>
+</div>
+</div>
+<div class="brand-mini-grid">
+<div class="brand-mini xl">
+<div class="brand-mini-name">翔龙品牌</div>
+<div style="font-size:10px; color:#94a3b8">成交GMV</div>
+<div class="brand-mini-gmv">¥209<span>万</span></div>
+<div style="font-size:10px; color:#94a3b8">YoY'25</div>
+<div class="brand-mini-yoy up">↑ +198%</div>
+<div style="font-size:10px; color:#94a3b8">市占率</div>
+<div class="brand-mini-share xl">28%</div>
+</div>
+<div class="brand-mini gl">
+<div class="brand-mini-name">国旅品牌</div>
+<div style="font-size:10px; color:#94a3b8">成交GMV</div>
+<div class="brand-mini-gmv">¥213<span>万</span></div>
+<div style="font-size:10px; color:#94a3b8">YoY'25</div>
+<div class="brand-mini-yoy down">↑ -33%</div>
+<div style="font-size:10px; color:#94a3b8">市占率</div>
+<div class="brand-mini-share gl">29%</div>
+</div>
+<div class="brand-mini ot">
+<div class="brand-mini-name">其他供应商</div>
+<div style="font-size:10px; color:#94a3b8">成交GMV</div>
+<div class="brand-mini-gmv">¥321<span>万</span></div>
+<div style="font-size:10px; color:#94a3b8">YoY'25</div>
+<div class="brand-mini-yoy up">↑ +46%</div>
+<div style="font-size:10px; color:#94a3b8">市占率</div>
+<div class="brand-mini-share ot">43%</div>
+</div>
+</div>
+</div>
+</div>
+</div><div style="margin-top:16px">
+<table class="channel-table">
+<thead>
+<tr><th>渠道</th><th>品牌</th><th class="num">2026GMV(万)</th><th class="num">25年GMV(万)</th><th class="num">GMV同比</th><th class="num">市占率</th><th class="num">市占率变化</th></tr>
+</thead>
+<tbody>
+<!-- 线下门店 -->
+<tr style="background:#f0f7ff; font-weight:600"><td rowspan="5">线下门店</td><td>携程平台</td><td class="num">3019</td><td class="num">1609</td><td class="num up">+88%</td><td class="num">100%</td><td class="num">—</td></tr>
+<tr><td>其他供应商</td><td class="num">1596</td><td class="num">867</td><td class="num up">+84%</td><td class="num">53%</td><td class="num"><span class="tag down">↓ -1pp</span></td></tr>
+<tr style="background:#f0fdf4"><td>双品牌</td><td class="num">1423</td><td class="num">741</td><td class="num up">+92%</td><td class="num">47%</td><td class="num"><span class="tag up">↑ +1pp</span></td></tr>
+<tr><td style="padding-left:32px">├ 翔龙品牌</td><td class="num">1058</td><td class="num">454</td><td class="num up">+133%</td><td class="num">35%</td><td class="num"><span class="tag up">↑ +7pp</span></td></tr>
+<tr style="border-bottom:2px solid #94a3b8"><td style="padding-left:32px">└ 国旅品牌</td><td class="num">365</td><td class="num">288</td><td class="num up">+27%</td><td class="num">12%</td><td class="num"><span class="tag down">↓ -6pp</span></td></tr>
+<!-- 线上渠道 -->
+<tr style="background:#f0f7ff; font-weight:600"><td rowspan="5">线上渠道</td><td>携程平台</td><td class="num">742</td><td class="num">606</td><td class="num up">+22%</td><td class="num">100%</td><td class="num">—</td></tr>
+<tr><td>其他供应商</td><td class="num">321</td><td class="num">219</td><td class="num up">+46%</td><td class="num">43%</td><td class="num"><span class="tag up">↑ +7pp</span></td></tr>
+<tr style="background:#f0fdf4"><td>双品牌</td><td class="num">422</td><td class="num">387</td><td class="num up">+9%</td><td class="num">57%</td><td class="num"><span class="tag down">↓ -7pp</span></td></tr>
+<tr><td style="padding-left:32px">├ 翔龙品牌</td><td class="num">209</td><td class="num">70</td><td class="num up">+198%</td><td class="num">28%</td><td class="num"><span class="tag up">↑ +17pp</span></td></tr>
+<tr><td style="padding-left:32px">└ 国旅品牌</td><td class="num">213</td><td class="num">317</td><td class="num down">-33%</td><td class="num">29%</td><td class="num"><span class="tag down">↓ -24pp</span></td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+</div>
+<div class="bw-region-panel" id="bw-region-hz">
+<div class="sub-tabs">
+<button class="sub-tab active" onclick="switchSubTab('hz-core',this)">核心经营数据</button>
+<button class="sub-tab" onclick="switchSubTab('hz-channel',this)">渠道表现</button>
+</div>
+<div class="sub-panel active" id="hz-core">
+<div class="kpi-grid four">
+<div class="kpi-card">
+<div class="kpi-label">携程平台总GMV</div>
+<div class="kpi-value">683万</div>
+<div class="kpi-meta"><span class="kpi-yoy yoy-up"><small>YoY'25</small> ↑ +117%</span><span class="kpi-compare">vs 315万</span></div>
+</div>
+<div class="kpi-card green">
+<div class="kpi-label">双品牌成交GMV</div>
+<div class="kpi-value">292万</div>
+<div class="kpi-meta"><span class="kpi-yoy yoy-up"><small>YoY'25</small> ↑ +175%</span><span class="kpi-compare">vs 106万</span></div>
+<div class="kpi-share-bar"><div class="kpi-share-fill" style="width:43%"></div></div>
+<div class="kpi-note">市占率 43% <span class="change-pill up">↑ +9pp</span></div>
+</div>
+<div class="kpi-card orange">
+<div class="kpi-label">翔龙品牌成交GMV</div>
+<div class="kpi-value">231万</div>
+<div class="kpi-meta"><span class="kpi-yoy yoy-up"><small>YoY'25</small> ↑ +194%</span><span class="kpi-compare">vs 79万</span></div>
+<div class="kpi-share-bar"><div class="kpi-share-fill" style="width:34%"></div></div>
+<div class="kpi-note">市占率 34% <span class="change-pill up">↑ +9pp</span></div>
+</div>
+<div class="kpi-card purple">
+<div class="kpi-label">国旅品牌成交GMV</div>
+<div class="kpi-value">61万</div>
+<div class="kpi-meta"><span class="kpi-yoy yoy-up"><small>YoY'25</small> ↑ +120%</span><span class="kpi-compare">vs 28万</span></div>
+<div class="kpi-share-bar"><div class="kpi-share-fill" style="width:9%"></div></div>
+<div class="kpi-note">市占率 9% <span class="change-pill up">↑ +0pp</span></div>
+</div>
+</div>
+</div>
+<div class="sub-panel" id="hz-channel">
+<div class="channel-section">
+<div class="channel-grid">
+<div class="channel-card primary">
+<div class="channel-header"><span class="channel-name">线下门店</span></div>
+<div class="channel-body">
+<div class="channel-kpi-row">
+<div class="channel-kpi"><div class="channel-kpi-label">携程平台成交收入</div><div class="channel-kpi-value">¥615万</div></div>
+<div class="channel-kpi"><div class="channel-kpi-label">双品牌市占率</div><div class="channel-kpi-value" style="color:#059669">41%</div></div>
+<div class="channel-kpi"><div class="channel-kpi-label">其他供应商市占率</div><div class="channel-kpi-value" style="color:#64748b">59%</div></div>
+</div>
+<div class="brand-mini-grid">
+<div class="brand-mini xl"><div class="brand-mini-name">翔龙品牌</div><div style="font-size:10px; color:#94a3b8">成交GMV</div><div class="brand-mini-gmv">¥199<span>万</span></div><div style="font-size:10px; color:#94a3b8">市占率</div><div class="brand-mini-share xl">32%</div></div>
+<div class="brand-mini gl"><div class="brand-mini-name">国旅品牌</div><div style="font-size:10px; color:#94a3b8">成交GMV</div><div class="brand-mini-gmv">¥52<span>万</span></div><div style="font-size:10px; color:#94a3b8">市占率</div><div class="brand-mini-share gl">8%</div></div>
+<div class="brand-mini ot"><div class="brand-mini-name">其他供应商</div><div style="font-size:10px; color:#94a3b8">成交GMV</div><div class="brand-mini-gmv">¥364<span>万</span></div><div style="font-size:10px; color:#94a3b8">市占率</div><div class="brand-mini-share ot">59%</div></div>
+</div>
+</div>
+</div>
+<div class="channel-card">
+<div class="channel-header"><span class="channel-name">线上渠道</span></div>
+<div class="channel-body">
+<div class="channel-kpi-row">
+<div class="channel-kpi"><div class="channel-kpi-label">携程平台成交收入</div><div class="channel-kpi-value">¥69万</div></div>
+<div class="channel-kpi"><div class="channel-kpi-label">双品牌市占率</div><div class="channel-kpi-value" style="color:#059669">61%</div></div>
+<div class="channel-kpi"><div class="channel-kpi-label">其他供应商市占率</div><div class="channel-kpi-value" style="color:#64748b">39%</div></div>
+</div>
+<div class="brand-mini-grid">
+<div class="brand-mini xl"><div class="brand-mini-name">翔龙品牌</div><div style="font-size:10px; color:#94a3b8">成交GMV</div><div class="brand-mini-gmv">¥33<span>万</span></div><div style="font-size:10px; color:#94a3b8">市占率</div><div class="brand-mini-share xl">48%</div></div>
+<div class="brand-mini gl"><div class="brand-mini-name">国旅品牌</div><div style="font-size:10px; color:#94a3b8">成交GMV</div><div class="brand-mini-gmv">¥9<span>万</span></div><div style="font-size:10px; color:#94a3b8">市占率</div><div class="brand-mini-share gl">14%</div></div>
+<div class="brand-mini ot"><div class="brand-mini-name">其他供应商</div><div style="font-size:10px; color:#94a3b8">成交GMV</div><div class="brand-mini-gmv">¥27<span>万</span></div><div style="font-size:10px; color:#94a3b8">市占率</div><div class="brand-mini-share ot">39%</div></div>
+</div>
+</div>
+</div>
+</div>
+<div style="margin-top:16px">
+<table class="channel-table">
+<thead>
+<tr><th>业务渠道</th><th class="num">携程平台GMV(万)</th><th class="num">双品牌GMV(万)</th><th class="num">双品牌市占率</th><th class="num">其他GMV(万)</th><th class="num">其他市占率</th><th class="num">翔龙GMV(万)</th><th class="num">翔龙市占率</th><th class="num">国旅GMV(万)</th><th class="num">国旅市占率</th></tr>
+</thead>
+<tbody>
+<tr><td>线下门店</td><td class="num">615</td><td class="num">250</td><td class="num">41%</td><td class="num">364</td><td class="num">59%</td><td class="num">199</td><td class="num">32%</td><td class="num">52</td><td class="num">8%</td></tr>
+<tr><td>线上渠道</td><td class="num">69</td><td class="num">42</td><td class="num">61%</td><td class="num">27</td><td class="num">39%</td><td class="num">33</td><td class="num">48%</td><td class="num">9</td><td class="num">14%</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="section-title" id="bw-region">二、目的地国家_归属业务区域的成交收入以及同比增速</div>
+<div class="chart-grid">
+<div class="chart-card half">
+  <div class="chart-title">各区域品牌GMV同比增速</div>
+  <div class="chart-subtitle">按双品牌同比增速降序 · 柱状：翔龙/国旅/其他供应商GMV同比增速（%）| 折线：双品牌同比增速（%）</div>
+  <div class="legend-custom">
+    <div class="legend-item"><div class="legend-dot" style="background:#0066CC"></div>翔龙</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#FF6600"></div>国旅</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#999999"></div>其他供应商</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#2FB344; border-radius:50%"></div>双品牌</div>
+  </div>
+  <div class="chart-wrapper"><canvas id="chart-region-yoy"></canvas></div>
+</div>
+<div class="chart-card half">
+  <div class="chart-title">各区域品牌市占率变化</div>
+  <div class="chart-subtitle">与左图同区域顺序 · 柱状：翔龙/国旅市占率同比变化（pp）| 折线：双品牌净变化</div>
+  <div class="legend-custom">
+    <div class="legend-item"><div class="legend-dot" style="background:#0066CC"></div>翔龙变化</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#FF6600"></div>国旅变化</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#333333; border-radius:50%"></div>双品牌净变化</div>
+  </div>
+  <div class="chart-wrapper"><canvas id="chart-region-share"></canvas></div>
+</div>
+</div>
+<div class="region-table-wrap" style="margin-top:20px">
+<table class="data-table" style="min-width: 3400px; font-size: 11px"><thead><tr><th rowspan="2" style="min-width:50px; font-size:12px; vertical-align:middle">区域</th><th colspan="4" style="background:#1e3a5f; color:#fff; text-align:center; font-size:11px">携程平台</th><th colspan="7" style="background:#059669; color:#fff; text-align:center; font-size:11px">双品牌</th><th colspan="7" style="background:#94a3b8; color:#fff; text-align:center; font-size:11px">其他供应商</th><th colspan="7" style="background:#2563eb; color:#fff; text-align:center; font-size:11px">翔龙品牌</th><th colspan="7" style="background:#f97316; color:#fff; text-align:center; font-size:11px">国旅品牌</th></tr><tr><th class="num" style="font-size:10px">2026GMV(万)</th><th class="num" style="font-size:10px">2025GMV(万)</th><th class="num" style="font-size:10px">GMV同比</th><th class="num" style="font-size:10px">2026人数</th><th class="num" style="font-size:10px">2026GMV(万)</th><th class="num" style="font-size:10px">2025GMV(万)</th><th class="num" style="font-size:10px">GMV同比</th><th class="num" style="font-size:10px">2026人数</th><th class="num" style="font-size:10px">市占率</th><th class="num" style="font-size:10px">25年市占率</th><th class="num" style="font-size:10px">市占率变化</th><th class="num" style="font-size:10px">2026GMV(万)</th><th class="num" style="font-size:10px">2025GMV(万)</th><th class="num" style="font-size:10px">GMV同比</th><th class="num" style="font-size:10px">2026人数</th><th class="num" style="font-size:10px">市占率</th><th class="num" style="font-size:10px">25年市占率</th><th class="num" style="font-size:10px">市占率变化</th><th class="num" style="font-size:10px">2026GMV(万)</th><th class="num" style="font-size:10px">2025GMV(万)</th><th class="num" style="font-size:10px">GMV同比</th><th class="num" style="font-size:10px">2026人数</th><th class="num" style="font-size:10px">市占率</th><th class="num" style="font-size:10px">25年市占率</th><th class="num" style="font-size:10px">市占率变化</th><th class="num" style="font-size:10px">2026GMV(万)</th><th class="num" style="font-size:10px">2025GMV(万)</th><th class="num" style="font-size:10px">GMV同比</th><th class="num" style="font-size:10px">2026人数</th><th class="num" style="font-size:10px">市占率</th><th class="num" style="font-size:10px">25年市占率</th><th class="num" style="font-size:10px">市占率变化</th></tr></thead><tbody>
+<tr>
+      <td style="font-size:11px">西欧</td>
+      <td class="num" style="font-size:11px">1787</td>
+      <td class="num" style="font-size:11px">1069</td>
+      <td class="num up" style="font-size:11px">+67%</td>
+      <td class="num" style="font-size:11px">1,004</td>
+      <td class="num" style="font-size:11px">980</td>
+      <td class="num" style="font-size:11px">574</td>
+      <td class="num up" style="font-size:11px">+71%</td>
+      <td class="num" style="font-size:11px">532</td>
+      <td class="num up" style="font-size:11px">55%</td>
+      <td class="num" style="font-size:11px">54%</td>
+      <td class="num up" style="font-size:11px">▲ +1pp</td>
+      <td class="num" style="font-size:11px">807</td>
+      <td class="num" style="font-size:11px">495</td>
+      <td class="num up" style="font-size:11px">+63%</td>
+      <td class="num" style="font-size:11px">472</td>
+      <td class="num up" style="font-size:11px">45%</td>
+      <td class="num" style="font-size:11px">46%</td>
+      <td class="num down" style="font-size:11px">▼ -1pp</td>
+      <td class="num" style="font-size:11px">664</td>
+      <td class="num" style="font-size:11px">243</td>
+      <td class="num up" style="font-size:11px">+173%</td>
+      <td class="num" style="font-size:11px">396</td>
+      <td class="num up" style="font-size:11px">37%</td>
+      <td class="num" style="font-size:11px">23%</td>
+      <td class="num up" style="font-size:11px">▲ +14pp</td>
+      <td class="num" style="font-size:11px">316</td>
+      <td class="num" style="font-size:11px">331</td>
+      <td class="num down" style="font-size:11px">-5%</td>
+      <td class="num" style="font-size:11px">136</td>
+      <td class="num up" style="font-size:11px">18%</td>
+      <td class="num" style="font-size:11px">31%</td>
+      <td class="num down" style="font-size:11px">▼ -13pp</td>
+    </tr>
+<tr>
+      <td style="font-size:11px">北欧</td>
+      <td class="num" style="font-size:11px">670</td>
+      <td class="num" style="font-size:11px">335</td>
+      <td class="num up" style="font-size:11px">+100%</td>
+      <td class="num" style="font-size:11px">318</td>
+      <td class="num" style="font-size:11px">214</td>
+      <td class="num" style="font-size:11px">139</td>
+      <td class="num up" style="font-size:11px">+54%</td>
+      <td class="num" style="font-size:11px">84</td>
+      <td class="num down" style="font-size:11px">32%</td>
+      <td class="num" style="font-size:11px">41%</td>
+      <td class="num down" style="font-size:11px">▼ -9pp</td>
+      <td class="num" style="font-size:11px">456</td>
+      <td class="num" style="font-size:11px">197</td>
+      <td class="num up" style="font-size:11px">+132%</td>
+      <td class="num" style="font-size:11px">234</td>
+      <td class="num down" style="font-size:11px">68%</td>
+      <td class="num" style="font-size:11px">59%</td>
+      <td class="num up" style="font-size:11px">▲ +9pp</td>
+      <td class="num" style="font-size:11px">159</td>
+      <td class="num" style="font-size:11px">67</td>
+      <td class="num up" style="font-size:11px">+137%</td>
+      <td class="num" style="font-size:11px">63</td>
+      <td class="num down" style="font-size:11px">24%</td>
+      <td class="num" style="font-size:11px">20%</td>
+      <td class="num up" style="font-size:11px">▲ +4pp</td>
+      <td class="num" style="font-size:11px">55</td>
+      <td class="num" style="font-size:11px">71</td>
+      <td class="num down" style="font-size:11px">-23%</td>
+      <td class="num" style="font-size:11px">21</td>
+      <td class="num down" style="font-size:11px">8%</td>
+      <td class="num" style="font-size:11px">21%</td>
+      <td class="num down" style="font-size:11px">▼ -13pp</td>
+    </tr>
+<tr>
+      <td style="font-size:11px">南欧</td>
+      <td class="num" style="font-size:11px">522</td>
+      <td class="num" style="font-size:11px">348</td>
+      <td class="num up" style="font-size:11px">+50%</td>
+      <td class="num" style="font-size:11px">243</td>
+      <td class="num" style="font-size:11px">282</td>
+      <td class="num" style="font-size:11px">182</td>
+      <td class="num up" style="font-size:11px">+55%</td>
+      <td class="num" style="font-size:11px">142</td>
+      <td class="num up" style="font-size:11px">54%</td>
+      <td class="num" style="font-size:11px">52%</td>
+      <td class="num up" style="font-size:11px">▲ +2pp</td>
+      <td class="num" style="font-size:11px">240</td>
+      <td class="num" style="font-size:11px">166</td>
+      <td class="num up" style="font-size:11px">+45%</td>
+      <td class="num" style="font-size:11px">101</td>
+      <td class="num up" style="font-size:11px">46%</td>
+      <td class="num" style="font-size:11px">48%</td>
+      <td class="num down" style="font-size:11px">▼ -2pp</td>
+      <td class="num" style="font-size:11px">201</td>
+      <td class="num" style="font-size:11px">107</td>
+      <td class="num up" style="font-size:11px">+88%</td>
+      <td class="num" style="font-size:11px">112</td>
+      <td class="num up" style="font-size:11px">38%</td>
+      <td class="num" style="font-size:11px">31%</td>
+      <td class="num up" style="font-size:11px">▲ +8pp</td>
+      <td class="num" style="font-size:11px">81</td>
+      <td class="num" style="font-size:11px">75</td>
+      <td class="num up" style="font-size:11px">+8%</td>
+      <td class="num" style="font-size:11px">30</td>
+      <td class="num up" style="font-size:11px">16%</td>
+      <td class="num" style="font-size:11px">22%</td>
+      <td class="num down" style="font-size:11px">▼ -6pp</td>
+    </tr>
+<tr>
+      <td style="font-size:11px">英爱</td>
+      <td class="num" style="font-size:11px">380</td>
+      <td class="num" style="font-size:11px">202</td>
+      <td class="num up" style="font-size:11px">+88%</td>
+      <td class="num" style="font-size:11px">192</td>
+      <td class="num" style="font-size:11px">145</td>
+      <td class="num" style="font-size:11px">107</td>
+      <td class="num up" style="font-size:11px">+36%</td>
+      <td class="num" style="font-size:11px">72</td>
+      <td class="num down" style="font-size:11px">38%</td>
+      <td class="num" style="font-size:11px">53%</td>
+      <td class="num down" style="font-size:11px">▼ -15pp</td>
+      <td class="num" style="font-size:11px">234</td>
+      <td class="num" style="font-size:11px">95</td>
+      <td class="num up" style="font-size:11px">+147%</td>
+      <td class="num" style="font-size:11px">120</td>
+      <td class="num down" style="font-size:11px">62%</td>
+      <td class="num" style="font-size:11px">47%</td>
+      <td class="num up" style="font-size:11px">▲ +15pp</td>
+      <td class="num" style="font-size:11px">49</td>
+      <td class="num" style="font-size:11px">50</td>
+      <td class="num down" style="font-size:11px">-2%</td>
+      <td class="num" style="font-size:11px">28</td>
+      <td class="num down" style="font-size:11px">13%</td>
+      <td class="num" style="font-size:11px">25%</td>
+      <td class="num down" style="font-size:11px">▼ -12pp</td>
+      <td class="num" style="font-size:11px">96</td>
+      <td class="num" style="font-size:11px">57</td>
+      <td class="num up" style="font-size:11px">+69%</td>
+      <td class="num" style="font-size:11px">44</td>
+      <td class="num up" style="font-size:11px">25%</td>
+      <td class="num" style="font-size:11px">28%</td>
+      <td class="num down" style="font-size:11px">▼ -3pp</td>
+    </tr>
+<tr>
+      <td style="font-size:11px">东欧+巴尔干</td>
+      <td class="num" style="font-size:11px">402</td>
+      <td class="num" style="font-size:11px">262</td>
+      <td class="num up" style="font-size:11px">+54%</td>
+      <td class="num" style="font-size:11px">179</td>
+      <td class="num" style="font-size:11px">224</td>
+      <td class="num" style="font-size:11px">127</td>
+      <td class="num up" style="font-size:11px">+76%</td>
+      <td class="num" style="font-size:11px">104</td>
+      <td class="num up" style="font-size:11px">56%</td>
+      <td class="num" style="font-size:11px">49%</td>
+      <td class="num up" style="font-size:11px">▲ +7pp</td>
+      <td class="num" style="font-size:11px">179</td>
+      <td class="num" style="font-size:11px">134</td>
+      <td class="num up" style="font-size:11px">+33%</td>
+      <td class="num" style="font-size:11px">75</td>
+      <td class="num up" style="font-size:11px">44%</td>
+      <td class="num" style="font-size:11px">51%</td>
+      <td class="num down" style="font-size:11px">▼ -7pp</td>
+      <td class="num" style="font-size:11px">194</td>
+      <td class="num" style="font-size:11px">57</td>
+      <td class="num up" style="font-size:11px">+242%</td>
+      <td class="num" style="font-size:11px">89</td>
+      <td class="num up" style="font-size:11px">48%</td>
+      <td class="num" style="font-size:11px">22%</td>
+      <td class="num up" style="font-size:11px">▲ +27pp</td>
+      <td class="num" style="font-size:11px">29</td>
+      <td class="num" style="font-size:11px">71</td>
+      <td class="num down" style="font-size:11px">-58%</td>
+      <td class="num" style="font-size:11px">15</td>
+      <td class="num down" style="font-size:11px">7%</td>
+      <td class="num" style="font-size:11px">27%</td>
+      <td class="num down" style="font-size:11px">▼ -20pp</td>
+    </tr>
+<tr class="total-row">
+  <td style="font-size:11px">合计</td>
+  <td class="num" style="font-size:11px">3761</td>
+  <td class="num" style="font-size:11px">2215</td>
+  <td class="num up" style="font-size:11px">+70%</td>
+  <td class="num" style="font-size:11px">1,936</td>
+  <td class="num" style="font-size:11px">1844</td>
+  <td class="num" style="font-size:11px">1129</td>
+  <td class="num up" style="font-size:11px">+63%</td>
+  <td class="num" style="font-size:11px">934</td>
+  <td class="num down" style="font-size:11px">49%</td>
+  <td class="num" style="font-size:11px">51%</td>
+  <td class="num down" style="font-size:11px">▼ -2pp</td>
+  <td class="num" style="font-size:11px">1917</td>
+  <td class="num" style="font-size:11px">1087</td>
+  <td class="num up" style="font-size:11px">+76%</td>
+  <td class="num" style="font-size:11px">1,002</td>
+  <td class="num down" style="font-size:11px">51%</td>
+  <td class="num" style="font-size:11px">49%</td>
+  <td class="num up" style="font-size:11px">▲ +2pp</td>
+  <td class="num" style="font-size:11px">1267</td>
+  <td class="num" style="font-size:11px">524</td>
+  <td class="num up" style="font-size:11px">+142%</td>
+  <td class="num" style="font-size:11px">688</td>
+  <td class="num up" style="font-size:11px">34%</td>
+  <td class="num" style="font-size:11px">24%</td>
+  <td class="num up" style="font-size:11px">▲ +10pp</td>
+  <td class="num" style="font-size:11px">577</td>
+  <td class="num" style="font-size:11px">605</td>
+  <td class="num down" style="font-size:11px">-5%</td>
+  <td class="num" style="font-size:11px">246</td>
+  <td class="num up" style="font-size:11px">15%</td>
+  <td class="num" style="font-size:11px">27%</td>
+  <td class="num down" style="font-size:11px">▼ -12pp</td>
+</tr>
+</tbody></table></div>
+<div class="section-title" id="bw-month">三、双周预定中各出发月双品牌成交收入及YoY'25</div>
+<div class="chart-grid">
+<div class="chart-card wide"><div class="chart-title">各月份品牌GMV结构及同比增速</div><div class="chart-subtitle">柱状：2026年品牌成交收入构成（万元·左轴） | 折线：双品牌/翔龙/国旅同比增速（%·右轴）</div><div class="legend-custom"><div class="legend-item"><div class="legend-dot" style="background:#1e40af"></div>翔龙</div><div class="legend-item"><div class="legend-dot" style="background:#f97316"></div>国旅</div><div class="legend-item"><div class="legend-dot" style="background:#94a3b8"></div>其他供应商</div><div class="legend-item"><div class="legend-dot" style="background:#dc2626; border-radius:50%"></div>双品牌同比</div><div class="legend-item"><div class="legend-dot" style="background:#1e40af; border-radius:50%"></div>翔龙同比</div><div class="legend-item"><div class="legend-dot" style="background:#f97316; border-radius:50%"></div>国旅同比</div></div><div class="chart-wrapper"><canvas id="chart-month-yoy"></canvas></div></div>
+</div>
+<div style="margin-top:20px"></div>
+<div style="overflow-x: auto">
+<table class="data-table" style="min-width: 1200px; font-size: 11px"><thead><tr><th rowspan="2" style="font-size:11px; vertical-align:middle">出发月份</th><th colspan="6" style="background:#1e3a5f; color:#fff; text-align:center; font-size:11px">携程平台</th><th colspan="3" style="background:#059669; color:#fff; text-align:center; font-size:11px">双品牌</th><th colspan="2" style="background:#94a3b8; color:#fff; text-align:center; font-size:11px">其他供应商</th><th colspan="2" style="background:#2563eb; color:#fff; text-align:center; font-size:11px">翔龙品牌</th><th colspan="2" style="background:#f97316; color:#fff; text-align:center; font-size:11px">国旅品牌</th></tr><tr><th class="num" style="font-size:10px">2026人数</th><th class="num" style="font-size:10px">2025人数</th><th class="num" style="font-size:10px">人数同比</th><th class="num" style="font-size:10px">2026GMV(万)</th><th class="num" style="font-size:10px">2025GMV(万)</th><th class="num" style="font-size:10px">GMV同比</th><th class="num" style="font-size:10px">GMV(万)</th><th class="num" style="font-size:10px">GMV同比</th><th class="num" style="font-size:10px">市占率</th><th class="num" style="font-size:10px">GMV(万)</th><th class="num" style="font-size:10px">GMV同比</th><th class="num" style="font-size:10px">GMV(万)</th><th class="num" style="font-size:10px">GMV同比</th><th class="num" style="font-size:10px">GMV(万)</th><th class="num" style="font-size:10px">GMV同比</th></tr></thead><tbody><tr><td style="font-size:11px">8月</td><td class="num" style="font-size:11px">8</td><td class="num" style="font-size:11px">4</td><td class="num up" style="font-size:11px">+100%</td><td class="num" style="font-size:11px">8</td><td class="num" style="font-size:11px">8</td><td class="num down" style="font-size:11px">-7%</td><td class="num" style="font-size:11px">0</td><td class="num down" style="font-size:11px">-100%</td><td class="num down" style="font-size:11px">0%</td><td class="num" style="font-size:11px">8</td><td class="num up" style="font-size:11px">+65%</td><td class="num" style="font-size:11px">0</td><td class="num down" style="font-size:11px">-100%</td><td class="num" style="font-size:11px">0</td><td class="num" style="font-size:11px">—</td></tr><tr><td style="font-size:11px">9月</td><td class="num" style="font-size:11px">490</td><td class="num" style="font-size:11px">455</td><td class="num up" style="font-size:11px">+8%</td><td class="num" style="font-size:11px">1092</td><td class="num" style="font-size:11px">1059</td><td class="num up" style="font-size:11px">+3%</td><td class="num" style="font-size:11px">417</td><td class="num down" style="font-size:11px">-33%</td><td class="num down" style="font-size:11px">38%</td><td class="num" style="font-size:11px">675</td><td class="num up" style="font-size:11px">+55%</td><td class="num" style="font-size:11px">283</td><td class="num up" style="font-size:11px">+17%</td><td class="num" style="font-size:11px">134</td><td class="num down" style="font-size:11px">-65%</td></tr><tr><td style="font-size:11px">10月</td><td class="num" style="font-size:11px">1,083</td><td class="num" style="font-size:11px">423</td><td class="num up" style="font-size:11px">+156%</td><td class="num" style="font-size:11px">2122</td><td class="num" style="font-size:11px">997</td><td class="num up" style="font-size:11px">+113%</td><td class="num" style="font-size:11px">1081</td><td class="num up" style="font-size:11px">+145%</td><td class="num up" style="font-size:11px">51%</td><td class="num" style="font-size:11px">1041</td><td class="num up" style="font-size:11px">+87%</td><td class="num" style="font-size:11px">699</td><td class="num up" style="font-size:11px">+191%</td><td class="num" style="font-size:11px">382</td><td class="num up" style="font-size:11px">+89%</td></tr><tr><td style="font-size:11px">11月</td><td class="num" style="font-size:11px">337</td><td class="num" style="font-size:11px">72</td><td class="num up" style="font-size:11px">+368%</td><td class="num" style="font-size:11px">501</td><td class="num" style="font-size:11px">119</td><td class="num up" style="font-size:11px">+321%</td><td class="num" style="font-size:11px">337</td><td class="num up" style="font-size:11px">+590%</td><td class="num up" style="font-size:11px">67%</td><td class="num" style="font-size:11px">164</td><td class="num up" style="font-size:11px">+134%</td><td class="num" style="font-size:11px">276</td><td class="num up" style="font-size:11px">+846%</td><td class="num" style="font-size:11px">61</td><td class="num up" style="font-size:11px">+211%</td></tr><tr><td style="font-size:11px">12月</td><td class="num" style="font-size:11px">18</td><td class="num" style="font-size:11px">17</td><td class="num up" style="font-size:11px">+6%</td><td class="num" style="font-size:11px">38</td><td class="num" style="font-size:11px">31</td><td class="num up" style="font-size:11px">+24%</td><td class="num" style="font-size:11px">10</td><td class="num down" style="font-size:11px">-11%</td><td class="num down" style="font-size:11px">25%</td><td class="num" style="font-size:11px">29</td><td class="num up" style="font-size:11px">+42%</td><td class="num" style="font-size:11px">10</td><td class="num up" style="font-size:11px">+12%</td><td class="num" style="font-size:11px">0</td><td class="num down" style="font-size:11px">-100%</td></tr><tr class="total-row"><td style="font-size:11px">合计</td><td class="num" style="font-size:11px">1,936</td><td class="num" style="font-size:11px">971</td><td class="num up" style="font-size:11px">+99%</td><td class="num" style="font-size:11px">3761</td><td class="num" style="font-size:11px">2215</td><td class="num up" style="font-size:11px">+70%</td><td class="num" style="font-size:11px">1844</td><td class="num up" style="font-size:11px">+63%</td><td class="num down" style="font-size:11px">49%</td><td class="num" style="font-size:11px">1917</td><td class="num up" style="font-size:11px">+76%</td><td class="num" style="font-size:11px">1267</td><td class="num up" style="font-size:11px">+142%</td><td class="num" style="font-size:11px">577</td><td class="num down" style="font-size:11px">-5%</td></tr></tbody></table></div>
+<div class="section-title" id="bw-province">四、线下门店所在省份，双周成交GMV以及市占率，达标分析</div>
+<div class="region-tabs">
+<button class="region-tab active" onclick="switchBwRegionTab('hb-province',this)">华北出发</button>
+<button class="region-tab" onclick="switchBwRegionTab('hz-province',this)">华中出发</button>
+</div>
+<div class="bw-region-panel active" id="bw-region-hb-province">
+<table class="data-table"><thead><tr><th>省份</th><th class="num">成交收入(万)</th><th class="num">翔龙(万)</th><th class="num">翔龙市占率</th><th class="num">国旅(万)</th><th class="num">国旅市占率</th><th class="num">达标状态</th><th class="num">其他供应商(万)</th><th class="num">其他供应商市占率</th><th class="num">26年双品牌市占率</th><th class="num">25年双品牌市占率</th><th class="num">市占率变化</th></tr></thead><tbody><tr><td>北京</td><td class="num">761</td><td class="num">270</td><td class="num">36%</td><td class="num">123</td><td class="num down">16%</td><td class="num"><span class="status-fail">不达标</span></td><td class="num">368</td><td class="num">48%</td><td class="num">52%</td><td class="num">51%</td><td class="num up">+0pp</td></tr><tr><td>河南</td><td class="num">471</td><td class="num">209</td><td class="num">44%</td><td class="num">61</td><td class="num up">13%</td><td class="num"><span class="status-pass">达标</span></td><td class="num">202</td><td class="num">43%</td><td class="num">57%</td><td class="num">49%</td><td class="num up">+8pp</td></tr><tr><td>陕西</td><td class="num">440</td><td class="num">99</td><td class="num">22%</td><td class="num">44</td><td class="num down">10%</td><td class="num"><span class="status-fail">不达标</span></td><td class="num">297</td><td class="num">67%</td><td class="num">33%</td><td class="num">29%</td><td class="num up">+4pp</td></tr><tr><td>辽宁</td><td class="num">425</td><td class="num">103</td><td class="num">24%</td><td class="num">35</td><td class="num down">8%</td><td class="num"><span class="status-fail">不达标</span></td><td class="num">287</td><td class="num">67%</td><td class="num">33%</td><td class="num">37%</td><td class="num down">-4pp</td></tr><tr><td>天津</td><td class="num">319</td><td class="num">130</td><td class="num">41%</td><td class="num">36</td><td class="num down">11%</td><td class="num"><span class="status-fail">不达标</span></td><td class="num">153</td><td class="num">48%</td><td class="num">52%</td><td class="num">53%</td><td class="num down">-1pp</td></tr><tr><td>山东</td><td class="num">276</td><td class="num">153</td><td class="num">55%</td><td class="num">20</td><td class="num down">7%</td><td class="num"><span class="status-fail">不达标</span></td><td class="num">103</td><td class="num">37%</td><td class="num">63%</td><td class="num">54%</td><td class="num up">+9pp</td></tr><tr><td>山西</td><td class="num">136</td><td class="num">35</td><td class="num">26%</td><td class="num">12</td><td class="num down">9%</td><td class="num"><span class="status-fail">不达标</span></td><td class="num">89</td><td class="num">65%</td><td class="num">35%</td><td class="num">60%</td><td class="num down">-25pp</td></tr><tr><td>河北</td><td class="num">106</td><td class="num">37</td><td class="num">36%</td><td class="num">21</td><td class="num up">20%</td><td class="num"><span class="status-pass">达标</span></td><td class="num">47</td><td class="num">45%</td><td class="num">55%</td><td class="num">40%</td><td class="num up">+15pp</td></tr><tr><td>黑龙江</td><td class="num">40</td><td class="num">11</td><td class="num">28%</td><td class="num">7</td><td class="num down">16%</td><td class="num"><span class="status-fail">不达标</span></td><td class="num">22</td><td class="num">56%</td><td class="num">44%</td><td class="num">63%</td><td class="num down">-19pp</td></tr><tr><td>吉林</td><td class="num">26</td><td class="num">5</td><td class="num">19%</td><td class="num">5</td><td class="num down">21%</td><td class="num"><span class="status-fail">不达标</span></td><td class="num">16</td><td class="num">60%</td><td class="num">40%</td><td class="num">68%</td><td class="num down">-29pp</td></tr><tr><td>青海</td><td class="num">7</td><td class="num">3</td><td class="num">39%</td><td class="num">0</td><td class="num">0%</td><td class="num"><span class="status-na">不判定</span></td><td class="num">4</td><td class="num">61%</td><td class="num">39%</td><td class="num">—</td><td class="num">—</td></tr><tr><td>宁夏</td><td class="num">7</td><td class="num">0</td><td class="num">0%</td><td class="num">0</td><td class="num">0%</td><td class="num"><span class="status-na">不判定</span></td><td class="num">7</td><td class="num">100%</td><td class="num">0%</td><td class="num">70%</td><td class="num down">-70pp</td></tr><tr><td>内蒙古</td><td class="num">3</td><td class="num">3</td><td class="num">100%</td><td class="num">0</td><td class="num">0%</td><td class="num"><span class="status-na">不判定</span></td><td class="num">0</td><td class="num">0%</td><td class="num">100%</td><td class="num">—</td><td class="num">—</td></tr><tr><td>甘肃</td><td class="num">2</td><td class="num">0</td><td class="num">0%</td><td class="num">0</td><td class="num">0%</td><td class="num"><span class="status-na">不判定</span></td><td class="num">2</td><td class="num">100%</td><td class="num">0%</td><td class="num">15%</td><td class="num down">-15pp</td></tr><tr class="total-row"><td>合计</td><td class="num">3019</td><td class="num">1058</td><td class="num">35%</td><td class="num">365</td><td class="num">12%</td><td class="num">—</td><td class="num">1596</td><td class="num">53%</td><td class="num">47%</td><td class="num">—</td><td class="num">—</td></tr></tbody></table>
+</div>
+<div class="bw-region-panel" id="bw-region-hz-province">
+<div class="section-subtitle">业务渠道聚合=线下门店 · 华中出发(湖北、湖南) · 8月7日-8月21日双周预订</div>
+<div class="chart-grid">
+<div class="chart-card half">
+<div class="chart-title">线下门店省份品牌市占率</div>
+<div class="chart-subtitle">26年双周 · 翔龙/国旅/其他供应商 各品牌GMV ÷ 平台总GMV · 环形图直观对比</div>
+<div style="display:flex; gap:12px; align-items:center; justify-content:center; height:260px">
+<div style="flex:1; text-align:center; position:relative">
+<div style="font-size:14px; font-weight:700; color:#1e293b; margin-bottom:4px">湖南</div>
+<div style="font-size:11px; color:#64748b; margin-bottom:4px">平台GMV 290万</div>
+<div class="chart-wrapper" style="height:180px"><canvas id="chart-hz-province-hn"></canvas></div>
+</div>
+<div style="width:1px; height:160px"></div>
+<div style="flex:1; text-align:center; position:relative">
+<div style="font-size:14px; font-weight:700; color:#1e293b; margin-bottom:4px">湖北</div>
+<div style="font-size:11px; color:#64748b; margin-bottom:4px">平台GMV 325万</div>
+<div class="chart-wrapper" style="height:180px"><canvas id="chart-hz-province-hb"></canvas></div>
+</div>
+</div>
+</div>
+<div class="chart-card half">
+<div class="chart-title">线下门店省份品牌GMV结构</div>
+<div class="chart-subtitle">26年双周 · 堆叠展示各省品牌构成及总GMV对比</div>
+<div class="chart-wrapper"><canvas id="chart-hz-province-brand"></canvas></div>
+</div>
+</div>
+<div style="margin-top:20px"></div>
+<div class="section-subtitle" style="margin-left:0; font-weight:600">华中线下门店省份成交结构分析</div>
+<table class="data-table" style="font-size:11px"><thead><tr><th style="font-size:11px">省份</th><th class="num" style="font-size:11px">平台GMV(万)</th><th class="num" style="font-size:11px">双品牌GMV(万)</th><th class="num" style="font-size:11px">双品牌市占率</th><th class="num" style="font-size:11px">其他供应商GMV(万)</th><th class="num" style="font-size:11px">其他市占率</th><th class="num" style="font-size:11px">翔龙品牌GMV(万)</th><th class="num" style="font-size:11px">翔龙市占率</th><th class="num" style="font-size:11px">国旅品牌GMV(万)</th><th class="num" style="font-size:11px">国旅市占率</th></tr></thead><tbody><tr><td style="font-size:11px">湖北</td><td class="num" style="font-size:11px">325万</td><td class="num" style="font-size:11px">151万</td><td class="num" style="font-size:11px">47%</td><td class="num" style="font-size:11px">174万</td><td class="num" style="font-size:11px">53%</td><td class="num" style="font-size:11px">128万</td><td class="num" style="font-size:11px">40%</td><td class="num" style="font-size:11px">23万</td><td class="num" style="font-size:11px">7%</td></tr><tr><td style="font-size:11px">湖南</td><td class="num" style="font-size:11px">290万</td><td class="num" style="font-size:11px">99万</td><td class="num" style="font-size:11px">34%</td><td class="num" style="font-size:11px">191万</td><td class="num" style="font-size:11px">66%</td><td class="num" style="font-size:11px">70万</td><td class="num" style="font-size:11px">24%</td><td class="num" style="font-size:11px">29万</td><td class="num" style="font-size:11px">10%</td></tr><tr class="total-row"><td style="font-size:11px"><strong>合计</strong></td><td class="num" style="font-size:11px"><strong>615万</strong></td><td class="num" style="font-size:11px"><strong>250万</strong></td><td class="num" style="font-size:11px"><strong>41%</strong></td><td class="num" style="font-size:11px"><strong>364万</strong></td><td class="num" style="font-size:11px"><strong>59%</strong></td><td class="num" style="font-size:11px"><strong>199万</strong></td><td class="num" style="font-size:11px"><strong>32%</strong></td><td class="num" style="font-size:11px"><strong>52万</strong></td><td class="num" style="font-size:11px"><strong>8%</strong></td></tr></tbody></table>
+</div>
+<div class="section-title" id="bw-price">五、按成交人均售价区间统计 · 价格带GMV结构及品牌市占率</div>
+<div class="chart-grid">
+<div class="chart-card half"><div class="chart-title">价格带平台总GMV对比</div><div class="chart-subtitle">2025 vs 2026 各价格带成交收入（万元）</div><div class="legend-custom"><div class="legend-item"><div class="legend-dot" style="background:#93c5fd"></div>2025年</div><div class="legend-item"><div class="legend-dot" style="background:#2563eb"></div>2026年</div></div><div class="chart-wrapper"><canvas id="chart-price-gmv"></canvas></div></div>
+<div class="chart-card half"><div class="chart-title">价格带品牌GMV对比（2026年）</div><div class="chart-subtitle">翔龙 · 国旅 · 其他供应商 各价格带成交收入（万元）+ 双品牌市占率</div><div class="legend-custom"><div class="legend-item"><div class="legend-dot" style="background:#2563eb"></div>翔龙</div><div class="legend-item"><div class="legend-dot" style="background:#f97316"></div>国旅</div><div class="legend-item"><div class="legend-dot" style="background:#94a3b8"></div>其他供应商</div><div class="legend-item"><div class="legend-dot" style="background:#dc2626; border-radius:50%"></div>双品牌市占率</div></div><div class="chart-wrapper"><canvas id="chart-price-brand"></canvas></div></div>
+</div>
+<div style="margin-top:20px"></div>
+<div class="section-subtitle" style="margin-left:0; font-weight:600">成交价格带结构分析：识别市场主流需求与产品匹配度</div>
+<table class="data-table" style="font-size:11px"><thead><tr><th style="font-size:11px">价格带</th><th class="num" style="font-size:11px">平台GMV(万)</th><th class="num" style="font-size:11px">国旅GMV(万)</th><th class="num" style="font-size:11px">国旅市占率</th><th class="num" style="font-size:11px">翔龙GMV(万)</th><th class="num" style="font-size:11px">翔龙市占率</th><th class="num" style="font-size:11px">双品牌GMV(万)</th><th class="num" style="font-size:11px">双品牌市占率</th><th class="num" style="font-size:11px">其他GMV(万)</th><th class="num" style="font-size:11px">其他市占率</th></tr></thead><tbody><tr><td style="font-size:11px">2.0w-2.5w</td><td class="num" style="font-size:11px">813</td><td class="num" style="font-size:11px">110</td><td class="num" style="font-size:11px">13%</td><td class="num" style="font-size:11px">269</td><td class="num" style="font-size:11px">33%</td><td class="num" style="font-size:11px">379</td><td class="num down" style="font-size:11px">47%</td><td class="num" style="font-size:11px">434</td><td class="num" style="font-size:11px">53%</td></tr><tr><td style="font-size:11px">1.5w-2.0w</td><td class="num" style="font-size:11px">686</td><td class="num" style="font-size:11px">138</td><td class="num" style="font-size:11px">20%</td><td class="num" style="font-size:11px">145</td><td class="num" style="font-size:11px">21%</td><td class="num" style="font-size:11px">283</td><td class="num down" style="font-size:11px">41%</td><td class="num" style="font-size:11px">403</td><td class="num" style="font-size:11px">59%</td></tr><tr><td style="font-size:11px">2.5w-3.0w</td><td class="num" style="font-size:11px">667</td><td class="num" style="font-size:11px">167</td><td class="num" style="font-size:11px">25%</td><td class="num" style="font-size:11px">228</td><td class="num" style="font-size:11px">34%</td><td class="num" style="font-size:11px">395</td><td class="num up" style="font-size:11px">59%</td><td class="num" style="font-size:11px">272</td><td class="num" style="font-size:11px">41%</td></tr><tr><td style="font-size:11px">1.0w-1.5w</td><td class="num" style="font-size:11px">489</td><td class="num" style="font-size:11px">18</td><td class="num" style="font-size:11px">4%</td><td class="num" style="font-size:11px">219</td><td class="num" style="font-size:11px">45%</td><td class="num" style="font-size:11px">237</td><td class="num down" style="font-size:11px">48%</td><td class="num" style="font-size:11px">252</td><td class="num" style="font-size:11px">52%</td></tr><tr><td style="font-size:11px">3.0w-3.5w</td><td class="num" style="font-size:11px">464</td><td class="num" style="font-size:11px">96</td><td class="num" style="font-size:11px">21%</td><td class="num" style="font-size:11px">175</td><td class="num" style="font-size:11px">38%</td><td class="num" style="font-size:11px">271</td><td class="num up" style="font-size:11px">58%</td><td class="num" style="font-size:11px">193</td><td class="num" style="font-size:11px">42%</td></tr><tr><td style="font-size:11px">1.0w以下</td><td class="num" style="font-size:11px">241</td><td class="num" style="font-size:11px">0.8</td><td class="num" style="font-size:11px">0%</td><td class="num" style="font-size:11px">103</td><td class="num" style="font-size:11px">43%</td><td class="num" style="font-size:11px">104</td><td class="num down" style="font-size:11px">43%</td><td class="num" style="font-size:11px">137</td><td class="num" style="font-size:11px">57%</td></tr><tr><td style="font-size:11px">3.5w-4.0w</td><td class="num" style="font-size:11px">219</td><td class="num" style="font-size:11px">22</td><td class="num" style="font-size:11px">10%</td><td class="num" style="font-size:11px">83</td><td class="num" style="font-size:11px">38%</td><td class="num" style="font-size:11px">105</td><td class="num down" style="font-size:11px">48%</td><td class="num" style="font-size:11px">113</td><td class="num" style="font-size:11px">52%</td></tr><tr><td style="font-size:11px">4.0w-4.5w</td><td class="num" style="font-size:11px">113</td><td class="num" style="font-size:11px">13</td><td class="num" style="font-size:11px">11%</td><td class="num" style="font-size:11px">33</td><td class="num" style="font-size:11px">29%</td><td class="num" style="font-size:11px">46</td><td class="num down" style="font-size:11px">41%</td><td class="num" style="font-size:11px">67</td><td class="num" style="font-size:11px">59%</td></tr><tr><td style="font-size:11px">4.5w-5.0w</td><td class="num" style="font-size:11px">38</td><td class="num" style="font-size:11px">14</td><td class="num" style="font-size:11px">36%</td><td class="num" style="font-size:11px">5</td><td class="num" style="font-size:11px">12%</td><td class="num" style="font-size:11px">18</td><td class="num down" style="font-size:11px">49%</td><td class="num" style="font-size:11px">19</td><td class="num" style="font-size:11px">51%</td></tr><tr><td style="font-size:11px">5w以上</td><td class="num" style="font-size:11px">32</td><td class="num" style="font-size:11px">0</td><td class="num" style="font-size:11px">0%</td><td class="num" style="font-size:11px">7</td><td class="num" style="font-size:11px">21%</td><td class="num" style="font-size:11px">7</td><td class="num down" style="font-size:11px">21%</td><td class="num" style="font-size:11px">25</td><td class="num" style="font-size:11px">79%</td></tr><tr class="total-row"><td style="font-size:11px">合计</td><td class="num" style="font-size:11px">3761</td><td class="num" style="font-size:11px">577</td><td class="num" style="font-size:11px">15%</td><td class="num" style="font-size:11px">1267</td><td class="num" style="font-size:11px">34%</td><td class="num" style="font-size:11px">1844</td><td class="num down" style="font-size:11px">49%</td><td class="num" style="font-size:11px">1917</td><td class="num" style="font-size:11px">51%</td></tr></tbody></table>
+</div>
+<div class="tab-panel" id="tab-cumulative">
+<div class="section-title" id="cum-core">一、26年全年出发累计成交收入以及同期同比</div>
+<div class="region-tabs">
+<button class="region-tab active" onclick="switchRegionTab('hb',this)">华北出发</button>
+<button class="region-tab" onclick="switchRegionTab('hz',this)">华中出发</button>
+</div>
+<div class="cum-region-panel active" id="cum-region-hb">
+<div class="cum-grid five">
+<div class="cum-card"><div class="cum-card-inner"><div class="cum-header">携程平台总GMV</div><div class="cum-row"><div class="cum-gmv"><div class="year-label">2026年</div><div class="big">6.73<span>亿</span></div><div class="small">25年 5.54<span>亿</span></div></div><div class="cum-yoy-box"><div class="pct up">+21%</div><div class="pct-label">GMV同比</div></div></div></div></div>
+<div class="cum-card green"><div class="cum-card-inner"><div class="cum-header">双品牌成交GMV</div><div class="cum-row"><div class="cum-gmv"><div class="year-label">2026年</div><div class="big">3.45<span>亿</span></div><div class="small">25年 2.55<span>亿</span></div></div><div class="cum-yoy-box"><div class="pct up">+35%</div><div class="pct-label">GMV同比</div></div></div><div class="cum-share-row"><div class="cum-share-bar-bg"><div class="cum-share-bar-fill" style="width:51%"></div></div><div class="cum-share-pct"><span class="cum-share-year">26年市占率</span>51%</div></div><div class="cum-footer"><span>25年市占率 46%</span><span class="cum-share-change up">市占率变化 +5pp</span></div></div></div>
+<div class="cum-card gray"><div class="cum-card-inner"><div class="cum-header">其他供应商</div><div class="cum-row"><div class="cum-gmv"><div class="year-label">2026年</div><div class="big">3.28<span>亿</span></div><div class="small">25年 2.99<span>亿</span></div></div><div class="cum-yoy-box"><div class="pct up">+10%</div><div class="pct-label">GMV同比</div></div></div><div class="cum-share-row"><div class="cum-share-bar-bg"><div class="cum-share-bar-fill" style="width:49%"></div></div><div class="cum-share-pct"><span class="cum-share-year">26年市占率</span>49%</div></div><div class="cum-footer"><span>25年市占率 54%</span><span class="cum-share-change down">市占率变化 -5pp</span></div></div></div>
+<div class="cum-card orange"><div class="cum-card-inner"><div class="cum-header">翔龙品牌成交GMV</div><div class="cum-row"><div class="cum-gmv"><div class="year-label">2026年</div><div class="big">2.30<span>亿</span></div><div class="small">25年 1.42<span>亿</span></div></div><div class="cum-yoy-box"><div class="pct up">+62%</div><div class="pct-label">GMV同比</div></div></div><div class="cum-share-row"><div class="cum-share-bar-bg"><div class="cum-share-bar-fill" style="width:34%"></div></div><div class="cum-share-pct"><span class="cum-share-year">26年市占率</span>34%</div></div><div class="cum-footer"><span>25年市占率 26%</span><span class="cum-share-change up">市占率变化 +9pp</span></div></div></div>
+<div class="cum-card purple"><div class="cum-card-inner"><div class="cum-header">国旅品牌成交GMV</div><div class="cum-row"><div class="cum-gmv"><div class="year-label">2026年</div><div class="big">1.15<span>亿</span></div><div class="small">25年 1.13<span>亿</span></div></div><div class="cum-yoy-box"><div class="pct up">+2%</div><div class="pct-label">GMV同比</div></div></div><div class="cum-share-row"><div class="cum-share-bar-bg"><div class="cum-share-bar-fill" style="width:17%"></div></div><div class="cum-share-pct"><span class="cum-share-year">26年市占率</span>17%</div></div><div class="cum-footer"><span>25年市占率 20%</span><span class="cum-share-change down">市占率变化 -3pp</span></div></div></div>
+</div>
+<!-- 华北出发 · 各业务区域品牌GMV结构及市占率同比变化 -->
+<div class="section-subtitle" style="margin-top:28px">华北出发 · 各业务区域品牌GMV结构及市占率同比变化</div>
+<!-- 区域KPI卡片 -->
+<div class="region-kpi-grid"><div class="region-kpi-card"><div class="r-label">西欧 · 双品牌市占率</div><div class="r-value">55%</div><div class="r-bar"><div class="r-bar-fill" style="width:55%"></div></div><div class="r-change" style="color:#059669">▲ +4pp</div></div><div class="region-kpi-card"><div class="r-label">北欧 · 双品牌市占率</div><div class="r-value">39%</div><div class="r-bar"><div class="r-bar-fill" style="width:39%"></div></div><div class="r-change" style="color:#059669">▲ +4pp</div></div><div class="region-kpi-card"><div class="r-label">英爱 · 双品牌市占率</div><div class="r-value">56%</div><div class="r-bar"><div class="r-bar-fill" style="width:56%"></div></div><div class="r-change" style="color:#059669">▲ +12pp</div></div><div class="region-kpi-card"><div class="r-label">南欧 · 双品牌市占率</div><div class="r-value">54%</div><div class="r-bar"><div class="r-bar-fill" style="width:54%"></div></div><div class="r-change" style="color:#059669">▲ +7pp</div></div><div class="region-kpi-card"><div class="r-label">东欧+巴尔干 · 双品牌市占率</div><div class="r-value">50%</div><div class="r-bar"><div class="r-bar-fill" style="width:50%"></div></div><div class="r-change" style="color:#059669">▲ +3pp</div></div></div>
+<div class="chart-grid">
+<div class="chart-card half">
+<div class="chart-title">26年各区域品牌GMV结构</div>
+<div class="chart-subtitle">双品牌 vs 其他供应商 · 单位：万</div>
+<div class="chart-wrapper"><canvas id="chart-cum-region-gmv"></canvas></div>
+</div>
+<div class="chart-card half">
+<div class="chart-title">双品牌市占率同比变化</div>
+<div class="chart-subtitle">26年 vs 25年 · 百分点(pp)</div>
+<div class="chart-wrapper"><canvas id="chart-cum-region-share-change"></canvas></div>
+</div>
+</div>
+<div class="table-wrap">
+<div class="chart-title" style="margin-bottom:12px">华北出发 · 各业务区域品牌成交数据明细</div>
+<table class="data-table">
+<thead>
+<tr>
+<th>业务区域</th>
+<th class="num">26年平台<br/>GMV(万)</th>
+<th class="num">26年双品牌<br/>GMV(万)</th>
+<th>双品牌<br/>市占率</th>
+<th>市占率<br/>变化</th>
+<th>25年双品牌<br/>市占率</th>
+<th class="num">平台<br/>GMV同比</th>
+<th class="num">双品牌<br/>GMV同比</th>
+</tr>
+</thead>
+<tbody><tr><td><strong>西欧</strong></td><td class="num">32500</td><td class="num">17730</td><td><div class="mini-bar-wrap"><div class="mini-bar-fill" style="width:55%"></div></div>55%</td><td><span class="change-pill up">▲ +4pp</span></td><td>50%</td><td class="num up">+20%</td><td class="num up">+30%</td></tr><tr><td><strong>北欧</strong></td><td class="num">13264</td><td class="num">5170</td><td><div class="mini-bar-wrap"><div class="mini-bar-fill" style="width:39%"></div></div>39%</td><td><span class="change-pill up">▲ +4pp</span></td><td>35%</td><td class="num up">+38%</td><td class="num up">+54%</td></tr><tr><td><strong>英爱</strong></td><td class="num">8266</td><td class="num">4652</td><td><div class="mini-bar-wrap"><div class="mini-bar-fill" style="width:56%"></div></div>56%</td><td><span class="change-pill up">▲ +12pp</span></td><td>44%</td><td class="num up">+14%</td><td class="num up">+45%</td></tr><tr><td><strong>南欧</strong></td><td class="num">8087</td><td class="num">4361</td><td><div class="mini-bar-wrap"><div class="mini-bar-fill" style="width:54%"></div></div>54%</td><td><span class="change-pill up">▲ +7pp</span></td><td>47%</td><td class="num up">+23%</td><td class="num up">+43%</td></tr><tr><td><strong>东欧+巴尔干</strong></td><td class="num">5169</td><td class="num">2578</td><td><div class="mini-bar-wrap"><div class="mini-bar-fill" style="width:50%"></div></div>50%</td><td><span class="change-pill up">▲ +3pp</span></td><td>47%</td><td class="num up">+7%</td><td class="num up">+14%</td></tr><tr style="font-weight:700"><td>合计</td><td class="num">67287</td><td class="num">34490</td><td><div class="mini-bar-wrap"><div class="mini-bar-fill" style="width:51%"></div></div>51%</td><td><span class="change-pill up">▲ +5pp</span></td><td>46%</td><td class="num up">+21%</td><td class="num up">+35%</td></tr></tbody>
+</table>
+</div>
+</div>
+<div class="cum-region-panel" id="cum-region-hz">
+<div class="section-subtitle">截至2026年9月4日下单 · 全年出发口径 · 用户出发站大区-售卖站逻辑=华中出发</div>
+<div class="cum-grid five">
+<div class="cum-card"><div class="cum-card-inner"><div class="cum-header">携程平台总GMV</div><div class="cum-row"><div class="cum-gmv"><div class="year-label">2026年</div><div class="big">1.21<span>亿</span></div><div class="small">25年 7803<span>万</span></div></div><div class="cum-yoy-box"><div class="pct up">+56%</div><div class="pct-label">GMV同比</div></div></div></div></div>
+<div class="cum-card green"><div class="cum-card-inner"><div class="cum-header">双品牌成交GMV</div><div class="cum-row"><div class="cum-gmv"><div class="year-label">2026年</div><div class="big">4889<span>万</span></div><div class="small">25年 3379<span>万</span></div></div><div class="cum-yoy-box"><div class="pct up">+45%</div><div class="pct-label">GMV同比</div></div></div><div class="cum-share-row"><div class="cum-share-bar-bg"><div class="cum-share-bar-fill" style="width:40%"></div></div><div class="cum-share-pct"><span class="cum-share-year">26年市占率</span>40%</div></div><div class="cum-footer"><span>25年市占率 43%</span><span class="cum-share-change down">市占率变化 -3pp</span></div></div></div>
+<div class="cum-card gray"><div class="cum-card-inner"><div class="cum-header">其他供应商</div><div class="cum-row"><div class="cum-gmv"><div class="year-label">2026年</div><div class="big">7245<span>万</span></div><div class="small">25年 4424<span>万</span></div></div><div class="cum-yoy-box"><div class="pct up">+64%</div><div class="pct-label">GMV同比</div></div></div><div class="cum-share-row"><div class="cum-share-bar-bg"><div class="cum-share-bar-fill" style="width:60%"></div></div><div class="cum-share-pct"><span class="cum-share-year">26年市占率</span>60%</div></div><div class="cum-footer"><span>25年市占率 57%</span><span class="cum-share-change up">市占率变化 +3pp</span></div></div></div>
+<div class="cum-card orange"><div class="cum-card-inner"><div class="cum-header">翔龙品牌成交GMV</div><div class="cum-row"><div class="cum-gmv"><div class="year-label">2026年</div><div class="big">3964<span>万</span></div><div class="small">25年 2461<span>万</span></div></div><div class="cum-yoy-box"><div class="pct up">+61%</div><div class="pct-label">GMV同比</div></div></div><div class="cum-share-row"><div class="cum-share-bar-bg"><div class="cum-share-bar-fill" style="width:33%"></div></div><div class="cum-share-pct"><span class="cum-share-year">26年市占率</span>33%</div></div><div class="cum-footer"><span>25年市占率 32%</span><span class="cum-share-change up">市占率变化 +1pp</span></div></div></div>
+<div class="cum-card purple"><div class="cum-card-inner"><div class="cum-header">国旅品牌成交GMV</div><div class="cum-row"><div class="cum-gmv"><div class="year-label">2026年</div><div class="big">925<span>万</span></div><div class="small">25年 918<span>万</span></div></div><div class="cum-yoy-box"><div class="pct up">+1%</div><div class="pct-label">GMV同比</div></div></div><div class="cum-share-row"><div class="cum-share-bar-bg"><div class="cum-share-bar-fill" style="width:8%"></div></div><div class="cum-share-pct"><span class="cum-share-year">26年市占率</span>8%</div></div><div class="cum-footer"><span>25年市占率 12%</span><span class="cum-share-change down">市占率变化 -4pp</span></div></div></div>
+</div>
+</div>
+<div class="section-title" id="cum-q3q4" style="margin-top:32px">二、26年Q3及Q4出发累计成交收入以及同期同比</div>
+<div class="section-subtitle">截至2026年9月4日下单 · 用户出发站大区-售卖站逻辑=华北出发 · 按季度口径拆分</div>
+<div class="q3q4-grid" style="display:grid; grid-template-columns:repeat(5,1fr); gap:18px; margin-bottom:28px">
+<div style="border:1px solid #e2e8f0; border-radius:18px; padding:24px; position:relative; overflow:hidden">
+<div style="position:absolute; top:0; left:0; right:0; height:4px"></div>
+<div style="font-size:14px; font-weight:700; color:#1e293b; margin-bottom:14px">携程平台总GMV</div>
+<div style="display:flex; gap:10px; margin-bottom:14px">
+<div style="flex:1; border-radius:12px; padding:14px 10px; text-align:center">
+<div style="font-size:12px; color:#64748b; margin-bottom:4px">Q3</div>
+<div style="font-size:22px; font-weight:800; color:#1e40af; line-height:1">3.06<span>亿</span></div>
+<div style="font-size:11px; color:#94a3b8; margin-top:4px">25年 2.76<span>亿</span></div>
+</div>
+<div style="flex:1; border-radius:12px; padding:14px 10px; text-align:center">
+<div style="font-size:12px; color:#64748b; margin-bottom:4px">Q4</div>
+<div style="font-size:22px; font-weight:800; color:#7c3aed; line-height:1">7320<span>万</span></div>
+<div style="font-size:11px; color:#94a3b8; margin-top:4px">25年 3974<span>万</span></div>
+</div>
+</div>
+<div style="display:flex; gap:10px; justify-content:center">
+<div style="background:#ecfdf5; color:#059669; border-radius:8px; padding:5px 14px; font-size:13px; font-weight:700">Q3同比 +11%</div>
+<div style="background:#ecfdf5; color:#059669; border-radius:8px; padding:5px 14px; font-size:13px; font-weight:700">Q4同比 +84%</div>
+</div>
+</div>
+<div style="border:1px solid #e2e8f0; border-radius:18px; padding:24px; position:relative; overflow:hidden">
+<div style="position:absolute; top:0; left:0; right:0; height:4px"></div>
+<div style="font-size:14px; font-weight:700; color:#1e293b; margin-bottom:14px">双品牌成交GMV</div>
+<div style="display:flex; gap:10px; margin-bottom:14px">
+<div style="flex:1; border-radius:12px; padding:14px 10px; text-align:center">
+<div style="font-size:12px; color:#64748b; margin-bottom:4px">Q3</div>
+<div style="font-size:22px; font-weight:800; color:#1e40af; line-height:1">1.66<span>亿</span></div>
+<div style="font-size:11px; color:#94a3b8; margin-top:4px">市占 54%</div>
+</div>
+<div style="flex:1; border-radius:12px; padding:14px 10px; text-align:center">
+<div style="font-size:12px; color:#64748b; margin-bottom:4px">Q4</div>
+<div style="font-size:22px; font-weight:800; color:#7c3aed; line-height:1">3918<span>万</span></div>
+<div style="font-size:11px; color:#94a3b8; margin-top:4px">市占 54%</div>
+</div>
+</div>
+<div style="display:flex; gap:10px; justify-content:center">
+<div style="background:#ecfdf5; color:#059669; border-radius:8px; padding:5px 14px; font-size:13px; font-weight:700">Q3同比 +27%</div>
+<div style="background:#ecfdf5; color:#059669; border-radius:8px; padding:5px 14px; font-size:13px; font-weight:700">Q4同比 +60%</div>
+</div>
+</div>
+<div style="border:1px solid #e2e8f0; border-radius:18px; padding:24px; position:relative; overflow:hidden">
+<div style="position:absolute; top:0; left:0; right:0; height:4px"></div>
+<div style="font-size:14px; font-weight:700; color:#1e293b; margin-bottom:14px">其他供应商</div>
+<div style="display:flex; gap:10px; margin-bottom:14px">
+<div style="flex:1; border-radius:12px; padding:14px 10px; text-align:center">
+<div style="font-size:12px; color:#64748b; margin-bottom:4px">Q3</div>
+<div style="font-size:22px; font-weight:800; color:#1e40af; line-height:1">1.40<span>亿</span></div>
+<div style="font-size:11px; color:#94a3b8; margin-top:4px">市占 46%</div>
+</div>
+<div style="flex:1; border-radius:12px; padding:14px 10px; text-align:center">
+<div style="font-size:12px; color:#64748b; margin-bottom:4px">Q4</div>
+<div style="font-size:22px; font-weight:800; color:#7c3aed; line-height:1">3402<span>万</span></div>
+<div style="font-size:11px; color:#94a3b8; margin-top:4px">市占 46%</div>
+</div>
+</div>
+<div style="display:flex; gap:10px; justify-content:center">
+<div style="background:#fef2f2; color:#dc2626; border-radius:8px; padding:5px 14px; font-size:13px; font-weight:700">Q3同比 -4%</div>
+<div style="background:#ecfdf5; color:#059669; border-radius:8px; padding:5px 14px; font-size:13px; font-weight:700">Q4同比 +123%</div>
+</div>
+</div>
+<div style="border:1px solid #e2e8f0; border-radius:18px; padding:24px; position:relative; overflow:hidden">
+<div style="position:absolute; top:0; left:0; right:0; height:4px"></div>
+<div style="font-size:14px; font-weight:700; color:#1e293b; margin-bottom:14px">翔龙品牌成交GMV</div>
+<div style="display:flex; gap:10px; margin-bottom:14px">
+<div style="flex:1; border-radius:12px; padding:14px 10px; text-align:center">
+<div style="font-size:12px; color:#64748b; margin-bottom:4px">Q3</div>
+<div style="font-size:22px; font-weight:800; color:#1e40af; line-height:1">1.08<span>亿</span></div>
+<div style="font-size:11px; color:#94a3b8; margin-top:4px">市占 35%</div>
+</div>
+<div style="flex:1; border-radius:12px; padding:14px 10px; text-align:center">
+<div style="font-size:12px; color:#64748b; margin-bottom:4px">Q4</div>
+<div style="font-size:22px; font-weight:800; color:#7c3aed; line-height:1">2500<span>万</span></div>
+<div style="font-size:11px; color:#94a3b8; margin-top:4px">市占 34%</div>
+</div>
+</div>
+<div style="display:flex; gap:10px; justify-content:center">
+<div style="background:#ecfdf5; color:#059669; border-radius:8px; padding:5px 14px; font-size:13px; font-weight:700">Q3同比 +52%</div>
+<div style="background:#ecfdf5; color:#059669; border-radius:8px; padding:5px 14px; font-size:13px; font-weight:700">Q4同比 +91%</div>
+</div>
+</div>
+<div style="border:1px solid #e2e8f0; border-radius:18px; padding:24px; position:relative; overflow:hidden">
+<div style="position:absolute; top:0; left:0; right:0; height:4px"></div>
+<div style="font-size:14px; font-weight:700; color:#1e293b; margin-bottom:14px">国旅品牌成交GMV</div>
+<div style="display:flex; gap:10px; margin-bottom:14px">
+<div style="flex:1; border-radius:12px; padding:14px 10px; text-align:center">
+<div style="font-size:12px; color:#64748b; margin-bottom:4px">Q3</div>
+<div style="font-size:22px; font-weight:800; color:#1e40af; line-height:1">5780<span>万</span></div>
+<div style="font-size:11px; color:#94a3b8; margin-top:4px">市占 19%</div>
+</div>
+<div style="flex:1; border-radius:12px; padding:14px 10px; text-align:center">
+<div style="font-size:12px; color:#64748b; margin-bottom:4px">Q4</div>
+<div style="font-size:22px; font-weight:800; color:#7c3aed; line-height:1">1418<span>万</span></div>
+<div style="font-size:11px; color:#94a3b8; margin-top:4px">市占 19%</div>
+</div>
+</div>
+<div style="display:flex; gap:10px; justify-content:center">
+<div style="background:#fef2f2; color:#dc2626; border-radius:8px; padding:5px 14px; font-size:13px; font-weight:700">Q3同比 -3%</div>
+<div style="background:#ecfdf5; color:#059669; border-radius:8px; padding:5px 14px; font-size:13px; font-weight:700">Q4同比 +25%</div>
+</div>
+</div></div>
+<div class="section-title" id="cum-month-region" style="margin-top:32px">三、H2各月份 -各目的国家_归属业务区域成交收入以及同期同比</div>
+<div class="section-subtitle">截至2026年9月4日下单 · 按出发月份×目的地区域交叉维度拆分 · H2(7-12月)出发口径</div>
+<div class="chart-grid" style="margin-bottom:24px">
+<div class="chart-card wide">
+<div class="chart-title">各月份平台GMV及双品牌成交对比</div>
+<div class="chart-wrapper"><canvas id="chart-h2-month"></canvas></div>
+</div>
+</div>
+<div class="month-tabs">
+<button class="month-tab active" onclick="switchMonthTab('m7',this)">7月</button>
+<button class="month-tab" onclick="switchMonthTab('m8',this)">8月</button>
+<button class="month-tab" onclick="switchMonthTab('m9',this)">9月</button>
+<button class="month-tab" onclick="switchMonthTab('m10',this)">10月</button>
+<button class="month-tab" onclick="switchMonthTab('m11',this)">11月</button>
+<button class="month-tab" onclick="switchMonthTab('m12',this)">12月</button>
+<button class="month-tab" onclick="switchMonthTab('mall',this)">H2合计</button>
+</div>
+<!-- 7月 -->
+<div class="month-panel active" id="m7">
+<div class="month-summary">
+<div class="month-summary-card"><div class="label">26年平台GMV</div><div class="value">9507万</div><div class="sub">25年 1.15亿</div></div>
+<div class="month-summary-card"><div class="label">26年双品牌GMV</div><div class="value">4848万</div><div class="sub">25年 5394万</div></div>
+<div class="month-summary-card"><div class="label">双品牌市占率</div><div class="value">51%</div><div class="sub">25年 47% ↑4pp</div></div>
+<div class="month-summary-card"><div class="label">平台GMV同比</div><div class="value down">-17%</div><div class="sub">双品牌GMV同比 -10%</div></div>
+</div>
+<div class="region-table-wrap" style="margin-top:0"><table class="data-table" style="table-layout: fixed; width: 100%; font-size: 11px"><thead><tr><th rowspan="2" style="width:12%; white-space:normal; padding:8px 4px; font-size:10px">目的地区域</th><th colspan="9" style="text-align:center; font-size:11px; padding:6px 4px; background:#F0F7FF; color:#0066CC; font-weight:700">26年</th><th colspan="3" style="text-align:center; font-size:11px; padding:6px 4px; background:#F0F7FF; color:#0066CC; font-weight:700">25年</th><th colspan="2" style="text-align:center; font-size:11px; padding:6px 4px; background:#F0F7FF; color:#0066CC; font-weight:700">同比</th></tr><tr><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">平台GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌市占</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">翔龙GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">翔龙同比</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">翔龙市占</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">国旅GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">国旅同比</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">国旅市占</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">平台GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌市占</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">平台GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌GMV</th></tr></thead><tbody>
+<tr class="total-row"><td style="padding-left:0px"><strong>7月合计</strong></td><td class="num">9507万</td><td class="num">4848万</td><td class="num up">51%</td><td class="num">3014万</td><td class="num up">+8%</td><td class="num up">32%</td><td class="num">1833万</td><td class="num down">-29%</td><td class="num up">19%</td><td class="num">1.15亿</td><td class="num">5394万</td><td class="num down">47%</td><td class="num down">-17%</td><td class="num down">-10%</td></tr>
+<tr class=""><td style="padding-left:32px">├ 西欧</td><td class="num">5271万</td><td class="num">2941万</td><td class="num up">56%</td><td class="num">1945万</td><td class="num up">+36%</td><td class="num up">37%</td><td class="num">996万</td><td class="num down">-31%</td><td class="num up">19%</td><td class="num">5781万</td><td class="num">2875万</td><td class="num down">50%</td><td class="num down">-9%</td><td class="num up">+2%</td></tr>
+<tr class=""><td style="padding-left:32px">├ 北欧</td><td class="num">1817万</td><td class="num">659万</td><td class="num down">36%</td><td class="num">313万</td><td class="num down">-35%</td><td class="num down">17%</td><td class="num">346万</td><td class="num up">+12%</td><td class="num up">19%</td><td class="num">2141万</td><td class="num">791万</td><td class="num down">37%</td><td class="num down">-15%</td><td class="num down">-17%</td></tr>
+<tr class=""><td style="padding-left:32px">├ 英爱</td><td class="num">1470万</td><td class="num">683万</td><td class="num down">46%</td><td class="num">476万</td><td class="num down">-5%</td><td class="num up">32%</td><td class="num">207万</td><td class="num down">-45%</td><td class="num down">14%</td><td class="num">2181万</td><td class="num">873万</td><td class="num down">40%</td><td class="num down">-33%</td><td class="num down">-22%</td></tr>
+<tr class=""><td style="padding-left:32px">├ 东欧+巴尔干</td><td class="num">487万</td><td class="num">280万</td><td class="num up">58%</td><td class="num">108万</td><td class="num down">-40%</td><td class="num down">22%</td><td class="num">173万</td><td class="num down">-41%</td><td class="num up">36%</td><td class="num">778万</td><td class="num">474万</td><td class="num up">61%</td><td class="num down">-37%</td><td class="num down">-41%</td></tr>
+<tr class=""><td style="padding-left:32px">├ 南欧</td><td class="num">462万</td><td class="num">284万</td><td class="num up">62%</td><td class="num">173万</td><td class="num down">-13%</td><td class="num up">37%</td><td class="num">111万</td><td class="num down">-39%</td><td class="num up">24%</td><td class="num">599万</td><td class="num">380万</td><td class="num up">64%</td><td class="num down">-23%</td><td class="num down">-25%</td></tr>
+</tbody></table></div>
+</div>
+<!-- 8月 -->
+<div class="month-panel" id="m8">
+<div class="month-summary">
+<div class="month-summary-card"><div class="label">26年平台GMV</div><div class="value">9916万</div><div class="sub">25年 8827万</div></div>
+<div class="month-summary-card"><div class="label">26年双品牌GMV</div><div class="value">5807万</div><div class="sub">25年 4169万</div></div>
+<div class="month-summary-card"><div class="label">双品牌市占率</div><div class="value">59%</div><div class="sub">25年 47% ↑12pp</div></div>
+<div class="month-summary-card"><div class="label">平台GMV同比</div><div class="value up">+12%</div><div class="sub">双品牌GMV同比 +39%</div></div>
+</div>
+<div class="region-table-wrap" style="margin-top:0"><table class="data-table" style="table-layout: fixed; width: 100%; font-size: 11px"><thead><tr><th rowspan="2" style="width:12%; white-space:normal; padding:8px 4px; font-size:10px">目的地区域</th><th colspan="9" style="text-align:center; font-size:11px; padding:6px 4px; background:#F0F7FF; color:#0066CC; font-weight:700">26年</th><th colspan="3" style="text-align:center; font-size:11px; padding:6px 4px; background:#F0F7FF; color:#0066CC; font-weight:700">25年</th><th colspan="2" style="text-align:center; font-size:11px; padding:6px 4px; background:#F0F7FF; color:#0066CC; font-weight:700">同比</th></tr><tr><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">平台GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌市占</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">翔龙GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">翔龙同比</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">翔龙市占</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">国旅GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">国旅同比</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">国旅市占</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">平台GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌市占</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">平台GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌GMV</th></tr></thead><tbody>
+<tr class="total-row"><td style="padding-left:0px"><strong>8月合计</strong></td><td class="num">9916万</td><td class="num">5807万</td><td class="num up">59%</td><td class="num">3839万</td><td class="num up">+48%</td><td class="num up">39%</td><td class="num">1968万</td><td class="num up">+25%</td><td class="num up">20%</td><td class="num">8827万</td><td class="num">4169万</td><td class="num down">47%</td><td class="num up">+12%</td><td class="num up">+39%</td></tr>
+<tr class=""><td style="padding-left:32px">├ 西欧</td><td class="num">4415万</td><td class="num">2711万</td><td class="num up">61%</td><td class="num">1758万</td><td class="num up">+17%</td><td class="num up">40%</td><td class="num">953万</td><td class="num down">-4%</td><td class="num up">22%</td><td class="num">4426万</td><td class="num">2487万</td><td class="num up">56%</td><td class="num down">-0%</td><td class="num up">+9%</td></tr>
+<tr class=""><td style="padding-left:32px">├ 北欧</td><td class="num">2521万</td><td class="num">1197万</td><td class="num down">47%</td><td class="num">946万</td><td class="num up">+98%</td><td class="num up">38%</td><td class="num">251万</td><td class="num up">+74%</td><td class="num down">10%</td><td class="num">2021万</td><td class="num">622万</td><td class="num down">31%</td><td class="num up">+25%</td><td class="num up">+93%</td></tr>
+<tr class=""><td style="padding-left:32px">├ 英爱</td><td class="num">1882万</td><td class="num">1219万</td><td class="num up">65%</td><td class="num">729万</td><td class="num up">+108%</td><td class="num up">39%</td><td class="num">489万</td><td class="num up">+84%</td><td class="num up">26%</td><td class="num">1434万</td><td class="num">616万</td><td class="num down">43%</td><td class="num up">+31%</td><td class="num up">+98%</td></tr>
+<tr class=""><td style="padding-left:32px">├ 东欧+巴尔干</td><td class="num">655万</td><td class="num">411万</td><td class="num up">63%</td><td class="num">217万</td><td class="num up">+67%</td><td class="num up">33%</td><td class="num">194万</td><td class="num up">+181%</td><td class="num up">30%</td><td class="num">491万</td><td class="num">199万</td><td class="num down">41%</td><td class="num up">+34%</td><td class="num up">+107%</td></tr>
+<tr class=""><td style="padding-left:32px">├ 南欧</td><td class="num">442万</td><td class="num">269万</td><td class="num up">61%</td><td class="num">189万</td><td class="num up">+34%</td><td class="num up">43%</td><td class="num">80万</td><td class="num down">-22%</td><td class="num up">18%</td><td class="num">455万</td><td class="num">244万</td><td class="num up">54%</td><td class="num down">-3%</td><td class="num up">+10%</td></tr>
+</tbody></table></div>
+</div>
+<!-- 9月 -->
+<div class="month-panel" id="m9">
+<div class="month-summary">
+<div class="month-summary-card"><div class="label">26年平台GMV</div><div class="value">1.12亿</div><div class="sub">25年 7340万</div></div>
+<div class="month-summary-card"><div class="label">26年双品牌GMV</div><div class="value">5923万</div><div class="sub">25年 3512万</div></div>
+<div class="month-summary-card"><div class="label">双品牌市占率</div><div class="value">53%</div><div class="sub">25年 48% ↑5pp</div></div>
+<div class="month-summary-card"><div class="label">平台GMV同比</div><div class="value up">+52%</div><div class="sub">双品牌GMV同比 +69%</div></div>
+</div>
+<div class="region-table-wrap" style="margin-top:0"><table class="data-table" style="table-layout: fixed; width: 100%; font-size: 11px"><thead><tr><th rowspan="2" style="width:12%; white-space:normal; padding:8px 4px; font-size:10px">目的地区域</th><th colspan="9" style="text-align:center; font-size:11px; padding:6px 4px; background:#F0F7FF; color:#0066CC; font-weight:700">26年</th><th colspan="3" style="text-align:center; font-size:11px; padding:6px 4px; background:#F0F7FF; color:#0066CC; font-weight:700">25年</th><th colspan="2" style="text-align:center; font-size:11px; padding:6px 4px; background:#F0F7FF; color:#0066CC; font-weight:700">同比</th></tr><tr><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">平台GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌市占</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">翔龙GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">翔龙同比</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">翔龙市占</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">国旅GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">国旅同比</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">国旅市占</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">平台GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌市占</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">平台GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌GMV</th></tr></thead><tbody>
+<tr class="total-row"><td style="padding-left:0px"><strong>9月合计</strong></td><td class="num">1.12亿</td><td class="num">5923万</td><td class="num up">53%</td><td class="num">3945万</td><td class="num up">+130%</td><td class="num up">35%</td><td class="num">1978万</td><td class="num up">+10%</td><td class="num up">18%</td><td class="num">7340万</td><td class="num">3512万</td><td class="num down">48%</td><td class="num up">+52%</td><td class="num up">+69%</td></tr>
+<tr class=""><td style="padding-left:32px">├ 西欧</td><td class="num">5605万</td><td class="num">3126万</td><td class="num up">56%</td><td class="num">2083万</td><td class="num up">+126%</td><td class="num up">37%</td><td class="num">1042万</td><td class="num up">+29%</td><td class="num up">19%</td><td class="num">3232万</td><td class="num">1731万</td><td class="num up">54%</td><td class="num up">+73%</td><td class="num up">+81%</td></tr>
+<tr class=""><td style="padding-left:32px">├ 北欧</td><td class="num">1814万</td><td class="num">801万</td><td class="num down">44%</td><td class="num">512万</td><td class="num up">+111%</td><td class="num up">28%</td><td class="num">289万</td><td class="num up">+28%</td><td class="num up">16%</td><td class="num">1416万</td><td class="num">468万</td><td class="num down">33%</td><td class="num up">+28%</td><td class="num up">+71%</td></tr>
+<tr class=""><td style="padding-left:32px">├ 南欧</td><td class="num">1604万</td><td class="num">880万</td><td class="num up">55%</td><td class="num">578万</td><td class="num up">+215%</td><td class="num up">36%</td><td class="num">302万</td><td class="num down">-20%</td><td class="num up">19%</td><td class="num">1191万</td><td class="num">561万</td><td class="num down">47%</td><td class="num up">+35%</td><td class="num up">+57%</td></tr>
+<tr class=""><td style="padding-left:32px">├ 东欧+巴尔干</td><td class="num">1104万</td><td class="num">562万</td><td class="num up">51%</td><td class="num">286万</td><td class="num up">+65%</td><td class="num up">26%</td><td class="num">276万</td><td class="num up">+60%</td><td class="num up">25%</td><td class="num">725万</td><td class="num">346万</td><td class="num down">48%</td><td class="num up">+52%</td><td class="num up">+62%</td></tr>
+<tr class=""><td style="padding-left:32px">├ 英爱</td><td class="num">1041万</td><td class="num">553万</td><td class="num up">53%</td><td class="num">485万</td><td class="num up">+152%</td><td class="num up">47%</td><td class="num">68万</td><td class="num down">-68%</td><td class="num down">7%</td><td class="num">777万</td><td class="num">406万</td><td class="num up">52%</td><td class="num up">+34%</td><td class="num up">+36%</td></tr>
+</tbody></table></div>
+</div>
+<!-- 10月 -->
+<div class="month-panel" id="m10">
+<div class="month-summary">
+<div class="month-summary-card"><div class="label">26年平台GMV</div><div class="value">6057万</div><div class="sub">25年 3633万</div></div>
+<div class="month-summary-card"><div class="label">26年双品牌GMV</div><div class="value">3157万</div><div class="sub">25年 2312万</div></div>
+<div class="month-summary-card"><div class="label">双品牌市占率</div><div class="value">52%</div><div class="sub">25年 64% ↓12pp</div></div>
+<div class="month-summary-card"><div class="label">平台GMV同比</div><div class="value up">+67%</div><div class="sub">双品牌GMV同比 +37%</div></div>
+</div>
+<div class="region-table-wrap" style="margin-top:0"><table class="data-table" style="table-layout: fixed; width: 100%; font-size: 11px"><thead><tr><th rowspan="2" style="width:12%; white-space:normal; padding:8px 4px; font-size:10px">目的地区域</th><th colspan="9" style="text-align:center; font-size:11px; padding:6px 4px; background:#F0F7FF; color:#0066CC; font-weight:700">26年</th><th colspan="3" style="text-align:center; font-size:11px; padding:6px 4px; background:#F0F7FF; color:#0066CC; font-weight:700">25年</th><th colspan="2" style="text-align:center; font-size:11px; padding:6px 4px; background:#F0F7FF; color:#0066CC; font-weight:700">同比</th></tr><tr><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">平台GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌市占</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">翔龙GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">翔龙同比</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">翔龙市占</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">国旅GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">国旅同比</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">国旅市占</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">平台GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌市占</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">平台GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌GMV</th></tr></thead><tbody>
+<tr class="total-row"><td style="padding-left:0px"><strong>10月合计</strong></td><td class="num">6057万</td><td class="num">3157万</td><td class="num up">52%</td><td class="num">2018万</td><td class="num up">+66%</td><td class="num up">33%</td><td class="num">1139万</td><td class="num up">+4%</td><td class="num up">19%</td><td class="num">3633万</td><td class="num">2312万</td><td class="num up">64%</td><td class="num up">+67%</td><td class="num up">+37%</td></tr>
+<tr class=""><td style="padding-left:32px">├ 西欧</td><td class="num">2784万</td><td class="num">1466万</td><td class="num up">53%</td><td class="num">807万</td><td class="num up">+54%</td><td class="num up">29%</td><td class="num">659万</td><td class="num up">+11%</td><td class="num up">24%</td><td class="num">1695万</td><td class="num">1116万</td><td class="num up">66%</td><td class="num up">+64%</td><td class="num up">+31%</td></tr>
+<tr class=""><td style="padding-left:32px">├ 北欧</td><td class="num">1036万</td><td class="num">339万</td><td class="num down">33%</td><td class="num">288万</td><td class="num up">+72%</td><td class="num up">28%</td><td class="num">51万</td><td class="num down">-74%</td><td class="num down">5%</td><td class="num">556万</td><td class="num">365万</td><td class="num up">66%</td><td class="num up">+86%</td><td class="num down">-7%</td></tr>
+<tr class=""><td style="padding-left:32px">├ 南欧</td><td class="num">919万</td><td class="num">551万</td><td class="num up">60%</td><td class="num">398万</td><td class="num up">+53%</td><td class="num up">43%</td><td class="num">153万</td><td class="num up">+33%</td><td class="num up">17%</td><td class="num">654万</td><td class="num">375万</td><td class="num up">57%</td><td class="num up">+41%</td><td class="num up">+47%</td></tr>
+<tr class=""><td style="padding-left:32px">├ 东欧+巴尔干</td><td class="num">662万</td><td class="num">365万</td><td class="num up">55%</td><td class="num">205万</td><td class="num up">+57%</td><td class="num up">31%</td><td class="num">161万</td><td class="num down">-9%</td><td class="num up">24%</td><td class="num">499万</td><td class="num">306万</td><td class="num up">61%</td><td class="num up">+33%</td><td class="num up">+19%</td></tr>
+<tr class=""><td style="padding-left:32px">├ 英爱</td><td class="num">656万</td><td class="num">435万</td><td class="num up">66%</td><td class="num">320万</td><td class="num up">+140%</td><td class="num up">49%</td><td class="num">115万</td><td class="num up">+605%</td><td class="num up">18%</td><td class="num">230万</td><td class="num">150万</td><td class="num up">65%</td><td class="num up">+186%</td><td class="num up">+191%</td></tr>
+</tbody></table></div>
+</div>
+<!-- 11月 -->
+<div class="month-panel" id="m11">
+<div class="month-summary">
+<div class="month-summary-card"><div class="label">26年平台GMV</div><div class="value">1145万</div><div class="sub">25年 276万</div></div>
+<div class="month-summary-card"><div class="label">26年双品牌GMV</div><div class="value">721万</div><div class="sub">25年 119万</div></div>
+<div class="month-summary-card"><div class="label">双品牌市占率</div><div class="value">63%</div><div class="sub">25年 43% ↑20pp</div></div>
+<div class="month-summary-card"><div class="label">平台GMV同比</div><div class="value up">+315%</div><div class="sub">双品牌GMV同比 +507%</div></div>
+</div>
+<div class="region-table-wrap" style="margin-top:0"><table class="data-table" style="table-layout: fixed; width: 100%; font-size: 11px"><thead><tr><th rowspan="2" style="width:12%; white-space:normal; padding:8px 4px; font-size:10px">目的地区域</th><th colspan="9" style="text-align:center; font-size:11px; padding:6px 4px; background:#F0F7FF; color:#0066CC; font-weight:700">26年</th><th colspan="3" style="text-align:center; font-size:11px; padding:6px 4px; background:#F0F7FF; color:#0066CC; font-weight:700">25年</th><th colspan="2" style="text-align:center; font-size:11px; padding:6px 4px; background:#F0F7FF; color:#0066CC; font-weight:700">同比</th></tr><tr><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">平台GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌市占</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">翔龙GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">翔龙同比</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">翔龙市占</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">国旅GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">国旅同比</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">国旅市占</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">平台GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌市占</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">平台GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌GMV</th></tr></thead><tbody>
+<tr class="total-row"><td style="padding-left:0px"><strong>11月合计</strong></td><td class="num">1145万</td><td class="num">721万</td><td class="num up">63%</td><td class="num">448万</td><td class="num up">+464%</td><td class="num up">39%</td><td class="num">273万</td><td class="num up">+595%</td><td class="num up">24%</td><td class="num">276万</td><td class="num">119万</td><td class="num down">43%</td><td class="num up">+315%</td><td class="num up">+507%</td></tr>
+<tr class=""><td style="padding-left:32px">├ 北欧</td><td class="num">431万</td><td class="num">194万</td><td class="num down">45%</td><td class="num">90万</td><td class="num up">+496%</td><td class="num down">21%</td><td class="num">104万</td><td class="num up">+740%</td><td class="num up">24%</td><td class="num">82万</td><td class="num">27万</td><td class="num down">33%</td><td class="num up">+423%</td><td class="num up">+606%</td></tr>
+<tr class=""><td style="padding-left:32px">├ 西欧</td><td class="num">397万</td><td class="num">314万</td><td class="num up">79%</td><td class="num">216万</td><td class="num up">+766%</td><td class="num up">54%</td><td class="num">98万</td><td class="num up">+971%</td><td class="num up">25%</td><td class="num">76万</td><td class="num">34万</td><td class="num down">45%</td><td class="num up">+425%</td><td class="num up">+821%</td></tr>
+<tr class=""><td style="padding-left:32px">├ 南欧</td><td class="num">193万</td><td class="num">119万</td><td class="num up">62%</td><td class="num">67万</td><td class="num up">+103%</td><td class="num up">35%</td><td class="num">52万</td><td class="num up">+511%</td><td class="num up">27%</td><td class="num">83万</td><td class="num">42万</td><td class="num up">50%</td><td class="num up">+132%</td><td class="num up">+187%</td></tr>
+<tr class=""><td style="padding-left:32px">├ 英爱</td><td class="num">88万</td><td class="num">72万</td><td class="num up">82%</td><td class="num">64万</td><td class="num up">+2826%</td><td class="num up">73%</td><td class="num">8万</td><td class="num up">∞%</td><td class="num down">9%</td><td class="num">17万</td><td class="num">2万</td><td class="num down">13%</td><td class="num up">+407%</td><td class="num up">+3193%</td></tr>
+<tr class=""><td style="padding-left:32px">├ 东欧+巴尔干</td><td class="num">36万</td><td class="num">22万</td><td class="num up">61%</td><td class="num">11万</td><td class="num up">+156%</td><td class="num up">30%</td><td class="num">11万</td><td class="num up">+19%</td><td class="num up">30%</td><td class="num">18万</td><td class="num">13万</td><td class="num up">76%</td><td class="num up">+104%</td><td class="num up">+62%</td></tr>
+</tbody></table></div>
+</div>
+<!-- 12月 -->
+<div class="month-panel" id="m12">
+<div class="month-summary">
+<div class="month-summary-card"><div class="label">26年平台GMV</div><div class="value">118万</div><div class="sub">25年 65万</div></div>
+<div class="month-summary-card"><div class="label">26年双品牌GMV</div><div class="value">40万</div><div class="sub">25年 16万</div></div>
+<div class="month-summary-card"><div class="label">双品牌市占率</div><div class="value">34%</div><div class="sub">25年 25% ↑9pp</div></div>
+<div class="month-summary-card"><div class="label">平台GMV同比</div><div class="value up">+82%</div><div class="sub">双品牌GMV同比 +148%</div></div>
+</div>
+<div class="region-table-wrap" style="margin-top:0"><table class="data-table" style="table-layout: fixed; width: 100%; font-size: 11px"><thead><tr><th rowspan="2" style="width:12%; white-space:normal; padding:8px 4px; font-size:10px">目的地区域</th><th colspan="9" style="text-align:center; font-size:11px; padding:6px 4px; background:#F0F7FF; color:#0066CC; font-weight:700">26年</th><th colspan="3" style="text-align:center; font-size:11px; padding:6px 4px; background:#F0F7FF; color:#0066CC; font-weight:700">25年</th><th colspan="2" style="text-align:center; font-size:11px; padding:6px 4px; background:#F0F7FF; color:#0066CC; font-weight:700">同比</th></tr><tr><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">平台GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌市占</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">翔龙GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">翔龙同比</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">翔龙市占</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">国旅GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">国旅同比</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">国旅市占</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">平台GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌市占</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">平台GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌GMV</th></tr></thead><tbody>
+<tr class="total-row"><td style="padding-left:0px"><strong>12月合计</strong></td><td class="num">118万</td><td class="num">40万</td><td class="num down">34%</td><td class="num">33万</td><td class="num up">+138%</td><td class="num up">28%</td><td class="num">7万</td><td class="num up">+208%</td><td class="num down">6%</td><td class="num">65万</td><td class="num">16万</td><td class="num down">25%</td><td class="num up">+82%</td><td class="num up">+148%</td></tr>
+<tr class=""><td style="padding-left:32px">├ 北欧</td><td class="num">65万</td><td class="num">13万</td><td class="num down">20%</td><td class="num">13万</td><td class="num up">+18%</td><td class="num down">20%</td><td class="num">—</td><td class="num">0%</td><td class="num down">0%</td><td class="num">60万</td><td class="num">11万</td><td class="num down">18%</td><td class="num up">+9%</td><td class="num up">+18%</td></tr>
+<tr class=""><td style="padding-left:32px">├ 西欧</td><td class="num">28万</td><td class="num">14万</td><td class="num down">49%</td><td class="num">11万</td><td class="num up">+1114%</td><td class="num up">39%</td><td class="num">3万</td><td class="num up">∞%</td><td class="num down">10%</td><td class="num">8999</td><td class="num">8999</td><td class="num up">100%</td><td class="num up">+3045%</td><td class="num up">+1430%</td></tr>
+<tr class=""><td style="padding-left:32px">├ 英爱</td><td class="num">11万</td><td class="num">2万</td><td class="num down">21%</td><td class="num">2万</td><td class="num up">∞%</td><td class="num down">21%</td><td class="num">—</td><td class="num">0%</td><td class="num down">0%</td><td class="num">—</td><td class="num">—</td><td class="num down">0%</td><td class="num up">∞%</td><td class="num up">∞%</td></tr>
+<tr class=""><td style="padding-left:32px">├ 南欧</td><td class="num">10万</td><td class="num">7万</td><td class="num up">73%</td><td class="num">3万</td><td class="num up">+60%</td><td class="num up">32%</td><td class="num">4万</td><td class="num up">+80%</td><td class="num up">40%</td><td class="num">4万</td><td class="num">4万</td><td class="num up">100%</td><td class="num up">+135%</td><td class="num up">+70%</td></tr>
+<tr class=""><td style="padding-left:32px">├ 东欧+巴尔干</td><td class="num">4万</td><td class="num">4万</td><td class="num up">100%</td><td class="num">4万</td><td class="num up">∞%</td><td class="num up">100%</td><td class="num">—</td><td class="num">0%</td><td class="num down">0%</td><td class="num">—</td><td class="num">—</td><td class="num down">0%</td><td class="num up">∞%</td><td class="num up">∞%</td></tr>
+</tbody></table></div>
+</div>
+<!-- H2合计 -->
+<div class="month-panel" id="mall">
+<div class="month-summary">
+<div class="month-summary-card"><div class="label">26年平台GMV</div><div class="value">3.79亿</div><div class="sub">25年 3.16亿</div></div>
+<div class="month-summary-card"><div class="label">26年双品牌GMV</div><div class="value">2.05亿</div><div class="sub">25年 1.55亿</div></div>
+<div class="month-summary-card"><div class="label">双品牌市占率</div><div class="value">54%</div><div class="sub">25年 49% ↑5pp</div></div>
+<div class="month-summary-card"><div class="label">平台GMV同比</div><div class="value up">+20%</div><div class="sub">双品牌GMV同比 +32%</div></div>
+</div>
+<div class="region-table-wrap" style="margin-top:0"><table class="data-table" style="table-layout: fixed; width: 100%; font-size: 11px"><thead><tr><th rowspan="2" style="width:12%; white-space:normal; padding:8px 4px; font-size:10px">目的地区域</th><th colspan="9" style="text-align:center; font-size:11px; padding:6px 4px; background:#F0F7FF; color:#0066CC; font-weight:700">26年</th><th colspan="3" style="text-align:center; font-size:11px; padding:6px 4px; background:#F0F7FF; color:#0066CC; font-weight:700">25年</th><th colspan="2" style="text-align:center; font-size:11px; padding:6px 4px; background:#F0F7FF; color:#0066CC; font-weight:700">同比</th></tr><tr><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">平台GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌市占</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">翔龙GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">翔龙同比</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">翔龙市占</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">国旅GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">国旅同比</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">国旅市占</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">平台GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌市占</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">平台GMV</th><th class="num" style="width:6.285%; white-space:normal; padding:6px 4px; font-size:10px">双品牌GMV</th></tr></thead><tbody>
+<tr class="total-row"><td style="padding-left:0px"><strong>7月</strong></td><td class="num">9507万</td><td class="num">4848万</td><td class="num up">51%</td><td class="num">3014万</td><td class="num up">+8%</td><td class="num up">32%</td><td class="num">1833万</td><td class="num down">-29%</td><td class="num up">19%</td><td class="num">1.15亿</td><td class="num">5394万</td><td class="num down">47%</td><td class="num down">-17%</td><td class="num down">-10%</td></tr>
+<tr class="total-row"><td style="padding-left:0px"><strong>8月</strong></td><td class="num">9916万</td><td class="num">5807万</td><td class="num up">59%</td><td class="num">3839万</td><td class="num up">+48%</td><td class="num up">39%</td><td class="num">1968万</td><td class="num up">+25%</td><td class="num up">20%</td><td class="num">8827万</td><td class="num">4169万</td><td class="num down">47%</td><td class="num up">+12%</td><td class="num up">+39%</td></tr>
+<tr class="total-row"><td style="padding-left:0px"><strong>9月</strong></td><td class="num">1.12亿</td><td class="num">5923万</td><td class="num up">53%</td><td class="num">3945万</td><td class="num up">+130%</td><td class="num up">35%</td><td class="num">1978万</td><td class="num up">+10%</td><td class="num up">18%</td><td class="num">7340万</td><td class="num">3512万</td><td class="num down">48%</td><td class="num up">+52%</td><td class="num up">+69%</td></tr>
+<tr class="total-row"><td style="padding-left:0px"><strong>10月</strong></td><td class="num">6057万</td><td class="num">3157万</td><td class="num up">52%</td><td class="num">2018万</td><td class="num up">+66%</td><td class="num up">33%</td><td class="num">1139万</td><td class="num up">+4%</td><td class="num up">19%</td><td class="num">3633万</td><td class="num">2312万</td><td class="num up">64%</td><td class="num up">+67%</td><td class="num up">+37%</td></tr>
+<tr class="total-row"><td style="padding-left:0px"><strong>11月</strong></td><td class="num">1145万</td><td class="num">721万</td><td class="num up">63%</td><td class="num">448万</td><td class="num up">+464%</td><td class="num up">39%</td><td class="num">273万</td><td class="num up">+595%</td><td class="num up">24%</td><td class="num">276万</td><td class="num">119万</td><td class="num down">43%</td><td class="num up">+315%</td><td class="num up">+507%</td></tr>
+<tr class="total-row"><td style="padding-left:0px"><strong>12月</strong></td><td class="num">118万</td><td class="num">40万</td><td class="num down">34%</td><td class="num">33万</td><td class="num up">+138%</td><td class="num up">28%</td><td class="num">7万</td><td class="num up">+208%</td><td class="num down">6%</td><td class="num">65万</td><td class="num">16万</td><td class="num down">25%</td><td class="num up">+82%</td><td class="num up">+148%</td></tr>
+<tr class="total-row"><td style="padding-left:0px"><strong>H2合计 (7-12月)</strong></td><td class="num">3.79亿</td><td class="num">2.05亿</td><td class="num up">54%</td><td class="num">1.33亿</td><td class="num up">+58%</td><td class="num up">35%</td><td class="num">7198万</td><td class="num up">+1%</td><td class="num up">19%</td><td class="num">3.16亿</td><td class="num">1.55亿</td><td class="num down">49%</td><td class="num up">+20%</td><td class="num up">+32%</td></tr>
+</tbody></table></div>
+</div>
+<div class="datum-note">
+<div class="datum-note-title">数据口径说明</div>
+<div class="datum-note-body">用户出发站大区-售卖站逻辑=华北出发 · 剔除定制单团/罚金单/领队订单/目的地国家区域不含俄罗斯</div>
+</div>
+<div class="footer-note">
+数据来源：携程平台Artnova海外欧洲订单明细（自营&amp;代理）| 口径：华北出发·跟大团·剔除领队/单团/罚金单/俄罗斯<br/>
+报告生成时间：2026年9月5日 | 双周例会分析 v1.2.9
+</div>
+</div>
+</div>
+</div>
+<script>
+function switchTab(tabId) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.sidebar-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + tabId).classList.add('active');
+  event.target.classList.add('active');
+  document.querySelectorAll('.sidebar-group').forEach(g => {
+    g.style.display = (g.dataset.tab === tabId) ? 'block' : 'none';
+  });
+}
+function scrollToSection(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function switchMonthTab(monthId, btn) {
+  document.querySelectorAll('.month-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.month-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById(monthId).classList.add('active');
+  btn.classList.add('active');
+}
+function switchRegionTab(regionId, btn) {
+  document.querySelectorAll('.cum-region-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.region-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('cum-region-' + regionId).classList.add('active');
+  btn.classList.add('active');
+}
+function switchBwRegionTab(regionId, btn) {
+  var tabsContainer = btn.closest('.region-tabs');
+  var parent = tabsContainer.parentElement;
+  var searchStart = parent.classList.contains('section-header') ? parent : tabsContainer;
+  var el = searchStart.nextElementSibling;
+  while (el && el.classList.contains('bw-region-panel')) {
+    el.classList.remove('active');
+    el = el.nextElementSibling;
+  }
+  tabsContainer.querySelectorAll('.region-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('bw-region-' + regionId).classList.add('active');
+  btn.classList.add('active');
+}
+function switchSubTab(panelId, btn) {
+  var container = btn.closest('.bw-region-panel');
+  container.querySelectorAll('.sub-panel').forEach(p => p.classList.remove('active'));
+  container.querySelectorAll('.sub-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById(panelId).classList.add('active');
+  btn.classList.add('active');
+}
+// Chart: Region YoY
+// Chart: Region GMV YoY Growth (sorted by 双品牌 growth)
+new Chart(document.getElementById("chart-region-yoy"), {
+  type: "bar",
+  data: {
+    labels: ['东欧+巴尔干', '西欧', '南欧', '北欧', '英爱'],
+    datasets: [
+      { label: "翔龙", data: [242, 173, 88, 137, -2], backgroundColor: "#0066CC", borderRadius: 3, barPercentage: 0.55, categoryPercentage: 0.75, order: 2 },
+      { label: "国旅", data: [-58, -5, 8, -23, 69], backgroundColor: "#FF6600", borderRadius: 3, barPercentage: 0.55, categoryPercentage: 0.75, order: 2 },
+      { label: "其他供应商", data: [33, 63, 45, 132, 147], backgroundColor: "#999999", borderRadius: 3, barPercentage: 0.55, categoryPercentage: 0.75, order: 2 },
+      { label: "双品牌", data: [76, 71, 55, 54, 36], type: "line", borderColor: "#2FB344", backgroundColor: "#2FB344", borderWidth: 2.5, pointRadius: 5, pointBackgroundColor: "#2FB344", pointBorderColor: "#fff", pointBorderWidth: 2, tension: 0.3, order: 1 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: "index", intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) {
+            return ctx.dataset.label + ": " + Math.round(ctx.parsed.y) + "%";
+          }
+        }
+      }
+    },
+    scales: {
+      x: { grid: { display: false } },
+      y: {
+        grid: { color: "#E5E5E5" },
+        border: { display: false },
+        ticks: { callback: v => v + "%" },
+        position: "left",
+        min: -60,
+        max: 320
+      }
+    }
+  }
+});
+// Chart: Region Share Change (same region order as left)
+new Chart(document.getElementById("chart-region-share"), {
+  type: "bar",
+  data: {
+    labels: ['东欧+巴尔干', '西欧', '南欧', '北欧', '英爱'],
+    datasets: [
+      { label: "翔龙变化", data: [27, 14, 8, 4, -12], backgroundColor: "#0066CC", borderRadius: 3, barPercentage: 0.55, categoryPercentage: 0.7, order: 2 },
+      { label: "国旅变化", data: [-20, -13, -6, -13, -3], backgroundColor: "#FF6600", borderRadius: 3, barPercentage: 0.55, categoryPercentage: 0.7, order: 2 },
+      { label: "双品牌净变化", data: [7, 1, 2, -9, -15], type: "line", borderColor: "#333333", backgroundColor: "#333333", borderWidth: 2.5, pointRadius: 5, pointBackgroundColor: "#333333", pointBorderColor: "#fff", pointBorderWidth: 2, tension: 0.3, order: 1 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: "index", intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) {
+            var v = ctx.parsed.y;
+            var sign = v > 0 ? "+" : "";
+            return ctx.dataset.label + ": " + sign + v + "pp";
+          }
+        }
+      }
+    },
+    scales: {
+      x: { grid: { display: false } },
+      y: {
+        grid: {
+          color: (ctx) => ctx.tick.value === 0 ? "#666666" : "#E5E5E5",
+          lineWidth: (ctx) => ctx.tick.value === 0 ? 2 : 1
+        },
+        border: { display: false },
+        ticks: { callback: v => v + "pp" },
+        position: "left",
+        min: -25,
+        max: 25
+      }
+    }
+  }
+});
+// Chart: Month YoY
+new Chart(document.getElementById('chart-month-yoy'), {
+  type: 'bar',
+  data: {
+    labels: ['8月','9月','10月','11月','12月'],
+    datasets: [
+      { label: '翔龙', data: [0.0, 282.8, 698.8, 275.9, 9.6], backgroundColor: '#1e40af', barPercentage: 0.5, categoryPercentage: 0.7, order: 2 },
+      { label: '国旅', data: [0.0, 134.1, 382.1, 61.0, 0.0], backgroundColor: '#f97316', barPercentage: 0.5, categoryPercentage: 0.7, order: 2 },
+      { label: '其他', data: [7.9, 675.2, 1040.7, 164.2, 28.8], backgroundColor: '#94a3b8', barPercentage: 0.5, categoryPercentage: 0.7, order: 2 },
+      { label: '双品牌同比', data: [-100, -33, 145, 590, -11], type: 'line', yAxisID: 'y1', borderColor: '#dc2626', pointRadius: 4, tension: 0.3, order: 1 },
+      { label: '翔龙同比', data: [-100, 17, 191, 846, 12], type: 'line', yAxisID: 'y1', borderColor: '#1e40af', pointRadius: 4, tension: 0.3, order: 1 },
+      { label: '国旅同比', data: [0, -65, 89, 211, -100], type: 'line', yAxisID: 'y1', borderColor: '#f97316', pointRadius: 4, tension: 0.3, order: 1 }
+    ]
+  },
+  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { grid: { display: false } }, y: { grid: { color: '#f1f5f9' }, ticks: { callback: v => v + '万' } }, y1: { position: 'right', grid: { display: false }, ticks: { callback: v => v + '%' } } } }
+});
+// Chart: Month Share
+// Chart: Price GMV
+new Chart(document.getElementById('chart-price-gmv'), {
+  type: 'bar',
+  data: {
+    labels: ['1.0w以下','1.0w-1.5w','1.5w-2.0w','2.0w-2.5w','2.5w-3.0w','3.0w-3.5w','3.5w-4.0w','4.0w-4.5w','4.5w-5.0w','5w以上'],
+    datasets: [
+      { label: '2025年', data: [39.4, 167.4, 320.3, 590.3, 534.0, 207.9, 250.4, 72.3, 13.8, 10.9], backgroundColor: '#93c5fd', borderRadius: 3, barPercentage: 0.6 },
+      { label: '2026年', data: [240.8, 488.9, 685.8, 813.1, 666.7, 464.1, 218.6, 113.3, 37.6, 32.1], backgroundColor: '#2563eb', borderRadius: 3, barPercentage: 0.6 }
+    ]
+  },
+  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { grid: { display: false } }, y: { grid: { color: '#f1f5f9' }, ticks: { callback: v => v + '万' } } } }
+});
+// Chart: H2 Month comparison
+// Chart: Price Brand
+new Chart(document.getElementById('chart-price-brand'), {
+  type: 'bar',
+  data: {
+    labels: ['1.0w以下','1.0w-1.5w','1.5w-2.0w','2.0w-2.5w','2.5w-3.0w','3.0w-3.5w','3.5w-4.0w','4.0w-4.5w','4.5w-5.0w','5w以上'],
+    datasets: [
+      { label: '翔龙', data: [102.8, 219.1, 145.2, 269.4, 228.4, 174.8, 82.7, 33.1, 4.6, 6.9], backgroundColor: '#2563eb', barPercentage: 0.5, categoryPercentage: 0.75, order: 2 },
+      { label: '国旅', data: [0.8, 17.7, 137.5, 109.7, 166.5, 96.0, 22.5, 12.9, 13.7, 0.0], backgroundColor: '#f97316', barPercentage: 0.5, categoryPercentage: 0.75, order: 2 },
+      { label: '其他', data: [137.2, 252.1, 403.1, 434.0, 271.8, 193.2, 113.5, 67.3, 19.3, 25.2], backgroundColor: '#94a3b8', barPercentage: 0.5, categoryPercentage: 0.75, order: 2 },
+      { label: '双品牌市占率', data: [43, 48, 41, 47, 59, 58, 48, 41, 49, 21], type: 'line', yAxisID: 'y1', borderColor: '#dc2626', pointRadius: 4, tension: 0.3, order: 1 }
+    ]
+  },
+  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { grid: { display: false } }, y: { grid: { color: '#f1f5f9' }, ticks: { callback: v => v + '万' } }, y1: { position: 'right', grid: { display: false }, ticks: { callback: v => v + '%' }, min: 0, max: 100 } } }
+});
+new Chart(document.getElementById("chart-h2-month"), {
+  type: "bar",
+  data: {
+    labels: ['7月','8月','9月','10月','11月','12月'],
+    datasets: [
+      { label: "25年平台GMV", data: [11479, 8827, 7340, 3633, 276, 65], type: "bar", backgroundColor: "#93c5fd", borderRadius: 4, barPercentage: 0.55, categoryPercentage: 0.7, order: 2 },
+      { label: "26年平台GMV", data: [9507, 9916, 11168, 6057, 1145, 118], type: "bar", backgroundColor: "#2563eb", borderRadius: 4, barPercentage: 0.55, categoryPercentage: 0.7, order: 2 },
+      { label: "25年双品牌市占率", data: [47, 47, 48, 64, 43, 25], type: "line", yAxisID: "y1", borderColor: "#93c5fd", backgroundColor: "#93c5fd", borderWidth: 2, pointRadius: 4, tension: 0.3, order: 1 },
+      { label: "26年双品牌市占率", data: [51, 59, 53, 52, 63, 34], type: "line", yAxisID: "y1", borderColor: "#dc2626", backgroundColor: "#dc2626", borderWidth: 2.5, pointRadius: 5, pointBackgroundColor: "#dc2626", pointBorderColor: "#fff", pointBorderWidth: 2, tension: 0.3, order: 1 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: "index", intersect: false },
+    plugins: {
+      legend: { display: true, position: "top", align: "end" },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) {
+            if (ctx.dataset.type === "line") return ctx.dataset.label + ": " + ctx.parsed.y + "%";
+            return ctx.dataset.label + ": " + ctx.parsed.y + "万";
+          }
+        }
+      }
+    },
+    scales: {
+      x: { grid: { display: false } },
+      y: { grid: { color: "#f1f5f9" }, border: { display: false }, ticks: { callback: v => v + "万" }, position: "left" },
+      y1: { grid: { display: false }, border: { display: false }, ticks: { callback: v => v + "%", color: "#dc2626" }, position: "right", min: 0, max: 100 }
+    }
+  }
+});
+// Chart: Cumulative Region GMV Structure
+new Chart(document.getElementById("chart-cum-region-gmv"), {
+  type: "bar",
+  data: {
+    labels: ['西欧','北欧','英爱','南欧','东欧+巴尔干'],
+    datasets: [
+      { label: "双品牌", data: [17730, 5170, 4652, 4361, 2578], type: "bar", stack: "stack1", backgroundColor: "#1e40af", borderRadius: 4, barPercentage: 0.65, categoryPercentage: 0.75, order: 2 },
+      { label: "其他供应商", data: [14770, 8094, 3614, 3727, 2591], type: "bar", stack: "stack1", backgroundColor: "#94a3b8", borderRadius: 4, barPercentage: 0.65, categoryPercentage: 0.75, order: 2 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: "index", intersect: false },
+    plugins: {
+      legend: { display: true, position: "top", align: "end", labels: { boxWidth: 12, font: { size: 12 } } },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) {
+            return ctx.dataset.label + ": " + Math.round(ctx.parsed.y).toLocaleString() + "万";
+          }
+        }
+      }
+    },
+    scales: {
+      x: { grid: { display: false } },
+      y: { stacked: true, grid: { color: "#f1f5f9" }, border: { display: false }, ticks: { callback: v => v >= 10000 ? (v/10000).toFixed(1) + '亿' : v + '万' }, position: "left" }
+    }
+  }
+});
+// Chart: Cumulative Region Share Change
+new Chart(document.getElementById("chart-cum-region-share-change"), {
+  type: "bar",
+  data: {
+    labels: ['西欧','北欧','英爱','南欧','东欧+巴尔干'],
+    datasets: [
+      {
+        label: "双品牌市占率变化",
+        data: [4, 4, 12, 7, 3],
+        backgroundColor: ['#059669', '#059669', '#059669', '#059669', '#059669'],
+        borderRadius: 4,
+        barPercentage: 0.55,
+        categoryPercentage: 0.7
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) {
+            return "市占率变化: +" + ctx.parsed.y + "pp";
+          }
+        }
+      },
+      annotation: {
+        annotations: {
+          line1: {
+            type: 'line',
+            yMin: 0,
+            yMax: 0,
+            borderColor: '#94a3b8',
+            borderWidth: 1,
+            borderDash: [4, 4]
+          }
+        }
+      }
+    },
+    scales: {
+      x: { grid: { display: false } },
+      y: { grid: { color: "#f1f5f9" }, border: { display: false }, ticks: { callback: v => v + 'pp' }, min: 0 }
+    }
+  }
+});
+// 华中线下门店省份品牌市占率 — 湖南（环形图+中心文字）
+const doughnutPlugin = {
+  id: 'centerText',
+  afterDraw(chart) {
+    const { ctx, width, height } = chart;
+    ctx.save();
+    const text = chart.config.options.centerText;
+    const sub = chart.config.options.centerSub;
+    ctx.font = 'bold 22px "Segoe UI",system-ui,sans-serif';
+    ctx.fillStyle = '#1e293b';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(text, width / 2, height / 2 - 6);
+    ctx.font = '12px "Segoe UI",system-ui,sans-serif';
+    ctx.fillStyle = '#64748b';
+    ctx.fillText(sub, width / 2, height / 2 + 14);
+    ctx.restore();
+  }
+};
+// 华中线下门店省份品牌市占率 — 湖南（环形图+中心文字）
+new Chart(document.getElementById("chart-hz-province-hn"), {
+  type: "doughnut",
+  data: {
+    labels: ['翔龙品牌','国旅品牌','其他供应商'],
+    datasets: [{
+      data: [24,10,66],
+      backgroundColor: ["#2563eb", "#f97316", "#94a3b8"],
+      borderWidth: 0,
+      hoverOffset: 4
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    cutout: "68%",
+    centerText: '34%',
+    centerSub: "双品牌市占率",
+    plugins: {
+      legend: { display: true, position: "bottom", labels: { boxWidth: 10, font: { size: 10 }, padding: 8 } },
+      tooltip: {
+        callbacks: { label: ctx => ctx.label + ": " + ctx.parsed + "%" }
+      }
+    }
+  },
+  plugins: [doughnutPlugin]
+});
+// 华中线下门店省份品牌市占率 — 湖北（环形图+中心文字）
+new Chart(document.getElementById("chart-hz-province-hb"), {
+  type: "doughnut",
+  data: {
+    labels: ['翔龙品牌','国旅品牌','其他供应商'],
+    datasets: [{
+      data: [40,7,53],
+      backgroundColor: ["#2563eb", "#f97316", "#94a3b8"],
+      borderWidth: 0,
+      hoverOffset: 4
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    cutout: "68%",
+    centerText: '47%',
+    centerSub: "双品牌市占率",
+    plugins: {
+      legend: { display: true, position: "bottom", labels: { boxWidth: 10, font: { size: 10 }, padding: 8 } },
+      tooltip: {
+        callbacks: { label: ctx => ctx.label + ": " + ctx.parsed + "%" }
+      }
+    }
+  },
+  plugins: [doughnutPlugin]
+});
+// 华中线下门店省份品牌GMV结构（横向堆叠柱状图+数据标签）
+new Chart(document.getElementById("chart-hz-province-brand"), {
+  type: "bar",
+  data: {
+    labels: ['湖南','湖北'],
+    datasets: [
+      { label: "翔龙品牌", data: [70.2,128.5], backgroundColor: "#2563eb", borderRadius: { topLeft: 4, bottomLeft: 4 }, barPercentage: 0.55, categoryPercentage: 0.65 },
+      { label: "国旅品牌", data: [29.0,22.7], backgroundColor: "#f97316", borderRadius: 0, barPercentage: 0.55, categoryPercentage: 0.65 },
+      { label: "其他供应商", data: [190.9,173.5], backgroundColor: "#94a3b8", borderRadius: { topRight: 4, bottomRight: 4 }, barPercentage: 0.55, categoryPercentage: 0.65 }
+    ]
+  },
+  options: {
+    indexAxis: "y",
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: true, position: "top", align: "end", labels: { boxWidth: 10, font: { size: 11 } } },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) {
+            const total = ctx.chart.data.datasets.reduce((s, d) => s + d.data[ctx.dataIndex], 0);
+            const pct = ((ctx.parsed.x / total) * 100).toFixed(1);
+            return ctx.dataset.label + ": " + ctx.parsed.x + "万 (" + pct + "%)";
+          },
+          footer: function(tooltipItems) {
+            const total = tooltipItems.reduce((s, t) => s + t.parsed.x, 0);
+            return "合计: " + total + "万";
+          }
+        }
+      }
+    },
+    scales: {
+      x: { stacked: true, grid: { color: "#f1f5f9" }, ticks: { callback: v => v + "万" } },
+      y: { stacked: true, grid: { display: false } }
+    }
+  }
+});
+</script>
+</body>
+</html>
